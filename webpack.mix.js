@@ -11,9 +11,8 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js(['resources/js/app.js','resources/js/dashboard.js'], 'public/js');
+mix.js('resources/js/app.js', 'public/js')
+	.js('resources/js/dashboard.js', 'public/js');
 
 mix.sass('resources/sass/app.scss', 'public/css')
     .sass('resources/sass/dashboard.scss', 'public/css');
-
-mix.browserSync('http://dwclegazpi.edu/');

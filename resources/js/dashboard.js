@@ -1,6 +1,7 @@
 var notifValue = document.querySelector('#notifValue');
 var notifType = document.querySelector('#notifType');
 var notifTitle = document.querySelector('.notif-right-div h6');
+
 var dashboardImgs = document.querySelectorAll('.dashboard-img-container-img');
 var action = document.querySelector(".action").getAttribute('value').trim();
 const dropdown = document.querySelector('#dashboard-dropdown');
@@ -9,10 +10,12 @@ const notification = document.querySelector('.notification');
 const notifLeft = document.querySelector('.notif-left');
 const icon = document.querySelector('.notif-left i');
 const selectTag = document.querySelectorAll('.dashboard-right-input select');
-const inputs = document.querySelectorAll('.dashboard-form-control');
-const labels = document.querySelectorAll('.dashboard-right-input label');
+
+const inputs = document.querySelectorAll('.dashboard-input input');
+const labels = document.querySelectorAll('.dashboard-input label');
 const showHidePassword = document.querySelectorAll('.password');
-const eye  = document.querySelectorAll('.dashboard-right-input-password i');
+const eye  = document.querySelectorAll('.password-content i');
+
 const notifRightDiv = document.querySelector('.notif-right-div');
 const dashboardImgContainer = document.querySelectorAll('.dashboard-img-container-img');
 const imgBtnUpload = document.querySelector('#btn-upload-image');
@@ -116,21 +119,23 @@ selectTag.forEach(function(e){
 
 
 inputs.forEach(function(e){
+
 	// get the label of the form
 	const label = document.querySelector('label[for="'+e.id+'"]');
-	
+
 	// check if input box has a value
 	if (e.value !== "") {
-		label.classList.add('dashboard-right-focus');
+
+		label.classList.add('dashboard-input-focus');
 	} else {
 			e.addEventListener('focus', function(){
 				// activate label transition	
-				label.classList.add('dashboard-right-focus');
+				label.classList.add('dashboard-input-focus');
 
 				e.addEventListener("blur", function(){
 					// check if input box has a value	
 					if (e.value === "") {
-						label.classList.remove('dashboard-right-focus');
+						label.classList.remove('dashboard-input-focus');
 					} 
 				});
 		}); 
@@ -142,14 +147,22 @@ if (showHidePassword) {
 		// Show password hide/show button
 		e.addEventListener('focus', function(){
 			e.nextElementSibling.classList.add('dropdownShow');
+			e.nextElementSibling.classList.add('visible');
+
+			e.addEventListener('blur', function(){
+				if (e.value == "") {
+					e.nextElementSibling.classList.remove('visible');
+				}
+			});
 		});
 	})
 }
 
-if (eye) {
+if (eye) { 
 	// Show hide password function
 	eye.forEach(function(e){
 		e.addEventListener('click', function(){
+			
 			if (e.classList.contains('slash') != -1 ) {
 				e.classList.toggle('fa-eye-slash');
 				

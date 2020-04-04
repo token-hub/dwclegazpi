@@ -104,10 +104,10 @@ var notification = document.querySelector('.notification');
 var notifLeft = document.querySelector('.notif-left');
 var icon = document.querySelector('.notif-left i');
 var selectTag = document.querySelectorAll('.dashboard-right-input select');
-var inputs = document.querySelectorAll('.dashboard-form-control');
-var labels = document.querySelectorAll('.dashboard-right-input label');
+var inputs = document.querySelectorAll('.dashboard-input input');
+var labels = document.querySelectorAll('.dashboard-input label');
 var showHidePassword = document.querySelectorAll('.password');
-var eye = document.querySelectorAll('.dashboard-right-input-password i');
+var eye = document.querySelectorAll('.password-content i');
 var notifRightDiv = document.querySelector('.notif-right-div');
 var dashboardImgContainer = document.querySelectorAll('.dashboard-img-container-img');
 var imgBtnUpload = document.querySelector('#btn-upload-image');
@@ -218,15 +218,15 @@ inputs.forEach(function (e) {
   var label = document.querySelector('label[for="' + e.id + '"]'); // check if input box has a value
 
   if (e.value !== "") {
-    label.classList.add('dashboard-right-focus');
+    label.classList.add('dashboard-input-focus');
   } else {
     e.addEventListener('focus', function () {
       // activate label transition	
-      label.classList.add('dashboard-right-focus');
+      label.classList.add('dashboard-input-focus');
       e.addEventListener("blur", function () {
         // check if input box has a value	
         if (e.value === "") {
-          label.classList.remove('dashboard-right-focus');
+          label.classList.remove('dashboard-input-focus');
         }
       });
     });
@@ -238,6 +238,12 @@ if (showHidePassword) {
     // Show password hide/show button
     e.addEventListener('focus', function () {
       e.nextElementSibling.classList.add('dropdownShow');
+      e.nextElementSibling.classList.add('visible');
+      e.addEventListener('blur', function () {
+        if (e.value == "") {
+          e.nextElementSibling.classList.remove('visible');
+        }
+      });
     });
   });
 }
