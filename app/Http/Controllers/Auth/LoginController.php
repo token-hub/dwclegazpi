@@ -41,6 +41,10 @@ class LoginController extends Controller
         $this->middleware('guest')->except('logout');
     }
 
+    public function showLoginForm() {
+        return view('dashboardPage.login.loginPage');
+    }
+
     protected function credentials(Request $request)
     {
         $input = $request->only($this->username(), 'password');

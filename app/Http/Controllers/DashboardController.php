@@ -20,7 +20,7 @@ class DashboardController extends Controller
     }
 
     public function index() {
-        return view('DashboardPage.loginPage');
+        return view('DashboardPage.login.loginPage');
     }
 
     public function getHome() {
