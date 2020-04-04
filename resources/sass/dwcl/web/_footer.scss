@@ -1,0 +1,121 @@
+.footer {
+	@include position(relative);
+	@include flexCenters();
+
+	height: 385px;
+	width: 100%;
+	background: #110d72;
+	color: white;
+
+	.content {
+		@include position(relative);
+		display: flex;
+		height: 85%;
+		width: 1100px;
+
+		.content-item {
+			@include position(relative);
+			width: 25%;
+			padding: 10px;
+			p {
+				font-size: .9rem;
+				line-height: 18px;
+
+				a {
+					text-decoration: none;
+					color: white;
+				}
+
+				a:hover {
+					color: #7bb0ff;
+				}
+			}
+
+			.social-media {
+				display: flex;
+				
+				a {
+					@include flexCenters();
+					margin: 0 5px;
+					padding: 5px 5px;
+					height: 23px;
+					width:  23px;
+					border: 1px solid white;
+					border-radius: 50%;
+
+					li {
+						color: white;
+					}
+				}
+
+				a:nth-child(1) {
+					background: #3b5998;
+				}
+
+				a:nth-child(2) {
+					background: #1da1f2;
+				}
+
+				a:nth-child(3) {
+					background: #e1306c;
+				}
+			}
+		}
+
+		@include responsive(tablet) {
+			.content-item {
+				width: 80%;
+				padding: 10px 20px;
+			}
+		}
+
+		@include responsive(phone) {
+			.content-item {
+				width: 80%;
+				padding: 10px 20px;
+			}
+		}
+	}
+
+	@include responsive(laptop) {
+		.content {
+			width: 850px;
+		}
+	}
+
+	@include responsive(tablet) {
+		.content {
+			width: 750px;
+		}
+	}
+
+	@include responsive(phone) {
+		.content {
+			width: 300px;
+		}
+	}
+
+	@include responsive(tablet) {
+		.content {
+			display: table-row;
+		}
+	}
+
+	@include responsive(phone) {
+		.content {
+			display: table-row;
+		}
+	}
+}
+
+@include responsive(tablet) {
+	.footer {
+		display: table;
+	}
+}
+
+@include responsive(phone) {
+	.footer {
+		display: table;
+	}
+}

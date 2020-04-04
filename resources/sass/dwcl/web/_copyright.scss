@@ -1,0 +1,18 @@
+.copyright {
+	@include position(relative);
+	@include flexCenters();
+
+	height: 70px;
+	width: 100%;
+	background: #101820;
+
+	p {
+		margin: 0;
+		color: white;
+		
+		a {
+			text-decoration: none;
+			color: white;
+		}
+	}
+}

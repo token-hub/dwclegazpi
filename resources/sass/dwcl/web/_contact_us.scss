@@ -1,0 +1,187 @@
+.contact-us {
+	@include flexCenters();
+	@include position(relative);
+
+	.content-background {
+		width:50%;
+		height: 100vh;
+	}
+
+	@include responsive(tablet) {
+		.content-background {
+			display: none;
+		}
+	} 
+
+	@include responsive(phone) {
+		.content-background {
+			display: none;
+		}
+	} 
+
+	.content-background:nth-child(2) {
+		background: color(primary);
+	}
+
+	.contact-content {
+		@include position(absolute);
+
+		display: flex;
+		width: 1200px;
+		height: 90%;
+	
+		.contact-item {
+			@include position(relative);
+
+			width: 50%;
+			padding: 30px;
+
+			h1 {
+			    font-size: 3rem;
+				color: color(primary);
+				margin: 0;
+			}
+
+			p {
+				padding: 10px 20px 0 0;
+				line-height: 1.8;
+				i {
+					color: color(primary);
+					padding-right: 20px;
+				}
+			}
+
+			.contact-us-form {
+				position: relative;
+			    height: 90%;
+			    width: 100%;
+			    padding: 0 50px;
+
+			    .input-div {
+			    	width: 100%;
+    				margin-bottom: 27px;
+
+    				input {
+    					height: 35px;
+					    width: 50%;
+					    border-radius: 5px;
+					    outline: 0;
+					    border-width: 1px;
+					    border-color: white;
+					    background-color: transparent;
+					    color: white;
+					    padding: 0 10px;
+    				}
+
+    				textarea {
+    					resize: none;
+    					display: block;
+					    width: 80%;
+					    margin-top: 3px;
+					    height: 200px;
+					    border-radius: 5px;
+					    text-align: left;
+					    padding: 10px;
+					    overflow-x: hidden;
+					    background-color: transparent;
+					    border-color: white;
+    				}
+
+    				input[type=submit] {
+    					margin-top: 25px;
+					    width: 80px;
+					    height: 40px;
+					    border-radius: 5px;
+					    cursor: pointer;
+					    outline: 0;
+					    border-width: 1px;
+					    background-color: transparent;
+					    color: white;
+					    border-color: white;
+    				}
+
+    				::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+					  color: white;
+					  opacity: 1; /* Firefox */
+					}
+
+					:-ms-input-placeholder { /* Internet Explorer 10-11 */
+					  color: white;
+					}
+
+					::-ms-input-placeholder { /* Microsoft Edge */
+					  color: white;
+					}
+			    }
+			}
+
+
+			@include responsive(laptop) {
+				.contact-us-form {
+					padding: 0;
+				}
+			}
+
+			@include responsive(tablet) {
+				.contact-us-form {
+					padding: 0;
+				}
+			}
+
+			@include responsive(phone) {
+				.contact-us-form {
+					padding: 0;
+				}
+			}
+		}
+
+		@include responsive(tablet) {
+			.contact-item {
+				width: 100%;
+				padding: 55px;
+			}
+		}
+
+		@include responsive(phone) {
+			.contact-item {
+				width: 100%;
+				padding: 25px;
+			}
+		}
+
+		@include responsive(tablet) {
+			.contact-item:nth-child(2) {
+				background: color(primary);
+			}
+		}
+
+		@include responsive(phone) {
+			.contact-item:nth-child(2) {
+				background: color(primary);
+			}
+		}
+	}
+
+	@include responsive(laptop) {
+		.contact-content {
+			width: 950px;
+		}
+	}	
+
+	@include responsive(tablet) {
+		.contact-content {
+			@include position(relative);
+			display: block;
+			width: 950px;
+		}
+	}
+
+	@include responsive(phone) {
+		.contact-content {
+			@include position(relative);
+			display: block;
+			width: 100%;
+		}
+	}
+}
+

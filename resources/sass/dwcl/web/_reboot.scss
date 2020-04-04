@@ -1,0 +1,27 @@
+html {
+	font-size: 16px;
+	font-family: arial;
+	
+	@include responsive(laptop) {
+		font-size: 87.50%; // 13px - 1 rem; 13/16px
+	}
+
+	@include responsive(tablet) {
+		font-size: 87.50%; // 14px - 1 rem; 14/16px
+	}
+
+	@include responsive(phone) {
+		font-size: 87.50%; // 14px - 1 rem; 14/16px
+	}
+}
+
+body {
+	margin: 0;
+	padding: 0;
+}
+
+.dwcl-container {
+	transition: all 500ms ease 320ms;
+	overflow-x: hidden;
+	box-sizing: border-box;
+}

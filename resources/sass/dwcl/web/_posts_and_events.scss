@@ -1,0 +1,50 @@
+.posts-and-events {
+	width: 100%;
+
+	.items {
+		width: 100%;
+		margin-bottom: 30px;
+
+		.top {
+			@include flexCenters();
+
+			height: 50px;
+			width: 100%;
+			background: color(primary);
+
+			h2 {
+				margin: 0;
+				color: white;
+			}
+		}
+
+		.bottom {
+			Width: 100%;
+			background: #f7f7f7;
+			border-bottom-left-radius: 10px;
+			border-bottom-right-radius: 10px;
+
+			.value {
+				padding: 15px 30px;
+
+				a {
+ 					text-decoration: none;
+   					color: color(primary);
+   					font-weight: bold;
+   					font-size: .8rem;
+				}
+
+				p {
+					margin: 5px 0;
+					font-size: .7rem;
+				}
+			}
+
+			.value:hover {
+				background: #e3e3e3;
+    			transition: all 100ms linear 10ms;
+    			cursor: pointer;
+			}
+		}
+	}
+}

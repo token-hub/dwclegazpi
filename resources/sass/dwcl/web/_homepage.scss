@@ -1,0 +1,554 @@
+// ------------------------------------- [ STUDENT PORTAL ] -------------------------------------
+
+.student-portal {
+	@include position(absolute, 180px, 80px);
+	@include flexCenters();
+
+    z-index: 1;
+    width: 220px;
+    height: 50px;
+    opacity: .8;
+    background: #d2d2ee;
+    border-radius: 40px;
+
+    a {
+    	text-decoration: none;
+    	color: color(primary);
+    }
+}
+
+.student-portal:hover {
+	background-color: black;
+    cursor: pointer;
+
+    a {
+    	color: white;
+    }
+}
+
+@include responsive(tablet) {
+	.student-portal {
+		@include position(absolute, 180px, 50px); 
+	}
+}
+
+@include responsive(phone) {
+	.student-portal {
+		@include position(absolute, 180px, 10px); 
+
+		font-size: 11px;
+		width: 130px;
+   		height: 35px;
+	}
+}
+
+// ------------------------------------- [ SLIDE SHOW ] -------------------------------------
+
+.slideshow-container {
+  @include position(relative);
+  display: block;
+  margin: 0 auto;
+  width: 100%;
+	
+	.slides {
+		font-size: 0;
+
+		img {
+		    height: 100%;
+		    width: 100%;
+		    background-size: cover;
+		}
+	}
+
+  .slide-show-btn {
+    @include position(absolute, 50%); 
+    @include flexCenters();
+    height: 50px;
+    width: 100%;
+
+    .slide-content {
+    	@include position(relative); 
+
+    	display: flex;
+    	justify-content: space-between;
+    	height: 100%;
+    	width: 90%;
+
+    	a {
+    		@include flexCenters();
+
+    		cursor: pointer;
+		    height: 30px;
+		    width: 30px;
+		    color: white;
+		    font-weight: bold;
+		    font-size: 14px;
+		    transition: .6s ease;
+		    border-radius: 50%;
+		    background-color: rgba(0,0,0,0.8);
+    	}
+
+    	a:hover {
+    		filter: invert(100%);
+    	}
+    }
+  }
+}
+
+.slide-facilities {
+	display: flex !important;
+	justify-content: center !important;
+	margin: 20px 0;
+}
+
+.slideshow-replacement {
+	display:none;
+}
+
+@include responsive(tablet) {
+	.slideshow-replacement {
+		display:block;
+		font-size: 0;
+		
+		img {
+		    height: 100%;
+		    width: 100%;
+		    background-side: cover;
+		}
+	}
+
+	.slideshow-container {
+		display:none;
+	}
+}
+
+@include responsive(phone) {
+	.slideshow-replacement {
+		display:block;
+		font-size:0;
+
+		img {
+		    height: 100%;
+		    width: 100%;
+		    background-side: cover;
+		}
+	}
+
+	.slideshow-container {
+		display:none;
+	}
+}
+
+// ------------------------------------- [ THREE DIVISIONS ] -------------------------------------
+
+.three-divs {
+	@include position(relative);
+	
+	display: flex;
+	width: 100%;
+
+	.content {
+		@include position(relative);
+
+		width: 33.33%;
+		color: white;
+		padding: 8px 32px 32px 38px;
+
+		.items {
+			display: table;
+			padding-left: 32px;
+
+			p {
+				display: table-row;
+				
+				a {
+					text-decoration: none;
+    				color: white;
+    				line-height: 1.5;
+				}
+			}
+		}
+
+		@include responsive(phone) {
+			.items {
+				padding-left: 28px;
+			}
+
+			h2 {
+				font-size: 1.1rem;
+			}	
+		}
+	}
+
+	@include responsive(tablet) {
+		.content {
+			width: 100%;
+		}
+	}
+
+	@include responsive(phone) {
+		.content {
+			width: 100%;
+			padding: 8px 32px 32px 30px;
+		}
+	}
+
+
+	.content:nth-child(1) {
+		background: #34905a;
+	}
+
+	.content:nth-child(1):hover {
+		background: #2e794d;
+	}
+
+	.content:nth-child(2) {
+		background: #5d5d5d;
+	}
+
+	.content:nth-child(2):hover {
+		background: #4f4d4d;
+	}
+
+	.content:nth-child(3) {
+		background: #1d17ce	;
+	}
+
+	.content:nth-child(3):hover {
+		background: #1611b0;
+	}	
+}
+
+@include responsive(tablet) {
+	.three-divs {
+		display: block;
+	}
+}
+
+@include responsive(phone) {
+	.three-divs {
+		display: block;
+	}
+}
+
+// ------------------------------------- [ A MESSAGE FROM THE PRESIDENT ] -------------------------------------
+
+.message-from-president {
+	@include flexCenters();
+
+	width: 100%;
+	background: #f5f5f5;
+
+	.content {
+		@include flexJustify();
+
+		width: 950px;
+		padding: 70px;
+
+		.items {
+			display: table;
+			padding: 0 20px;
+
+			.values {
+				display: table-row;
+			}
+		}
+
+		@include responsive(tablet) {
+			padding: 40px 10px;
+		}
+
+		@include responsive(phone) {
+			padding: 40px 10px;
+		}
+
+		.left {
+			width: 60%;
+
+			p {
+				text-align: justify;
+				font-size: 13.6px;
+				line-height: 1.5;
+			}
+
+			h2 {
+				margin-block-start: 0;
+				text-align: center;
+				color: color(primary);
+			}
+		}
+
+		@include responsive(tablet) {
+			.left { 
+				width: 100%;
+			} 
+		}
+
+		@include responsive(phone) {
+			.left { 
+				width: 100%;
+			} 
+		}
+
+		.right {
+			width: 30%;
+
+			img {
+					height: 500px;
+					width: 320px;	
+				}
+		}
+
+		@include responsive(tablet) {
+			.right { 
+				display: none;
+			}
+		}
+
+		@include responsive(phone) {
+			.right { 
+				display: none;
+			}
+		}
+	}
+}
+
+// ------------------------------------- [ NEWS AND EVENTS ] -------------------------------------
+
+.news-and-events {
+	@include flexJustify();
+	width: 100%;
+
+	.content {
+		h1 {
+			color: color(primary);
+			text-align: center;
+		}
+		padding: 50px;
+
+		.items {
+			@include flexJustify();
+			justify-content: space-around;
+
+			width: 950px;
+			
+			.values {
+				width: 30%;
+				height: 350px;
+				border: 1px black solid;
+			
+				img {
+					width: 100%;
+					height: 65%;
+				}
+
+				p {
+					font-size: 1.1rem;
+				    font-weight: bold;
+				    padding: 0 1rem;
+				    height: 10%;
+				}
+
+				 a {
+				   	button {
+				   		width: 90%;
+				   		margin: 0 1rem;
+					    color: white;
+					    padding: 8px;
+					    font-size: .7rem;
+					    text-decoration: none;
+					    background: color(primary);
+					    border: none;
+					    border-radius: 10px;
+					    margin-top: 3px;
+				   	}
+
+				   	button:hover {
+				   		cursor: pointer;
+				   		transition: box-shadow 0.2s ease-in-out;
+						box-shadow: 7px 7px 10px black;
+				   	} 	
+				}
+			}
+
+			@include responsive(tablet) { 
+				.values {
+					width: 100%;
+					margin: 30px 0;
+				}
+			}
+
+			@include responsive(phone) { 
+				.values {
+					width: 100%;
+					margin: 30px 0;
+				}
+			}			
+	}
+
+		@include responsive(tablet) {
+			.items {
+				display: block;
+				width: 100%;
+			}
+		}
+
+		@include responsive(phone) {
+			.items {
+				display: block;
+				width: 100%;
+			}
+		}
+	}
+
+	@include responsive(tablet) {
+		.content {
+			padding: 20px 50px;
+		}
+	}
+
+	@include responsive(phone) {
+		.content {
+			padding: 20px 50px;
+		}
+	}
+
+}
+
+@include responsive(tablet) {
+	.news-and-events { 
+		display: block;
+	}
+}	
+
+@include responsive(phone) {
+	.news-and-events { 
+		display: block;
+	}
+}
+
+// ------------------------------------- [ ANNOUNCEMENT ] -------------------------------------
+
+.annoucement {
+	width: 100%;
+	background: #f5f5f5;
+	padding: 50px 0;
+	h1 {
+		color: color(primary);
+		text-align: center;
+	}
+	
+	.content {
+		@include flexJustify();
+		margin-top: 50px;
+
+		.items {
+			display: flex;
+			justify-content: space-between;
+			width: 950px;
+			min-height: 250px;
+
+			.values {
+				width: 47%;
+
+				.inner {
+					width: 95%;
+					height: 50%;
+					
+					.most {
+						height: 60%;
+						display: flex;
+						border-bottom: 2px color(primary) solid;
+					
+						.left {
+							width: 13%;
+							height: 100%;
+							background: color(primary);
+							color: white;
+							text-align: center;
+							
+							p {
+								margin: 10px;
+							}
+
+							p:nth-child(2) {
+								font-size: 1.5rem;
+							}
+						}
+
+						@include responsive(phone) {
+							.left {
+								width: 23%;
+							}
+						}
+
+						.right {
+							height: 100%;
+							width: 85%;
+							margin: 10px;
+							a {
+								color: black;
+								text-decoration: none;
+								font-weight: bold;	
+							}
+						}
+					}
+				}
+
+				@include responsive(tablet) {
+					.inner {
+						margin: 10px 0;
+					}
+				}
+
+				@include responsive(phone) {
+					.inner {
+						margin: 10px 0;
+					}
+				}
+			}
+
+			@include responsive(tablet) {
+				.values {
+					width: 90%;
+					margin: 15px 0;
+				}
+			}
+
+			@include responsive(phone) {
+				.values {
+					width: 100%;
+					margin: 15px 0;
+				}
+			}
+		}
+
+		@include responsive(tablet) {
+			.items {
+				display: block;
+				margin: 20px auto;
+				padding: 0 50px;
+			}
+		}
+
+		@include responsive(phone) {
+			.items {
+				display: block;
+				margin: 20px auto;
+				padding: 0 50px;
+			}
+		}
+	}
+
+	@include responsive(tablet) {
+		.content {
+			margin-top: 20px;
+		}
+	}
+
+	@include responsive(phone) {
+		.content {
+			margin-top: 20px;
+		}
+	}
+}

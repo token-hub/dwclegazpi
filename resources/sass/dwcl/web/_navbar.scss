@@ -1,0 +1,162 @@
+.nav {
+	@include position(relative);
+
+	ul {
+		@include flexCenters();
+
+		margin: 0;
+		padding-inline-start: 0;
+
+		li {
+			text-decoration: none;
+			display: inline-block;
+			a {
+				font-size: 1rem;
+			    font-weight: bold;
+			    padding: 1rem 1rem;
+			    color: black;
+			    display: block;
+			    text-decoration: none;
+			}
+		}
+
+		li:hover{
+			background-color: #1D17CE;
+			a {
+				color: white;
+			}
+
+			.dp-content {
+				display: block;
+
+				a {
+					border-bottom: 1px solid black;
+					font-size: .7rem;
+					padding: 10px;
+				}
+			}
+		}
+	}
+}
+
+@include responsive(laptop) {
+	.nav {
+		display: none;
+	}
+}
+
+@include responsive(tablet) {
+	.nav {
+		display: none;
+	}
+}
+
+@include responsive(phone) {
+	.nav {
+		display: none;
+	}
+}
+
+// ------------------------------------- navbar collapse -------------------------------------
+
+.nav-collapse {
+	@include position(sticky, 0);
+
+	display: none;
+	height: 3rem;
+	background-color: #101820;
+    z-index: 2;
+
+	.menu {
+		@include position(relative);
+		@include flexCenters();
+
+		flex-direction: column;
+		height: 100%;
+		width: 45px;
+		margin-left: 10px; 
+
+		.line {
+			@include position(relative);
+
+			width: 20px;
+			height: 2.2px;
+			background-color: white;
+			margin: 2.8px auto;
+		}
+	}
+
+	.menu:hover {
+		cursor: pointer;
+	} 
+
+	p {
+		color: white;
+		padding: 0 5px;
+		font-weight: bold;
+	}
+}
+
+@include responsive(laptop) {
+	.nav-collapse  {
+		display: flex;
+	}
+}
+
+@include responsive(tablet) {
+	.nav-collapse  {
+		display: flex;
+	}
+}
+
+@include responsive(phone) {
+	.nav-collapse  {
+		display: flex;
+	}
+}
+
+// ------------------------------------- navbar collapse content -------------------------------------
+
+.nav-collapse-content {
+	@include position(absolute, 0, null, null, -15rem);
+	transition: all 500ms ease 320ms;
+	z-index: 1;
+
+	ul {
+		width: 200px;
+		min-height: 100vh;
+		background: #101820;
+
+		margin: 0;
+		padding-inline-start: 0;
+
+		li {
+			text-decoration: none;
+			display: flex;
+			justify-content: space-between;
+
+			a {
+				font-size: 1rem;
+			    font-weight: bold;
+			    padding: .7rem 1rem;
+			    color: white;
+			    display: block;
+			    text-decoration: none;
+			}
+		}
+
+		.dp-content-collapse {
+			a {
+				font-size: 1rem;
+			    font-weight: bold;
+			    padding: .7rem 1rem;
+			    color: white;
+			    display: block;
+			    text-decoration: none;
+			}
+		}	
+	}
+}
+
+
+
