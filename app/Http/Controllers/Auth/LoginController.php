@@ -9,7 +9,6 @@ use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use App\Models\User;
 use Auth;
 
-
 class LoginController extends Controller
 {
     /*
@@ -46,7 +45,7 @@ class LoginController extends Controller
     }
 
     protected function credentials(Request $request)
-    {
+    {   
         $input = $request->only($this->username(), 'password');
         $input['is_active'] = 1; # check database if user is active
         return $input;
@@ -73,7 +72,7 @@ class LoginController extends Controller
     {   
         $notification = ['message' => 'Credentials not found', 'type' => 'failed'];
 
-        $user = User::where("username", "=", "john")->first();
+        $user = User::where("username", "=", $request->password)->first();
 
         # check username , password and if user is active
         if ($user && \Hash::check($request->password, $user->password) && $user->is_active != 1) {

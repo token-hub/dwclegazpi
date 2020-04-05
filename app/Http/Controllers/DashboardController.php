@@ -15,7 +15,7 @@ class DashboardController extends Controller
    public function __construct()
     {
         $this->middleware('auth')->except('index');
-        $this->middleware('verified');
+        // $this->middleware('verified');
         $this->middleware('preventBackHistory'); 
     }
 
@@ -24,7 +24,7 @@ class DashboardController extends Controller
     }
 
     public function getHome() {
-        return view('DashboardPage.home');
+        return view('DashboardPage.main.home');
     }
 
     public function getRegistration() {

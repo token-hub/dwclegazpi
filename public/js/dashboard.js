@@ -86,10 +86,10 @@
 /************************************************************************/
 /******/ ({
 
-/***/ "./resources/js/dashboard.js":
-/*!***********************************!*\
-  !*** ./resources/js/dashboard.js ***!
-  \***********************************/
+/***/ "./resources/js/dashboard-others.js":
+/*!******************************************!*\
+  !*** ./resources/js/dashboard-others.js ***!
+  \******************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
@@ -136,6 +136,9 @@ function showNotification(param1, param2, param3) {
     }, 2000);
   }
 }
+
+var btn2 = document.querySelectorAll('.dpBtn');
+var span2 = document.querySelector(".dpBtn span");
 
 function hideNotification(param1, param2) {
   param1.classList.remove('showNotification');
@@ -403,6 +406,48 @@ Array.from(sideNavLinks).forEach(function (e) {
     e.classList += " sidenav-active";
   }
 });
+
+/***/ }),
+
+/***/ "./resources/js/dashboard-sidebar.js":
+/*!*******************************************!*\
+  !*** ./resources/js/dashboard-sidebar.js ***!
+  \*******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var sidebarDropdown = document.querySelectorAll('.left-content-link span');
+
+if (sidebarDropdown !== null) {
+  sidebarDropdown.forEach(function (e) {
+    e.addEventListener('click', function () {
+      var sliderContent = e.parentNode.nextElementSibling;
+      console.log(sliderContent);
+      sliderContent.classList.toggle('content-dropdown-clicked');
+
+      if (e.classList.contains('fa-sort-desc')) {
+        e.classList.remove('fa-sort-desc');
+        e.classList += ' fa-sort-asc';
+      } else {
+        e.classList.remove('fa-sort-asc');
+        e.classList += ' fa-sort-desc';
+      }
+    });
+  });
+}
+
+/***/ }),
+
+/***/ "./resources/js/dashboard.js":
+/*!***********************************!*\
+  !*** ./resources/js/dashboard.js ***!
+  \***********************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(/*! ./dashboard-sidebar.js */ "./resources/js/dashboard-sidebar.js");
+
+__webpack_require__(/*! ./dashboard-others.js */ "./resources/js/dashboard-others.js");
 
 /***/ }),
 

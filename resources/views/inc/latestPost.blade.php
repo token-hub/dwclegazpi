@@ -12,7 +12,7 @@
 
 	$latestPosts = [
 						[
-							'title' => 'NON-WORKING HOLIDAY',
+							'title' => 'NON-WORKING HOLIDAY: February 24-25, 2019',
 							'posts' => [],
 							'posted' => 'February 21, 2020',
 							'hiddenLink' => 'NON-WORKING HOLIDAY: February 24-25, 2019'	

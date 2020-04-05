@@ -37078,8 +37078,7 @@ module.exports = function(module) {
 
 __webpack_require__(/*! ./bootstrap.js */ "./resources/js/bootstrap.js");
 
-__webpack_require__(/*! ./jumpToTop.js */ "./resources/js/jumpToTop.js"); // require('./sidebarDropdownBtn.js');
-
+__webpack_require__(/*! ./jumpToTop.js */ "./resources/js/jumpToTop.js");
 
 __webpack_require__(/*! ./navbarSecond.js */ "./resources/js/navbarSecond.js");
 
