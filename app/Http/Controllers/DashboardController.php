@@ -42,7 +42,7 @@ class DashboardController extends Controller
     }
 
     public function getUsers(){
-        return view('DashboardPage.users');
+        return view('DashboardPage.main.users');
     }
 
     public function getUsersData(){

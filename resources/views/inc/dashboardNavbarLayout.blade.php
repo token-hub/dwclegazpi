@@ -19,22 +19,34 @@
 
 		<div class="main-bottom">
 
+			<!-- ===== [ USER DROPDOWN ] ===== -->
+			<div class="user-dropdown">
+				<div class="user-dropdown-content">
+					<i class="fa fa-user"></i>
+					<a href="#">Profile</a>
+				</div>
+				<div class="user-dropdown-content">
+					<i class="fa fa-sign-out"></i>
+					<a href="#">Logout</a>
+				</div>
+			</div>
+
 			<!-- ===== [ SIDEBAR ] ===== -->
 			<div class="left bottom">
 				<div class="left-content">
 					<h4>DASHBOARD</h4>
 					<div class='left-content-link link-active'>
-						<i class='fa fa-home'></i><a href="#">Home</a>
+						<i class='fa fa-home'></i><a href="{{url('dashboard/home')}}">Home</a>
 					</div>
 				</div>
 
 				<div class="left-content">
 					<h4>CONTENTS</h4>
 					<div class='left-content-link'>
-						<i class='fa fa-home'></i><a href="#">Registration</a>
+						<i class='fa fa-home'></i><a href="{{url('dashboard/registration')}}">Registration</a>
 					</div>
 					<div class='left-content-link'>
-						<i class='fa fa-user'></i><a href="#">Users</a>
+						<i class='fa fa-user'></i><a href="{{url('dashboard/users')}}">Users</a>
 					</div>
 					<div class='left-content-link '>
 						<i class='fa fa-sliders'></i><a href="#">Slider</a>
@@ -43,63 +55,26 @@
 
 					<div class='content-dropdown'>
 						<div class='left-content-link'>
-							<i class='fa fa-toggle-on'></i><a href="#">Active</a>
+							<i class='fa fa-toggle-on'></i><a href="{{url('dashboard/active-images')}}">Active</a>
 						</div>
 						<div class='left-content-link'>
-							<i class='fa fa-toggle-off'></i><a href="#">Inactive</a>
+							<i class='fa fa-toggle-off'></i><a href="{{url('dashboard/inactive-images')}}">Inactive</a>
 						</div>
 					</div>
 
 					<div class='left-content-link'>
-						<i class='fa fa-history'></i><a href="#">Logs</a>
+						<i class='fa fa-history'></i><a href="{{url('dashboard/logs')}}">Logs</a>
 					</div>
 				</div>
 			</div>
 			<div class="right bottom">
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
-				<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-				tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-				quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-				consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-				cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-				proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+				<div class="right-content">
+					<div class="right-wrapper">
+						<h3>@yield('wrapper-title')</h3>
+						@yield('wrapper-boby')
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
-
 @endsection
