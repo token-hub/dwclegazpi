@@ -39,11 +39,13 @@ sidebarLinks.forEach(function(e) {
 	// check if link is equal to the current page
 	if (e.innerHTML.toLowerCase() == action) {
 
-		// check if the link is already active
+		// check if the link is not already active
 		if (parentNode.className.indexOf('link-active') == -1) {
 
-			// remove current link-active class to pass it to the next active link
-			document.querySelector('.link-active').classList.remove('link-active');
+			// check and remove current link-active class to pass it to the next active link
+			if (document.querySelector('.link-active')) {
+				document.querySelector('.link-active').classList.remove('link-active');
+			}
 			
 			parentNode.classList += ' link-active';
 		}

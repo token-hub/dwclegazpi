@@ -1,6 +1,7 @@
 @extends('inc.dashboardNavbarLayout')
-@section('title', 'Users')
-@section('dashboard-content')
+
+@section('wrapper-title', 'Users')
+@section('wrapper-body')
 	<table id="user_example" class="table table-striped table-bordered">
         <thead>
             <tr>
@@ -11,7 +12,6 @@
             </tr>
         </thead>
     </table>
-	{!! Form::close() !!}
 @endsection
 @push('scripts')
    <script>
@@ -28,7 +28,7 @@
 	                { data: 'is_active', name: 'is_active', 
 	                	render:function(data, type, row){
 		                	var btnType = row.is_active == 'Active' ? 'success' : 'danger';
-		                	return "<a href='/dashboard/user-status-update/"+ row.id + "/"+ row.is_active +"'> <button class='btn btn-"+ btnType +" '>"+ row.is_active +"</button> </a>"
+		                	return "<a href='/dashboard/user-status-update/"+ row.id + "/"+ row.is_active +"'> <button style='width:100%;' class='btn btn-sm btn-"+ btnType +" '>"+ row.is_active +"</button> </a>"
 	                	}
 	            	}
 	            ]

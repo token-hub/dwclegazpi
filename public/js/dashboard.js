@@ -104,7 +104,7 @@ var notification = document.querySelector('.notification');
 var notifLeft = document.querySelector('.notif-left');
 var icon = document.querySelector('.notif-left i');
 var selectTag = document.querySelectorAll('.dashboard-right-input select');
-var inputs = document.querySelectorAll('.dashboard-input input');
+var inputs = document.querySelectorAll('.input-control');
 var labels = document.querySelectorAll('.dashboard-input label');
 var showHidePassword = document.querySelectorAll('.password');
 var eye = document.querySelectorAll('.password-content i');
@@ -454,13 +454,60 @@ sidebarLinks.forEach(function (e) {
   var parentNode = e.parentNode; // check if link is equal to the current page
 
   if (e.innerHTML.toLowerCase() == action) {
-    // check if the link is already active
+    // check if the link is not already active
     if (parentNode.className.indexOf('link-active') == -1) {
-      // remove current link-active class to pass it to the next active link
-      document.querySelector('.link-active').classList.remove('link-active');
+      // check and remove current link-active class to pass it to the next active link
+      if (document.querySelector('.link-active')) {
+        document.querySelector('.link-active').classList.remove('link-active');
+      }
+
       parentNode.classList += ' link-active';
     }
   }
+});
+
+/***/ }),
+
+/***/ "./resources/js/dashboard-slider.js":
+/*!******************************************!*\
+  !*** ./resources/js/dashboard-slider.js ***!
+  \******************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var sliderImage = document.querySelectorAll('.slider-image img');
+var sliderBtn = document.querySelectorAll('.slider-btn');
+var reclickedImageCount = []; // active slider image when clicked
+
+sliderImage.forEach(function (e) {
+  e.addEventListener('click', function () {
+    e.parentNode.classList.toggle('slider-image-active');
+    var activeImageCnt = document.querySelectorAll('.slider-image-active').length; // enabled / disabled slider btn
+
+    sliderBtn.forEach(function (e) {
+      activeImageCnt > 0 ? e.removeAttribute('disabled') : e.setAttribute('disabled', '');
+    });
+
+    if (e.parentNode.className.indexOf('slider-image-active') !== -1) {
+      // create a p tag and append it to the slide-image div
+      imageCount = document.createElement("p"); // check if there's no reclicked image
+
+      if (reclickedImageCount.length == 0) {
+        imageCount.innerHTML = activeImageCnt;
+      } else {
+        imageCount.innerHTML = reclickedImageCount.sort().shift();
+      }
+
+      e.parentNode.append(imageCount);
+    } else {
+      // check if there's a image count append next to img, if true remove it
+      if (e.nextElementSibling) {
+        // get the image count before removing it
+        reclickedImageCount.push(e.nextElementSibling.innerHTML);
+        e.parentNode.removeChild(e.nextElementSibling);
+      }
+    }
+  });
 });
 
 /***/ }),
@@ -475,6 +522,8 @@ sidebarLinks.forEach(function (e) {
 __webpack_require__(/*! ./dashboard-others.js */ "./resources/js/dashboard-others.js");
 
 __webpack_require__(/*! ./dashboard-sidebar.js */ "./resources/js/dashboard-sidebar.js");
+
+__webpack_require__(/*! ./dashboard-slider.js */ "./resources/js/dashboard-slider.js");
 
 /***/ }),
 

@@ -11,7 +11,7 @@ const notifLeft = document.querySelector('.notif-left');
 const icon = document.querySelector('.notif-left i');
 const selectTag = document.querySelectorAll('.dashboard-right-input select');
 
-const inputs = document.querySelectorAll('.dashboard-input input');
+const inputs = document.querySelectorAll('.input-control');
 const labels = document.querySelectorAll('.dashboard-input label');
 const showHidePassword = document.querySelectorAll('.password');
 const eye  = document.querySelectorAll('.password-content i');

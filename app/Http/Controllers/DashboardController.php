@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Models\Logs;
+use App\Models\Images;
 use App\Models\Personal_info;
 use App\Models\Departments;
 use App\Models\user_access;
@@ -28,7 +30,22 @@ class DashboardController extends Controller
     }
 
     public function getRegistration() {
-        return view('DashboardPage.registration');
+        return view('DashboardPage.main.registration');
+    }
+
+    public function getLogs() {
+        $logs = Logs::all();
+        return view('DashboardPage.main.logs')->with('logs', $logs);
+    }
+
+    public function getActiveImages() {
+        $activeImages = Images::all();
+        return view('DashboardPage.main.activeImages')->with('active-images', $activeImages);
+    }
+
+    public function getInactiveImages() {
+        $inactiveImages = Images::all();
+        return view('DashboardPage.main.inactiveImages')->with('inactive-images', $inactiveImages);
     }
 
     public function getProfileShow($id) {

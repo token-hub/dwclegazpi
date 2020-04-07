@@ -75,113 +75,37 @@
         				color: gray;
         			}
         		}
-        	
-        		.form {
-        			display: flex;
-        			justify-content: space-between;
-        			flex-direction: column;
+        	   
+                .form-top {
+                    height: 50%;
 
-        			height: 65%;
-        			padding: 0 40px;
+                    .remember-me {
+                        span {
+                            font-size: 0.8rem;
+                            padding-left: 10px;
+                        }
+                    }
+                }
 
-        			.form-top {
-        				height: 50%;
+                .form-bottom {
+                    @include flexCenters();
+                    flex-direction: column;
+                    height: 40%;
+                
+                    .forgot-password {
+                        input[type=submit] {
+                            border: none;
+                            color: color(primary);
+                            background: transparent;
+                            font-size: .8rem;
+                        }
 
-	        			.dashboard-input {
-	        				width: 100%;
-	        				padding-bottom: 25px;
-	        				height: 50px;
-
-	        				input {
-		        				width: 100%;
-							    background: transparent;
-							    outline: 0;
-							    border-width: 0 0 1px;
-							    border-color: #525257;
-							    padding-bottom: 8px;
-							    font-size: 1rem;
-	        				}
-
-	        				label {
-	        					@include position(relative);
-
-								bottom: 30px;
-								pointer-events: none;
-								transition: .5s;
-	        				}
-
-		        			.dashboard-input-focus {
-	        					bottom: 50px !important;
-	        					font-size: 0.8rem;
-	        					font-weight: bold;
-	        					color: color(secondary);
-		        			}
-
-	        				.password-content {
-	        					@include position(relative);
-
-	        					display: flex;
-	        					i {
-	        						display: none;
-	        						@include position(absolute, 10px, 0);
-	        					}
-
-	        					i:hover {
-	        						cursor: pointer;
-	        					}
-	        				}
-	        			}
-
-
-	        			.remember-me {
-	        				span {
-	        					font-size: 0.8rem;
-	        					padding-left: 10px;
-	        				}
-	        			}
-        			}
-
-        			.form-bottom {
-        				@include flexCenters();
-        				flex-direction: column;
-        				height: 40%;
-
-        				.dashboard-submit-button {
-
-        					input[type=submit] {
-        						border: none;
-							    height: 45px;
-							    width: 150px;
-							    background: #413e92;
-							    color: white;
-							    font-weight: bold;
-							    box-shadow: 1px 1px 5px black;
-        					}
-
-        					input[type=submit]:hover {
-								transition: box-shadow 0.2s ease-in-out;
-								box-shadow: 7px 7px 10px black;
-								cursor: pointer; 
-        					}
-        				}
-        			
-        				.forgot-password {
-	    					input[type=submit] {
-	    						border: none;
-	    						color: color(primary);
-	    						background: transparent;
-	    						font-size: .8rem;
-        					}
-
-        					input[type=submit]:hover {
-        						cursor: pointer;
-        					}
-        				}
-        			}
-        		}
+                        input[type=submit]:hover {
+                            cursor: pointer;
+                        }
+                    }
+                }
         	}
         }
 	}
 }
-
-

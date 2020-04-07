@@ -23,11 +23,13 @@
 			<div class="user-dropdown">
 				<div class="user-dropdown-content">
 					<i class="fa fa-user"></i>
-					<a href="#">Profile</a>
+					<a href="{{url('dashboard/profile-show/'.auth::user()->id)}}">Profile</a>
 				</div>
 				<div class="user-dropdown-content">
 					<i class="fa fa-sign-out"></i>
-					<a href="#">Logout</a>
+					{!! Form::open(['route' => ['logout'], 'method' => 'POST']) !!}
+						{{Form::submit('Logout', ['class' => 'noborder'])}}
+					{!! Form::close() !!}
 				</div>
 			</div>
 
@@ -35,7 +37,7 @@
 			<div class="left bottom">
 				<div class="left-content">
 					<h4>DASHBOARD</h4>
-					<div class='left-content-link link-active'>
+					<div class='left-content-link'>
 						<i class='fa fa-home'></i><a href="{{url('dashboard/home')}}">Home</a>
 					</div>
 				</div>
@@ -69,9 +71,9 @@
 			</div>
 			<div class="right bottom">
 				<div class="right-content">
-					<div class="right-wrapper">
-						<h3>@yield('wrapper-title')</h3>
-						@yield('wrapper-boby')
+					<div class="wrapper">
+						<h3>@yield('wrapper-title')</h3><hr>
+						@yield('wrapper-body')
 					</div>
 				</div>
 			</div>

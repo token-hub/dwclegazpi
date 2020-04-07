@@ -17,12 +17,12 @@
 						<div class="form-top">
 							{!! Form::open(['route' => ['login'], 'method' => 'POST']) !!}
 							<div class='dashboard-input'>
-								{{ Form::text('username', '', ['autocomplete' => 'username', 'autofocus' => '', 'required' => '', 'id' => 'username'])}}
+								{{ Form::text('username', '', ['autocomplete' => 'username', 'autofocus' => '', 'required' => '', 'class' => 'input-control', 'id' => 'username'])}}
 								{{ Form::label('username', 'Username') }}
 							</div>
 							<div class='dashboard-input'>
 								<div class='password-content'>
-									{{ Form::password('password', ['autocomplete' => 'new-password',  'required' => '', 'class' => 'password', 'id' => 'password'])}}
+									{{ Form::password('password', ['autocomplete' => 'new-password',  'required' => '', 'class' => 'password input-control', 'id' => 'password'])}}
 									<i class='fa fa-eye'></i>
 								</div>
 								
