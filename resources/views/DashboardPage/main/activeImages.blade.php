@@ -27,8 +27,8 @@
 			</div>
 		</div>
 
-		<button class='btn btn-danger' disabled="">Remove image</button>
-		<button class='btn btn-info'  disabled="">Arrange image</button>
+		<button class='btn btn-danger slider-btn' disabled="">Remove image</button>
+		<button class='btn btn-info slider-btn'  disabled="">Arrange image</button>
 	</div>
 @endsection
 
