@@ -34,69 +34,90 @@ body {
 }
 
 .red {
-  color: red;
+  color: red !important;
 }
 
 .black {
-  color: black;
+  color: black !important;
 }
 
 .notification {
-  background-color: white;
   position: absolute;
   top: 50px;
   right: 30px;
+  bottom: NULL;
+  left: NULL;
+  display: table;
+  background-color: white;
   width: 300px;
   z-index: 2;
-  border-radius: 5px;
-  box-shadow: 2px 2px 2px;
-  height: 60px;
+  height: 50px;
+  box-shadow: 3px 3px 8px gray;
   visibility: hidden;
   opacity: 0;
   -webkit-transition: visibility 0.5s, opacity 0.5s linear;
   transition: visibility 0.5s, opacity 0.5s linear;
 }
 
-.showNotification {
+.notification .notification-icon {
+  display: table-cell;
+  width: 17%;
+  vertical-align: middle;
+  text-align: center;
+}
+
+.notification .notification-icon i {
+  color: white;
+}
+
+.notification .notification-content {
+  display: table-cell;
+  width: 83%;
+  vertical-align: middle;
+  padding: 10px 10px;
+}
+
+.notification .notification-content p {
+  margin: 0;
+}
+
+.notif-success {
+  color: #4CAF50 !important;
+}
+
+.notif-success .notification-icon {
+  background: #4CAF50 !important;
+}
+
+.notif-info {
+  color: #2196F3 !important;
+}
+
+.notif-info .notification-icon {
+  background: #2196F3 !important;
+}
+
+.notif-warning {
+  color: #ff9800 !important;
+}
+
+.notif-warning .notification-icon {
+  background: #ff9800 !important;
+}
+
+.notif-danger {
+  color: #f44336 !important;
+}
+
+.notif-danger .notification-icon {
+  background: #f44336 !important;
+}
+
+.notif-visible {
   visibility: visible;
   opacity: 1;
-  display: table !important;
-}
-
-.notif-left {
-  position: relative;
-  height: 100%;
-  width: 15%;
-  float: left;
-}
-
-.notif-right {
-  float: left;
-  position: relative;
-  width: 85%;
-  height: 100%;
-  padding: 5px 0;
-  display: table-row;
-}
-
-.notif-right-div {
-  position: relative;
-  height: 60%;
-  width: 100%;
-  line-height: 1;
-  display: none;
-}
-
-.notif-right-div h6 {
-  margin: 10px;
-  font-size: 14px;
-}
-
-.notif-right-div input {
-  font-size: 0.8rem;
-  color: gray;
-  border: none;
-  background: transparent;
+  -webkit-transition: visibility 0.5s, opacity 0.5s linear;
+  transition: visibility 0.5s, opacity 0.5s linear;
 }
 
 .dp-content {
@@ -741,6 +762,7 @@ body {
   width: 23px;
   border: 1px solid white;
   border-radius: 50%;
+  text-decoration: none;
 }
 
 .footer .content .content-item .social-media a li {
@@ -1251,7 +1273,7 @@ body {
   height: 10%;
 }
 
-.news-and-events .content .items .values a button {
+.news-and-events .content .items .values button {
   width: 90%;
   margin: 0 1rem;
   color: white;
@@ -1264,7 +1286,7 @@ body {
   margin-top: 3px;
 }
 
-.news-and-events .content .items .values a button:hover {
+.news-and-events .content .items .values button:hover {
   cursor: pointer;
   -webkit-transition: box-shadow 0.2s ease-in-out;
   transition: box-shadow 0.2s ease-in-out;
@@ -1818,11 +1840,14 @@ body {
 
 .divine-container .content .left .date-and-content .date-content-right h3 {
   margin: 0;
+  cursor: pointer;
 }
 
-.divine-container .content .left .date-and-content .date-content-right h3 a {
+.divine-container .content .left .date-and-content .date-content-right a {
+  font-size: 1.2rem;
   text-decoration: none;
   color: #1d17ce;
+  cursor: pointer;
 }
 
 .divine-container .content .left .date-and-content .date-content-right p {
@@ -2217,6 +2242,11 @@ body {
 
 .posts-and-events .items .bottom .value {
   padding: 15px 30px;
+}
+
+.posts-and-events .items .bottom .value h4 {
+  margin: 0;
+  color: #1d17ce;
 }
 
 .posts-and-events .items .bottom .value a {

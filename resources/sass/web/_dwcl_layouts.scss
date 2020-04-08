@@ -99,10 +99,14 @@
 
 					h3 {
 						margin: 0;
-						a {
-							text-decoration: none;
-							color: color(primary);
-						}
+						cursor: pointer;					
+					}
+
+					a {
+						font-size: 1.2rem;
+						text-decoration: none;
+						color: color(primary);
+						cursor: pointer;	
 					}
 
 					p {

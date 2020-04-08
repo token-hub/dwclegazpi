@@ -1,6 +1,4 @@
-require('./bootstrap.js');
-require('./jumpToTop.js');
-require('./navbarSecond.js');
-require('./title-and-content.js');
-// require('./storage.js');
-// require('./dashboard.js');
+require('./web/jump-to-top.js');
+require('./web/navbar-and-overview.js');
+require('./web/title-and-content.js');
+require('./web/updates.js');

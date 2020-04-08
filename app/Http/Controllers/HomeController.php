@@ -67,6 +67,6 @@ class HomeController extends Controller
                                         ]
                       ];
 
-        return view('homepage.homepage')->with('homeArrays', $homeArrays);
+        return view('web.home.homepage')->with('homeArrays', $homeArrays);
     }
 }

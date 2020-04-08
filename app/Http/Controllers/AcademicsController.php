@@ -7,46 +7,46 @@ use Illuminate\Http\Request;
 class AcademicsController extends Controller
 {
     public function getGradeSchoolDepartment() {
-    	return view('AcademicsPage.gradeSchoolDepartment');
+    	return view('web.academics.grade-school-department');
     }
 
     public function getCollege() {
-    	return view('AcademicsPage.college');
+    	return view('web.academics.college');
     }
 
     public function getJuniorHighSchoolDepartment() {
-    	return view('AcademicsPage.juniorHighSchoolDepartment');
+    	return view('web.academics.junior-high-school-department');
     }
 
     public function getFreeSecondaryDistanceProgram() {
-    	return view('AcademicsPage.freeSecondaryDistanceProgram');
+    	return view('web.academics.free-secondary-distance-program');
     }
 
     public function getSeniorHighSchoolDepartment() {
-    	return view('AcademicsPage.seniorHighSchoolDepartment');
+    	return view('web.academics.senior-high-school-department');
     }
 
      public function getSon() {
-    	return view('AcademicsPage.son');
+    	return view('web.academics.son');
     }
 
      public function getShom() {
-    	return view('AcademicsPage.shom');
+    	return view('web.academics.shom');
     }
 
      public function getSeas() {
-    	return view('AcademicsPage.seas');
+    	return view('web.academics.seas');
     }
 
      public function getSoecs() {
-    	return view('AcademicsPage.soecs');
+    	return view('web.academics.soecs');
     }
 
      public function getSbma() {
-    	return view('AcademicsPage.sbma');
+    	return view('web.academics.sbma');
     }
 
      public function getGraduateSchool() {
-    	return view('AcademicsPage.graduateSchool');
+    	return view('web.academics.graduate-school');
     }
 }

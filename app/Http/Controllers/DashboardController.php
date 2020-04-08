@@ -22,44 +22,44 @@ class DashboardController extends Controller
     }
 
     public function index() {
-        return view('DashboardPage.login.loginPage');
+        return view('dashboard.login.login-page');
     }
 
     public function getHome() {
-        return view('DashboardPage.main.home');
+        return view('dashboard.main.home');
     }
 
     public function getRegistration() {
-        return view('DashboardPage.main.registration');
+        return view('dashboard.main.registration');
     }
 
     public function getLogs() {
         $logs = Logs::all();
-        return view('DashboardPage.main.logs')->with('logs', $logs);
+        return view('dashboard.main.logs')->with('logs', $logs);
     }
 
     public function getActiveImages() {
         $activeImages = Images::all();
-        return view('DashboardPage.main.activeImages')->with('active-images', $activeImages);
+        return view('dashboard.main.active-images')->with('active-images', $activeImages);
     }
 
     public function getInactiveImages() {
         $inactiveImages = Images::all();
-        return view('DashboardPage.main.inactiveImages')->with('inactive-images', $inactiveImages);
+        return view('dashboard.main.inactive-images')->with('inactive-images', $inactiveImages);
     }
 
     public function getProfileShow($id) {
         $user = User::find($id);
-        return view('DashboardPage.Profile.profile')->with('user', $user);
+        return view('dashboard.profile.view')->with('user', $user);
     }
 
     public function getProfileEdit(request $request, $id){
         $user = User::find($id);
-        return view('DashboardPage.Profile.update')->with('user', $user);
+        return view('dashboard.profile.update')->with('user', $user);
     }
 
     public function getUsers(){
-        return view('DashboardPage.main.users');
+        return view('dashboard.main.users');
     }
 
     public function getUsersData(){

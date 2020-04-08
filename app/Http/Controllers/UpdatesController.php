@@ -16,6 +16,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Feb',
 		   				'title' => '59th FOUNDATION ANNIVERSARY',
 		   				'hidden' => '59th FOUNDATION ANNIVERSARY',
+		   				'category' => 'news-and-events',
 		   				'overview' => ''
 		   			],
    					[
@@ -23,6 +24,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Feb',
 		   				'title' => 'AN APPEAL FOR UNDERSTANDING',
 		   				'hidden' => 'AN APPEAL FOR UNDERSTANDING',
+		   				'category' => 'announcement',
 		   				'overview' => 'On January 29, 2020 at 4:00 in the afternoon...'
 		   			],
 		   			[
@@ -30,6 +32,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Feb',
 		   				'title' => 'NIGHT HIGH CLASS BATCH \'78 REUNION',
 		   				'hidden' => 'NIGHT HIGH CLASS BATCH \'78 REUNION',
+		   				'category' => 'news-and-events',
 		   				'overview' => ''
 		   			],
    					[
@@ -37,6 +40,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Jan',
 		   				'title' => 'SHS Activity',
 		   				'hidden' => '',
+		   				'category' => '',
 		   				'overview' => 'PAASCU WORK'
 		   			],
    					[
@@ -44,6 +48,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Jan',
 		   				'title' => 'SHS Activity',
 		   				'hidden' => '',
+		   				'category' => '',
 		   				'overview' => 'Faculty and Staff mass <br> <b>Venue:</b> Chapel & Room 101'
 		   			],
    					[
@@ -51,6 +56,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Jan',
 		   				'title' => 'SHS Activity',
 		   				'hidden' => '',
+		   				'category' => '',
 		   				'overview' => 'Release of report cards for 2nd quarter <br> <b>Venue:</b> Classrooms'
 		   			],
    					[
@@ -58,6 +64,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Jan',
 		   				'title' => 'SHS Activity',
 		   				'hidden' => '',
+		   				'category' => '',
 		   				'overview' => 'Tree Planting c/o UNESCO <br> <b>Venue:</b> Malabog <hr> <p> FOURTH SUNDAY MASS <br> <b>Venue:</b>  St. Raphael: </p>'
 		   			],
    					[
@@ -65,6 +72,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Jan',
 		   				'title' => 'SHS Activity',
 		   				'hidden' => '',
+		   				'category' => '',
 		   				'overview' => 'Release of Master Grade Sheet'
 		   			],
    					[
@@ -72,6 +80,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Jan',
 		   				'title' => 'SHS Activity',
 		   				'hidden' => '',
+		   				'category' => '',
 		   				'overview' => 'Career Talk for Grade 12 students <br> <b>Venue:</b> Gym'
 		   			],
    					[
@@ -79,6 +88,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Jan',
 		   				'title' => 'SHS Activity',
 		   				'hidden' => '',
+		   				'category' => '',
 		   				'overview' => 'Encoding of grades in the system'
 		   			],
    					[
@@ -86,6 +96,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Jan',
 		   				'title' => 'SHS Activity: THIRD SUNDAY MASS',
 		   				'hidden' => '',
+		   				'category' => '',
 		   				'overview' => 'Sponsors: Salazar and Schiermann <br> <b>Venue:</b> St.Raphael Churh'
 		   			],
    					[
@@ -93,6 +104,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Jan',
 		   				'title' => 'SHS ACTIVITY',
 		   				'hidden' => '',
+		   				'category' => '',
 		   				'overview' => 'Kick-off-Outreach Program (c/o SHEB), <br> Try out for sportsFest 2020 (c/o Sports Club) <br> <b>Venue:</b> Gotob Camalig'
 		   			],
    					[
@@ -100,6 +112,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Jan',
 		   				'title' => 'SHS ACTIVITY',
 		   				'hidden' => '',
+		   				'category' => '',
 		   				'overview' => 'FEAST OF ST.ARNOLD JANSEN'
 		   			],
    					[
@@ -107,6 +120,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Jan',
 		   				'title' => 'SHS ACTIVITY',
 		   				'hidden' => '',
+		   				'category' => '',
 		   				'overview' => 'FEAST OF ST.ARNOLD JANSEN <br> <b>Venue:</b> Gym / Classrooms'
 		   			],
    					[
@@ -114,6 +128,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Jan',
 		   				'title' => 'SHS ACTIVITY',
 		   				'hidden' => '',
+		   				'category' => '',
 		   				'overview' => 'Continuation of Routine and Exit Interview'
 		   			],
    					[
@@ -121,6 +136,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Jan',
 		   				'title' => 'SHS ACTIVITY',
 		   				'hidden' => '',
+		   				'category' => '',
 		   				'overview' => 'SPECIAL EXAMINATION DAYS <br> <b>Venue:</b> Library'
 		   			],
    				  	[
@@ -128,6 +144,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Jan',
 		   				'title' => 'SHS ACTIVITY',
 		   				'hidden' => '',
+		   				'category' => '',
 		   				'overview' => 'Submission if the CIDAM to the coordinator'
 		   			],
    					[
@@ -135,6 +152,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Jan',
 		   				'title' => 'SHS ACTIVITY',
 		   				'hidden' => '',
+		   				'category' => '',
 		   				'overview' => 'Faculty Meeting <br> <b>Venue:</b> Room 101'
 		   			],
    					[
@@ -142,6 +160,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Jan',
 		   				'title' => 'SHS ACTIVITY',
 		   				'hidden' => '',
+		   				'category' => '',
 		   				'overview' => 'Preparation for the 2nd semester'
 		   			],
    					[
@@ -149,6 +168,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Jan',
 		   				'title' => 'SHS ACTIVITY',
 		   				'hidden' => '',
+		   				'category' => '',
 		   				'overview' => 'Continuation of the PAASCU Initial Reporting <br> <b>Vanue:</b> Room 101'
 		   			],
    					[
@@ -156,6 +176,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Jan',
 		   				'title' => 'SHS ACTIVITY',
 		   				'hidden' => '',
+		   				'category' => '',
 		   				'overview' => 'Continuation of Routine interview Grade 12 <br> Continuation of Exit interview Grade 12'
 		   			],
    					[
@@ -163,6 +184,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Jan',
 		   				'title' => 'SHS ACTIVITY',
 		   				'hidden' => '',
+		   				'category' => '',
 		   				'overview' => 'Continuation of Exit interview for Grade 12 c/o AGTC'
 		   			],
    					[
@@ -170,6 +192,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Jan',
 		   				'title' => 'SHS ACTIVITY',
 		   				'hidden' => '',
+		   				'category' => '',
 		   				'overview' => 'UP Padunungan 2020 <br> <b> Venue:</b> Bicol University'
 		   			],
    					[
@@ -177,6 +200,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Jan',
 		   				'title' => 'SHS ACTIVITY',
 		   				'hidden' => '',
+		   				'category' => '',
 		   				'overview' => 'Awarding-English and Book Week Celebration 2019 Faculty Meeting Re: Teachers and class Sked for 2nd semester'
 		   			],
    			   		[
@@ -184,6 +208,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Jan',
 		   				'title' => 'SPECIAL HOLIDAY:',
 		   				'hidden' => '',
+		   				'category' => '',
 		   				'overview' => 'New Year\'s Day'
 		   			],
    					[
@@ -191,6 +216,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Dec',
 		   				'title' => 'Institutional Christmas Party',
 		   				'hidden' => '',
+		   				'category' => '',
 		   				'overview' => 'Institutional Christmas Party'
 		   			],
    					[
@@ -198,6 +224,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Dec',
 		   				'title' => 'DWCL Final Examination & Grade Consultation',
 		   				'hidden' => '',
+		   				'category' => '',
 		   				'overview' => 'Examination and grade consultation'
 		   			],
 		   			[
@@ -205,6 +232,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Dec',
 		   				'title' => 'CLASSES AND WORK RESUMPTION:',
 		   				'hidden' => 'CLASSES AND WORK RESUMPTION: DECEMBER 9, 2019',
+		   				'category' => 'announcement',
 		   				'overview' => 'IN VIEW OF THE RECENT CALAMITY THAT WE HAVE EXPERIENCED, WORK AND CLASSES WILL RESUME ON MONDAY ...'
 		   			],
 		   			[
@@ -212,6 +240,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Dec',
 		   				'title' => 'CLASSES SUSPENSION:',
 		   				'hidden' => 'CLASSES SUSPENSION: DECEMBER 4, 2019',
+		   				'category' => 'announcement',
 		   				'overview' => "In view of Mayor Rosal's declaration, classes in all levels remain suspended tomorrow ..."
 		   			],
 		   			[
@@ -219,6 +248,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Dec',
 		   				'title' => 'CLASSES AND WORK SUSPENSION:',
 		   				'hidden' => 'CLASSES AND WORK SUSPENSION: DECEMBER 2 AND 3, 2019',
+		   				'category' => 'announcement',
 		   				'overview' => "IN VIEW OF THE PDRMMC ADVISORY ON TYPHOON TISOY, CLASSES AND WORK ARE SUSPENDED ..."
 		   			],
 		   			[
@@ -226,6 +256,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Dec',
 		   				'title' => 'CLASSES AND WORK SUSPENSION:',
 		   				'hidden' => 'CLASSES AND WORK SUSPENSION: DECEMBER 2 AND 3, 2019',
+		   				'category' => 'announcement',
 		   				'overview' => "IN VIEW OF THE PDRMMC ADVISORY ON TYPHOON TISOY, CLASSES AND WORK ARE SUSPENDED ..."
 		   			],
 		   			[
@@ -233,6 +264,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Nov',
 		   				'title' => 'NON-WORKING HOLIDAY:',
 		   				'hidden' => 'NON-WORKING HOLIDAY: November 30, 2019',
+		   				'category' => 'announcement',
 		   				'overview' => "In accordance with the Memo No. 24, s. 2019, there will be no work and classes tomorrow..."
 		   			],
 		   			[
@@ -240,26 +272,29 @@ class UpdatesController extends Controller
 		   				'date' => 'Nov',
 		   				'title' => 'SPECIAL HOLIDAY:',
 		   				'hidden' => 'SPECIAL HOLIDAY: October 31, 2019, November 1-2, 2019',
+		   				'category' => 'announcement',
 		   				'overview' => "All Soul's Day"
 		   			],
 		   			[
 		   				'day' => 1,
 		   				'date' => 'Nov',
 		   				'title' => 'SPECIAL HOLIDAY:',
-		   				'hidden' => 'SPECIAL HOLIDAY: October 31, 2019, November 1-2, 2019',
+		   				'hidden' => '',
+		   				'category' => '',
 		   				'overview' => "All Saint's Day"
 		   			],
 		   			[
 		   				'day' => 31,
 		   				'date' => 'Oct',
 		   				'title' => 'SPECIAL HOLIDAY:',
-		   				'hidden' => 'SPECIAL HOLIDAY: October 31, 2019',
+		   				'hidden' => '',
+		   				'category' => '',
 		   				'overview' => "DWCL Institutional Holiday"
 		   			]
     			];
    		
    		$paginator = $this->getPaginator($request, $items);
-   		return view('UpdatesPage.updates')->with('items', $paginator);
+   		return view('web.updates.updates')->with('items', $paginator);
    }
 
  private function getPaginator(Request $request, $items) {
@@ -459,7 +494,7 @@ class UpdatesController extends Controller
 							]
    						];
 
-   		return view('UpdatesPage.announcement')->with('announcements', $announcements);
+   		return view('web.updates.announcement')->with('announcements', $announcements);
    }
 
     public function getNewsAndEvents() {
@@ -548,6 +583,6 @@ class UpdatesController extends Controller
 							],
 						 ];
 
-   		return view('UpdatesPage.newsAndEvents')->with('newsAndEvents', $newsAndEvents);
+   		return view('web.updates.news-and-events')->with('newsAndEvents', $newsAndEvents);
    }
 }

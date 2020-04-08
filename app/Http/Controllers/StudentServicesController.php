@@ -7,62 +7,62 @@ use Illuminate\Http\Request;
 class StudentServicesController extends Controller
 {
     public function getCommunityExtensionServices() {
-    	return view('StudentServicesPage.communityExtensionServices');
+    	return view('web.student-services.community-extension-services');
     }
 
     public function getStudentAffairsOrganization() {
-    	return view('StudentServicesPage.studentAffairsOrganization');
+    	return view('web.student-services.student-affairs-organization');
     }
 
     public function getGradeSchool() {
-    	return view('StudentServicesPage.gs');
+    	return view('web.student-services.gs');
     }
 
     public function getJuniorHighSchool() {
-    	return view('StudentServicesPage.jhs');
+    	return view('web.student-services.jhs');
     }
 
     public function getSeniorHighSchool() {
-    	return view('StudentServicesPage.shs');
+    	return view('web.student-services.shs');
     }
 
     public function getCollege() {
-    	return view('StudentServicesPage.college');
+    	return view('web.student-services.college');
     }
 
     public function getAthletics() {
-    	return view('StudentServicesPage.athletics');
+    	return view('web.student-services.athletics');
     }
 
     public function getPublication() {
-    	return view('StudentServicesPage.publication');
+    	return view('web.student-services.publication');
     }
 
     public function getCampusMinistry() {
-    	return view('StudentServicesPage.campusMinistry');
+    	return view('web.student-services.campus-ministry');
     }
 
     public function getSerbisyongDivine() {
-    	return view('StudentServicesPage.serbisyongDivine');
+    	return view('web.student-services.serbisyong-divine');
     }
 
     public function getRegistrar() {
-    	return view('StudentServicesPage.registrar');
+    	return view('web.student-services.registrar');
     }
 
     public function getLibrary() {
-    	return view('StudentServicesPage.library');
+    	return view('web.student-services.library');
     }
 
     public function getResearch() {
-    	return view('StudentServicesPage.research');
+    	return view('web.student-services.research');
     }
 
     public function getClinic() {
-    	return view('StudentServicesPage.clinic');
+    	return view('web.student-services.clinic');
     }
 
     public function getCanteen() {
-    	return view('StudentServicesPage.canteen');
+    	return view('web.student-services.canteen');
     }
 }

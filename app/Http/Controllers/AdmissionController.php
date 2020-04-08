@@ -7,34 +7,34 @@ use Illuminate\Http\Request;
 class AdmissionController extends Controller
 {
 	public function index() {
-    	return view('AdmissionPage.admission');
+    	return view('web.admission.admission');
     }
 
     public function getGradeSchool() {
-    	return view('AdmissionPage.gradeSchool');
+    	return view('web.admission.grade-school');
     }
 
     public function getCollege() {
-    	return view('AdmissionPage.college');
+    	return view('web.admission.college');
     }
 
     public function getFreeSecondaryDistance() {
-    	return view('AdmissionPage.freeSecondaryDistance');
+    	return view('web.admission.free-secondary-distance');
     }
 
     public function getGraduateSchool() {
-    	return view('AdmissionPage.graduateSchool');
+    	return view('web.admission.graduate-school');
     }
 
     public function getJuniorHighSchool() {
-    	return view('AdmissionPage.juniorHighSchool');
+    	return view('web.admission.junior-high-school');
     }
 
     public function getScholarship() {
-    	return view('AdmissionPage.scholarship');
+    	return view('web.admission.scholarship');
     }
 
     public function getSeniorHighSchool() {
-    	return view('AdmissionPage.seniorHighSchool');
+    	return view('web.admission.senior-high-school');
     }
 }

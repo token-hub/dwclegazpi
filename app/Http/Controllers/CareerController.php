@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class CareerController extends Controller
 {
     public function index() {
-    	return view('CareerPage.career');
+    	return view('web.career.career');
     }
 }

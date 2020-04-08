@@ -41,7 +41,7 @@ class LoginController extends Controller
     }
 
     public function showLoginForm() {
-        return view('dashboardPage.login.loginPage');
+        return view('dashboard.login.login-page');
     }
 
     protected function credentials(Request $request)
@@ -58,25 +58,25 @@ class LoginController extends Controller
 
     protected function redirectTo()
     {   
-        \Session::flash('notification', ['message' => 'Welcome to dashboard!', 'type' => 'success']);
+        \Session::flash('notification', ['message' => 'Welcome to dashboard!', 'type' => 'notif-success']);
         return 'dashboard/home';
     }
 
     public function logout()
     {
         Auth::logout();
-        return redirect('login')->with('notification', ['message' => 'logout successfully!', 'type' => 'success']);
+        return redirect('login')->with('notification', ['message' => 'logout successfully!', 'type' => 'notif-success']);
     }
 
     protected function sendFailedLoginResponse(Request $request)
     {   
-        $notification = ['message' => 'Credentials not found', 'type' => 'failed'];
+        $notification = ['message' => 'Credentials not found', 'type' => 'notif-danger'];
 
         $user = User::where("username", "=", $request->password)->first();
 
         # check username , password and if user is active
         if ($user && \Hash::check($request->password, $user->password) && $user->is_active != 1) {
-            $notification = ['message' => 'Your account is Inactive', 'type' => 'failed'];  # user is not active here...
+            $notification = ['message' => 'Your account is Inactive', 'type' => 'notif-danger'];  # user is not active here...
         }
 
         return redirect('login')->with('notification', $notification);
