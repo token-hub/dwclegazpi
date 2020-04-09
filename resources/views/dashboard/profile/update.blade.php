@@ -2,9 +2,13 @@
 
 @section('wrapper-title', 'Update Profile')
 @section('wrapper-body')
+
+ @if($errors->any())
+    {{ implode('', $errors->all('<div>:message</div>')) }}
+@endif
 	<div class="wrapper-content-second">
 		<div class="form">
-			{!! Form::open(['route' => ['update-user', $user->id], 'method' => 'GET']) !!}
+			{!! Form::open(['url' => ['dashboard/profile-update', $user->id], 'method' => 'PATCH']) !!}
 				<div class='dashboard-input'>
 					{!! Form::text('firstname', $user->personal_info->firstname, ['id' => 'firstname', 'autocomplete' => 'given-name', 'class' => 'input-control']) !!}
 					{!! Form::label('firstname', 'Firstname') !!}
@@ -59,4 +63,5 @@
 				</div>
 		{!! Form::close() !!}
 		</div>
+	</div>
 @endsection

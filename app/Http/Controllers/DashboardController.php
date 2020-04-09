@@ -3,17 +3,20 @@ namespace App\Http\Controllers;
 
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
+use App\Http\Requests\FormValidation;
 use App\Models\User;
 use App\Models\Logs;
 use App\Models\Images;
 use App\Models\Personal_info;
 use App\Models\Departments;
 use App\Models\user_access;
-use App\Rules\old_password_checker;
 use yajra\Datatables\Datatables;
+use Illuminate\Foundation\Auth\ResetsPasswords;
 
 class DashboardController extends Controller
 {
+    use ResetsPasswords;
+
    public function __construct()
     {
         $this->middleware('auth')->except('index');
@@ -21,7 +24,7 @@ class DashboardController extends Controller
         $this->middleware('preventBackHistory'); 
     }
 
-    public function index() {
+    public function getIndex() {
         return view('dashboard.login.login-page');
     }
 
@@ -84,52 +87,44 @@ class DashboardController extends Controller
 
         $user->save();
 
-        return redirect('dashboard/users')->with('notification', ['message' => 'User status updated', 'type' => 'success']);
+        return redirect('dashboard/users')->with('notification', ['message' => 'User status updated', 'type' => 'notif-success']);
     }
 
 
-    public function getProfileUpdate(request $request, $id){
-        # validate fields
-        $this->validate($request, [
-            'firstname' => 'required|max:30',
-            'lastname' => 'required|max:30',
-            'username' => 'required|max:15|unique:users,username,'.$id.',id',
-            'old_password' => ['nullable', 'max:20', 'min:8', new old_password_checker],
-            'new_password' => 'nullable|max:20|min:8',
-            'gender' => 'required',
-            'department' => 'required',
-        ]);
+    public function anyProfileUpdate(formValidation $formValidation, $id){
 
         $notification = ['message' => '', 'type' => ''];
 
         # user update method
         $user = User::find($id);
-        $user->username = $request->username;
+        $user->username = $formValidation->username;
        
         # update if passwords is not empty
-        if ($request->old_password != null AND $request->new_password != null) {
-            $user->password = \Hash::make($request->new_password);
+        if ($formValidation->old_password != null AND $formValidation->new_password != null) {
+            $this->resetPassword($user, $formValidation->new_password);
         }
         
         $user->save();
 
         # personal_info update method
         $personal_info = Personal_info::where('user_id', $id)->first();
-        $personal_info->firstname = $request->firstname;
-        $personal_info->lastname = $request->lastname;
-        $personal_info->gender = $request->gender;
+        $personal_info->firstname = $formValidation->firstname;
+        $personal_info->lastname = $formValidation->lastname;
+        $personal_info->gender = $formValidation->gender;
         $personal_info->save();
 
         # department update method
         $department = Departments::where('user_id', $id)->first();
-        $department->name = $request->department;
+        $department->name = $formValidation->department;
         $department->save();
 
         # check if changes has made
-        if($personal_info->wasChanged() OR $department->wasChanged() OR $user->wasChanged()) {
-            $notification = ['message' => 'Updated Successfully', 'type' => 'success'];
+        if($user->wasChanged() AND ($personal_info->wasChanged() OR $department->wasChanged())) {
+            $notification = ['message' => 'Updated successfully', 'type' => 'notif-success'];
+        } else if($user->wasChanged())  {
+            $notification = ['message' => 'Password reset successfully', 'type' => 'notif-success'];
         } else {
-            $notification = ['message' => 'Nothing to update', 'type' => 'information'];
+            $notification = ['message' => 'Nothing to update', 'type' => 'notif-info'];
         }
 
         return redirect('dashboard/profile-show/'.$id)->with('notification', $notification);

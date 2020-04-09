@@ -24,7 +24,7 @@
 		</div>
 		<div class='contact-item'>
 			<div class='contact-us-form'>
-				{!! Form::open(['action' => 'EmailController@send', 'method' => 'POST']) !!}
+				{!! Form::open(['action' => 'EmailController@getSend', 'method' => 'POST']) !!}
 					<div class='input-div'>
 				    	{{Form::text('name', '', ['class' => 'contact-us-form-control', 'placeholder' => 'Name', 'autocomplete' => 'given-name'])}}
 			    	</div>

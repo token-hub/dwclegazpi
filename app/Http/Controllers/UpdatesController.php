@@ -7,7 +7,7 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class UpdatesController extends Controller
 {
-   public function index(Request $request) {
+   public function getIndex(Request $request) {
 
    	# Temporary array for paagination
    		$items = [	

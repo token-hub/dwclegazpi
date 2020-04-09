@@ -39,14 +39,4 @@ class ResetPasswordController extends Controller
             ['token' => $token, 'email' => $request->email]
         );
     }
-
-    protected function sendResetResponse()
-    {
-        return redirect('dashboard/home')->with('notification', ['message' => 'Password reset Successfully', 'type' => 'success']);
-    }
-    
-    protected function sendResetFailedResponse()
-    {
-        return redirect('login')->with('notification', ['message' => 'Password reset failed', 'type' => 'failed']);
-    }
 }

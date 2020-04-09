@@ -17,7 +17,8 @@
 			<p>{{strtoupper($user->departments->name)}}</p>
 			<p>*******</p>
 
-			{!! Form::open(['route' => ['edit_user', $user->id], 'method' => 'GET']) !!}
+
+			{!! Form::open(['url' => ['dashboard/profile-edit', $user->id], 'method' => 'GET']) !!}
 				<div class='dashboard-submit-button'>
 					{{ Form::submit('Update')}}
 				</div>

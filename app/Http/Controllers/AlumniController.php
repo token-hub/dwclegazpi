@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 class AlumniController extends Controller
 {
-    public function index() {
+    public function getIndex() {
     	return view('web.alumni.alumni');
     }
 }
