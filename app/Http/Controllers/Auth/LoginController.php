@@ -64,6 +64,12 @@ class LoginController extends Controller
 
     public function logout()
     {
+        $user = User::find(auth()->user()->id);
+        
+        activity('login/logout')
+       ->causedBy($user)
+       ->log('A user logs out');
+
         Auth::logout();
         return redirect('login')->with('notification', ['message' => 'logout successfully!', 'type' => 'notif-success']);
     }

@@ -5,11 +5,15 @@ namespace App\Models;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Illuminate\Database\Eloquent\Model;
+use App\Traits\LogsConfiguration;
 
 class User extends Authenticatable implements MustVerifyEmail
 {   
-    use Notifiable;
+    use Notifiable, LogsConfiguration;
 
+    protected static $logName = 'user account';
 
     /**
      * The attributes that are mass assignable.
@@ -19,7 +23,7 @@ class User extends Authenticatable implements MustVerifyEmail
     protected $fillable = [
         'username', 'password', 'email'
     ];
-
+    
     /**
      * The attributes that should be hidden for arrays.
      *

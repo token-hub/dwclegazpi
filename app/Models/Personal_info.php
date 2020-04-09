@@ -3,17 +3,23 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Activitylog\Traits\LogsActivity;
+use Spatie\Activitylog\Contracts\Activity;
+use App\Traits\LogsConfiguration;
 
 class Personal_info extends Model
-{
+{   
+     use logsActivity, LogsConfiguration;
 	 /**
 	 * The attributes that are mass assignable.
 	 *
 	 * @var array
 	 */
-	
+     
+    protected static $logName = 'user information';
+
     protected $fillable = [
-        'name', 'username', 'gender', 'user_id'
+        'firstname', 'lastname', 'username', 'gender', 'user_id'
     ];
 
     public function user() {

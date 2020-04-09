@@ -3,9 +3,15 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\LogsConfiguration;
 
 class Departments extends Model
-{
+{	
+
+	use LogsConfiguration;
+
+	protected static $logName = 'user department information';
+
     protected $fillable = [
         'name', 'is_active', 'number'
     ];

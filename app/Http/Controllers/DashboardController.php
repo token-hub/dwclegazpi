@@ -12,6 +12,7 @@ use App\Models\Departments;
 use App\Models\user_access;
 use yajra\Datatables\Datatables;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use Spatie\Activitylog\Models\Activity;
 
 class DashboardController extends Controller
 {
@@ -29,6 +30,13 @@ class DashboardController extends Controller
     }
 
     public function getHome() {
+
+        $user = User::find(auth()->user()->id);
+        
+        activity('login/logout')
+       ->causedBy($user)
+       ->log('A user logs in');
+
         return view('dashboard.main.home');
     }
 
@@ -37,8 +45,20 @@ class DashboardController extends Controller
     }
 
     public function getLogs() {
-        $logs = Logs::all();
-        return view('dashboard.main.logs')->with('logs', $logs);
+        return view('dashboard.main.logs');
+    }
+
+    public function getLogsData() {
+        $logs = Activity::orderByDesc('id')->get();
+
+        return Datatables::Of($logs)
+        ->editColumn('created_at', function ($logs) {
+              return date("F d, Y | h:i A", strtotime($logs->created_at));
+         })
+         ->editColumn('causer_id', function ($logs) {
+              return   ucfirst(User::find($logs->causer_id)->username);
+         })
+        ->make(true);
     }
 
     public function getActiveImages() {

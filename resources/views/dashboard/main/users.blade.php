@@ -20,6 +20,7 @@
 	            processing: true,
 	            serverSide: true,
 	            "searching": true,
+	            order: [ [0, 'desc'] ],
 	            ajax: '{{ url("dashboard/users-data") }}',
 	            columns: [
 	                { data: 'username', name: 'username' },
