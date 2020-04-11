@@ -61,6 +61,14 @@ class DashboardController extends Controller
         ->make(true);
     }
 
+    public function getLogsView($id) {
+        $log = Activity::where('Activity_log.id', $id)
+            ->leftJoin('users', 'users.id', '=', 'causer_id')
+            ->get(['*', 'Activity_log.created_at']);
+                
+        return view('dashboard.main.logs-view')->with('logs', $log);
+    }
+
     public function getActiveImages() {
         $activeImages = Images::all();
         return view('dashboard.main.active-images')->with('active-images', $activeImages);
