@@ -49,7 +49,8 @@ class DashboardController extends Controller
     }
 
     public function getLogsData() {
-        $logs = Activity::orderByDesc('id')->get();
+        // $logs = Activity::orderByDesc('id')->get();
+        $logs = Activity::where('id', [15, 29])->get();
 
         return Datatables::Of($logs)
         ->editColumn('created_at', function ($logs) {
@@ -110,10 +111,7 @@ class DashboardController extends Controller
     public function getUserStatusUpdate($id, $status){
         $status = $status == 'Active' ? 0 : 1;
 
-        $user = User::find($id);
-        $user->is_active = $status;
-
-        $user->save();
+        $user = User::find($id)->update(['is_active' => $status]);
 
         return redirect('dashboard/users')->with('notification', ['message' => 'User status updated', 'type' => 'notif-success']);
     }
