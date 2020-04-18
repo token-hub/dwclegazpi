@@ -15,7 +15,7 @@
 					<div class="title"><h3>SIGN IN</h3></div>
 					<div class="form">
 						<div class="form-top">
-							{!! Form::open(['route' => ['login'], 'method' => 'POST']) !!}
+							{!! Form::open(['url' => ['dashboard/login'], 'method' => 'POST']) !!}
 							<div class='dashboard-input'>
 								{{ Form::text('username', '', ['autocomplete' => 'username', 'autofocus' => '', 'required' => '', 'class' => 'input-control', 'id' => 'username'])}}
 								{{ Form::label('username', 'Username') }}
@@ -39,7 +39,7 @@
 							</div>
 
 							<div class='forgot-password'>
-								{!! Form::open(['route' => ['password.request'], 'method' => 'GET']) !!}
+								{!! Form::open(['url' => ['dashboard/password-reset'], 'method' => 'GET']) !!}
 									{{Form::submit('Forgot password?', ['class' => 'noborder'])}}
 								{!! Form::close() !!}
 							</div>

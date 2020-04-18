@@ -27,7 +27,7 @@
 				</div>
 				<div class="user-dropdown-content">
 					<i class="fa fa-sign-out"></i>
-					{!! Form::open(['route' => ['logout'], 'method' => 'POST']) !!}
+					{!! Form::open(['url' => ['dashboard/logout'], 'method' => 'POST']) !!}
 						{{Form::submit('Logout', ['class' => 'noborder'])}}
 					{!! Form::close() !!}
 				</div>

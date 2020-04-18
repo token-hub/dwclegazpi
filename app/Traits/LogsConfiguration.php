@@ -17,18 +17,18 @@ trait LogsConfiguration
 
 	 public function tapActivity(Activity $activity, string $eventName)
     {   
-    	$user_id = 0;
+    	// $user_id = 0;
 
-    	// check if the subject table is users
-    	if ($activity->relations['subject']->table == 'users') {
-    		$user_id = $activity->relations['subject']->id;
-    	} else {
-    		$user_id = $activity->relations['subject']->user_id;
-    	}
+    	// // check if the subject table is users
+    	// if ($activity->relations['subject']->table == 'users') {
+    	// 	$user_id = $activity->relations['subject']->id;
+    	// } else {
+    	// 	$user_id = $activity->relations['subject']->user_id;
+    	// }
 
-    	$username = User::find($user_id)->username;
+    	// $username = User::find($user_id)->username;
 
-        $activity->description = "A ".Static::$logName." was {$eventName}.";
-        $activity->properties = $activity->properties->put('toUsername', $username);
+     //    $activity->description = "A ".Static::$logName." was {$eventName}.";
+     //    $activity->properties = $activity->properties->put('toUsername', $username);
     }
 }

@@ -8,6 +8,7 @@ use Illuminate\Notifications\Notifiable;
 use Spatie\Activitylog\Traits\LogsActivity;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\LogsConfiguration;
+use App\Exceptions\UserNameIsBanned;
 
 class User extends Authenticatable implements MustVerifyEmail
 {   
@@ -59,5 +60,12 @@ class User extends Authenticatable implements MustVerifyEmail
 
     public function getIsActiveAttribute($data) {
         return $data == 0 ? 'Inactive' : 'Active';
+    }
+
+    public function talk() {
+        if (auth()->user()) {
+            throw new UserNameIsBanned();
+        }
+        return true;
     }
 }
