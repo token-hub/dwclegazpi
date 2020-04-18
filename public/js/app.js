@@ -10711,6 +10711,47 @@ __webpack_require__(/*! ./web/title-and-content.js */ "./resources/js/web/title-
 
 __webpack_require__(/*! ./web/updates.js */ "./resources/js/web/updates.js");
 
+__webpack_require__(/*! ./dashboard/notification.js */ "./resources/js/dashboard/notification.js");
+
+/***/ }),
+
+/***/ "./resources/js/dashboard/notification.js":
+/*!************************************************!*\
+  !*** ./resources/js/dashboard/notification.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var notification = document.querySelector('.notification');
+var notificationMessage = document.querySelector('.notification-content ul li');
+var notificationIcon = document.querySelector('.notification-icon i');
+
+if (notificationMessage.innerHTML !== '') {
+  notification.classList.toggle('notif-visible');
+  var type = notification.classList[1];
+  addNotificationIcon(type);
+  setTimeout(function () {
+    return hideNotification(type);
+  }, 3000);
+}
+
+function hideNotification(type) {
+  notification.classList.toggle('notif-visible');
+  addNotificationIcon(type);
+}
+
+function addNotificationIcon(type) {
+  if (type == 'notif-success') {
+    notificationIcon.classList.toggle('fa-check');
+  } else if (type == 'notif-info') {
+    notificationIcon.classList.toggle('fa-info');
+  } else if (type == 'notif-warning') {
+    notificationIcon.classList.toggle('fa-exclamation');
+  } else {
+    notificationIcon.classList.toggle('fa-exclamation');
+  }
+}
+
 /***/ }),
 
 /***/ "./resources/js/web/jump-to-top.js":

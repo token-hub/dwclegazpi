@@ -389,7 +389,7 @@ if (notificationMessage.innerHTML !== '') {
   addNotificationIcon(type);
   setTimeout(function () {
     return hideNotification(type);
-  }, 2000);
+  }, 3000);
 }
 
 function hideNotification(type) {

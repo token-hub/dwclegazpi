@@ -7,7 +7,7 @@ if (notificationMessage.innerHTML !== '') {
 	var type = notification.classList[1];
 
 	addNotificationIcon(type)
-	setTimeout(function(){ return hideNotification(type); }, 2000);
+	setTimeout(function(){ return hideNotification(type); }, 3000);
 }
 
 function hideNotification(type) {

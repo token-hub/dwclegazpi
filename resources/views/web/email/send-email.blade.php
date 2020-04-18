@@ -1,7 +1,9 @@
+@component('mail::message')
 <style type="text/css">
 	body {
 		font-size: 18px;
 		line-height: 30px;
+		color: black;
 	}
 
 	.message-container {
@@ -39,18 +41,18 @@
 
 <center><i><b>This is a message from the DWC-Legazpi Website.</b></i></center><br><br>
 
-<span><b>Name:</b> {{ ucfirst($name)}}</span><br>
-<span><b>Email:</b> {{$email}}</span><br>
-<span><b>Number:</b> {{$number}}</span><br>
-<span><b>Subject:</b> {{ ucfirst($subject) }}</span><br><br>
+<span><b>Name:</b> {{ucfirst($data['name'])}}</span><br>
+<span><b>Email:</b> {{$data['email']}}</span><br>
+<span><b>Number:</b> {{$data['number']}}</span><br>
+<span><b>Subject:</b> {{ucfirst($data['subject'])}}</span><br><br>
 
 <div class='message-container'>
 	<div class='message-container-left content'>
 		<span><b>Message:</b></span><br>
 	</div>
 	<div class='message-container-right content'>
-		<p>{{ ucfirst($msg) }}</p>
+		<p>{{ucfirst($data['message'])}}</p>
 	</div>
 </div>
 
-
+@endcomponent

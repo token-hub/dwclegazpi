@@ -11,19 +11,6 @@
 			</ul>
 		</div>
 	</div>
-
-	<div class="notification {{Session::get('notification')['type']}}">
-		<div class='notification-icon'>
-			<i class='fa'></i>
-		</div>
-		<div class="notification-content">
-			<ul>
-				<li>
-					{{Session::get('notification')['message']}}
-				</li>
-			</ul>
-		</div>
-	</div>
 @endif
 
 @if($errors->any())

@@ -3,13 +3,16 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Mail;
-use App\mail\sendMail;
+use App\Http\Requests\EmailRequest;
+use App\Events\NewEmailFromUserToDWCLEvent;
+use Illuminate\Support\facades\Mail;
+use App\Mail\SendMail;
 
 class EmailController extends Controller
 {
-    public function getSend() {
-      Mail::send(new sendMail());
-  	  return redirect('contact-us')->with('notification', ['message' => 'Successfull sent!', 'type' => 'success']);
+    public function postSend(EmailRequest $request) {
+
+    	event(new NewEmailFromUserToDWCLEvent($request->all()));
+  	    return redirect('contact-us')->with('notification', ['message' => 'Message successfull sent!', 'type' => 'notif-success']);
     }
 }
