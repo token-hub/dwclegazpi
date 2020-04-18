@@ -18,7 +18,9 @@ trait LoginTrait
 
         if (Auth::attempt($LoginRequest->only('username', 'password'), $LoginRequest->remember)) {
           	$this->log();
-            return redirect('/dashboard/home');
+            
+            $notification = ['message' => 'Welcome to Dashboard!', 'type' => 'notif-success'];
+            return redirect('/dashboard/home')->with('notification', $notification);
         } 
 
         return redirect('/dashboard/login');

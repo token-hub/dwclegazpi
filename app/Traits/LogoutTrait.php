@@ -11,6 +11,7 @@ trait LogoutTrait
     	$this->log('out');
     	Auth::logout();
 
-    	return redirect('dashboard/login');
+    	$notification = ['message' => 'Successfully logged out.', 'type' => 'notif-success'];
+    	return redirect('dashboard/login')->with('notification', $notification);
     }
 }

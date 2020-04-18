@@ -1,12 +1,4 @@
-<div class="notification {{Session::get('notification')['type']}}">
-	<div class='notification-icon'>
-		<i class='fa'></i>
-	</div>
-	<div class="notification-content">
-		<p>{{Session::get('notification')['message']}}</p>
-	</div>
-</div>
-
+@include('./dashboard/layouts/notification')
 <!-- ----------------------------------------------  NAV collapse content ---------------------------------------------- -->
 	<div class='nav-collapse-content'>
 		<ul>

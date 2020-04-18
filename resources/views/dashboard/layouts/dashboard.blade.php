@@ -17,15 +17,8 @@
 	</title>
 </head>
 <body>
-	<div class="notification {{Session::get('notification')['type']}}">
-		<div class='notification-icon'>
-			<i class='fa'></i>
-		</div>
-		<div class="notification-content">
-			<p>{{Session::get('notification')['message']}}</p>
-		</div>
-	</div>
 
+	@include('./dashboard/layouts/notification')
 	@yield('content')
 	
 	<div class='page' value='{{Request::segment(1)}}'></div>

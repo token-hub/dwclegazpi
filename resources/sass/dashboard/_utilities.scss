@@ -32,8 +32,14 @@
         vertical-align: middle;
         padding: 10px 10px;
 
-        p {
+        ul {
             margin: 0;
+            padding: 0 15px !important;
+            
+            li {
+              margin: 3px 0;
+              font-size: .9rem;
+            }
         }
     }
 }

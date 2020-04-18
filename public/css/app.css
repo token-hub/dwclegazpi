@@ -77,8 +77,14 @@ body {
   padding: 10px 10px;
 }
 
-.notification .notification-content p {
+.notification .notification-content ul {
   margin: 0;
+  padding: 0 15px !important;
+}
+
+.notification .notification-content ul li {
+  margin: 3px 0;
+  font-size: 0.9rem;
 }
 
 .notif-success {

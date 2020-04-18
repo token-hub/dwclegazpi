@@ -380,7 +380,7 @@ if (eye) {
 /***/ (function(module, exports) {
 
 var notification = document.querySelector('.notification');
-var notificationMessage = document.querySelector('.notification-content p');
+var notificationMessage = document.querySelector('.notification-content ul li');
 var notificationIcon = document.querySelector('.notification-icon i');
 
 if (notificationMessage.innerHTML !== '') {
