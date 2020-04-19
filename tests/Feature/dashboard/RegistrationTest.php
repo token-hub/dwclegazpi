@@ -21,6 +21,7 @@ class RegistrationTest extends TestCase
     $user = User::create([
         'username' => '123',
         'password' => '12345',
+        'email_verified_at' => now(),
     ]);
 
     $this->actingAs($user)
@@ -47,6 +48,7 @@ class RegistrationTest extends TestCase
      $user = User::create([
         'username' => '123',
         'password' => '12345',
+        'email_verified_at' => now(),
     ]);
 
     $response = $this->actingAs($user)

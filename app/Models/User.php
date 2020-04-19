@@ -22,7 +22,7 @@ class User extends Authenticatable implements MustVerifyEmail
      * @var array
      */
     protected $fillable = [
-        'username', 'password', 'email', 'is_active'
+        'username', 'password', 'email', 'is_active', 'remember_token', 'email_verified_at'
     ];
     
     /**
@@ -44,15 +44,10 @@ class User extends Authenticatable implements MustVerifyEmail
     ];
 
      # overwrite the email verification
-    /**
-     * Send the email verification notification.
-     *
-     * @return void
-     */
-    // public function sendEmailVerificationNotification()
-    // {
-    //     $this->notify(new \App\Notifications\Auth\VerifyEmail);
-    // }
+    public function sendEmailVerificationNotification()
+    {
+        $this->notify(new \App\Notifications\VerifyEmailQueued);
+    }
     
     # relationship to personal_info table
     public function personal_info() {

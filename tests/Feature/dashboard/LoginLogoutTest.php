@@ -23,7 +23,7 @@ class LoginLogoutTest extends TestCase
 
         $user = User::create(array_merge($this->data(), ['is_active' => '1']));
 
-        $response = $this->post('dashboard/login', array_merge($this->data(), ['is_active' => '1', 'password' => '12345678']));
+        $response = $this->post('dashboard/login', array_merge($this->data(), ['is_active' => '1', 'password' => 'johnjohn']));
 
         $this->assertEquals('Active', $user->is_active);
 
@@ -33,8 +33,6 @@ class LoginLogoutTest extends TestCase
 
     /** @test */
     public function login_user_with_incorrect_credentials() {
-
-        $this->withoutExceptionHandling();
 
         User::create($this->data());
 
@@ -55,8 +53,6 @@ class LoginLogoutTest extends TestCase
      /** @test */
      public function logout() {
 
-        $this->withoutExceptionHandling();
-
         $user = User::create(array_merge($this->data(), ['is_active' => '1', 'remember' => true]));
 
         $this->actingAs($user);
@@ -74,7 +70,7 @@ class LoginLogoutTest extends TestCase
 
        $user = User::create(array_merge($this->data(), ['is_active' => '1', 'remember' => true]));
         
-        $response = $this->post('dashboard/login', array_merge($this->data(), ['is_active' => '1', 'remember' => true, 'password' => '12345678']));
+        $response = $this->post('dashboard/login', array_merge($this->data(), ['is_active' => '1', 'remember' => true, 'password' => 'johnjohn']));
         
         $this->assertEquals('Active', $user->is_active);
 
@@ -90,8 +86,9 @@ class LoginLogoutTest extends TestCase
 
     public function data() {
         return [
-            'username' => 'wews1234',
-            'password' => \Hash::make('12345678'),
+            'username' => 'john',
+            'password' => \Hash::make('johnjohn'),
+            'email_verified_at' => now(),
         ];
     }
 }

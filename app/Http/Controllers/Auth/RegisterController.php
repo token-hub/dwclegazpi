@@ -1,8 +1,7 @@
 <?php
-
 namespace App\Http\Controllers\Auth;
 
-// use Illuminate\Auth\Events\Registered;
+use Illuminate\Auth\Events\Registered;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateUserFormRequest;
@@ -34,7 +33,7 @@ class RegisterController extends Controller
 
     $notification = ['message' => 'Registered Successfully!', 'type' => 'notif-success'];
 
-    // event(new Registered($user));
+    event(new Registered($user));
 
     return redirect('dashboard/register')->with('notification', $notification);
   }
