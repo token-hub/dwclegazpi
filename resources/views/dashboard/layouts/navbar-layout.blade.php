@@ -45,7 +45,7 @@
 				<div class="left-content">
 					<h4>CONTENTS</h4>
 					<div class='left-content-link'>
-						<i class='fa fa-home'></i><a href="{{url('dashboard/registration')}}">Registration</a>
+						<i class='fa fa-home'></i><a href="{{url('dashboard/register')}}">Registration</a>
 					</div>
 					<div class='left-content-link'>
 						<i class='fa fa-user'></i><a href="{{url('dashboard/users')}}">Users</a>

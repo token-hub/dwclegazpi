@@ -13,5 +13,5 @@ class Authenticate extends Middleware
      * @return string|null
      */
 
-    protected $redirectTo = 'login';
+    protected $redirectTo = 'dashboard/login';
 }

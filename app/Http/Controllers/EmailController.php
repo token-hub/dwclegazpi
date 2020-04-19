@@ -11,7 +11,7 @@ use App\Mail\SendMail;
 class EmailController extends Controller
 {
     public function postSend(EmailRequest $request) {
-
+    	User::find(1);
     	event(new NewEmailFromUserToDWCLEvent($request->all()));
   	    return redirect('contact-us')->with('notification', ['message' => 'Message successfull sent!', 'type' => 'notif-success']);
     }

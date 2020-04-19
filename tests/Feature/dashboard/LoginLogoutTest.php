@@ -14,7 +14,6 @@ class LoginLogoutTest extends TestCase
 
     /** @test */
     public function show_login_page() {
-
         $this->get('dashboard/login')
              ->assertOk();
     }
@@ -88,8 +87,6 @@ class LoginLogoutTest extends TestCase
             User::first()->password,
         ]));
     }
-
-
 
     public function data() {
         return [

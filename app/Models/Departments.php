@@ -13,7 +13,7 @@ class Departments extends Model
 	protected static $logName = 'user department information';
 
     protected $fillable = [
-        'name', 'is_active', 'number'
+        'department_name', 'user_id'
     ];
 
     public function user() {

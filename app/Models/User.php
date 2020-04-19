@@ -43,6 +43,17 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
+     # overwrite the email verification
+    /**
+     * Send the email verification notification.
+     *
+     * @return void
+     */
+    // public function sendEmailVerificationNotification()
+    // {
+    //     $this->notify(new \App\Notifications\Auth\VerifyEmail);
+    // }
+    
     # relationship to personal_info table
     public function personal_info() {
         return $this->hasOne('App\Models\Personal_info', 'user_id'); 
@@ -62,10 +73,5 @@ class User extends Authenticatable implements MustVerifyEmail
         return $data == 0 ? 'Inactive' : 'Active';
     }
 
-    public function talk() {
-        if (auth()->user()) {
-            throw new UserNameIsBanned();
-        }
-        return true;
-    }
+
 }

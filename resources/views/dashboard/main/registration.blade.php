@@ -5,7 +5,7 @@
 
 <div class="wrapper-content-second">
 	<div class="form">
-		{!! Form::open(['route' => 'register', 'method' => 'POST']) !!}
+		{!! Form::open(['url' => 'dashboard/register', 'method' => 'POST']) !!}
 			<div class='dashboard-input'>
 				{!! Form::text('firstname', '', ['id' => 'firstname', 'autocomplete' => 'given-name', 'class' => 'input-control', 'required' => 'required' ]) !!}
 				{!! Form::label('firstname', 'Firstname') !!}
@@ -40,7 +40,7 @@
 			</div>
 
 			<div class='dashboard-input'>
-				{!! Form::select('department', [
+				{!! Form::select('department_name', [
 					'shom' => 'SHOM',
 					'soenas' => 'SOENAS',
 					'soecs' => 'SOECS',
@@ -52,8 +52,8 @@
 			</div>
 			
 			<div class='dashboard-input'>
-				{!! Form::select('system_access', ['view' => 'View', 'add' => 'Add', 'edit' => 'Edit', 'delete' => 'Delete'], 0, ['placeholder' => '', 'class' => 'input-control', 'id' => 'system_access', 'required' => 'required']) !!}
-				{!! Form::label('system_access', 'System Access', ['aria-required' => 'true']) !!}
+				{!! Form::select('user_access', ['view' => 'View', 'add' => 'Add', 'edit' => 'Edit', 'delete' => 'Delete'], 0, ['placeholder' => '', 'class' => 'input-control', 'id' => 'user_access', 'required' => 'required']) !!}
+				{!! Form::label('user_access', 'System Access', ['aria-required' => 'true']) !!}
 			</div>
 
 			<div class='dashboard-submit-button'>

@@ -19,7 +19,7 @@ class Personal_info extends Model
     protected static $logName = 'user information';
 
     protected $fillable = [
-        'firstname', 'lastname', 'username', 'gender', 'user_id'
+        'firstname', 'lastname', 'gender', 'user_id'
     ];
 
     public function user() {
