@@ -69,6 +69,17 @@
 		table-layout: fixed;
 		display: table;
 
+		.content-2 {
+			@include flexCenters();
+			height: 100%;
+			width: 100%;
+
+			.content-2-item {
+				height: 90%;
+				width: 60%;
+			}
+		}
+
 		.user-dropdown {
 			@include position(absolute, 15px, 15px);
    			

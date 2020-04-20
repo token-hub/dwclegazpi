@@ -1,35 +1,28 @@
 @extends('dashboard.layouts.dashboard')
 
 @section('content')
-<div class='dashboard-home Muli'>
-	<!-- ------------ [navbar] ------------ -->
-	<nav>
-		<div class="dashboard-home-nav-1st">
-			<div class='nav-1st-content flexCenters'>
-				<div class="nav-1st-logo"><img src="/storage/img/others/dwcl-logo.png"></div>
-				<div class="nav-1st-title flexCenters"><a href="{{url('dashboard/home')}}" class="Muli">DWCL Admin</a></div>
+	<div class="dashboard-main">
+
+		<!-- ===== [ NAVBAR ] ===== -->
+		<div class="main-top"> 
+			<div class="main-content">
+				<div class="left">
+					<img src="/storage/img/others/logo.png">
+					<a>DWCL Admin</a>
+				</div>
+				<div class="right">
+				</div>
 			</div>
 		</div>
-		<div class="dashboard-home-nav-2nd"></div>
-		<div class="dashboard-home-nav-3rd"></div>
-	</nav>
-	
-	<div class="dashboard-medium-container flexCenters">
-		<div class="dashboard-medium-inner-container">
-			<div class="dashboard-medium-upper-container">
-				<p>Reset Password</p> <hr>
-			</div>
-			<div class="dashboard-medium-bottom-container">
-				<div class='dashboard-medium-bottom-inner-container-left'>
-					<p>@yield('title1')</p>
-					<p>@yield('title2')</p>
-					<p>@yield('title3')</p>
-				</div> 
-				<div class='dashboard-medium-bottom-inner-container-right'>
-					@yield('content2')
+		<div class="main-bottom">
+			<div class="content-2">
+				<div class="content-2-item">
+					<div class="wrapper wrapper-160">
+						<h3>@yield('wrapper-title')</h3><hr>
+						@yield('wrapper-body')
+					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-</div>
 @endsection

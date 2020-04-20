@@ -2,13 +2,9 @@
 
 @section('wrapper-title', 'Update Profile')
 @section('wrapper-body')
-
- @if($errors->any())
-    {{ implode('', $errors->all('<div>:message</div>')) }}
-@endif
 	<div class="wrapper-content-second">
 		<div class="form">
-			{!! Form::open(['url' => ['dashboard/profile-update', $user->id], 'method' => 'PATCH']) !!}
+			{!! Form::open(['url' => ['dashboard/profile-update', $user->id], 'method' => 'PUT']) !!}
 				<div class='dashboard-input'>
 					{!! Form::text('firstname', $user->personal_info->firstname, ['id' => 'firstname', 'autocomplete' => 'given-name', 'class' => 'input-control']) !!}
 					{!! Form::label('firstname', 'Firstname') !!}
@@ -30,14 +26,14 @@
 				</div>
 
 				<div class='dashboard-input'>
-					{!! Form::select('department', [
+					{!! Form::select('department_name', [
 						'shom' => 'SHOM',
 						'soenas' => 'SOENAS',
 						'soecs' => 'SOECS',
 						'sbma' => 'SBMA',
 						'gsbm' => 'GSBM'
-						], strtolower($user->departments->name), ['class' => 'input-control', 'id' => 'department']) !!} 
-					{!! Form::label('department', 'Department') !!}
+						], strtolower($user->departments->name), ['class' => 'input-control', 'id' => 'department_name']) !!} 
+					{!! Form::label('department_name', 'Department') !!}
 				</div>
 
 				<center><p style='padding:0;margin:0;'><i> --* Change Password *--</i></p><small><i>Changing password will automatically log you out.</i></small></center>

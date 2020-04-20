@@ -434,6 +434,22 @@ body * {
   display: table;
 }
 
+.dashboard-main .main-bottom .content-2 {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+.dashboard-main .main-bottom .content-2 .content-2-item {
+  height: 90%;
+  width: 60%;
+}
+
 .dashboard-main .main-bottom .user-dropdown {
   position: absolute;
   top: 15px;
@@ -707,5 +723,9 @@ body * {
 .wrapper-content-slider button {
   float: right;
   margin: 10px 5px;
+}
+
+.wrapper-160 {
+  min-height: 160px !important;
 }
 

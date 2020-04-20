@@ -14,13 +14,12 @@
 			<p>{{$user->personal_info->firstname}}</p>
 			<p>{{$user->personal_info->lastname}}</p>
 			<p>{{$user->personal_info->gender}}</p>
-			<p>{{strtoupper($user->departments->name)}}</p>
+			<p>{{strtoupper($user->departments->department_name)}}</p>
 			<p>*******</p>
 
-
-			{!! Form::open(['url' => ['dashboard/profile-edit', $user->id], 'method' => 'GET']) !!}
+			{!! Form::open(['url' => ['dashboard/profile-update-form', $user->id], 'method' => 'GET']) !!}
 				<div class='dashboard-submit-button'>
-					{{ Form::submit('Update')}}
+					{{ Form::submit('Update') }}
 				</div>
 			{!! Form::close() !!}
 		</div>

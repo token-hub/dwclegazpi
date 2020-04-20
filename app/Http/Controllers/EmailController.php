@@ -4,15 +4,13 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Http\Requests\EmailRequest;
-use App\Events\NewEmailFromUserToDWCLEvent;
-use Illuminate\Support\facades\Mail;
-use App\Mail\SendMail;
+use App\Jobs\SendEmail;
 
 class EmailController extends Controller
 {
     public function postSend(EmailRequest $request) {
-    	User::find(1);
-    	event(new NewEmailFromUserToDWCLEvent($request->all()));
+    	
+    	SendEmail::dispatch($request->all());
   	    return redirect('contact-us')->with('notification', ['message' => 'Message successfull sent!', 'type' => 'notif-success']);
     }
 }

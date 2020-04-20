@@ -22,6 +22,7 @@ class UpdateUserFormRequest extends FormRequest
      *
      * @return array
      */
+
     public function rules()
     {
         return [
@@ -29,9 +30,9 @@ class UpdateUserFormRequest extends FormRequest
             'lastname' => 'required|max:30',
             'username' => 'required|max:15|unique:users,username,'.$this->id.',id',
             'old_password' => ['nullable', 'max:20', 'min:8', new old_password_checker],
-            'new_password' => 'nullable|max:20|min:8',
+            'new_password' => 'nullable|max:20|min:8|regex:/^.*(?=.*[a-zA-Z])(?=.*[0-9]).*$/|',
             'gender' => 'required',
-            'department' => 'required',
+            'department_name' => 'required',
         ];
     }
 

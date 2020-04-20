@@ -18,11 +18,7 @@ class RegistrationTest extends TestCase
   /** @test */
   public function check_registration_page_with_authenticated_user() {
 
-    $user = User::create([
-        'username' => '123',
-        'password' => '12345',
-        'email_verified_at' => now(),
-    ]);
+    $user = User::create($this->data());
 
     $this->actingAs($user)
         ->get('dashboard/register')
@@ -43,13 +39,8 @@ class RegistrationTest extends TestCase
 
   /** @test */
   public function admin_can_register_a_user() {
-    $this->withoutExceptionHandling();
 
-     $user = User::create([
-        'username' => '123',
-        'password' => '12345',
-        'email_verified_at' => now(),
-    ]);
+    $user = User::create($this->data());
 
     $response = $this->actingAs($user)
         ->post('dashboard/register', [
@@ -69,5 +60,13 @@ class RegistrationTest extends TestCase
     $this->assertCount(1, User_access::all());
 
     $response->assertRedirect('dashboard/register');
+  }
+
+  public function data() {
+    return [
+       'username' => '123',
+        'password' => '12345',
+        'email_verified_at' => now(),
+      ];
   }
 }

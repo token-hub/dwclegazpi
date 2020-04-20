@@ -13,29 +13,32 @@ class LoginController extends Controller
 {
     use LogTrait;
 
-    protected $redirectTo = '/dashboard/home';
-
     public function getLogin() {
         return view('dashboard.login.login-page');
     }
 
     public function postLogin(LoginRequest $LoginRequest) {
         
+        $redirectTo = '/dashboard/home';
+
         if (Auth::attempt($LoginRequest->only('username', 'password'), $LoginRequest->remember)) {
             $user = Auth::getLastAttempted();
-            
-            # check if user is active
-            if ($user->is_active) {
-                $this->log();
-                Auth::login($user, $LoginRequest->has('remember'));
-                $notification = ['message' => 'Welcome to Dashboard!', 'type' => 'notif-success'];
-                return redirect('dashboard/home');
-            } else {
-                $notification = ['message' => 'Your account is Inactive', 'type' => 'notif-warning'];
-            }
-           
+                
+                #check if user is active
+                if ($user->is_active == 'Active') {
+
+                    $this->log();
+                    Auth::login($user, $LoginRequest->has('remember'));
+                    $notification = ['message' => 'Welcome to Dashboard!', 'type' => 'notif-success'];
+
+                } else {
+
+                    $redirectTo = '/dashboard/login';
+                    $notification = ['message' => 'Your account is Inactive', 'type' => 'notif-info'];
+                }
+
             Session::flash('notification', $notification); 
-            return redirect('/dashboard/login');
+            return redirect($redirectTo);
         } 
 
         return redirect('/dashboard/login');

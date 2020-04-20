@@ -8,6 +8,8 @@ use Illuminate\Foundation\Auth\VerifiesEmails;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Auth\Events\Verified;
+use Session;
 
 class VerificationController extends Controller
 {
@@ -62,4 +64,25 @@ class VerificationController extends Controller
 
         return redirect($this->redirectPath())->with('verified', true);
     }
+
+    public function show(Request $request)
+    {
+        $notification = ['message' => 'Email verification failed.', 'type' => 'notif-danger'];
+        return $request->user()->hasVerifiedEmail()
+                        ? redirect($this->redirectPath())->with(['notification' => $notification])
+                        : view('dashboard.auth.verify');
+    }
+
+     public function resend(Request $request)
+    {
+        if ($request->user()->hasVerifiedEmail()) {
+            return redirect($this->redirectPath());
+        }
+
+        $request->user()->sendEmailVerificationNotification();
+
+        $notification = ['message' => 'New email verification sent!', 'type' => 'notif-success'];
+        return back()->with(['resent' => true , 'notification' => $notification]);
+    }
+
 }

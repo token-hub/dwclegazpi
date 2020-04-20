@@ -26,6 +26,7 @@ class LoginLogoutTest extends TestCase
         $response = $this->post('dashboard/login', array_merge($this->data(), ['is_active' => '1', 'password' => 'johnjohn']));
 
         $this->assertEquals('Active', $user->is_active);
+        $this->assertNotNull($user->email_verified_at);
 
         $response->assertRedirect('/dashboard/home');
         $this->assertNotNull(Auth::id());
