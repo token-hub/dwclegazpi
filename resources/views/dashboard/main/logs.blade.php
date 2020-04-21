@@ -22,11 +22,11 @@
                 "searching": true,
                 ajax: '{{ url("dashboard/logs-data") }}',
                 columns: [
-                    { data: 'created_at', name: 'created_at'},
+                    { data: 'timeAndDate', name: 'timeAndDate'},
                     { data: 'description', name: 'description'},
-                    { data: 'causer_id', name: 'causer_id', 
+                    { data: 'username', name: 'username', 
                         render:function(data, type, row){
-                            return "<a href='logs-view/"+row.id+"' style='text-decoration:none;'>"+ row.causer_id +"</a>";
+                            return "<a href='logs-view/"+row.causer_id+"/"+row.created_at+"' style='text-decoration:none;'>"+ row.username +"</a>";
                         }
                     },
                 ]

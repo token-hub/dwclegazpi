@@ -22,12 +22,12 @@ class RegisterController extends Controller
     # add user
     $user = User::create(array_merge($request->only(['username', 'email']), ['password' => \Hash::make($request->password)]));
 
-    # add personal info
-    Personal_info::create(array_merge($request->only(['firstname', 'lastname', 'gender']),['user_id' => $user->id]));
-
     # add department
     Departments::create(array_merge($request->only(['department_name']),['user_id' => $user->id]));
     
+    # add personal info
+    Personal_info::create(array_merge($request->only(['firstname', 'lastname', 'gender']),['user_id' => $user->id]));
+
     # add user access
     User_access::create(array_merge($request->only(['user_access']),['user_id' => $user->id]));
 

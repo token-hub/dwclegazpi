@@ -8,6 +8,8 @@ use App\Models\Departments;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UpdateUserFormRequest;
 use Spatie\Activitylog\Models\Activity;
+use yajra\Datatables\Datatables;
+use DB;
 
 class DashboardController extends Controller
 { 
@@ -54,7 +56,7 @@ class DashboardController extends Controller
 	    $user->save();
 	    $personal_info->save();
 	    $department->save();
-
+	    
     	return redirect('dashboard/profile-view/'.$id)->with('notification', $notification);
     }
 
@@ -62,10 +64,54 @@ class DashboardController extends Controller
     	return view('dashboard.main.logs');
     }
 
-    public function getLogsView($logId) {
-    	$log = Activity::where('subject_id', $logId)->first();
-   	
-   	dd($log->username);
-    	return view('dashboard.main.logs-view')->with('log', $log);
+    public function getLogsData() {
+
+        $logs = Activity::whereNotNull('causer_id')
+        	->groupBy('created_at')
+        	->orderBy('id')
+        	->get();
+
+        return Datatables::Of($logs)
+        ->editColumn('description', function ($logs) {
+        	return  strpos($logs->log_name, 'Log') == true 
+        		? 'A user '.$logs->description 
+        		: 'A '.$logs->log_name.' '.$logs->description;
+         })
+        ->addColumn('timeAndDate', function ($logs) {
+              return date("F d, Y | h:i A", strtotime($logs->created_at));
+         })
+         ->addColumn('username', function ($logs) {
+              return  ucfirst(User::find($logs->causer_id)->username);
+         })
+        ->make(true);
+    }
+
+    public function getLogsView($id, $date) { 
+
+        $logs = Activity::where('Activity_log.causer_id', $id)
+        	->where('Activity_log.created_at', $date)
+            ->leftJoin('users', 'users.id', '=', 'causer_id')
+            ->get(['*', 'Activity_log.created_at']);
+
+
+        # get all the activity properties
+        $properties = $logs->map(function($item){ 
+        	if (count($item->properties) != 0 ) {
+		  		return array('old' => $item->properties['old'], 'new' => $item->properties['attributes']);
+			}
+		});
+
+        # object to array
+        $logs = $logs->toArray();
+
+        // # get only the log data
+        $log = array_shift($logs);
+
+        $subject_username = User::find($log['causer_id'])['username'];
+
+        $newLog = array_merge($log,
+        	['properties' => $properties->toArray(), 'subject_username' => $subject_username]);
+
+		return view('dashboard.main.logs-view')->with('log', $newLog);
     }
 }
