@@ -7,48 +7,48 @@
 			<p>Date&Time :</p>
 			<p>Description :</p>
 
-			@if(strpos($logs[0]->description, 'account') || strpos($logs[0]->description, 'information'))
-			<p>By whom :</p>
-			<p>To whom :</p>
+			@if(strpos($log->description, 'account') || strpos($log->description, 'information'))
+				<p>By whom :</p>
+				<p>To whom :</p>
 			@else 
-			<p>by whom :</p>
+				<p>by whom :</p>
 			@endif
 			
-			@if(strpos($logs[0]->description, 'updated'))
-				<p>{{ ucwords(strrev(substr(strrev($logs[0]->description), 1, 8))) }}</p>
+			@if(strpos($log->description, 'updated'))
+				<p>{{ ucwords(strrev(substr(strrev($log->description), 1, 8))) }}</p>
 				<p>From :</p>
 				<p>To :</p>
 			@else
-				@if(!strpos($logs[0]->description, 'logs'))
-					<p>{{ ucwords(strrev(substr(strrev($logs[0]->description), 1, 8))) }}</p>
+				@if(!strpos($log->description, 'log'))
+					<p>{{ ucwords(strrev(substr(strrev($log->description), 1, 8))) }}</p>
 				@endif
 			@endif
 		</div>
 		<div class='third-right third-content'>
-			<p>{{date("F d, Y | h:i A", strtotime($logs[0]->created_at)) }}</p>
-			<p>{{ $logs[0]->description }}</p>
+			<p>{{date("F d, Y | h:i A", strtotime($log->created_at)) }}</p>
+			<p>{{ $log->description }}</p>
 
-			@if(strpos($logs[0]->description, 'account') || strpos($logs[0]->description, 'information'))
-				<p>{{ $logs[0]->username }}</p>
-				<p>{{ $logs[0]->properties['toUsername'] }}</p>
+			@if(strpos($log->description, 'account') || strpos($log->description, 'information'))
+				<p>{{ $log->username }}</p>
+				<p>{{ $log->properties['toUsername'] }}</p>
 			@else 
-			<p>{{ $logs[0]->username }}</p>
+				<p>{{ $log->username }}</p>
 			@endif
 
-			@if(strpos($logs[0]->description, 'updated'))
+			@if(strpos($log->description, 'updated'))
 				<p style='border:none;margin-bottom: 35px;'></span>
-				@foreach($logs[0]->properties['old'] as $key => $from)
-					<p>{{$logs[0]->properties['old'][$key]}}</p>
+				@foreach($log->properties['old'] as $key => $from)
+					<p>{{$log->properties['old'][$key]}}</p>
 				@endforeach
 
-				@foreach($logs[0]->properties['attributes'] as $key => $to)
-					<p>{{$logs[0]->properties['attributes'][$key]}}</p>
+				@foreach($log->properties['attributes'] as $key => $to)
+					<p>{{$log->properties['attributes'][$key]}}</p>
 				@endforeach
 				
 			@else
-				@if($logs[0]->properties != '[]') 
-					@foreach($logs[0]->properties['attributes'] as $key => $from)
-						<p>{{$logs[0]->properties['attributes'][$key]}}</p>
+				@if($log->properties != '[]') 
+					@foreach($log->properties['attributes'] as $key => $from)
+						<p>{{$log->properties['attributes'][$key]}}</p>
 					@endforeach	
 				@endif
 			@endif

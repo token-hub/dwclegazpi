@@ -7,6 +7,7 @@ use App\Models\Personal_info;
 use App\Models\Departments;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UpdateUserFormRequest;
+use Spatie\Activitylog\Models\Activity;
 
 class DashboardController extends Controller
 { 
@@ -15,7 +16,6 @@ class DashboardController extends Controller
     }
 
     public function getProfileView($id) {
-
     	$user = User::find($id);
     	return view('dashboard.profile.view')->with('user', $user);
     }
@@ -56,5 +56,16 @@ class DashboardController extends Controller
 	    $department->save();
 
     	return redirect('dashboard/profile-view/'.$id)->with('notification', $notification);
+    }
+
+    public function getLogs() {
+    	return view('dashboard.main.logs');
+    }
+
+    public function getLogsView($logId) {
+    	$log = Activity::where('subject_id', $logId)->first();
+   	
+   	dd($log->username);
+    	return view('dashboard.main.logs-view')->with('log', $log);
     }
 }
