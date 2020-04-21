@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Personal_info;
 use App\Models\Departments;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\UpdateUserFormRequest;
 
 class DashboardController extends Controller
@@ -29,7 +30,10 @@ class DashboardController extends Controller
 	    # update user
 	    $user = User::find($id);
 	    $user->username = $request->username;
-	    $user->password = \Hash::make($request->password);
+	    if ($request->new_password && $request->old_password) {
+	    	$user->password = \Hash::make($request->new_password);
+	    	Auth::login($user);
+	    }
 	    
 	    # update personal info
 	    $personal_info = Personal_info::where('user_id', $id)->first();

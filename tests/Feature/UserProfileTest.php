@@ -45,7 +45,7 @@ class UserProfileTest extends TestCase
                  ->save(factory(\App\Models\Departments::class)->make());
 
                   $this->actingAs($usery)
-                    ->get('/dashboard/profile-update/'.$usery->id);
+                    ->get('/dashboard/profile-update/'.$usery->id);:
                });
 
         $this->assertNotNull(Auth::id());
