@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Dashboard\Auth;
 
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
@@ -34,7 +34,7 @@ class VerificationController extends Controller
     protected function redirectTo()
     {   
         \Session::flash('notification', ['message' => 'Welcome to login form!', 'type' => 'notif-success']);
-        return 'dashboard/login';
+        return 'dashboard/home';
     }
 
     /**

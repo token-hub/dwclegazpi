@@ -4,7 +4,7 @@
 @section('wrapper-body')
 	<div class="wrapper-content-second">
 		<div class="form">
-			{!! Form::open(['url' => ['dashboard/profile-update', $user->id], 'method' => 'PUT']) !!}
+			{!! Form::open(['url' => ['dashboard/profile', $user->id], 'method' => 'PATCH']) !!}
 				<div class='dashboard-input'>
 					{!! Form::text('firstname', $user->personal_info->firstname, ['id' => 'firstname', 'autocomplete' => 'given-name', 'class' => 'input-control']) !!}
 					{!! Form::label('firstname', 'Firstname') !!}

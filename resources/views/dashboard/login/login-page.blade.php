@@ -15,7 +15,7 @@
 					<div class="title"><h3>SIGN IN</h3></div>
 					<div class="form">
 						<div class="form-top">
-							{!! Form::open(['url' => ['dashboard/login'], 'method' => 'POST']) !!}
+							{!! Form::open(['url' => ['dashboard'], 'method' => 'POST']) !!}
 							
 							<div class='dashboard-input'>
 								{{ Form::text('username', '', ['autocomplete' => 'username', 'autofocus' => '', 'required' => '', 'class' => 'input-control', 'id' => 'username'])}}

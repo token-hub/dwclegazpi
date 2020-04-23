@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Dashboard\Auth;
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
@@ -10,11 +9,11 @@ use Session;
 
 class LoginController extends Controller
 {
-    public function getLogin() {
+    public function index() {
         return view('dashboard.login.login-page');
     }
 
-    public function postLogin(LoginRequest $LoginRequest) {
+    public function store(LoginRequest $LoginRequest) {
         $redirectTo = '/dashboard/home';
 
         if (Auth::attempt($LoginRequest->only('username', 'password'), $LoginRequest->remember)) {
@@ -33,7 +32,7 @@ class LoginController extends Controller
 
                 } else {
 
-                    $redirectTo = '/dashboard/login';
+                    $redirectTo = '/dashboard';
                     $notification = ['message' => 'Your account is Inactive', 'type' => 'notif-info'];
                 }
 
@@ -41,10 +40,10 @@ class LoginController extends Controller
             return redirect($redirectTo);
         } 
 
-        return redirect('/dashboard/login');
+        return redirect('/dashboard');
     }
 
-    public function postLogout() {     
+    public function destroy() {     
         # log
         activity('logout')
            ->causedBy(Auth::user())
@@ -53,6 +52,6 @@ class LoginController extends Controller
         Auth::logout();
 
         $notification = ['message' => 'Successfully logged out.', 'type' => 'notif-success'];
-        return redirect('dashboard/login')->with('notification', $notification);
+        return redirect('dashboard')->with('notification', $notification);
     }
 }

@@ -13,8 +13,8 @@ class UserProfileTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function check_user_profile_page_with_authenticated_user() {
-        
+    public function check_user_profile_page_with_authenticated_user() 
+    {     
         factory(\App\Models\User::class, 1)
             ->create()
             ->each(function ($usery) {
@@ -25,7 +25,7 @@ class UserProfileTest extends TestCase
                  ->save(factory(\App\Models\Departments::class)->make());
 
                   $this->actingAs($usery)
-                    ->get('/dashboard/profile-view/'.$usery->id)
+                    ->get('/dashboard/profile/'.$usery->id)
                     ->assertSee('Account Profile');  
                });
 
@@ -33,8 +33,8 @@ class UserProfileTest extends TestCase
     }
 
     /** @test */
-    public function check_user_profile_update_page_with_authenticated_user() {
-
+    public function check_user_profile_update_page_with_authenticated_user() 
+    {
          factory(\App\Models\User::class, 1)
             ->create()
             ->each(function ($usery) {
@@ -45,17 +45,15 @@ class UserProfileTest extends TestCase
                  ->save(factory(\App\Models\Departments::class)->make());
 
                   $this->actingAs($usery)
-                    ->get('/dashboard/profile-update/'.$usery->id);
+                    ->get('/dashboard/profile/'.$usery->id.'/edit');
                });
 
         $this->assertNotNull(Auth::id());
     }
 
     /** @test */
-    public function update_person_info_with_authenticated_user() {
-
-        $this->withoutExceptionHandling();
-
+    public function update_person_info_with_authenticated_user() 
+    {
         factory(\App\Models\User::class, 1)
             ->create()
             ->each(function ($usery) {
@@ -66,7 +64,7 @@ class UserProfileTest extends TestCase
                  ->save(factory(\App\Models\Departments::class)->make());
 
                    $response = $this->actingAs($usery)
-                    ->patch('dashboard/profile-update/'.$usery->id, 
+                    ->patch('/dashboard/profile/'.$usery->id, 
                         [
                             'firstname' => 'jjjj',
                             'lastname' => 'qqqq',
@@ -97,7 +95,7 @@ class UserProfileTest extends TestCase
                             'user_id'=> $usery->id ,
                         ]);
 
-                    $response->assertRedirect('dashboard/profile-view/'.$usery->id);
+                    $response->assertRedirect('dashboard/profile/'.$usery->id);
                });
     }
 }

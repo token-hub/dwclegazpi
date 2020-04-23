@@ -12,8 +12,13 @@ class LogTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function check_logs_page_with_authenticated_user() {
+    public function check_logs_page_with_authenticated_user() 
+    {
         $user = factory(\App\Models\User::class)->create();
+
+        activity('login')
+           ->causedBy($user)
+           ->log('logged in');
 
         $this->actingAs($user)
             ->get('/dashboard/logs')
@@ -23,13 +28,17 @@ class LogTest extends TestCase
     }
 
     /** @test */
-    public function view_user_log_with_authenticated_user() {
+    public function view_user_log_with_authenticated_user() 
+    {
         $this->withoutExceptionHandling();
-
         $user = factory(\App\Models\User::class)->create();
 
+        activity('login')
+           ->causedBy($user)
+           ->log('logged in');
+
         $this->actingAs($user)
-            ->get('/dashboard/logs-view/1')
+            ->get('/dashboard/logs/1/date/'.now())
             ->assertSee('Logs view');
 
         $this->assertNotNull(Auth::id());

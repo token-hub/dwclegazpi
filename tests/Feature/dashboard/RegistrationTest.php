@@ -16,8 +16,8 @@ class RegistrationTest extends TestCase
   use RefreshDatabase;
 
   /** @test */
-  public function check_registration_page_with_authenticated_user() {
-
+  public function check_registration_page_with_authenticated_user() 
+  {
     $user = User::create($this->data());
 
     $this->actingAs($user)
@@ -28,10 +28,10 @@ class RegistrationTest extends TestCase
   }
 
   /** @test */
-  public function check_registration_page_with_unauthenticated_user() {
-
+  public function check_registration_page_with_unauthenticated_user() 
+  {
     $response = $this->get('dashboard/register');
-    $response->assertRedirect('dashboard/login');
+    $response->assertRedirect('dashboard');
 
     $this->assertNull(Auth::id());
   }

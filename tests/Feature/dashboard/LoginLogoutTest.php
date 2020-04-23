@@ -13,17 +13,20 @@ class LoginLogoutTest extends TestCase
     use RefreshDatabase;
 
     /** @test */
-    public function show_login_page() {
-        $this->get('dashboard/login')
+    public function show_login_page() 
+    {
+        $this->get('dashboard')
              ->assertOk();
     }
 
     /** @test */
-    public function login_user_with_correct_credentials() {
+    public function login_user_with_correct_credentials()
+    {
+        $this->withoutExceptionHandling();
 
         $user = User::create(array_merge($this->data(), ['is_active' => '1']));
 
-        $response = $this->post('dashboard/login', array_merge($this->data(), ['is_active' => '1', 'password' => 'johnjohn']));
+        $response = $this->post('dashboard', array_merge($this->data(), ['is_active' => '1', 'password' => 'johnjohn']));
 
         $this->assertEquals('Active', $user->is_active);
         $this->assertNotNull($user->email_verified_at);
@@ -33,27 +36,27 @@ class LoginLogoutTest extends TestCase
     }
 
     /** @test */
-    public function login_user_with_incorrect_credentials() {
-
+    public function login_user_with_incorrect_credentials() 
+    {
         User::create($this->data());
 
-        $response = $this->post('dashboard/login', array_merge($this->data(), ['password' => '12345677']));
+        $response = $this->post('dashboard', array_merge($this->data(), ['password' => '12345677']));
 
-        $response->assertRedirect('dashboard/login');
+        $response->assertRedirect('dashboard');
         
         $this->assertNull(Auth::id());
     }
 
      /** @test */
-     public function username_is_required() {
-
-         $response = $this->post('dashboard/login', array_merge($this->data(), ['username' => '']))
+     public function username_is_required() 
+     {
+         $response = $this->post('dashboard', array_merge($this->data(), ['username' => '']))
             ->assertSessionHasErrors('username');
      }
 
      /** @test */
-     public function logout() {
-
+     public function logout() 
+     {
         $user = User::create(array_merge($this->data(), ['is_active' => '1', 'remember' => true]));
 
         $this->actingAs($user);
@@ -61,17 +64,16 @@ class LoginLogoutTest extends TestCase
         
         $response = $this->post('dashboard/logout');
 
-        $response->assertRedirect('dashboard/login');
-
         $this->assertNull(Auth::id());
      }
 
      /** @test */
-     public function test_remember_me_functionality(){
+     public function test_remember_me_functionality()
+     {
 
        $user = User::create(array_merge($this->data(), ['is_active' => '1', 'remember' => true]));
         
-        $response = $this->post('dashboard/login', array_merge($this->data(), ['is_active' => '1', 'remember' => true, 'password' => 'johnjohn']));
+        $response = $this->post('dashboard', array_merge($this->data(), ['is_active' => '1', 'remember' => true, 'password' => 'johnjohn']));
         
         $this->assertEquals('Active', $user->is_active);
 

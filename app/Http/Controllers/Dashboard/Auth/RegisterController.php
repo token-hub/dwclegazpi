@@ -1,5 +1,5 @@
 <?php
-namespace App\Http\Controllers\Auth;
+namespace App\Http\Controllers\Dashboard\Auth;
 
 use Illuminate\Auth\Events\Registered;
 use App\Http\Controllers\Controller;
@@ -13,11 +13,11 @@ use App\Models\User_access;
 
 class RegisterController extends Controller
 {
-  public function getRegistration() {
+  public function index() {
     return view('dashboard/main.registration');
   }
 
-  public function postRegistration(CreateUserFormRequest $request) {
+  public function store(CreateUserFormRequest $request) {
 
     # add user
     $user = User::create(array_merge($request->only(['username', 'email']), ['password' => \Hash::make($request->password)]));

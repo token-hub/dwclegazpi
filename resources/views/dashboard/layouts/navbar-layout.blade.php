@@ -23,7 +23,7 @@
 			<div class="user-dropdown">
 				<div class="user-dropdown-content">
 					<i class="fa fa-user"></i>
-					<a href="{{url('dashboard/profile-view/'.Auth::user()->id)}}">Profile</a>
+					<a href="{{url('dashboard/profile/'.Auth::user()->id)}}">Profile</a>
 				</div>
 				<div class="user-dropdown-content">
 					<i class="fa fa-sign-out"></i>

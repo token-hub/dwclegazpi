@@ -1,32 +1,41 @@
 <?php
 
-Route::get('/dashboard/login', 'Auth\LoginController@getLogin');
-Route::post('/dashboard/logout', 'Auth\LoginController@postLogout');
-Route::get('/email/verify', 'Auth\VerificationController@show')->name('verification.notice');
-Route::get('/email/verify/{id}', 'Auth\VerificationController@verify')->name('verification.verify');
-Route::get('/email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
-Route::post('/dashboard/login', 'Auth\LoginController@postLogin');
+Route::get('/dashboard', 'Dashboard\Auth\LoginController@index');
+Route::post('/dashboard', 'Dashboard\Auth\LoginController@store');
+
+Route::get('/email/verify', 'Dashboard\Auth\VerificationController@show')->name('verification.notice');
+Route::get('/email/verify/{id}', 'Dashboard\Auth\VerificationController@verify')->name('verification.verify');
+Route::get('/email/resend', 'Dashboard\Auth\VerificationController@resend')->name('verification.resend');
 
 AdvancedRoute::controllers([
-	'/' => 'HomeController',
-    '/about-us' => 'AboutUsController',
-    '/admission' => 'AdmissionController',
-    '/academics' => 'AcademicsController',
-    '/student-services' => 'StudentServicesController',
-    '/career' => 'CareerController',
-    '/gallery' => 'GalleryController',
-    '/updates' => 'UpdatesController',
-    '/contact-us' => 'ContactUsController',
-    '/alumni' => 'AlumniController',
-    '/dashboard' => 'DashboardController',
-    '/email' => 'EmailController',
+	'/' => 'Web\HomeController',
+    '/about-us' => 'Web\AboutUsController',
+    '/admission' => 'Web\AdmissionController',
+    '/academics' => 'Web\AcademicsController',
+    '/student-services' => 'Web\StudentServicesController',
+    '/career' => 'Web\CareerController',
+    '/gallery' => 'Web\GalleryController',
+    '/updates' => 'Web\UpdatesController',
+    '/contact-us' => 'Web\ContactUsController',
+    '/alumni' => 'Web\AlumniController',
+    '/email' => 'Web\EmailController',
 ]);
 
 Route::group([ 'middleware' => ['auth', 'verified'], 'verify' => true], function () { 
-  Route::get('/dashboard/register', 'Auth\RegisterController@getRegistration');
-  Route::post('/dashboard/register', 'Auth\RegisterController@postRegistration');
-  AdvancedRoute::controller('/dashboard', 'DashboardController');
+  Route::get('/dashboard/home', 'Dashboard\DashboardController@index');
+  Route::get('/dashboard/register', 'Dashboard\Auth\RegisterController@index');
+  Route::post('/dashboard/register', 'Dashboard\Auth\RegisterController@store');
+
+  Route::post('/dashboard/logout', 'Dashboard\Auth\LoginController@destroy');
+
+  Route::get('/dashboard/profile/{user}', 'Dashboard\DashboardProfileController@show');
+  Route::get('/dashboard/profile/{user}/edit', 'Dashboard\DashboardProfileController@edit');
+  Route::patch('/dashboard/profile/{id}', 'Dashboard\DashboardProfileController@update');
+
+  Route::get('/dashboard/logs', 'Dashboard\DashboardLogsController@index');
+  Route::get('/dashboard/logs/{id}/date/{date}', 'Dashboard\DashboardLogsController@store');
+  Route::get('/dashboard/logsData', 'Dashboard\DashboardLogsDataController@index');
+  
 });
 
-// Auth::routes(['verify' => true]);
 

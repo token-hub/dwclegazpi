@@ -20,7 +20,7 @@
                 serverSide: true,
                 order: [ [0, 'desc'] ],
                 "searching": true,
-                ajax: '{{ url("dashboard/logs-data") }}',
+                ajax: '{{ url("dashboard/logsData") }}',
                 columns: [
                     { data: 'timeAndDate', name: 'timeAndDate'},
                     { data: 'description', name: 'description'},
