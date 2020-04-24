@@ -3,7 +3,7 @@
 namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
-use App\Models\User;
+use App\Models\Entities\User;
 use Auth;
 
 class old_password_checker implements Rule

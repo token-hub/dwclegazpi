@@ -6,7 +6,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Illuminate\Support\Facades\Auth;
 use Tests\TestCase;
-use App\Models\User;
+use App\Models\Entities\User;
 
 class UserProfileTest extends TestCase
 {
@@ -15,14 +15,14 @@ class UserProfileTest extends TestCase
     /** @test */
     public function check_user_profile_page_with_authenticated_user() 
     {     
-        factory(\App\Models\User::class, 1)
+        factory(User::class, 1)
             ->create()
             ->each(function ($usery) {
                  $usery->Personal_info()
-                 ->save(factory(\App\Models\Personal_info::class)->make());
+                 ->save(factory(\App\Models\Entities\Personal_info::class)->make());
 
                  $usery->Departments()
-                 ->save(factory(\App\Models\Departments::class)->make());
+                 ->save(factory(\App\Models\Entities\Departments::class)->make());
 
                   $this->actingAs($usery)
                     ->get('/dashboard/profile/'.$usery->id)
@@ -35,14 +35,14 @@ class UserProfileTest extends TestCase
     /** @test */
     public function check_user_profile_update_page_with_authenticated_user() 
     {
-         factory(\App\Models\User::class, 1)
+         factory(User::class, 1)
             ->create()
             ->each(function ($usery) {
                  $usery->Personal_info()
-                 ->save(factory(\App\Models\Personal_info::class)->make());
+                 ->save(factory(\App\Models\Entities\Personal_info::class)->make());
 
                  $usery->Departments()
-                 ->save(factory(\App\Models\Departments::class)->make());
+                 ->save(factory(\App\Models\Entities\Departments::class)->make());
 
                   $this->actingAs($usery)
                     ->get('/dashboard/profile/'.$usery->id.'/edit');
@@ -54,14 +54,14 @@ class UserProfileTest extends TestCase
     /** @test */
     public function update_person_info_with_authenticated_user() 
     {
-        factory(\App\Models\User::class, 1)
+        factory(User::class, 1)
             ->create()
             ->each(function ($usery) {
                  $usery->Personal_info()
-                 ->save(factory(\App\Models\Personal_info::class)->make());
+                 ->save(factory(\App\Models\Entities\Personal_info::class)->make());
 
                  $usery->Departments()
-                 ->save(factory(\App\Models\Departments::class)->make());
+                 ->save(factory(\App\Models\Entities\Departments::class)->make());
 
                    $response = $this->actingAs($usery)
                     ->patch('/dashboard/profile/'.$usery->id, 

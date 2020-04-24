@@ -14,7 +14,7 @@ class LogTest extends TestCase
     /** @test */
     public function check_logs_page_with_authenticated_user() 
     {
-        $user = factory(\App\Models\User::class)->create();
+        $user = factory(\App\Models\Entities\User::class)->create();
 
         activity('login')
            ->causedBy($user)
@@ -30,8 +30,8 @@ class LogTest extends TestCase
     /** @test */
     public function view_user_log_with_authenticated_user() 
     {
-        $this->withoutExceptionHandling();
-        $user = factory(\App\Models\User::class)->create();
+        $user = factory(\App\Models\Entities\User::class)->create();
+
 
         activity('login')
            ->causedBy($user)

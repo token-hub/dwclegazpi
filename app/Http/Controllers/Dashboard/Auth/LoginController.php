@@ -15,10 +15,10 @@ class LoginController extends Controller
 
     public function store(LoginRequest $LoginRequest) {
         $redirectTo = '/dashboard/home';
-
+        
         if (Auth::attempt($LoginRequest->only('username', 'password'), $LoginRequest->remember)) {
             $user = Auth::getLastAttempted();
-                
+                 
                 # check if user is active
                 if ($user->is_active == 'Active') {
 

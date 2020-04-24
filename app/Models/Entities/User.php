@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Models;
+namespace App\Models\Entities;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -52,17 +52,17 @@ class User extends Authenticatable implements MustVerifyEmail
     
     # relationship to personal_info table
     public function personal_info() {
-        return $this->hasOne('App\Models\Personal_info', 'user_id'); 
+        return $this->hasOne('App\Models\Entities\Personal_info', 'user_id'); 
     }
 
     # relationship to departments table
     public function departments() {
-        return $this->hasOne('App\Models\Departments', 'user_id'); 
+        return $this->hasOne('App\Models\Entities\Departments', 'user_id'); 
     }
 
     # relationship to user_access table
     public function user_access() {
-        return $this->hasOne('App\Models\User_access', 'user_id'); 
+        return $this->hasOne('App\Models\Entities\User_access', 'user_id'); 
     }
 
     public function getIsActiveAttribute($data) {

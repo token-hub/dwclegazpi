@@ -26,7 +26,7 @@ use Illuminate\Support\Str;
 //     ];
 // });
 
-$factory->define(App\Models\User::class, function (Faker $faker) {
+$factory->define(App\Models\Entities\User::class, function (Faker $faker) {
     return [
         'username' => 'john',
         'email' => 'johnsuyang2118@gmail.com',

@@ -5,14 +5,17 @@ use Illuminate\Auth\Events\Registered;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Http\Requests\CreateUserFormRequest;
-use App\Models\User;
-use App\Models\Personal_info;
-use App\Models\Departments;
-use App\Models\User_access;
 
+use App\Services\UserService;
+
+use App\Models\Entities\User;
+use App\Models\Entities\Personal_info;
+use App\Models\Entities\Departments;
+use App\Models\Entities\User_access;
 
 class RegisterController extends Controller
 {
+
   public function index() {
     return view('dashboard/main.registration');
   }

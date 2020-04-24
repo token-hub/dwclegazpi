@@ -35,7 +35,6 @@ Route::group([ 'middleware' => ['auth', 'verified'], 'verify' => true], function
   Route::get('/dashboard/logs', 'Dashboard\DashboardLogsController@index');
   Route::get('/dashboard/logs/{id}/date/{date}', 'Dashboard\DashboardLogsController@store');
   Route::get('/dashboard/logsData', 'Dashboard\DashboardLogsDataController@index');
-  
 });
 
 

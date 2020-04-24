@@ -5,9 +5,10 @@ use App\Http\Requests\UpdateUserFormRequest;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\User;
-use App\Models\Personal_info;
-use App\Models\Departments;
+
+use App\Models\Entities\User;
+use App\Models\Entities\Personal_info;
+use App\Models\Entities\Departments;
 
 class DashboardProfileController extends Controller
 {
