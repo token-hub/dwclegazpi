@@ -54,6 +54,8 @@ class UserProfileTest extends TestCase
     /** @test */
     public function update_person_info_with_authenticated_user() 
     {
+        $this->withoutExceptionHandling();
+        
         factory(User::class, 1)
             ->create()
             ->each(function ($usery) {
