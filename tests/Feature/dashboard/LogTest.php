@@ -32,7 +32,6 @@ class LogTest extends TestCase
     {
         $user = factory(\App\Models\Entities\User::class)->create();
 
-
         activity('login')
            ->causedBy($user)
            ->log('logged in');

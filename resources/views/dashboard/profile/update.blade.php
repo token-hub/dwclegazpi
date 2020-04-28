@@ -36,7 +36,7 @@
 					{!! Form::label('department_name', 'Department') !!}
 				</div>
 
-				<center><p style='padding:0;margin:0;'><i> --* Change Password *--</i></p><small><i>Changing password will automatically log you out.</i></small></center>
+				<center><p style='padding:0;margin:0;'><i> --* Change Password *--</i></p></center>
 
 				<div class='dashboard-input'>
 					<div class="password-content">

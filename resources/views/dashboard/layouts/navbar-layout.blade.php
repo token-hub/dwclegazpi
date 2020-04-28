@@ -57,10 +57,10 @@
 
 					<div class='content-dropdown'>
 						<div class='left-content-link'>
-							<i class='fa fa-toggle-on'></i><a href="{{url('dashboard/active-images')}}">Active</a>
+							<i class='fa fa-toggle-on'></i><a href="{{url('dashboard/images-active')}}">Active</a>
 						</div>
 						<div class='left-content-link'>
-							<i class='fa fa-toggle-off'></i><a href="{{url('dashboard/inactive-images')}}">Inactive</a>
+							<i class='fa fa-toggle-off'></i><a href="{{url('dashboard/images-inactive')}}">Inactive</a>
 						</div>
 					</div>
 

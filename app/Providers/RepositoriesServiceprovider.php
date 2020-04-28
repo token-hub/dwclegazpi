@@ -15,15 +15,7 @@ class RepositoriesServiceprovider extends ServiceProvider
     {
         $this->app->bind(\App\Models\Repositories\UserInterface::class, \App\Models\Repositories\Eloquent\UserRepository::class);
 
-         // $this->app
-         // ->when(UserController::class)
-         // ->needs(RepositoryInterface::class)
-         // ->give(UserRepository::class);
-
-         // $this->app
-         // ->when(ProfileController::class)
-         // ->needs(RepositoryInterface::class)
-         // ->give(ProfileRepository::class);
+        $this->app->bind(\App\Models\Repositories\LogInterface::class, \App\Models\Repositories\Eloquent\LogRepository::class);
     }
 
     /**

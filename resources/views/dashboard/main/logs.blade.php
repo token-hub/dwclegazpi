@@ -26,7 +26,7 @@
                     { data: 'description', name: 'description'},
                     { data: 'username', name: 'username', 
                         render:function(data, type, row){
-                            return "<a href='logs-view/"+row.causer_id+"/"+row.created_at+"' style='text-decoration:none;'>"+ row.username +"</a>";
+                            return "<a href='logs/"+row.causer_id+"/date/"+row.created_at+"' style='text-decoration:none;'>"+ row.username +"</a>";
                         }
                     },
                 ]
