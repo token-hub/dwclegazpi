@@ -14,16 +14,7 @@ class RepositoriesServiceprovider extends ServiceProvider
     public function register()
     {
         $this->app->bind(\App\Models\Repositories\UserInterface::class, \App\Models\Repositories\Eloquent\UserRepository::class);
-
-         // $this->app
-         // ->when(UserController::class)
-         // ->needs(RepositoryInterface::class)
-         // ->give(UserRepository::class);
-
-         // $this->app
-         // ->when(ProfileController::class)
-         // ->needs(RepositoryInterface::class)
-         // ->give(ProfileRepository::class);
+        $this->app->bind(\App\Models\Repositories\ImageInterface::class, \App\Models\Repositories\Eloquent\ImageRepository::class);
     }
 
     /**

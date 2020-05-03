@@ -16,6 +16,10 @@ class User extends Authenticatable implements MustVerifyEmail
 
     protected static $logName = 'user account';
 
+    protected static $ignoreChangedAttributes = ['updated_at', 'remember_token', 'email_verified_at'];
+    
+    protected static $logAttributesToIgnore = ['updated_at', 'remember_token', 'email_verified_at'];
+
     /**
      * The attributes that are mass assignable.
      *

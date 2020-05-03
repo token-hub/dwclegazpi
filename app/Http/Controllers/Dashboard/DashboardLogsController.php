@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\Entities\User;
 use Spatie\Activitylog\Models\Activity;
 
 class DashboardLogsController extends Controller
@@ -14,31 +14,29 @@ class DashboardLogsController extends Controller
     	return view('dashboard.main.logs');
     }
 
-    public function store($id, $date) { 
+    public function show($id, $date) { 
 
         $logs = Activity::where('Activity_log.causer_id', $id)
         	->where('Activity_log.created_at', $date)
             ->leftJoin('users', 'users.id', '=', 'causer_id')
             ->get(['*', 'Activity_log.created_at']);
 
-
         # get all the activity properties
-        $properties = $logs->map(function($item){ 
-        	if (count($item->properties) != 0 ) {
-		  		return array('old' => $item->properties['old'], 'new' => $item->properties['attributes']);
-			}
-		});
+        $properties = $logs->filter(function($logItem){
+            return $logItem->properties != '[]';
+        })->map(function($item){
+            return !empty($item->properties['old']) 
+            ? array('old' => $item->properties['old'], 'new' => $item->properties['attributes']) 
+            : array('old' => [], 'new' => $item->properties['attributes']);
+        });
 
-        # object to array
-        $logs = $logs->toArray();
+        # get the causer id
+        $subject_username = User::find($logs[0]['causer_id'])['username'];
 
-        // # get only the log data
-        $log = array_shift($logs);
-
-        $subject_username = User::find($log['causer_id'])['username'];
-
-        $newLog = array_merge($log,
-        	['properties' => $properties->toArray(), 'subject_username' => $subject_username]);
+        # create a single array out of the logs
+        $newLog = array_merge($logs[0]->toArray(),
+        	['properties' => $properties->toArray(),
+             'subject_username' => $subject_username]);
 
 		return view('dashboard.main.logs-view')->with('log', $newLog);
     }

@@ -3,32 +3,18 @@
 @section('wrapper-title', 'Active Image/s')
 @section('wrapper-body')
 	<div class='wrapper-content-slider'>
-		<div class='slider-contents'>
-			<div class='slider-image'>
-				<img src='/storage/img/slider/active/CPA.jpg'>
-			</div>
-			<div class='slider-image'>
-				<img src='/storage/img/slider/active/CPA.jpg'>
-			</div>
-			<div class='slider-image'>
-				<img src='/storage/img/slider/active/CPA.jpg'>
-			</div>
-		</div>
+		@foreach($active as $images)
+		 	<div class='slider-contents '>
+		 		@foreach($images as $image)
+				 	<div class='slider-image'>
+						<img src="/storage/img/slider/active/{{ $image['image_name'] }}">
+					</div>
+		 		@endforeach
+		 	</div>
+		@endforeach
 
-		<div class='slider-contents'>
-			<div class='slider-image'>
-				<img src='/storage/img/slider/active/CPA.jpg'>
-			</div>
-			<div class='slider-image'>
-				<img src='/storage/img/slider/active/CPA.jpg'>
-			</div>
-			<div class='slider-image'>
-				<img src='/storage/img/slider/active/CPA.jpg'>
-			</div>
-		</div>
-
-		<button class='btn btn-danger slider-btn' disabled="">Remove image</button>
-		<button class='btn btn-info slider-btn'  disabled="">Arrange image</button>
+		<button class='btn btn-danger slider-btn' id='img-active-btn-deactivate' disabled="">Deactivate image</button>
+		<button class='btn btn-info slider-btn' id='img-active-btn-arrange' disabled="">Arrange image</button>
 	</div>
 @endsection
 

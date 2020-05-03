@@ -2,33 +2,27 @@
 
 @section('wrapper-title', 'Inactive Image/s')
 @section('wrapper-body')
+	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<div class='wrapper-content-slider'>
-		<div class='slider-contents '>
-			<div class='slider-image'>
-				<img src='/storage/img/slider/active/CPA.jpg'>
-			</div>
-			<div class='slider-image'>
-				<img src='/storage/img/slider/active/CPA.jpg'>
-			</div>
-			<div class='slider-image'>
-				<img src='/storage/img/slider/active/CPA.jpg'>
-			</div>
-		</div>
+		{!! Form::open(['url' => ['dashboard/images-inactive/image-upload'], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
+			{{Form::label('image_name', 'Select image/s to upload')}}
+			{{Form::file('image_name[]', ['accept' => 'image/*', 'multiple' => 'multiple', 'type' => 'file'])}}
+			{{Form::submit('Upload image', ['class' => 'btn btn-info'])}}
+		{!! Form::close() !!}
+		<br>
 
-		<div class='slider-contents'>
-			<div class='slider-image'>
-				<img src='/storage/img/slider/active/CPA.jpg'>
-			</div>
-			<div class='slider-image'>
-				<img src='/storage/img/slider/active/CPA.jpg'>
-			</div>
-			<div class='slider-image'>
-				<img src='/storage/img/slider/active/CPA.jpg'>
-			</div>
-		</div>
-
-		<button class='btn btn-danger slider-btn' disabled="">Remove image</button>
-		<button class='btn btn-info slider-btn'  disabled="">Arrange image</button>
+		@foreach($inactive as $images)
+		 	<div class='slider-contents '>
+		 		@foreach($images as $image)
+				 	<div class='slider-image'>
+						<img src="/storage/img/slider/inactive/{{ $image['image_name'] }}">
+					</div>
+		 		@endforeach
+		 	</div>
+		@endforeach
+	
+		<button class='btn btn-danger slider-btn' id='img-inactive-btn-remove' disabled="">Remove image</button>
+		<button class='btn btn-info slider-btn' id='img-inactive-btn-remove' disabled="">Activate image</button>
 	</div>
 @endsection
 

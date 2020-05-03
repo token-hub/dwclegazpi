@@ -15,9 +15,9 @@ class CreateImagesTable extends Migration
     {
         Schema::create('images', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->String('name');
-            $table->boolean('is_active');
-            $table->integer('number');
+            $table->String('image_name');
+            $table->boolean('is_active')->default('0');
+            $table->integer('number')->nullable();
             $table->timestamps();
         });
     }

@@ -6,7 +6,7 @@ use App\Http\Resources\LogsResources;
 use App\Http\Controllers\Controller;
 use Spatie\Activitylog\Models\Activity;
 use yajra\Datatables\Datatables;
-use App\Models\user;
+use App\Models\Entities\user;
 
 class DashboardLogsDataController extends Controller
 {

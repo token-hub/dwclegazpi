@@ -33,8 +33,15 @@ Route::group([ 'middleware' => ['auth', 'verified'], 'verify' => true], function
   Route::patch('/dashboard/profile/{id}', 'Dashboard\DashboardProfileController@update');
 
   Route::get('/dashboard/logs', 'Dashboard\DashboardLogsController@index');
-  Route::get('/dashboard/logs/{id}/date/{date}', 'Dashboard\DashboardLogsController@store');
+  Route::get('/dashboard/logs/{id}/date/{date}', 'Dashboard\DashboardLogsController@show');
   Route::get('/dashboard/logsData', 'Dashboard\DashboardLogsDataController@index');
+
+  Route::get('/dashboard/images-active', 'Dashboard\DashboardImagesController@active');
+  Route::get('/dashboard/images-inactive', 'Dashboard\DashboardImagesController@inactive');
+  Route::post('/dashboard/images-inactive/image-remove-or-activate', 'Dashboard\DashboardImagesController@removeOrActivate');
+  Route::post('/dashboard/images-active/image-arrange-or-deactivate', 'Dashboard\DashboardImagesController@arrangeOrDeactivate');
+  Route::post('/dashboard/images-inactive/image-upload', 'Dashboard\DashboardImagesUploadController@store');
+
 });
 
 
