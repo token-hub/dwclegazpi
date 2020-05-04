@@ -20,10 +20,19 @@ class ImageRepository implements ImageInterface
 					->orderBy('number', 'ASC')
 					->get();
 
+		return $active;
+	}
+
+	public function getActiveImagesChunk() 
+	{
+		$active = $this->images->where('is_active' , 1)
+					->orderBy('number', 'ASC')
+					->get();
+
 		return array_chunk($active->toArray(), 3);
 	}
 
-	public function getInactiveImages()
+	public function getInactiveImagesChunk()
 	{
 		$inactive = $this->images->where('is_active' , 0)
 					->orderBy('created_at', 'DESC')
@@ -32,12 +41,12 @@ class ImageRepository implements ImageInterface
 		return array_chunk($inactive->toArray(), 3);
 	}
 
-	public function getImageByNameUpdateIsActiveNumber($image_name, $is_active = 1, $number = null) 
+	public function getImageByNameUpdateIsActiveNumber($image_name, $is_active = 1, $number = 0) 
 	{
 		return $this->images->where('image_name', $image_name)
 							->update([
 										'is_active' => $is_active,
-									 	'number' => $number == null ? $this->getActiveImagesCount() + 1 : $number,
+									 	'number' => $number === 0 ? $this->getActiveImagesCount() + 1 : $number,
 									]);
 	}
 

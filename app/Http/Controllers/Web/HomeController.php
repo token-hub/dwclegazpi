@@ -1,26 +1,20 @@
 <?php
 
 namespace App\Http\Controllers\Web;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Models\Services\ImageService;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    // public function __construct()
-    // {
-    //     $this->middleware('auth');
-    // }
+    protected $imageService;
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
+    public function __construct(ImageService $imageService)
+    {
+        $this->imageService = $imageService;
+    }
+
     public function getIndex()
     {
         $homeArrays = [
@@ -64,9 +58,9 @@ class HomeController extends Controller
                                                                 'hiddenLink' => 'CLASSES AND WORK RESUMPTION: DECEMBER 9, 2019'
                                                             ],
                                                        ]  
-                                        ]
+                                        ],
+                            'active_image' => $this->imageService->active()
                       ];
-
-        return view('web.home.homepage')->with('homeArrays', $homeArrays);
+        return view('web.home.homepage')->with('home', $homeArrays);
     }
 }

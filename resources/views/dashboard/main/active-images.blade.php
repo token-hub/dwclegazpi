@@ -3,15 +3,21 @@
 @section('wrapper-title', 'Active Image/s')
 @section('wrapper-body')
 	<div class='wrapper-content-slider'>
-		@foreach($active as $images)
-		 	<div class='slider-contents '>
-		 		@foreach($images as $image)
-				 	<div class='slider-image'>
-						<img src="/storage/img/slider/active/{{ $image['image_name'] }}">
-					</div>
-		 		@endforeach
-		 	</div>
-		@endforeach
+
+		@if(count($active))
+			@foreach($active as $images)
+			 	<div class='slider-contents '>
+			 		@foreach($images as $image)
+					 	<div class='slider-image'>
+							<img src="/storage/img/slider/active/{{ $image['image_name'] }}">
+						</div>
+			 		@endforeach
+			 	</div>
+			@endforeach
+		@else 
+			<center><p><i> --* No active image/s found *--</i></p></center>
+		@endif
+		
 
 		<button class='btn btn-danger slider-btn' id='img-active-btn-deactivate' disabled="">Deactivate image</button>
 		<button class='btn btn-info slider-btn' id='img-active-btn-arrange' disabled="">Arrange image</button>

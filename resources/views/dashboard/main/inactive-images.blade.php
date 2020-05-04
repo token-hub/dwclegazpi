@@ -10,17 +10,21 @@
 			{{Form::submit('Upload image', ['class' => 'btn btn-info'])}}
 		{!! Form::close() !!}
 		<br>
-
-		@foreach($inactive as $images)
-		 	<div class='slider-contents '>
-		 		@foreach($images as $image)
-				 	<div class='slider-image'>
-						<img src="/storage/img/slider/inactive/{{ $image['image_name'] }}">
-					</div>
-		 		@endforeach
-		 	</div>
-		@endforeach
 	
+		@if($inactive)
+			@foreach($inactive as $images)
+			 	<div class='slider-contents '>
+			 		@foreach($images as $image)
+					 	<div class='slider-image'>
+							<img src="/storage/img/slider/inactive/{{ $image['image_name'] }}">
+						</div>
+			 		@endforeach
+			 	</div>
+			@endforeach
+		@else 
+			<center><p><i> --* No inactive image/s found *--</i></p></center>
+		@endif
+		
 		<button class='btn btn-danger slider-btn' id='img-inactive-btn-remove' disabled="">Remove image</button>
 		<button class='btn btn-info slider-btn' id='img-inactive-btn-remove' disabled="">Activate image</button>
 	</div>

@@ -19,9 +19,14 @@ class ImageService
 		return $this->imageInterface->getActiveImages();
 	}
 
-	public function inactive()
+	public function activeChunk()
 	{
-		return $this->imageInterface->getInactiveImages();
+		return $this->imageInterface->getActiveImagesChunk();
+	}
+
+	public function inactiveChunk()
+	{
+		return $this->imageInterface->getInactiveImagesChunk();
 	}
 
 	public function removeOrActivate($images)
@@ -44,7 +49,12 @@ class ImageService
 	    	# move the image to active images folder
 	    	\Storage::move('public/img/slider/inactive/'.$image, 'public/img/slider/active/'.$image);
         }
-	        
+	     
+	   # log
+       activity('Slider image/s')
+           ->causedBy(\Auth::user())
+           ->log('activated');
+
 	    return ['message' => 'Image/s successfully activated!', 'type' => 'notif-success'];
 	}
 
@@ -58,6 +68,12 @@ class ImageService
 		    	# delete image file
 		    	\Storage::delete('public/img/slider/inactive/'.$image);
 	        }
+
+	   # log
+       activity('Slider image/s')
+           ->causedBy(\Auth::user())
+           ->log('removed');
+
 		return ['message' => 'Image/s successfully removed.', 'type' => 'notif-success'];
 	}
 
@@ -79,7 +95,7 @@ class ImageService
 
 		foreach ($images->images as $image) 
 		{	
-			# set the image number of the selected  active images.
+			# set the image number of the selected active images.
 			$this->imageInterface->getImageByNameUpdateIsActiveNumber($image, 1);
         }
 
@@ -89,6 +105,11 @@ class ImageService
         	$this->imageInterface->getImageByNameUpdateIsActiveNumber($image->image_name, 1);
         }
 
+        # log
+       activity('Slider image/s')
+           ->causedBy(\Auth::user())
+           ->log('arranged');
+
         return ['message' => 'Image/s successfully arranged.', 'type' => 'notif-success'];
 	}
 
@@ -97,24 +118,35 @@ class ImageService
 		foreach ($images->images as $image) 
 		{
 			# set the image number of the not selected active images. 
-        	$this->imageInterface->getImageByNameUpdateIsActiveNumber($image, 0, 0);
+        	$this->imageInterface->getImageByNameUpdateIsActiveNumber($image, 0, null);
 
 			# move the image to inactive images folder
 	    	\Storage::move('public/img/slider/active/'.$image, 'public/img/slider/inactive/'.$image);
 		}
+
+		# log
+       activity('Slider image/s')
+           ->causedBy(\Auth::user())
+           ->log('deactivated');
 
 		return ['message' => 'Image/s successfully deactivated.', 'type' => 'notif-success'];
 	}
 
 	public function store($data)
 	{
-		foreach ($data->file('image_name') as $value) 
+		foreach ($data->image_name as $value) 
 		{
 			$this->imageInterface->storeImage($value);
 	    	
 	    	# move the image to storage
 	    	$value->storeAs('public/img/slider/inactive', $value->getClientOriginalName());
         }
+
+       # log
+       activity('Slider image/s')
+           ->causedBy(\Auth::user())
+           ->log('uploaded');
+
 		return ['message' => 'Image/s successfully uploaded!', 'type' => 'notif-success'];
 	}
 }

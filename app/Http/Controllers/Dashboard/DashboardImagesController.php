@@ -18,13 +18,13 @@ class DashboardImagesController extends Controller
 
     public function active()
     {	
-    	$active = $this->imageService->active();
+    	$active = $this->imageService->activeChunk();
     	return view('dashboard.main.active-images')->with('active', $active);
     }
 
     public function inactive()
     {
-    	$inactive = $this->imageService->inactive();
+    	$inactive = $this->imageService->inactiveChunk();
     	return view('dashboard.main.inactive-images')->with('inactive', $inactive);
     }
 

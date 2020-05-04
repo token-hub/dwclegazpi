@@ -4,9 +4,11 @@ namespace App\Models\Repositories;
 
 interface ImageInterface
 {
-	public function getInactiveImages();
+	public function getActiveImages();
 
-	public function getactiveImages();
+	public function getactiveImagesChunk();
+	
+	public function getInactiveImagesChunk();
 
 	public function getImageByNameUpdateIsActiveNumber($image_name, $is_active);
 

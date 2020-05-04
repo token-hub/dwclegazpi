@@ -526,46 +526,21 @@ sliderImage.forEach(function (e) {
 
 sliderBtn.forEach(function (e) {
   e.addEventListener('click', function () {
-    var SliderBtnType = '';
-
-    switch (e.innerHTML) {
-      case 'Deactivate image':
-        SliderBtnType = 'deactivate';
-        break;
-
-      case 'Activate image':
-        SliderBtnType = 'activate';
-        break;
-
-      case 'Remove image':
-        SliderBtnType = 'remove';
-        break;
-
-      case 'Arrange image':
-        SliderBtnType = 'arrange';
-        break;
-    }
-
+    var SliderBtnType = imageActionType(e.innerHTML);
     var myJsonData = {
       'imgs_type': SliderBtnType,
       'images': imageNames
     };
-    var myJsonData2 = {
-      'imgs_type': SliderBtnType,
-      'images': imageNames,
-      'image_number': reclickedImageCount
-    };
-    console.log(myJsonData);
 
     if (SliderBtnType == 'remove' || SliderBtnType == 'activate') {
-      sendData(myJsonData);
+      sendData(myJsonData, '/dashboard/images-inactive/image-remove-or-activate', 'images-inactive');
     } else {
-      sendData2(myJsonData2);
+      sendData(myJsonData, '/dashboard/images-active/image-arrange-or-deactivate', 'images-active');
     }
   });
 });
 
-function sendData(data) {
+function sendData(data, url, redirect) {
   $.ajaxSetup({
     headers: {
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -573,10 +548,11 @@ function sendData(data) {
   });
   $.ajax({
     type: 'POST',
-    url: '/dashboard/images-inactive/image-remove-or-activate',
+    url: url,
     data: data,
     success: function success(data) {
-      window.location = 'images-inactive';
+      window.location = redirect;
+      console.log(data);
     },
     error: function error(data) {
       console.log('Error:', data);
@@ -584,24 +560,26 @@ function sendData(data) {
   });
 }
 
-function sendData2(data) {
-  $.ajaxSetup({
-    headers: {
-      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-  });
-  $.ajax({
-    type: 'POST',
-    url: '/dashboard/images-active/image-arrange-or-deactivate',
-    data: data,
-    success: function success(data) {
-      window.location = 'images-active';
-      console.log(data);
-    },
-    error: function error(data) {
-      console.log('Error:', data);
-    }
-  });
+function imageActionType(type) {
+  switch (type) {
+    case 'Deactivate image':
+      SliderBtnType = 'deactivate';
+      break;
+
+    case 'Activate image':
+      SliderBtnType = 'activate';
+      break;
+
+    case 'Remove image':
+      SliderBtnType = 'remove';
+      break;
+
+    case 'Arrange image':
+      SliderBtnType = 'arrange';
+      break;
+  }
+
+  return SliderBtnType;
 }
 
 /***/ }),
