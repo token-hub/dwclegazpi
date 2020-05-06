@@ -28,7 +28,7 @@ class DashboardLogsController extends Controller
         	->where('Activity_log.created_at', $date)
             ->leftJoin('users', 'users.id', '=', 'causer_id')
             ->get(['*', 'Activity_log.created_at'])
-            ->orderBy('Activity_log.id', 'DESC');
+            ->sortByDesc('Activity_log.id');
 
         # get all the activity properties
         $properties = $logs->filter(function($logItem){
@@ -47,6 +47,6 @@ class DashboardLogsController extends Controller
         	['properties' => $properties->toArray(),
              'subject_username' => $subject_username]);
 
-		return view('dashboard.main.logs-view')->with('log', $log);
+		return view('dashboard.main.logs-view')->with('log', $newLog);
     }
 }

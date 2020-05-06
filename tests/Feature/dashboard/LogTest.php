@@ -30,6 +30,7 @@ class LogTest extends TestCase
     /** @test */
     public function view_user_log_with_authenticated_user() 
     {
+        $this->withoutExceptionHandling();
         $user = factory(\App\Models\Entities\User::class)->create();
 
         activity('login')

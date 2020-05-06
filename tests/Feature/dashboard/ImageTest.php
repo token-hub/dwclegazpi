@@ -2,18 +2,12 @@
 
 namespace Tests\Feature\dashboard;
 
-<<<<<<< HEAD
-=======
 use Illuminate\Http\UploadedFile;
->>>>>>> uploadImage
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\Entities\User;
-<<<<<<< HEAD
-=======
 use App\Models\Entities\Images;
->>>>>>> uploadImage
 
 class ImageTest extends TestCase
 {
@@ -22,11 +16,8 @@ class ImageTest extends TestCase
     /** @test */
     public function checkActiveImagePageWithAuthenticatedUser()
     {
-<<<<<<< HEAD
         $this->withoutExceptionHandling();
 
-=======
->>>>>>> uploadImage
         $user = factory(\App\Models\Entities\User::class)->create();
 
         $this->actingAs($user)
@@ -38,11 +29,9 @@ class ImageTest extends TestCase
     /** @test */
     public function checkInactiveImagePageWithAuthenticatedUser()
     {
-<<<<<<< HEAD
+
         $this->withoutExceptionHandling();
 
-=======
->>>>>>> uploadImage
         $user = factory(\App\Models\Entities\User::class)->create();
 
         $this->actingAs($user)
@@ -50,9 +39,6 @@ class ImageTest extends TestCase
             ->assertOk()
             ->assertSee('Inactive Image/s');
     }
-<<<<<<< HEAD
-}
-=======
 
     /** @test */
     public function userCanUploadAnImage()
@@ -155,6 +141,7 @@ class ImageTest extends TestCase
     /** @test */
     public function userCanArrangeImages()
     {
+       $this->withoutExceptionHandling();
        $user = factory(\App\Models\Entities\User::class)->create();
         
         \Storage::fake('local');
@@ -179,7 +166,6 @@ class ImageTest extends TestCase
 
         $this->actingAs($user)
             ->post('dashboard/images-inactive/image-remove-or-activate', ['images' => ['file.png', 'file2.png'], 'imgs_type' => 'activate' ]);
-
 
             $this->assertEquals('1', Images::find(1)->is_active);
             $this->assertEquals('1', Images::find(2)->is_active);
@@ -243,5 +229,3 @@ class ImageTest extends TestCase
             $this->assertNull(Images::find(2)->number);
     }
 }
-
->>>>>>> uploadImage
