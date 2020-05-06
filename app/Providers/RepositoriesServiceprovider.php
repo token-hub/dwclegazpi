@@ -14,12 +14,10 @@ class RepositoriesServiceprovider extends ServiceProvider
     public function register()
     {
         $this->app->bind(\App\Models\Repositories\UserInterface::class, \App\Models\Repositories\Eloquent\UserRepository::class);
-<<<<<<< HEAD
 
         $this->app->bind(\App\Models\Repositories\LogInterface::class, \App\Models\Repositories\Eloquent\LogRepository::class);
-=======
+
         $this->app->bind(\App\Models\Repositories\ImageInterface::class, \App\Models\Repositories\Eloquent\ImageRepository::class);
->>>>>>> uploadImage
     }
 
     /**

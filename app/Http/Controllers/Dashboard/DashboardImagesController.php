@@ -3,17 +3,6 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-<<<<<<< HEAD
-
-class DashboardImagesController extends Controller
-{
-    public function active()
-    {
-    	return view('dashboard.main.active-images');
-=======
-use App\Models\Services\ImageService;
-use App\Http\Requests\UploadImageRequest;
-use Illuminate\Http\Request;
 
 class DashboardImagesController extends Controller
 {
@@ -28,14 +17,10 @@ class DashboardImagesController extends Controller
     {	
     	$active = $this->imageService->activeChunk();
     	return view('dashboard.main.active-images')->with('active', $active);
->>>>>>> uploadImage
     }
 
     public function inactive()
     {
-<<<<<<< HEAD
-    	return view('dashboard.main.inactive-images');
-=======
     	$inactive = $this->imageService->inactiveChunk();
     	return view('dashboard.main.inactive-images')->with('inactive', $inactive);
     }
@@ -50,6 +35,5 @@ class DashboardImagesController extends Controller
     public function arrangeOrDeactivate(Request $request)
     {
     	$this->imageService->arrangeOrDeactivate($request);
->>>>>>> uploadImage
     }
 }

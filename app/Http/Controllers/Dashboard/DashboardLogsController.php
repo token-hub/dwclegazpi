@@ -22,11 +22,6 @@ class DashboardLogsController extends Controller
     	return view('dashboard.main.logs');
     }
 
-<<<<<<< HEAD
-    public function show($id, $date) 
-    { 
-        $log = $this->logService->show($id, $date);
-=======
     public function show($id, $date) { 
 
         $logs = Activity::where('Activity_log.causer_id', $id)
@@ -51,7 +46,6 @@ class DashboardLogsController extends Controller
         $newLog = array_merge($logs[0]->toArray(),
         	['properties' => $properties->toArray(),
              'subject_username' => $subject_username]);
->>>>>>> uploadImage
 
 		return view('dashboard.main.logs-view')->with('log', $log);
     }
