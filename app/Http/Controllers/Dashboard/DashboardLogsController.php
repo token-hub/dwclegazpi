@@ -19,7 +19,8 @@ class DashboardLogsController extends Controller
         $logs = Activity::where('Activity_log.causer_id', $id)
         	->where('Activity_log.created_at', $date)
             ->leftJoin('users', 'users.id', '=', 'causer_id')
-            ->get(['*', 'Activity_log.created_at']);
+            ->get(['*', 'Activity_log.created_at'])
+            ->orderBy('Activity_log.id', 'DESC');
 
         # get all the activity properties
         $properties = $logs->filter(function($logItem){

@@ -18,7 +18,6 @@
 			<center><p><i> --* No active image/s found *--</i></p></center>
 		@endif
 		
-
 		<button class='btn btn-danger slider-btn' id='img-active-btn-deactivate' disabled="">Deactivate image</button>
 		<button class='btn btn-info slider-btn' id='img-active-btn-arrange' disabled="">Arrange image</button>
 	</div>

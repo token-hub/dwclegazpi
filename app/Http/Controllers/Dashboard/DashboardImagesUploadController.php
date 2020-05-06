@@ -4,9 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UploadImageRequest;
-use App\Models\Entities\Images;
 use App\Models\Services\ImageService;
-use Illuminate\Http\Request;
 
 class DashboardImagesUploadController extends Controller
 {

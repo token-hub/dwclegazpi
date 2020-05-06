@@ -383,13 +383,15 @@ var notification = document.querySelector('.notification');
 var notificationMessage = document.querySelector('.notification-content ul li');
 var notificationIcon = document.querySelector('.notification-icon i');
 
-if (notificationMessage.innerHTML !== '') {
-  notification.classList.toggle('notif-visible');
-  var type = notification.classList[1];
-  addNotificationIcon(type);
-  setTimeout(function () {
-    return hideNotification(type);
-  }, 3000);
+if (notificationMessage) {
+  if (notificationMessage.innerHTML !== '') {
+    notification.classList.toggle('notif-visible');
+    var type = notification.classList[1];
+    addNotificationIcon(type);
+    setTimeout(function () {
+      return hideNotification(type);
+    }, 3000);
+  }
 }
 
 function hideNotification(type) {
@@ -489,7 +491,18 @@ sidebarLinks.forEach(function (e) {
 var sliderImage = document.querySelectorAll('.slider-image img');
 var sliderBtn = document.querySelectorAll('.slider-btn');
 var reclickedImageCount = [];
-var imageNames = []; // active slider image when clicked
+var imageNames = [];
+
+if (sliderImage.length < 1) {
+  sliderBtn.forEach(function (e) {
+    e.setAttribute('hidden', '');
+  });
+} else {
+  sliderBtn.forEach(function (e) {
+    e.removeAttribute('hidden');
+  });
+} // active slider image when clicked
+
 
 sliderImage.forEach(function (e) {
   e.addEventListener('click', function () {

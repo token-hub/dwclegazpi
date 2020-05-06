@@ -2,7 +2,6 @@
 
 @section('wrapper-title', 'Inactive Image/s')
 @section('wrapper-body')
-	<meta name="csrf-token" content="{{ csrf_token() }}">
 	<div class='wrapper-content-slider'>
 		{!! Form::open(['url' => ['dashboard/images-inactive/image-upload'], 'method' => 'POST', 'enctype' => 'multipart/form-data']) !!}
 			{{Form::label('image_name', 'Select image/s to upload')}}

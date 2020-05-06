@@ -4,6 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use AppHttpRequestsRequest;
+use App\Rules\ImageUploadChecker;
 
 class UploadImageRequest extends FormRequest
 {
@@ -25,8 +26,8 @@ class UploadImageRequest extends FormRequest
     public function rules()
     {
          return [
-            "image_name"  => 'Required|Max:5000',
-            "image_name.*"  => 'Required|File|Image|Max:5000',
+            "image_name"  => ['Required', 'Max:5000', new ImageUploadChecker],
+            "image_name.*"  => ['Required', 'File', 'Image', 'Max:5000', new ImageUploadChecker],
         ];
     }
 }

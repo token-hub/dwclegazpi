@@ -3,6 +3,16 @@ const sliderBtn = document.querySelectorAll('.slider-btn');
 var reclickedImageCount = [];
 var imageNames = [];
 
+if (sliderImage.length < 1) {
+	sliderBtn.forEach(function(e){
+ 		e.setAttribute('hidden', '');
+ 	});
+} else {
+	sliderBtn.forEach(function(e){
+ 		e.removeAttribute('hidden');
+ 	});
+}
+
 // active slider image when clicked
 sliderImage.forEach(function(e){
 	e.addEventListener('click', function(){

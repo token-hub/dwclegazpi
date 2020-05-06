@@ -1,12 +1,4 @@
 <?php
-
-Route::get('/dashboard', 'Dashboard\Auth\LoginController@index');
-Route::post('/dashboard', 'Dashboard\Auth\LoginController@store');
-
-Route::get('/email/verify', 'Dashboard\Auth\VerificationController@show')->name('verification.notice');
-Route::get('/email/verify/{id}', 'Dashboard\Auth\VerificationController@verify')->name('verification.verify');
-Route::get('/email/resend', 'Dashboard\Auth\VerificationController@resend')->name('verification.resend');
-
 AdvancedRoute::controllers([
 	'/' => 'Web\HomeController',
     '/about-us' => 'Web\AboutUsController',
@@ -21,26 +13,53 @@ AdvancedRoute::controllers([
     '/email' => 'Web\EmailController',
 ]);
 
-Route::group([ 'middleware' => ['auth', 'verified'], 'verify' => true], function () { 
-  Route::get('/dashboard/home', 'Dashboard\DashboardController@index');
-  Route::get('/dashboard/register', 'Dashboard\Auth\RegisterController@index');
-  Route::post('/dashboard/register', 'Dashboard\Auth\RegisterController@store');
+// Route::namespace('Dashboard')->prefix('dashboard')->group([ 'middleware' => ['auth', 'verified'], 'verify' => true], function () { 
 
-  Route::post('/dashboard/logout', 'Dashboard\Auth\LoginController@destroy');
+Route::namespace('Dashboard')->prefix('dashboard')->group(function () { 
 
-  Route::get('/dashboard/profile/{user}', 'Dashboard\DashboardProfileController@show');
-  Route::get('/dashboard/profile/{user}/edit', 'Dashboard\DashboardProfileController@edit');
-  Route::patch('/dashboard/profile/{id}', 'Dashboard\DashboardProfileController@update');
+  Route::get('', 'Auth\LoginController@index');
 
-  Route::get('/dashboard/logs', 'Dashboard\DashboardLogsController@index');
-  Route::get('/dashboard/logs/{id}/date/{date}', 'Dashboard\DashboardLogsController@show');
-  Route::get('/dashboard/logsData', 'Dashboard\DashboardLogsDataController@index');
+  Route::post('', 'Auth\LoginController@store');
 
-  Route::get('/dashboard/images-active', 'Dashboard\DashboardImagesController@active');
-  Route::get('/dashboard/images-inactive', 'Dashboard\DashboardImagesController@inactive');
-  Route::post('/dashboard/images-inactive/image-remove-or-activate', 'Dashboard\DashboardImagesController@removeOrActivate');
-  Route::post('/dashboard/images-active/image-arrange-or-deactivate', 'Dashboard\DashboardImagesController@arrangeOrDeactivate');
-  Route::post('/dashboard/images-inactive/image-upload', 'Dashboard\DashboardImagesUploadController@store');
+  Route::get('/email/verify', 'Auth\VerificationController@show')->name('verification.notice');
+
+  Route::get('/email/verify/{id}', 'Auth\VerificationController@verify')->name('verification.verify');
+
+  Route::get('/email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
+
+  Route::get('/home', 'DashboardController@index');
+
+
+  Route::group([ 'middleware' => ['auth', 'verified'], 'verify' => true], function () { 
+
+    Route::get('/register', 'Auth\RegisterController@index');
+    
+    Route::post('/register', 'Auth\RegisterController@store');
+
+    Route::post('/logout', 'Auth\LoginController@destroy');
+
+    Route::get('/profile/{user}', 'DashboardProfileController@show');
+    
+    Route::get('/profile/{user}/edit', 'DashboardProfileController@edit');
+    
+    Route::patch('/profile/{id}', 'DashboardProfileController@update');
+
+    Route::get('/logs', 'DashboardLogsController@index');
+    
+    Route::get('/logs/{id}/date/{date}', 'DashboardLogsController@show');
+    
+    Route::get('/logsData', 'DashboardLogsDataController@index');
+
+    Route::get('/images-active', 'DashboardImagesController@active');
+
+    Route::post('/images-active/image-arrange-or-deactivate', 'DashboardImagesController@arrangeOrDeactivate');
+    
+    Route::get('/images-inactive', 'DashboardImagesController@inactive');
+    
+    Route::post('/images-inactive/image-remove-or-activate', 'DashboardImagesController@removeOrActivate');
+    
+    Route::post('/images-inactive/image-upload', 'DashboardImagesUploadController@store');
+  });
 
 });
 

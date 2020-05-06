@@ -38,15 +38,19 @@ class ImageTest extends TestCase
     /** @test */
     public function userCanUploadAnImage()
     {
+        $this->withoutExceptionHandling();
+        
         $user = factory(\App\Models\Entities\User::class)->create();
         
         \Storage::fake('local');
 
-       $response = $this->actingAs($user)
-            ->post('dashboard/images-inactive/image-upload', ['image_name' => 
+        $filePath = storage_path('app/public/img/slider/deleted/CIVIL.JPG'); # hmmm :'* this works?'
+
+        $response = $this->actingAs($user)
+            ->postJson('dashboard/images-inactive/image-upload', ['image_name' => 
                     [
-                        UploadedFile::fake()->image('file.png', 600, 600),
-                        UploadedFile::fake()->image('file2.png', 600, 600)
+                       new UploadedFile($filePath,'file.png', null, null, null, true),
+                       new UploadedFile($filePath,'file2.png', null, null, null, true)
                     ]
                 ]);
 
@@ -54,7 +58,6 @@ class ImageTest extends TestCase
        
         $this->assertCount(2, Images::all());   
         \Storage::disk('local')->assertExists("public/img/slider/inactive/file.png");
-
         \Storage::disk('local')->assertExists("public/img/slider/inactive/file2.png");
     }
 
@@ -66,11 +69,13 @@ class ImageTest extends TestCase
         
         \Storage::fake('local');
 
+        $filePath = storage_path('app/public/img/slider/deleted/CIVIL.JPG'); # hmmm :'* this works?'
+
         $response = $this->actingAs($user)
-            ->post('dashboard/images-inactive/image-upload', ['image_name' => 
+            ->postJson('dashboard/images-inactive/image-upload', ['image_name' => 
                     [
-                        UploadedFile::fake()->image('file.png', 600, 600),
-                        UploadedFile::fake()->image('file2.png', 600, 600)
+                       new UploadedFile($filePath,'file.png', null, null, null, true),
+                       new UploadedFile($filePath,'file2.png', null, null, null, true)
                     ]
                 ]);
 
@@ -95,15 +100,19 @@ class ImageTest extends TestCase
     /** @test */
     public function userCanRemoveAnImage()
     {
+        $this->withoutExceptionHandling();
+
        $user = factory(\App\Models\Entities\User::class)->create();
         
         \Storage::fake('local');
 
+        $filePath = storage_path('app/public/img/slider/deleted/CIVIL.JPG'); # sample file
+
         $response = $this->actingAs($user)
-            ->post('dashboard/images-inactive/image-upload', ['image_name' => 
+            ->postJson('dashboard/images-inactive/image-upload', ['image_name' => 
                     [
-                        UploadedFile::fake()->image('file.png', 600, 600),
-                        UploadedFile::fake()->image('file2.png', 600, 600)
+                       new UploadedFile($filePath,'file.png', null, null, null, true),
+                       new UploadedFile($filePath,'file2.png', null, null, null, true)
                     ]
                 ]);
             
@@ -131,11 +140,13 @@ class ImageTest extends TestCase
         
         \Storage::fake('local');
 
+        $filePath = storage_path('app/public/img/slider/deleted/CIVIL.JPG'); # hmmm :'* this works?'
+
         $response = $this->actingAs($user)
-            ->post('dashboard/images-inactive/image-upload', ['image_name' => 
+            ->postJson('dashboard/images-inactive/image-upload', ['image_name' => 
                     [
-                        UploadedFile::fake()->image('file.png', 600, 600),
-                        UploadedFile::fake()->image('file2.png', 600, 600)
+                       new UploadedFile($filePath,'file.png', null, null, null, true),
+                       new UploadedFile($filePath,'file2.png', null, null, null, true)
                     ]
                 ]);
 
@@ -173,11 +184,13 @@ class ImageTest extends TestCase
         
         \Storage::fake('local');
 
+        $filePath = storage_path('app/public/img/slider/deleted/CIVIL.JPG'); # hmmm :'* this works?'
+
         $response = $this->actingAs($user)
-            ->post('dashboard/images-inactive/image-upload', ['image_name' => 
+            ->postJson('dashboard/images-inactive/image-upload', ['image_name' => 
                     [
-                        UploadedFile::fake()->image('file.png', 600, 600),
-                        UploadedFile::fake()->image('file2.png', 600, 600)
+                       new UploadedFile($filePath,'file.png', null, null, null, true),
+                       new UploadedFile($filePath,'file2.png', null, null, null, true)
                     ]
                 ]);
 
