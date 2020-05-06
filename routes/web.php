@@ -1,6 +1,6 @@
 <?php
 AdvancedRoute::controllers([
-  '/' => 'Web\HomeController',
+	'/' => 'Web\HomeController',
     '/about-us' => 'Web\AboutUsController',
     '/admission' => 'Web\AdmissionController',
     '/academics' => 'Web\AcademicsController',
@@ -15,9 +15,7 @@ AdvancedRoute::controllers([
 
 // Route::namespace('Dashboard')->prefix('dashboard')->group([ 'middleware' => ['auth', 'verified'], 'verify' => true], function () { 
 
-
-
-Route::namespace('Dashboard')->prefix('dashboard')->group(function() { 
+Route::namespace('Dashboard')->prefix('dashboard')->group(function () { 
 
   Route::get('', 'Auth\LoginController@index');
 
@@ -30,7 +28,7 @@ Route::namespace('Dashboard')->prefix('dashboard')->group(function() {
   Route::get('/email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
 
   Route::get('/home', 'DashboardController@index');
-  
+
 
   Route::group([ 'middleware' => ['auth', 'verified'], 'verify' => true], function () { 
 
@@ -62,7 +60,7 @@ Route::namespace('Dashboard')->prefix('dashboard')->group(function() {
     
     Route::post('/images-inactive/image-upload', 'DashboardImagesUploadController@store');
   });
-  
+
 });
 
 
