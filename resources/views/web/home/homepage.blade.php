@@ -5,21 +5,17 @@
 
 	<!-- ---------------- [ slider show ] ---------------- -->
 	<div class="slideshow-container">
-		<?php
-			// loop for image slider
-			// foreach ($this->fileValue['images'] as $key => $image) { 
-			// 	echo "<div class='mySlides fade'>
-			// 		<img src='../../../public/img/slider/active/".$image."' class='img'>
-			// 	</div>";
-			// }
-			$imgArray = ['CPA', 'librarian', 'SYSTEMCOVER'];
-		?>
-		@foreach($imgArray as $img)
-			<div class='mySlides fade slides'>
-				<img src='/storage/img/slider/active/{{$img}}.jpg' class='img'>
-			</div>
-		@endforeach
-
+			@if(count($home['active_image']))
+				@foreach($home['active_image'] as $image)
+				 	<div class='mySlides fade slides'>
+						<img src="/storage/img/slider/active/{{ $image['image_name'] }}">
+				 	</div>
+				@endforeach
+			@else 
+				<div class='mySlides fade slides'>
+					<img src="/storage/img/slider/SYSTEMCOVER.jpg">
+			 	</div>
+			@endif
 		<div class="slide-show-btn">
 			<div class="slide-content">
 		  		<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -87,7 +83,7 @@
 		<div class='content'>
 			<h1>NEWS AND EVENTS</h1>
 				<div class="items">
-					@foreach($homeArrays['newsAndEvents'] as $newsAndEvents)
+					@foreach($home['newsAndEvents'] as $newsAndEvents)
 						<div class='values'>
 							<img src="/storage/img/newsAndEvents/{{ $newsAndEvents['image'] }}">
 							<p class='bold DidactGothic'>{{ $newsAndEvents['title'] }}</p>

@@ -47,22 +47,21 @@
 				@endforeach
 			@else
 			
-			@if($log['properties'][0] !== null)
-				@foreach($log['properties'] as $key => $first)
-					@foreach($first as $key2 => $second)
-						<p>
-							@if($key2 == 'old')
-								@foreach($second as $key3 => $third)
-									{{ ucwords($key3).'(old): '.$third.' ' }}
-								@endforeach
-							@else 
-								@foreach($second as $key3 => $third)
-									{{ ucwords($key3).'(new): '.$third.' ' }}
-								@endforeach
-							@endif
-						</p>
-					@endforeach	
-				@endforeach
-			@endif	
+			@foreach($log['properties'] as $key => $first)
+				@foreach($first as $key2 => $second)
+					
+						@if($key2 == 'old')
+							@foreach($second as $key3 => $third)
+								<p>{{ ucwords($key3).'(old): '.$third.' ' }}</p>
+							@endforeach
+						@else 
+						
+							
+							@foreach($second as $key3 => $third)
+								<p>{{ ucwords($key3).'(new): '.$third.' ' }}</p>
+							@endforeach
+						@endif
+				@endforeach	
+			@endforeach
 		@endif
 	@endsection

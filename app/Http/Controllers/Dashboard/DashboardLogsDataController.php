@@ -4,6 +4,12 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Models\Services\LogService;
 use App\Http\Controllers\Controller;
+<<<<<<< HEAD
+=======
+use Spatie\Activitylog\Models\Activity;
+use yajra\Datatables\Datatables;
+use App\Models\Entities\user;
+>>>>>>> uploadImage
 
 class DashboardLogsDataController extends Controller
 {

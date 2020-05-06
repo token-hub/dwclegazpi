@@ -383,13 +383,15 @@ var notification = document.querySelector('.notification');
 var notificationMessage = document.querySelector('.notification-content ul li');
 var notificationIcon = document.querySelector('.notification-icon i');
 
-if (notificationMessage.innerHTML !== '') {
-  notification.classList.toggle('notif-visible');
-  var type = notification.classList[1];
-  addNotificationIcon(type);
-  setTimeout(function () {
-    return hideNotification(type);
-  }, 3000);
+if (notificationMessage) {
+  if (notificationMessage.innerHTML !== '') {
+    notification.classList.toggle('notif-visible');
+    var type = notification.classList[1];
+    addNotificationIcon(type);
+    setTimeout(function () {
+      return hideNotification(type);
+    }, 3000);
+  }
 }
 
 function hideNotification(type) {
@@ -488,12 +490,25 @@ sidebarLinks.forEach(function (e) {
 
 var sliderImage = document.querySelectorAll('.slider-image img');
 var sliderBtn = document.querySelectorAll('.slider-btn');
-var reclickedImageCount = []; // active slider image when clicked
+var reclickedImageCount = [];
+var imageNames = [];
+
+if (sliderImage.length < 1) {
+  sliderBtn.forEach(function (e) {
+    e.setAttribute('hidden', '');
+  });
+} else {
+  sliderBtn.forEach(function (e) {
+    e.removeAttribute('hidden');
+  });
+} // active slider image when clicked
+
 
 sliderImage.forEach(function (e) {
   e.addEventListener('click', function () {
     e.parentNode.classList.toggle('slider-image-active');
-    var activeImageCnt = document.querySelectorAll('.slider-image-active').length; // enabled / disabled slider btn
+    var activeImageCnt = document.querySelectorAll('.slider-image-active').length;
+    var imageName = e.src.split("/").pop(); // enabled / disabled slider btn
 
     sliderBtn.forEach(function (e) {
       activeImageCnt > 0 ? e.removeAttribute('disabled') : e.setAttribute('disabled', '');
@@ -510,6 +525,7 @@ sliderImage.forEach(function (e) {
       }
 
       e.parentNode.append(imageCount);
+      imageNames.push(imageName);
     } else {
       // check if there's a image count append next to img, if true remove it
       if (e.nextElementSibling) {
@@ -519,7 +535,65 @@ sliderImage.forEach(function (e) {
       }
     }
   });
+}); // slider button clicked (Activate btn | Remove btn)
+
+sliderBtn.forEach(function (e) {
+  e.addEventListener('click', function () {
+    var SliderBtnType = imageActionType(e.innerHTML);
+    var myJsonData = {
+      'imgs_type': SliderBtnType,
+      'images': imageNames
+    };
+
+    if (SliderBtnType == 'remove' || SliderBtnType == 'activate') {
+      sendData(myJsonData, '/dashboard/images-inactive/image-remove-or-activate', 'images-inactive');
+    } else {
+      sendData(myJsonData, '/dashboard/images-active/image-arrange-or-deactivate', 'images-active');
+    }
+  });
 });
+
+function sendData(data, url, redirect) {
+  $.ajaxSetup({
+    headers: {
+      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+  });
+  $.ajax({
+    type: 'POST',
+    url: url,
+    data: data,
+    success: function success(data) {
+      window.location = redirect;
+      console.log(data);
+    },
+    error: function error(data) {
+      console.log('Error:', data);
+    }
+  });
+}
+
+function imageActionType(type) {
+  switch (type) {
+    case 'Deactivate image':
+      SliderBtnType = 'deactivate';
+      break;
+
+    case 'Activate image':
+      SliderBtnType = 'activate';
+      break;
+
+    case 'Remove image':
+      SliderBtnType = 'remove';
+      break;
+
+    case 'Arrange image':
+      SliderBtnType = 'arrange';
+      break;
+  }
+
+  return SliderBtnType;
+}
 
 /***/ }),
 

@@ -2,12 +2,14 @@ var notification = document.querySelector('.notification');
 var notificationMessage = document.querySelector('.notification-content ul li');
 var notificationIcon  = document.querySelector('.notification-icon i');
 	
-if (notificationMessage.innerHTML !== '') {
-	notification.classList.toggle('notif-visible');
-	var type = notification.classList[1];
+if (notificationMessage) {
+	if (notificationMessage.innerHTML !== '') {
+		notification.classList.toggle('notif-visible');
+		var type = notification.classList[1];
 
-	addNotificationIcon(type)
-	setTimeout(function(){ return hideNotification(type); }, 3000);
+		addNotificationIcon(type)
+		setTimeout(function(){ return hideNotification(type); }, 3000);
+	}
 }
 
 function hideNotification(type) {

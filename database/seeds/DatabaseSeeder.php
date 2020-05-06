@@ -15,5 +15,6 @@ class DatabaseSeeder extends Seeder
        	 $user->Personal_info()->save(factory(App\Models\Entities\Personal_info::class)->make());
        	 $user->Departments()->save(factory(App\Models\Entities\Departments::class)->make());
        });
+       $this->call(ImageSeeder::class);
     }
 }

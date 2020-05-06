@@ -1,12 +1,24 @@
 const sliderImage = document.querySelectorAll('.slider-image img');
 const sliderBtn = document.querySelectorAll('.slider-btn');
 var reclickedImageCount = [];
+var imageNames = [];
+
+if (sliderImage.length < 1) {
+	sliderBtn.forEach(function(e){
+ 		e.setAttribute('hidden', '');
+ 	});
+} else {
+	sliderBtn.forEach(function(e){
+ 		e.removeAttribute('hidden');
+ 	});
+}
 
 // active slider image when clicked
 sliderImage.forEach(function(e){
 	e.addEventListener('click', function(){
 		e.parentNode.classList.toggle('slider-image-active');
 		var activeImageCnt = document.querySelectorAll('.slider-image-active').length;
+		var imageName = e.src.split("/").pop();
 
 		// enabled / disabled slider btn
 		 sliderBtn.forEach(function(e){
@@ -25,6 +37,8 @@ sliderImage.forEach(function(e){
 			}
 
 			e.parentNode.append(imageCount);
+			imageNames.push(imageName);
+		
 		} else {
 			// check if there's a image count append next to img, if true remove it
 			if (e.nextElementSibling) {
@@ -37,3 +51,59 @@ sliderImage.forEach(function(e){
 	});
 });
 
+// slider button clicked (Activate btn | Remove btn)
+sliderBtn.forEach(function(e){
+	e.addEventListener('click', function(){
+		var SliderBtnType = imageActionType(e.innerHTML);
+
+	    var myJsonData = { 'imgs_type' : SliderBtnType, 'images' : imageNames};
+
+	    if (SliderBtnType == 'remove' || SliderBtnType == 'activate') {
+	    	sendData(myJsonData, '/dashboard/images-inactive/image-remove-or-activate', 'images-inactive');
+	    } else  {
+			sendData(myJsonData, '/dashboard/images-active/image-arrange-or-deactivate', 'images-active');
+	  	}
+
+	});
+});
+
+function sendData(data, url, redirect) {
+    $.ajaxSetup({
+		headers: {
+			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+		}
+	});
+
+     $.ajax({
+	    type: 'POST',
+	    url: url,
+	    data: data,
+	    success: function(data) {
+	        window.location = redirect;
+	        console.log(data); 
+	    },
+	    error: function(data) {
+	        console.log('Error:', data);
+	    },
+	});
+}
+
+function imageActionType(type)
+{
+	switch(type) {
+	  case 'Deactivate image':
+	    	SliderBtnType = 'deactivate';
+	    break;
+	  case 'Activate image':
+	   		SliderBtnType = 'activate';
+	    break;
+	  case 'Remove image':
+	  		SliderBtnType = 'remove';
+	  	break;
+	  case 'Arrange image':
+	  		SliderBtnType = 'arrange';
+	  	break;
+	}
+
+	return SliderBtnType;
+}

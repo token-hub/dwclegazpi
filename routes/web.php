@@ -1,10 +1,12 @@
 <?php
-
 Route::get('/dashboard', 'Dashboard\Auth\LoginController@index');
+
 Route::post('/dashboard', 'Dashboard\Auth\LoginController@store');
 
 Route::get('/email/verify', 'Dashboard\Auth\VerificationController@show')->name('verification.notice');
+
 Route::get('/email/verify/{id}', 'Dashboard\Auth\VerificationController@verify')->name('verification.verify');
+
 Route::get('/email/resend', 'Dashboard\Auth\VerificationController@resend')->name('verification.resend');
 
 AdvancedRoute::controllers([
@@ -22,22 +24,36 @@ AdvancedRoute::controllers([
 ]);
 
 Route::group([ 'middleware' => ['auth', 'verified'], 'verify' => true], function () { 
+
   Route::get('/dashboard/home', 'Dashboard\DashboardController@index');
+  
   Route::get('/dashboard/register', 'Dashboard\Auth\RegisterController@index');
+  
   Route::post('/dashboard/register', 'Dashboard\Auth\RegisterController@store');
 
   Route::post('/dashboard/logout', 'Dashboard\Auth\LoginController@destroy');
 
   Route::get('/dashboard/profile/{user}', 'Dashboard\DashboardProfileController@show');
+  
   Route::get('/dashboard/profile/{user}/edit', 'Dashboard\DashboardProfileController@edit');
+  
   Route::patch('/dashboard/profile/{id}', 'Dashboard\DashboardProfileController@update');
 
   Route::get('/dashboard/logs', 'Dashboard\DashboardLogsController@index');
+  
   Route::get('/dashboard/logs/{id}/date/{date}', 'Dashboard\DashboardLogsController@show');
+  
   Route::get('/dashboard/logsData', 'Dashboard\DashboardLogsDataController@index');
 
   Route::get('/dashboard/images-active', 'Dashboard\DashboardImagesController@active');
+
+  Route::post('/dashboard/images-active/image-arrange-or-deactivate', 'Dashboard\DashboardImagesController@arrangeOrDeactivate');
+  
   Route::get('/dashboard/images-inactive', 'Dashboard\DashboardImagesController@inactive');
+  
+  Route::post('/dashboard/images-inactive/image-remove-or-activate', 'Dashboard\DashboardImagesController@removeOrActivate');
+  
+  Route::post('/dashboard/images-inactive/image-upload', 'Dashboard\DashboardImagesUploadController@store');
 });
 
 
