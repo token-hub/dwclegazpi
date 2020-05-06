@@ -13,8 +13,6 @@ AdvancedRoute::controllers([
     '/email' => 'Web\EmailController',
 ]);
 
-// Route::namespace('Dashboard')->prefix('dashboard')->group([ 'middleware' => ['auth', 'verified'], 'verify' => true], function () { 
-
 Route::namespace('Dashboard')->prefix('dashboard')->group(function () { 
 
   Route::get('', 'Auth\LoginController@index');
