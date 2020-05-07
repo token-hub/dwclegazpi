@@ -8,7 +8,6 @@ use Tests\TestCase;
 use App\Models\Entities\User;
 use App\Models\Entities\Personal_info;
 use App\Models\Entities\Departments;
-use App\Models\Entities\User_access;
 use Illuminate\Support\Facades\Auth;
 
 class RegistrationTest extends TestCase
@@ -38,8 +37,8 @@ class RegistrationTest extends TestCase
 
 
   /** @test */
-  public function admin_can_register_a_user() {
-    $this->withoutExceptionHandling();
+  public function admin_can_register_a_user() 
+  {
     $user = User::create($this->data());
 
     $response = $this->actingAs($user)
@@ -51,13 +50,11 @@ class RegistrationTest extends TestCase
             'username' => 'username',
             'password' => 'passwor2',
             'department_name' => 'shom',
-            'user_access' => 'add',
         ]);
   
     $this->assertCount(2, User::all());
     $this->assertCount(1, Personal_info::all());
     $this->assertCount(1, Departments::all());
-    $this->assertCount(1, User_access::all());
 
     $response->assertRedirect('dashboard/register');
   }

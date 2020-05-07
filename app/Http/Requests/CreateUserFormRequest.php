@@ -31,7 +31,6 @@ class CreateUserFormRequest extends FormRequest
             'gender' => 'required',
             'department_name' => 'required',
             'email' => 'required|email|unique:users,email',
-            'user_access' => 'required'
         ];
     }
 

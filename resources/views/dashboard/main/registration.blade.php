@@ -50,11 +50,6 @@
 					['placeholder' => '', 'class' => 'input-control', 'id' => 'department', 'required' => 'required']); !!}
 				{!! Form::label('department', 'Department') !!}
 			</div>
-			
-			<div class='dashboard-input'>
-				{!! Form::select('user_access', ['view' => 'View', 'add' => 'Add', 'edit' => 'Edit', 'delete' => 'Delete'], 0, ['placeholder' => '', 'class' => 'input-control', 'id' => 'user_access', 'required' => 'required']) !!}
-				{!! Form::label('user_access', 'System Access', ['aria-required' => 'true']) !!}
-			</div>
 
 			<div class='dashboard-submit-button'>
 				{{ Form::submit('Register')}}

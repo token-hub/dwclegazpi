@@ -1,4 +1,5 @@
 <?php
+
 AdvancedRoute::controllers([
 	'/' => 'Web\HomeController',
     '/about-us' => 'Web\AboutUsController',
@@ -13,8 +14,6 @@ AdvancedRoute::controllers([
     '/email' => 'Web\EmailController',
 ]);
 
-// Route::namespace('Dashboard')->prefix('dashboard')->group([ 'middleware' => ['auth', 'verified'], 'verify' => true], function () { 
-
 Route::namespace('Dashboard')->prefix('dashboard')->group(function () { 
 
   Route::get('', 'Auth\LoginController@index');
@@ -28,7 +27,6 @@ Route::namespace('Dashboard')->prefix('dashboard')->group(function () {
   Route::get('/email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
 
   Route::get('/home', 'DashboardController@index');
-
 
   Route::group([ 'middleware' => ['auth', 'verified'], 'verify' => true], function () { 
 
@@ -64,3 +62,11 @@ Route::namespace('Dashboard')->prefix('dashboard')->group(function () {
 });
 
 
+  // Route::get('/sample', function(){
+  //   $permission = App\Models\Entities\Permissions::first();
+
+  //   $role = App\Models\Entities\Roles::first();
+
+  //   $role->permissions()->attach([1, 3]);
+
+  // });

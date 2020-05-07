@@ -48,30 +48,32 @@ class User extends Authenticatable implements MustVerifyEmail
         'email_verified_at' => 'datetime',
     ];
 
-     # overwrite the email verification
+    # overwrite the email verification
     public function sendEmailVerificationNotification()
     {
         $this->notify(new \App\Notifications\VerifyEmailQueued);
     }
     
+    # relationship to roles table
+    public function roles()
+    {
+        return $this->belongsToMany(Roles::class, 'user_role', 'user_id', 'role_id')->withTimestamps();
+    }
+
     # relationship to personal_info table
-    public function personal_info() {
-        return $this->hasOne('App\Models\Entities\Personal_info', 'user_id'); 
+    public function personal_info() 
+    {
+        return $this->hasOne(Personal_info::class, 'user_id'); 
     }
 
     # relationship to departments table
-    public function departments() {
-        return $this->hasOne('App\Models\Entities\Departments', 'user_id'); 
+    public function departments() 
+    {
+        return $this->hasOne(Departments::class, 'user_id'); 
     }
 
-    # relationship to user_access table
-    public function user_access() {
-        return $this->hasOne('App\Models\Entities\User_access', 'user_id'); 
-    }
-
-    public function getIsActiveAttribute($data) {
+    public function getIsActiveAttribute($data) 
+    {
         return $data == 0 ? 'Inactive' : 'Active';
     }
-
-
 }
