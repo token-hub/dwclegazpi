@@ -22,31 +22,14 @@ class DashboardLogsController extends Controller
     	return view('dashboard.main.logs');
     }
 
-    public function show($id, $date) { 
+    public function show($id, $date) 
+    { 
+        $log = $this->logService->show($id, $date);
+        return view('dashboard.main.logs-view')->with('log', $log);
+    }
 
-        $logs = Activity::where('Activity_log.causer_id', $id)
-        	->where('Activity_log.created_at', $date)
-            ->leftJoin('users', 'users.id', '=', 'causer_id')
-            ->get(['*', 'Activity_log.created_at'])
-            ->sortByDesc('Activity_log.id');
-
-        # get all the activity properties
-        $properties = $logs->filter(function($logItem){
-            return $logItem->properties != '[]';
-        })->map(function($item){
-            return !empty($item->properties['old']) 
-            ? array('old' => $item->properties['old'], 'new' => $item->properties['attributes']) 
-            : array('old' => [], 'new' => $item->properties['attributes']);
-        });
-
-        # get the causer id
-        $subject_username = User::find($logs[0]['causer_id'])['username'];
-
-        # create a single array out of the logs
-        $newLog = array_merge($logs[0]->toArray(),
-        	['properties' => $properties->toArray(),
-             'subject_username' => $subject_username]);
-
-		return view('dashboard.main.logs-view')->with('log', $newLog);
+    public function logsData()
+    {
+        return $this->logService->logsData();
     }
 }

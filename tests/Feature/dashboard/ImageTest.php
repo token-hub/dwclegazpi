@@ -16,8 +16,6 @@ class ImageTest extends TestCase
     /** @test */
     public function checkActiveImagePageWithAuthenticatedUser()
     {
-        $this->withoutExceptionHandling();
-
         $user = factory(\App\Models\Entities\User::class)->create();
 
         $this->actingAs($user)
@@ -29,9 +27,6 @@ class ImageTest extends TestCase
     /** @test */
     public function checkInactiveImagePageWithAuthenticatedUser()
     {
-
-        $this->withoutExceptionHandling();
-
         $user = factory(\App\Models\Entities\User::class)->create();
 
         $this->actingAs($user)
@@ -43,8 +38,7 @@ class ImageTest extends TestCase
     /** @test */
     public function userCanUploadAnImage()
     {
-        $this->withoutExceptionHandling();
-        
+       
         $user = factory(\App\Models\Entities\User::class)->create();
         
         \Storage::fake('local');
@@ -69,8 +63,7 @@ class ImageTest extends TestCase
     /** @test */
     public function userCanActivateAnImage()
     {
-        $this->withoutExceptionHandling();
-       $user = factory(\App\Models\Entities\User::class)->create();
+      $user = factory(\App\Models\Entities\User::class)->create();
         
         \Storage::fake('local');
 
@@ -105,8 +98,6 @@ class ImageTest extends TestCase
     /** @test */
     public function userCanRemoveAnImage()
     {
-        $this->withoutExceptionHandling();
-
        $user = factory(\App\Models\Entities\User::class)->create();
         
         \Storage::fake('local');
@@ -141,8 +132,7 @@ class ImageTest extends TestCase
     /** @test */
     public function userCanArrangeImages()
     {
-       $this->withoutExceptionHandling();
-       $user = factory(\App\Models\Entities\User::class)->create();
+      $user = factory(\App\Models\Entities\User::class)->create();
         
         \Storage::fake('local');
 

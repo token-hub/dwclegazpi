@@ -15,7 +15,7 @@ class LogService
 		$this->logInterface = $logInterface;
 	}
 
-	public function index()
+	public function logsData()
 	{
 		$logs = $this->logInterface->getWhereCauserIdNotNull();
 

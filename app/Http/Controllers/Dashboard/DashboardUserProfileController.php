@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Services\ProfileService;
 use App\Models\Entities\User;
 
-class DashboardProfileController extends Controller
+class DashboardUserProfileController extends Controller
 {
     public function show(User $user)
     {

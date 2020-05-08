@@ -44,12 +44,27 @@
 
 				<div class="left-content">
 					<h4>CONTENTS</h4>
-					<div class='left-content-link'>
-						<i class='fa fa-home'></i><a href="{{url('dashboard/register')}}">Registration</a>
+					
+					<div class='left-content-link '>
+						<i class='fa fa-user-circle-o'></i><a href="#">User management</a>
+						<span class='fa fa-sort-desc'></span>
 					</div>
-					<div class='left-content-link'>
-						<i class='fa fa-user'></i><a href="{{url('dashboard/users')}}">Users</a>
+
+					<div class='content-dropdown'>
+						<div class='left-content-link'>
+							<i class='fa fa-user-plus'></i><a href="{{url('dashboard/register')}}">Registration</a>
+						</div>
+						<div class='left-content-link'>
+							<i class='fa fa-unlock'></i><a href="{{url('dashboard/images-active')}}">Permissions</a>
+						</div>
+						<div class='left-content-link'>
+							<i class='fa fa-briefcase'></i><a href="{{url('dashboard/images-inactive')}}">Roles</a>
+						</div>
+						<div class='left-content-link'>
+							<i class='fa fa-user'></i><a href="{{url('dashboard/users')}}">Users</a>
+						</div>
 					</div>
+
 					<div class='left-content-link '>
 						<i class='fa fa-sliders'></i><a href="#">Slider</a>
 						<span class='fa fa-sort-desc'></span>

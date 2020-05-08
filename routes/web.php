@@ -36,17 +36,21 @@ Route::namespace('Dashboard')->prefix('dashboard')->group(function () {
 
     Route::post('/logout', 'Auth\LoginController@destroy');
 
-    Route::get('/profile/{user}', 'DashboardProfileController@show');
+    Route::get('/users', 'DashboardUserController@index');
+
+    Route::get('/users-data', 'DashboardUserController@userData');
+
+    Route::get('/profile/{user}', 'DashboardUserProfileController@show');
     
-    Route::get('/profile/{user}/edit', 'DashboardProfileController@edit');
+    Route::get('/profile/{user}/edit', 'DashboardUserProfileController@edit');
     
-    Route::patch('/profile/{id}', 'DashboardProfileController@update');
+    Route::patch('/profile/{id}', 'DashboardUserProfileController@update');
 
     Route::get('/logs', 'DashboardLogsController@index');
     
     Route::get('/logs/{id}/date/{date}', 'DashboardLogsController@show');
     
-    Route::get('/logsData', 'DashboardLogsDataController@index');
+    Route::get('/logsData', 'DashboardLogsController@logsData');
 
     Route::get('/images-active', 'DashboardImagesController@active');
 

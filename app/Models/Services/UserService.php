@@ -37,4 +37,9 @@ class UserService
 	    
 		return $isDirty;
 	}
+
+	public function userData()
+	{
+		return 'asdasd';
+	}
 }

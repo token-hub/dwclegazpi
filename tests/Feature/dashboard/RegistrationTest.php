@@ -39,6 +39,8 @@ class RegistrationTest extends TestCase
   /** @test */
   public function admin_can_register_a_user() 
   {
+    $this->withoutExceptionHandling();
+
     $user = User::create($this->data());
 
     $response = $this->actingAs($user)
