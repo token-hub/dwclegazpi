@@ -5,7 +5,7 @@ namespace App\Models\Entities;
 use Illuminate\Database\Eloquent\Model;
 use App\Traits\LogsConfiguration;
 
-class Departments extends Model
+class Department extends Model
 {	
 
 	use LogsConfiguration;
@@ -16,7 +16,7 @@ class Departments extends Model
         'department_name', 'user_id'
     ];
 
-    public function user() {
+    public function users() {
     	return $this->belongsTo(User::class);
     }
 

@@ -32,7 +32,7 @@
 						'soecs' => 'SOECS',
 						'sbma' => 'SBMA',
 						'gsbm' => 'GSBM'
-						], strtolower($user->departments->name), ['class' => 'input-control', 'id' => 'department_name']) !!} 
+						], strtolower($user->department->name), ['class' => 'input-control', 'id' => 'department_name']) !!} 
 					{!! Form::label('department_name', 'Department') !!}
 				</div>
 

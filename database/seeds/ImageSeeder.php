@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\Entities\Images;
+use App\Models\Entities\Image;
 
 class ImageSeeder extends Seeder
 {
@@ -19,7 +19,7 @@ class ImageSeeder extends Seeder
         ];
 
         foreach ($images as $image) {
-            Images::create(array(
+            Image::create(array(
                 'image_name' => $image["image_name"],
                 'is_active' => $image["is_active"],
                 'number' => $image["number"],

@@ -31,12 +31,12 @@ class ProfileService
 	    $user->personal_info->gender = $data['gender'];
 
 	    # update department
-	    $user->departments->department_name = $data['department_name'];
+	    $user->department->department_name = $data['department_name'];
 
 	    $user->push();
 
 	    # check if changes happened in the database
-	    if ($user->wasChanged() || $user->personal_info->wasChanged() || $user->departments->wasChanged()) {
+	    if ($user->wasChanged() || $user->personal_info->wasChanged() || $user->department->wasChanged()) {
 	    	 $notification = ['message' => 'Information updated!', 'type' => 'notif-success'];
 	    } else {
 	    	$notification = ['message' => 'Nothing to update.', 'type' => 'notif-info'];

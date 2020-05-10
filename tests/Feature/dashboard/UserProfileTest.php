@@ -12,8 +12,7 @@ class UserProfileTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
-    public function check_user_profile_page_with_authenticated_user() 
+    public function test_check_user_profile_page_with_authenticated_user() 
     {     
         factory(User::class, 1)
             ->create()
@@ -21,8 +20,8 @@ class UserProfileTest extends TestCase
                  $usery->Personal_info()
                  ->save(factory(\App\Models\Entities\Personal_info::class)->make());
 
-                 $usery->Departments()
-                 ->save(factory(\App\Models\Entities\Departments::class)->make());
+                 $usery->Department()
+                 ->save(factory(\App\Models\Entities\Department::class)->make());
 
                   $this->actingAs($usery)
                     ->get('/dashboard/profile/'.$usery->id)
@@ -32,8 +31,7 @@ class UserProfileTest extends TestCase
         $this->assertNotNull(Auth::id());
     }
 
-    /** @test */
-    public function check_user_profile_update_page_with_authenticated_user() 
+    public function test_check_user_profile_update_page_with_authenticated_user() 
     {
          factory(User::class, 1)
             ->create()
@@ -41,8 +39,8 @@ class UserProfileTest extends TestCase
                  $usery->Personal_info()
                  ->save(factory(\App\Models\Entities\Personal_info::class)->make());
 
-                 $usery->Departments()
-                 ->save(factory(\App\Models\Entities\Departments::class)->make());
+                 $usery->Department()
+                 ->save(factory(\App\Models\Entities\Department::class)->make());
 
                   $this->actingAs($usery)
                     ->get('/dashboard/profile/'.$usery->id.'/edit');
@@ -51,19 +49,16 @@ class UserProfileTest extends TestCase
         $this->assertNotNull(Auth::id());
     }
 
-    /** @test */
-    public function update_person_info_with_authenticated_user() 
+    public function test_update_person_info_with_authenticated_user() 
     {
-        $this->withoutExceptionHandling();
-        
         factory(User::class, 1)
             ->create()
             ->each(function ($usery) {
                  $usery->Personal_info()
                  ->save(factory(\App\Models\Entities\Personal_info::class)->make());
 
-                 $usery->Departments()
-                 ->save(factory(\App\Models\Entities\Departments::class)->make());
+                 $usery->Department()
+                 ->save(factory(\App\Models\Entities\Department::class)->make());
 
                    $response = $this->actingAs($usery)
                     ->patch('/dashboard/profile/'.$usery->id, 

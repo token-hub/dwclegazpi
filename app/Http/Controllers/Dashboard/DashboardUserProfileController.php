@@ -11,12 +11,12 @@ class DashboardUserProfileController extends Controller
 {
     public function show(User $user)
     {
-    	return view('dashboard.profile.view')->with('user', $user);
+    	return view('dashboard.main.profile.show')->with('user', $user);
     }
 
     public function edit(User $user) 
     {
-    	return view('dashboard.profile.update')->with('user', $user);
+    	return view('dashboard.main.profile.update')->with('user', $user);
     }
 
     public function update($id, UpdateUserFormRequest $request, ProfileService $profileService) 

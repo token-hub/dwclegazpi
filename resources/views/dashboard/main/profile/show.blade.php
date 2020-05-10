@@ -14,7 +14,7 @@
 			<p>{{$user->personal_info->firstname}}</p>
 			<p>{{$user->personal_info->lastname}}</p>
 			<p>{{$user->personal_info->gender}}</p>
-			<p>{{strtoupper($user->departments->department_name)}}</p>
+			<p>{{strtoupper($user->department->department_name)}}</p>
 			<p>*******</p>
 
 			{!! Form::open(['url' => ['dashboard/profile/'.$user->id.'/edit'], 'method' => 'GET']) !!}

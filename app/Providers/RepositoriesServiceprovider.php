@@ -18,6 +18,10 @@ class RepositoriesServiceprovider extends ServiceProvider
         $this->app->bind(\App\Models\Repositories\LogInterface::class, \App\Models\Repositories\Eloquent\LogRepository::class);
 
         $this->app->bind(\App\Models\Repositories\ImageInterface::class, \App\Models\Repositories\Eloquent\ImageRepository::class);
+
+        $this->app->bind(\App\Models\Repositories\RoleInterface::class, \App\Models\Repositories\Eloquent\RoleRepository::class);
+
+        $this->app->bind(\App\Models\Repositories\PermissionInterface::class, \App\Models\Repositories\Eloquent\PermissionRepository::class);
     }
 
     /**

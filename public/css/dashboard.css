@@ -131,6 +131,12 @@ body * {
   height: 50px;
 }
 
+.dashboard-input .checkboxes {
+  width: 100%;
+  border-bottom: 1px solid #525257;
+  padding: 8px;
+}
+
 .dashboard-input .input-control {
   width: 100%;
   background: transparent;
@@ -608,11 +614,18 @@ body * {
   width: 100%;
 }
 
-.wrapper h3 {
+.wrapper .wrapper-header {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: justify;
+          justify-content: space-between;
+}
+
+.wrapper .wrapper-header h3 {
   margin: 0;
 }
 
-.wrapper h3.middle {
+.wrapper .wrapper-header h3.middle {
   text-align: center;
 }
 

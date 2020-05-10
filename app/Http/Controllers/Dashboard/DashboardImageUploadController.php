@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\UploadImageRequest;
 use App\Models\Services\ImageService;
 
-class DashboardImagesUploadController extends Controller
+class DashboardImageUploadController extends Controller
 {
 	protected $imageService;
 

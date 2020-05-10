@@ -2,7 +2,7 @@
 
 namespace App\Models\Services;
 
-use App\Models\Entities\Images;
+use App\Models\Entities\Image;
 use App\Models\Repositories\ImageInterface;
 
 class ImageService 

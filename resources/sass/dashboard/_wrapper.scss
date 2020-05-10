@@ -5,12 +5,17 @@
     min-height: 570px;
     width: 100%;
 
-    h3 {
-    	margin: 0;
-    }
+    .wrapper-header {
+        display:flex;
+        justify-content: space-between;
 
-    h3.middle {
-    	text-align: center;
+        h3 {
+            margin: 0;
+        }
+
+        h3.middle {
+            text-align: center;
+        }
     }
 }
 

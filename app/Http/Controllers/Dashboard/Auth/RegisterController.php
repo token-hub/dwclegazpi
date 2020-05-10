@@ -8,13 +8,13 @@ use App\Http\Requests\CreateUserFormRequest;
 use App\Services\UserService;
 use App\Models\Entities\User;
 use App\Models\Entities\Personal_info;
-use App\Models\Entities\Departments;
+use App\Models\Entities\Department;
 
 class RegisterController extends Controller
 {
   public function index() 
   {
-    return view('dashboard/main.registration');
+    return view('dashboard.main.user.registration');
   }
 
   public function store(CreateUserFormRequest $request) 
@@ -23,7 +23,7 @@ class RegisterController extends Controller
     $user = User::create(array_merge($request->only(['username', 'email']), ['password' => \Hash::make($request->password)]));
 
     # add department
-    Departments::create(array_merge($request->only(['department_name']),['user_id' => $user->id]));
+    Department::create(array_merge($request->only(['department_name']),['user_id' => $user->id]));
     
     # add personal info
     Personal_info::create(array_merge($request->only(['firstname', 'lastname', 'gender']),['user_id' => $user->id]));

@@ -1,4 +1,5 @@
 const inputs = document.querySelectorAll('.input-control');
+const checkboxes = document.querySelector('.checkboxes');
 const labels = document.querySelectorAll('.dashboard-input label');
 const showHidePassword = document.querySelectorAll('.password');
 const eye  = document.querySelectorAll('.password-content i');
@@ -25,7 +26,13 @@ inputs.forEach(function(e){
 				});
 		}); 
 	}
-}); 
+});
+
+if (checkboxes) {
+	console.log(checkboxes.firstElementChild.name);
+	const label = document.querySelector('label[for="'+checkboxes.firstElementChild.name+'"]');
+	label.classList.add('dashboard-input-focus');
+} 
 
 // ========== [ SHOW/HIDE PASSWORD EYE FUNCTION ] ==========
 if (showHidePassword) {

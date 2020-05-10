@@ -7,15 +7,14 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\Entities\User;
 use App\Models\Entities\Personal_info;
-use App\Models\Entities\Departments;
+use App\Models\Entities\Department;
 use Illuminate\Support\Facades\Auth;
 
 class RegistrationTest extends TestCase
 {
   use RefreshDatabase;
 
-  /** @test */
-  public function check_registration_page_with_authenticated_user() 
+  public function test_check_registration_page_with_authenticated_user() 
   {
     $user = User::create($this->data());
 
@@ -26,8 +25,7 @@ class RegistrationTest extends TestCase
     $this->assertNotNull(Auth::id());
   }
 
-  /** @test */
-  public function check_registration_page_with_unauthenticated_user() 
+  public function test_check_registration_page_with_unauthenticated_user() 
   {
     $response = $this->get('dashboard/register');
     $response->assertRedirect('dashboard');
@@ -36,8 +34,7 @@ class RegistrationTest extends TestCase
   }
 
 
-  /** @test */
-  public function admin_can_register_a_user() 
+  public function test_admin_can_register_a_user() 
   {
     $this->withoutExceptionHandling();
 
@@ -56,7 +53,7 @@ class RegistrationTest extends TestCase
   
     $this->assertCount(2, User::all());
     $this->assertCount(1, Personal_info::all());
-    $this->assertCount(1, Departments::all());
+    $this->assertCount(1, Department::all());
 
     $response->assertRedirect('dashboard/register');
   }

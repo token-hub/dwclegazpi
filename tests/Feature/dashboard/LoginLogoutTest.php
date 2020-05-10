@@ -12,15 +12,14 @@ class LoginLogoutTest extends TestCase
 {
     use RefreshDatabase;
 
-    /** @test */
-    public function show_login_page() 
+    public function test_show_login_page() 
     {
+        $this->withoutExceptionHandling();
         $this->get('dashboard')
              ->assertOk();
     }
 
-    /** @test */
-    public function login_user_with_correct_credentials()
+    public function test_login_user_with_correct_credentials()
     {
         $user = User::create(array_merge($this->data(), ['is_active' => '1']));
 
@@ -33,8 +32,7 @@ class LoginLogoutTest extends TestCase
         $this->assertNotNull(Auth::id());
     }
 
-    /** @test */
-    public function login_user_with_incorrect_credentials() 
+    public function test_login_user_with_incorrect_credentials() 
     {
         User::create($this->data());
 
@@ -45,15 +43,13 @@ class LoginLogoutTest extends TestCase
         $this->assertNull(Auth::id());
     }
 
-     /** @test */
-     public function username_is_required() 
+     public function test_username_is_required() 
      {
          $response = $this->post('dashboard', array_merge($this->data(), ['username' => '']))
             ->assertSessionHasErrors('username');
      }
 
-     /** @test */
-     public function logout() 
+     public function test_logout() 
      {
         $this->withoutExceptionHandling();
         
@@ -67,8 +63,7 @@ class LoginLogoutTest extends TestCase
         $this->assertNull(Auth::id());
      }
 
-     /** @test */
-     public function test_remember_me_functionality()
+     public function test_remember_me_functionatest_lity()
      {
 
        $user = User::create(array_merge($this->data(), ['is_active' => '1', 'remember' => true]));

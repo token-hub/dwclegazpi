@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Services\ImageService;
 use Illuminate\Http\Request;
 
-class DashboardImagesController extends Controller
+class DashboardImageController extends Controller
 {
 	protected $imageService;
 
@@ -18,13 +18,13 @@ class DashboardImagesController extends Controller
     public function active()
     {	
     	$active = $this->imageService->activeChunk();
-    	return view('dashboard.main.active-images')->with('active', $active);
+    	return view('dashboard.main.image.active')->with('active', $active);
     }
 
     public function inactive()
     {
     	$inactive = $this->imageService->inactiveChunk();
-    	return view('dashboard.main.inactive-images')->with('inactive', $inactive);
+    	return view('dashboard.main.image.inactive')->with('inactive', $inactive);
     }
 
     # This function is accessed by an ajax request

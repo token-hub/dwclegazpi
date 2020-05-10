@@ -17,7 +17,7 @@ class LoginController extends Controller
 
     public function index() 
     {
-        return view('dashboard.login.login-page');
+        return view('dashboard.main.user.login-page');
     }
 
     public function store(LoginRequest $LoginRequest) 

@@ -4,7 +4,7 @@ namespace App\Models\Entities;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Permissions extends Model
+class Permission extends Model
 {
     protected static $logName = 'permission';
 
@@ -13,6 +13,6 @@ class Permissions extends Model
     # relationship to roles table
     public function roles() 
     {
-    	return $this->belongsToMany(Roles::class, 'role_permission', 'permission_id', 'role_id')->withTimestamps();
+    	return $this->belongsToMany(Roles::class)->withTimestamps();
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\Models\Entities\Roles;
+use App\Models\Entities\Role;
 
 class RoleSeeder extends Seeder
 {
@@ -20,7 +20,7 @@ class RoleSeeder extends Seeder
 
     	foreach($roles as $role)
     	{
-    		Roles::create($role);
+    		Role::create($role);
     	}
     }
 }

@@ -111,6 +111,7 @@ __webpack_require__(/*! ./dashboard/notification.js */ "./resources/js/dashboard
 /***/ (function(module, exports) {
 
 var inputs = document.querySelectorAll('.input-control');
+var checkboxes = document.querySelector('.checkboxes');
 var labels = document.querySelectorAll('.dashboard-input label');
 var showHidePassword = document.querySelectorAll('.password');
 var eye = document.querySelectorAll('.password-content i'); // ========== [ FORMS INPUT HOVER EFFECT FUNCTION ] ==========
@@ -133,7 +134,14 @@ inputs.forEach(function (e) {
       });
     });
   }
-}); // ========== [ SHOW/HIDE PASSWORD EYE FUNCTION ] ==========
+});
+
+if (checkboxes) {
+  console.log(checkboxes.firstElementChild.name);
+  var label = document.querySelector('label[for="' + checkboxes.firstElementChild.name + '"]');
+  label.classList.add('dashboard-input-focus');
+} // ========== [ SHOW/HIDE PASSWORD EYE FUNCTION ] ==========
+
 
 if (showHidePassword) {
   showHidePassword.forEach(function (e) {

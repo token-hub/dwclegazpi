@@ -55,10 +55,10 @@
 							<i class='fa fa-user-plus'></i><a href="{{url('dashboard/register')}}">Registration</a>
 						</div>
 						<div class='left-content-link'>
-							<i class='fa fa-unlock'></i><a href="{{url('dashboard/images-active')}}">Permissions</a>
+							<i class='fa fa-unlock'></i><a href="{{url('dashboard/permissions')}}">Permissions</a>
 						</div>
 						<div class='left-content-link'>
-							<i class='fa fa-briefcase'></i><a href="{{url('dashboard/images-inactive')}}">Roles</a>
+							<i class='fa fa-briefcase'></i><a href="{{url('dashboard/roles')}}">Roles</a>
 						</div>
 						<div class='left-content-link'>
 							<i class='fa fa-user'></i><a href="{{url('dashboard/users')}}">Users</a>
@@ -87,7 +87,10 @@
 			<div class="right bottom">
 				<div class="right-content">
 					<div class="wrapper">
-						<h3>@yield('wrapper-title')</h3><hr>
+						<div class="wrapper-header">
+							<h3>@yield('wrapper-title')</h3>
+							@yield('wrapper-button')
+						</div><hr>
 						@yield('wrapper-body')
 					</div>
 				</div>

@@ -57,7 +57,7 @@ class User extends Authenticatable implements MustVerifyEmail
     # relationship to roles table
     public function roles()
     {
-        return $this->belongsToMany(Roles::class, 'user_role', 'user_id', 'role_id')->withTimestamps();
+        return $this->belongsToMany(Role::class)->withTimestamps();
     }
 
     # relationship to personal_info table
@@ -66,10 +66,10 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasOne(Personal_info::class, 'user_id'); 
     }
 
-    # relationship to departments table
-    public function departments() 
+    # relationship to Department table
+    public function department() 
     {
-        return $this->hasOne(Departments::class, 'user_id'); 
+        return $this->hasOne(Department::class, 'user_id'); 
     }
 
     public function getIsActiveAttribute($data) 

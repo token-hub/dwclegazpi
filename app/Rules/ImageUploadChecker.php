@@ -3,7 +3,7 @@
 namespace App\Rules;
 
 use Illuminate\Contracts\Validation\Rule;
-use App\Models\Entities\Images;
+use App\Models\Entities\Image;
 
 class ImageUploadChecker implements Rule
 {
@@ -27,7 +27,7 @@ class ImageUploadChecker implements Rule
     public function passes($attribute, $value)
     {
         foreach ($value as $key => $img) {
-            $image = Images::where('image_name', '=', $img->getClientOriginalName() )->get();
+            $image = Image::where('image_name', '=', $img->getClientOriginalName() )->get();
             if (count($image) > 0) {
                return false;
             }

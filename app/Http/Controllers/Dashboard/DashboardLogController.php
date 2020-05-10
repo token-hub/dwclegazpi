@@ -8,7 +8,7 @@ use App\Models\Entities\User;
 use Spatie\Activitylog\Models\Activity;
 use App\Models\Services\LogService;
 
-class DashboardLogsController extends Controller
+class DashboardLogController extends Controller
 {
     protected $logService;
 
@@ -19,13 +19,13 @@ class DashboardLogsController extends Controller
 
     public function index() 
     {
-    	return view('dashboard.main.logs');
+    	return view('dashboard.main.log.view');
     }
 
     public function show($id, $date) 
     { 
         $log = $this->logService->show($id, $date);
-        return view('dashboard.main.logs-view')->with('log', $log);
+        return view('dashboard.main.log.specific-view')->with('log', $log);
     }
 
     public function logsData()

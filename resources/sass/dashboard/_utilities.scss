@@ -108,6 +108,12 @@
     padding-bottom: 60px;
     height: 50px;
 
+    .checkboxes {
+        width: 100%;
+        border-bottom: 1px solid #525257;
+        padding: 8px;
+    }
+
     .input-control {
         width: 100%;
         background: transparent;
@@ -132,6 +138,7 @@
         font-weight: bold;
         color: color(secondary);
     }
+    
 
     .password-content {
         @include position(relative);

@@ -7,14 +7,13 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\Entities\User;
-use App\Models\Entities\Images;
+use App\Models\Entities\Image;
 
 class ImageTest extends TestCase
 {
     use RefreshDatabase;
     
-    /** @test */
-    public function checkActiveImagePageWithAuthenticatedUser()
+    public function test_check_active_image_page_with_authenticated_user()
     {
         $user = factory(\App\Models\Entities\User::class)->create();
 
@@ -24,8 +23,7 @@ class ImageTest extends TestCase
             ->assertSee('Active Image/s');
     }
 
-    /** @test */
-    public function checkInactiveImagePageWithAuthenticatedUser()
+    public function test_check_inactive_image_page_with_authenticated_user()
     {
         $user = factory(\App\Models\Entities\User::class)->create();
 
@@ -35,10 +33,9 @@ class ImageTest extends TestCase
             ->assertSee('Inactive Image/s');
     }
 
-    /** @test */
-    public function userCanUploadAnImage()
+    public function test_user_can_upload_an_image()
     {
-       
+              $this->withoutExceptionHandling();
         $user = factory(\App\Models\Entities\User::class)->create();
         
         \Storage::fake('local');
@@ -55,13 +52,12 @@ class ImageTest extends TestCase
 
         $response->assertRedirect('dashboard/images-inactive');   
        
-        $this->assertCount(2, Images::all());   
+        $this->assertCount(2, Image::all());   
         \Storage::disk('local')->assertExists("public/img/slider/inactive/file.png");
         \Storage::disk('local')->assertExists("public/img/slider/inactive/file2.png");
     }
 
-    /** @test */
-    public function userCanActivateAnImage()
+    public function test_user_can_activate_an_image()
     {
       $user = factory(\App\Models\Entities\User::class)->create();
         
@@ -77,7 +73,7 @@ class ImageTest extends TestCase
                     ]
                 ]);
 
-        $this->assertCount(2, Images::all());   
+        $this->assertCount(2, Image::all());   
 
         \Storage::disk('local')->assertExists("public/img/slider/inactive/file.png");
 
@@ -88,15 +84,14 @@ class ImageTest extends TestCase
         $this->actingAs($user)
             ->post('dashboard/images-inactive/image-remove-or-activate', ['images' => ['file.png', 'file2.png'], 'imgs_type' => 'activate' ]);
 
-            $this->assertEquals('1', Images::find(1)->is_active);
-            $this->assertEquals('1', Images::find(2)->is_active);
+            $this->assertEquals('1', Image::find(1)->is_active);
+            $this->assertEquals('1', Image::find(2)->is_active);
 
             \Storage::disk('local')->assertExists("public/img/slider/active/file.png");
             \Storage::disk('local')->assertExists("public/img/slider/active/file2.png");
     }
 
-    /** @test */
-    public function userCanRemoveAnImage()
+    public function test_user_can_remove_an_image()
     {
        $user = factory(\App\Models\Entities\User::class)->create();
         
@@ -112,7 +107,7 @@ class ImageTest extends TestCase
                     ]
                 ]);
             
-        $this->assertCount(2, Images::all());   
+        $this->assertCount(2, Image::all());   
 
         \Storage::disk('local')->assertExists("public/img/slider/inactive/file.png");
 
@@ -123,14 +118,13 @@ class ImageTest extends TestCase
         $this->actingAs($user)
             ->post('dashboard/images-inactive/image-remove-or-activate', ['images' => ['file.png', 'file2.png'], 'imgs_type' => 'remove' ]);
 
-            $this->assertCount(0, Images::all());
+            $this->assertCount(0, Image::all());
 
             \Storage::disk('local')->assertMissing("public/img/slider/active/file.png");
             \Storage::disk('local')->assertMissing("public/img/slider/active/file2.png");
     }
 
-    /** @test */
-    public function userCanArrangeImages()
+    public function test_user_can_arrange_images()
     {
       $user = factory(\App\Models\Entities\User::class)->create();
         
@@ -146,7 +140,7 @@ class ImageTest extends TestCase
                     ]
                 ]);
 
-        $this->assertCount(2, Images::all());   
+        $this->assertCount(2, Image::all());   
 
         \Storage::disk('local')->assertExists("public/img/slider/inactive/file.png");
 
@@ -157,8 +151,8 @@ class ImageTest extends TestCase
         $this->actingAs($user)
             ->post('dashboard/images-inactive/image-remove-or-activate', ['images' => ['file.png', 'file2.png'], 'imgs_type' => 'activate' ]);
 
-            $this->assertEquals('1', Images::find(1)->is_active);
-            $this->assertEquals('1', Images::find(2)->is_active);
+            $this->assertEquals('1', Image::find(1)->is_active);
+            $this->assertEquals('1', Image::find(2)->is_active);
 
             \Storage::disk('local')->assertExists("public/img/slider/active/file.png");
             \Storage::disk('local')->assertExists("public/img/slider/active/file2.png");
@@ -168,12 +162,11 @@ class ImageTest extends TestCase
                 ['images' => ['file2.png', 'file.png'],
                  'imgs_type' => 'arrange']);
 
-            $this->assertEquals('2', Images::find(1)->number);
-            $this->assertEquals('1', Images::find(2)->number);       
+            $this->assertEquals('2', Image::find(1)->number);
+            $this->assertEquals('1', Image::find(2)->number);       
     }
 
-    /** @test */
-    public function userCanDeactivateImages()
+    public function test_user_can_deactivate_images()
     {
                $user = factory(\App\Models\Entities\User::class)->create();
         
@@ -189,7 +182,7 @@ class ImageTest extends TestCase
                     ]
                 ]);
 
-        $this->assertCount(2, Images::all());   
+        $this->assertCount(2, Image::all());   
 
         \Storage::disk('local')->assertExists("public/img/slider/inactive/file.png");
 
@@ -201,8 +194,8 @@ class ImageTest extends TestCase
             ->post('dashboard/images-inactive/image-remove-or-activate', ['images' => ['file.png', 'file2.png'], 'imgs_type' => 'activate' ]);
 
 
-            $this->assertEquals('1', Images::find(1)->is_active);
-            $this->assertEquals('1', Images::find(2)->is_active);
+            $this->assertEquals('1', Image::find(1)->is_active);
+            $this->assertEquals('1', Image::find(2)->is_active);
 
             \Storage::disk('local')->assertExists("public/img/slider/active/file.png");
             \Storage::disk('local')->assertExists("public/img/slider/active/file2.png");
@@ -212,10 +205,10 @@ class ImageTest extends TestCase
                 ['images' => ['file2.png', 'file.png'],
                  'imgs_type' => 'deactivate']);
 
-            $this->assertEquals('0', Images::find(1)->is_active);
-            $this->assertEquals('0', Images::find(2)->is_active);
+            $this->assertEquals('0', Image::find(1)->is_active);
+            $this->assertEquals('0', Image::find(2)->is_active);
 
-            $this->assertNull(Images::find(1)->number);
-            $this->assertNull(Images::find(2)->number);
+            $this->assertNull(Image::find(1)->number);
+            $this->assertNull(Image::find(2)->number);
     }
 }

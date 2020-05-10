@@ -38,6 +38,12 @@ Route::namespace('Dashboard')->prefix('dashboard')->group(function () {
 
     Route::get('/users', 'DashboardUserController@index');
 
+    Route::get('/users/{user}/edit', 'DashboardUserController@edit');
+
+    Route::patch('/users/{user}', 'DashboardUserController@update');
+
+    Route::delete('/users/{user}', 'DashboardUserController@delete');
+
     Route::get('/users-data', 'DashboardUserController@userData');
 
     Route::get('/profile/{user}', 'DashboardUserProfileController@show');
@@ -46,31 +52,64 @@ Route::namespace('Dashboard')->prefix('dashboard')->group(function () {
     
     Route::patch('/profile/{id}', 'DashboardUserProfileController@update');
 
-    Route::get('/logs', 'DashboardLogsController@index');
+    Route::get('/logs', 'DashboardLogController@index');
     
-    Route::get('/logs/{id}/date/{date}', 'DashboardLogsController@show');
+    Route::get('/logs/{id}/date/{date}', 'DashboardLogController@show');
     
-    Route::get('/logsData', 'DashboardLogsController@logsData');
+    Route::get('/logsData', 'DashboardLogController@logsData');
 
-    Route::get('/images-active', 'DashboardImagesController@active');
+    Route::get('/images-active', 'DashboardImageController@active');
 
-    Route::post('/images-active/image-arrange-or-deactivate', 'DashboardImagesController@arrangeOrDeactivate');
+    Route::post('/images-active/image-arrange-or-deactivate', 'DashboardImageController@arrangeOrDeactivate');
     
-    Route::get('/images-inactive', 'DashboardImagesController@inactive');
+    Route::get('/images-inactive', 'DashboardImageController@inactive');
     
-    Route::post('/images-inactive/image-remove-or-activate', 'DashboardImagesController@removeOrActivate');
+    Route::post('/images-inactive/image-remove-or-activate', 'DashboardImageController@removeOrActivate');
     
-    Route::post('/images-inactive/image-upload', 'DashboardImagesUploadController@store');
+    Route::post('/images-inactive/image-upload', 'DashboardImageUploadController@store');
+
+    Route::get('roles', 'DashboardRoleController@index');
+
+    Route::get('role-data', 'DashboardRoleController@roleData');
+
+    Route::get('roles/create', 'DashboardRoleController@create');
+
+    Route::post('roles', 'DashboardRoleController@store');
+
+    Route::get('roles/{role}/edit', 'DashboardRoleController@edit');
+
+    Route::patch('roles/{role}', 'DashboardRoleController@update');
+
+    Route::delete('roles/{role}', 'DashboardRoleController@destroy');
+
+    Route::get('permissions', 'DashboardPermissionController@index');
+
+    Route::get('permission-data', 'DashboardPermissionController@permissionData');
+
+    Route::get('permissions/create', 'DashboardPermissionController@create');
+
+    Route::post('permissions', 'DashboardPermissionController@store');
+
+    Route::get('permissions/{permission}/edit', 'DashboardPermissionController@edit');
+
+    Route::patch('permissions/{permission}', 'DashboardPermissionController@update');
+
+    Route::delete('permissions/{permission}', 'DashboardPermissionController@destroy');
   });
 
 });
 
+// Route::get('/sample', function(){
+//   $user = App\Models\Entities\User::first();
+//   $user->roles()->sync([3]);
+//   // dd($user->roles);
 
-  // Route::get('/sample', function(){
-  //   $permission = App\Models\Entities\Permissions::first();
+//   // foreach ($user->roles as $key => $value) {
+     
+//   //     dd($value->title);
+//   // }
+//   // $role = App\Models\Entities\Roles::first();
 
-  //   $role = App\Models\Entities\Roles::first();
+//   // $role->permissions()->attach([1, 3]);
 
-  //   $role->permissions()->attach([1, 3]);
-
-  // });
+// });
