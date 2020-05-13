@@ -22,18 +22,13 @@
 	            serverSide: true,
 	            "searching": true,
 	            order: [ [0, 'desc'] ],
-	            ajax: '{{ url("dashboard/users-data") }}',
+	            ajax: '{{ url("dashboard/user-data") }}',
 	            columns: [
 	                { data: 'username', name: 'username' },
 	                { data: 'department.name', name: 'department.name' },
 	                { data: 'roles.title', name: 'roles.title' },
 	                { data: 'is_active', name: 'is_active' },
-	                { data: '', name: '', 
-	                	render:function(data, type, row)
-	                	{
-		                	return "<a href='/dashboard/users/"+ row.id + "/edit'> <button style='width:100%;margin:2px 0;' class='btn btn-sm btn-info '> Update </button> </a> <button value='"+row.id+"' style='width:100%;' class='btn btn-sm btn-danger delete_account'> Delete </button>";
-	                	}
-	            	}
+	                { data: 'action', name: 'action'}
 	            ]
 	        });
 

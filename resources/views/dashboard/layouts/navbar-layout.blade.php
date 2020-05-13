@@ -57,9 +57,13 @@
 						<div class='left-content-link'>
 							<i class='fa fa-unlock'></i><a href="{{url('dashboard/permissions')}}">Permissions</a>
 						</div>
-						<div class='left-content-link'>
-							<i class='fa fa-briefcase'></i><a href="{{url('dashboard/roles')}}">Roles</a>
-						</div>
+
+						@can('viewAny', App\Models\Entities\Role::class)
+							<div class='left-content-link'>
+								<i class='fa fa-briefcase'></i><a href="{{url('dashboard/roles')}}">Roles</a>
+							</div>
+						@endcan
+						
 						<div class='left-content-link'>
 							<i class='fa fa-user'></i><a href="{{url('dashboard/users')}}">Users</a>
 						</div>

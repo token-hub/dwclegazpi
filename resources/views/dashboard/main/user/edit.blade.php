@@ -13,7 +13,7 @@
 				<div class='dashboard-input'>
 					<div class="checkboxes">
 						@foreach($roles as $role) 
-							{!! Form::checkbox('roles[]', $role->id) !!}
+							{!! Form::checkbox('roles[]', $role->id, $user->roles->contains($role->id) ) !!}
 							<span>{{ $role->title }}</span>
 						@endforeach
 					</div>

@@ -25,7 +25,7 @@ class userTest extends TestCase
         $user = factory(\App\Models\Entities\User::class)->create();
         
          $this->actingAs($user)
-            ->get('dashboard/users-data')
+            ->get('dashboard/user-data')
             ->assertOk();
     }
 
@@ -41,8 +41,10 @@ class userTest extends TestCase
                 ->assertSee('Update Account');
 
         $this->actingAs($user)
-                ->patch('/dashboard/users/'.$user->id, ['roles' => [3,2], 'status' => 1]);
+                ->patch('/dashboard/users/'.$user->id, ['roles' => [3,2], 'status' => 0]);
 
+        $user->refresh();
+        $this->assertEquals('Inactive', $user->is_active);
         $this->assertEquals([3, 2], $user->roles->pluck('id')->toArray());       
     }
 

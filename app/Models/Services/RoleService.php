@@ -19,11 +19,29 @@ class RoleService
 		return $this->roleInterface->getRoles();
 	}
 
-	public function roleData()
+	public function roleData($data)
 	{
 		$roles = $this->roleInterface->getRoles();
 
 		return Datatables::of($roles)
+            ->addColumn('action', function($role) use ($data){
+
+            	if(!empty($data)) {
+            		$action = '';
+
+            		if (in_array('update', $data)){
+            		$action .= "<a href='/dashboard/roles/". $role->id . "/edit'> <button style='width:100%;margin:2px 0;' class='btn btn-sm btn-info '> Update </button> </a>";
+	            	}
+
+	            	if (in_array('delete', $data)){
+	            		$action .= "<button value='".$role->id."' style='width:100%;' class='btn btn-sm btn-danger delete_role'> Delete </button>";
+	            	}
+
+	            	return $action;
+            	}
+            	
+            	return 'N/A';
+            })
             ->make(true);
 	}
 

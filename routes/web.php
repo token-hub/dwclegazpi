@@ -44,7 +44,7 @@ Route::namespace('Dashboard')->prefix('dashboard')->group(function () {
 
     Route::delete('/users/{user}', 'DashboardUserController@delete');
 
-    Route::get('/users-data', 'DashboardUserController@userData');
+    Route::get('/user-data', 'DashboardUserController@userData');
 
     Route::get('/profile/{user}', 'DashboardUserProfileController@show');
     

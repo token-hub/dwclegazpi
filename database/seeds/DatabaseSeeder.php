@@ -14,7 +14,7 @@ class DatabaseSeeder extends Seeder
         $this->call(ImageSeeder::class);
         $this->call(RoleSeeder::class);
         $this->call(PermissionSeeder::class);
-
+        
        factory(App\Models\Entities\User::class, 3)->create()->each(function ($user)
        {
          static $cnt = 1; 
@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
        	 $user->Department()->save(factory(App\Models\Entities\Department::class)->make());
          $user->roles()->attach([$cnt++]);
        });
-       
+
+       $this->call(UserSeeder::class);
     }
 }
