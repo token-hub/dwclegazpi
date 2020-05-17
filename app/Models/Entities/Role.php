@@ -3,9 +3,12 @@
 namespace App\Models\Entities;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\LogsConfiguration;
 
 class Role extends Model
 {
+    use LogsConfiguration;
+
 	protected static $logName = 'role';
 
     protected $fillable = ['title'];

@@ -3,9 +3,12 @@
 namespace App\Models\Entities;
 
 use Illuminate\Database\Eloquent\Model;
+use App\Traits\LogsConfiguration;
 
 class Permission extends Model
 {
+	use LogsConfiguration;
+
     protected static $logName = 'permission';
 
     protected $fillable = ['title'];

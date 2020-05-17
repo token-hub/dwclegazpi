@@ -19,17 +19,28 @@ class DashboardLogController extends Controller
 
     public function index() 
     {
-    	return view('dashboard.main.log.view');
+        $this->authorize('viewAny', Activity::class);
+
+    	return view('dashboard.main.log.index');
     }
 
     public function show($id, $date) 
-    { 
+    {   
+        $this->authorize('view', new Activity);
+
         $log = $this->logService->show($id, $date);
-        return view('dashboard.main.log.specific-view')->with('log', $log);
+
+        return view('dashboard.main.log.show')->with('log', $log);
     }
 
-    public function logsData()
-    {
-        return $this->logService->logsData();
+    public function logsData(Activity $activity)
+    {   
+        $allowedAction = [];
+
+        if (policy($activity)->view(\Auth::user(), $activity)) {
+            array_push($allowedAction, 'view');
+        }
+
+        return $this->logService->logsData($allowedAction);
     }
 }

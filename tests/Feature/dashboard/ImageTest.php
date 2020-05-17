@@ -8,6 +8,8 @@ use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use App\Models\Entities\User;
 use App\Models\Entities\Image;
+use App\Models\Entities\Permission;
+use App\Models\Entities\Role;
 
 class ImageTest extends TestCase
 {
@@ -15,7 +17,27 @@ class ImageTest extends TestCase
     
     public function test_check_active_image_page_with_authenticated_user()
     {
+        $this->seed('RoleSeeder');
+        $this->seed('PermissionSeeder');
+
         $user = factory(\App\Models\Entities\User::class)->create();
+
+        $user->roles()->attach([1, 2, 3]);
+
+        # get permission id
+        $permissionsId = Permission::whereIn('title', ['Update Active Image', 'Delete Active Image'])->pluck('id')->toArray();
+        
+       # get user permissions id
+        $userPermission = $user->roles
+                        ->flatmap(function($role) use ($permissionsId) {
+                            $role->permissions()->attach($permissionsId);
+                            return [Role::find($role->id)->permissions->pluck('id')->toArray()];
+                        })->flatmap(function($role){
+                            return !empty($role) ? $role :'';
+                        })->toArray();
+
+        # check if user has permissions to access
+        $this->assertTrue(count(array_intersect($permissionsId, $userPermission)) > 0);
 
         $this->actingAs($user)
             ->get('dashboard/images-active')
@@ -25,7 +47,27 @@ class ImageTest extends TestCase
 
     public function test_check_inactive_image_page_with_authenticated_user()
     {
+        $this->seed('RoleSeeder');
+        $this->seed('PermissionSeeder');
+
         $user = factory(\App\Models\Entities\User::class)->create();
+
+        $user->roles()->attach([1, 2, 3]);
+
+        # get permission id
+        $permissionsId = Permission::whereIn('title', ['Add Inactive Image', 'Update Inactive Image', 'Delete Inactive Image'])->pluck('id')->toArray();
+        
+       # get user permissions id
+        $userPermission = $user->roles
+                        ->flatmap(function($role) use ($permissionsId) {
+                            $role->permissions()->attach($permissionsId);
+                            return [Role::find($role->id)->permissions->pluck('id')->toArray()];
+                        })->flatmap(function($role){
+                            return !empty($role) ? $role :'';
+                        })->toArray();
+
+        # check if user has permissions to access
+        $this->assertTrue(count(array_intersect($permissionsId, $userPermission)) > 0);
 
         $this->actingAs($user)
             ->get('dashboard/images-inactive')
@@ -35,8 +77,27 @@ class ImageTest extends TestCase
 
     public function test_user_can_upload_an_image()
     {
-              $this->withoutExceptionHandling();
+        $this->seed('RoleSeeder');
+        $this->seed('PermissionSeeder');
+
         $user = factory(\App\Models\Entities\User::class)->create();
+
+        $user->roles()->attach([1, 2, 3]);
+
+         # get permission id
+        $permissionsId = Permission::where('title', 'Add Inactive Image')->pluck('id')->toArray();
+        
+       # get user permissions id
+        $userPermission = $user->roles
+                        ->flatmap(function($role) use ($permissionsId) {
+                            $role->permissions()->attach($permissionsId);
+                            return [Role::find($role->id)->permissions->pluck('id')->toArray()];
+                        })->flatmap(function($role){
+                            return !empty($role) ? $role :'';
+                        })->toArray();
+
+        # check if user has permissions to access
+        $this->assertTrue(count(array_intersect($permissionsId, $userPermission)) > 0);
         
         \Storage::fake('local');
 
@@ -59,7 +120,27 @@ class ImageTest extends TestCase
 
     public function test_user_can_activate_an_image()
     {
-      $user = factory(\App\Models\Entities\User::class)->create();
+        $this->seed('RoleSeeder');
+        $this->seed('PermissionSeeder');
+
+        $user = factory(\App\Models\Entities\User::class)->create();
+
+        $user->roles()->attach([1, 2, 3]);
+
+         # get permission id
+        $permissionsId = Permission::whereIn('title', ['Update Inactive Image', 'Add Inactive Image'])->pluck('id')->toArray();
+        
+       # get user permissions id
+        $userPermission = $user->roles
+                        ->flatmap(function($role) use ($permissionsId) {
+                            $role->permissions()->attach($permissionsId);
+                            return [Role::find($role->id)->permissions->pluck('id')->toArray()];
+                        })->flatmap(function($role){
+                            return !empty($role) ? $role :'';
+                        })->toArray();
+
+        # check if user has permissions to access
+        $this->assertTrue(count(array_intersect($permissionsId, $userPermission)) > 0);
         
         \Storage::fake('local');
 
@@ -82,7 +163,7 @@ class ImageTest extends TestCase
         $response->assertRedirect('dashboard/images-inactive');
 
         $this->actingAs($user)
-            ->post('dashboard/images-inactive/image-remove-or-activate', ['images' => ['file.png', 'file2.png'], 'imgs_type' => 'activate' ]);
+            ->patch('dashboard/images-inactive/activate', ['images' => ['file.png', 'file2.png'], 'imgs_type' => 'activate' ]);
 
             $this->assertEquals('1', Image::find(1)->is_active);
             $this->assertEquals('1', Image::find(2)->is_active);
@@ -93,7 +174,27 @@ class ImageTest extends TestCase
 
     public function test_user_can_remove_an_image()
     {
-       $user = factory(\App\Models\Entities\User::class)->create();
+        $this->seed('RoleSeeder');
+        $this->seed('PermissionSeeder');
+
+        $user = factory(\App\Models\Entities\User::class)->create();
+
+        $user->roles()->attach([1, 2, 3]);
+
+         # get permission id
+        $permissionsId = Permission::whereIn('title', ['Delete Inactive Image', 'Add Inactive Image'])->pluck('id')->toArray();
+        
+       # get user permissions id
+        $userPermission = $user->roles
+                        ->flatmap(function($role) use ($permissionsId) {
+                            $role->permissions()->attach($permissionsId);
+                            return [Role::find($role->id)->permissions->pluck('id')->toArray()];
+                        })->flatmap(function($role){
+                            return !empty($role) ? $role :'';
+                        })->toArray();
+
+        # check if user has permissions to access
+        $this->assertTrue(count(array_intersect($permissionsId, $userPermission)) > 0);
         
         \Storage::fake('local');
 
@@ -116,7 +217,7 @@ class ImageTest extends TestCase
         $response->assertRedirect('dashboard/images-inactive');
 
         $this->actingAs($user)
-            ->post('dashboard/images-inactive/image-remove-or-activate', ['images' => ['file.png', 'file2.png'], 'imgs_type' => 'remove' ]);
+            ->delete('dashboard/images-inactive/remove', ['images' => ['file.png', 'file2.png'], 'imgs_type' => 'remove' ]);
 
             $this->assertCount(0, Image::all());
 
@@ -126,7 +227,27 @@ class ImageTest extends TestCase
 
     public function test_user_can_arrange_images()
     {
-      $user = factory(\App\Models\Entities\User::class)->create();
+        $this->seed('RoleSeeder');
+        $this->seed('PermissionSeeder');
+
+        $user = factory(\App\Models\Entities\User::class)->create();
+
+        $user->roles()->attach([1, 2, 3]);
+
+         # get permission id
+        $permissionsId = Permission::whereIn('title', ['Update Active Image', 'Add Inactive Image', 'Update Inactive Image'])->pluck('id')->toArray();
+        
+       # get user permissions id
+        $userPermission = $user->roles
+                        ->flatmap(function($role) use ($permissionsId) {
+                            $role->permissions()->attach($permissionsId);
+                            return [Role::find($role->id)->permissions->pluck('id')->toArray()];
+                        })->flatmap(function($role){
+                            return !empty($role) ? $role :'';
+                        })->toArray();
+
+        # check if user has permissions to access
+        $this->assertTrue(count(array_intersect($permissionsId, $userPermission)) > 0);
         
         \Storage::fake('local');
 
@@ -149,7 +270,7 @@ class ImageTest extends TestCase
         $response->assertRedirect('dashboard/images-inactive');
 
         $this->actingAs($user)
-            ->post('dashboard/images-inactive/image-remove-or-activate', ['images' => ['file.png', 'file2.png'], 'imgs_type' => 'activate' ]);
+            ->patch('dashboard/images-inactive/activate', ['images' => ['file.png', 'file2.png'], 'imgs_type' => 'activate' ]);
 
             $this->assertEquals('1', Image::find(1)->is_active);
             $this->assertEquals('1', Image::find(2)->is_active);
@@ -158,7 +279,7 @@ class ImageTest extends TestCase
             \Storage::disk('local')->assertExists("public/img/slider/active/file2.png");
 
        $response2 = $this->actingAs($user)
-            ->post('dashboard/images-active/image-arrange-or-deactivate', 
+            ->patch('dashboard/images-active/arrange', 
                 ['images' => ['file2.png', 'file.png'],
                  'imgs_type' => 'arrange']);
 
@@ -168,7 +289,27 @@ class ImageTest extends TestCase
 
     public function test_user_can_deactivate_images()
     {
-               $user = factory(\App\Models\Entities\User::class)->create();
+        $this->seed('RoleSeeder');
+        $this->seed('PermissionSeeder');
+
+        $user = factory(\App\Models\Entities\User::class)->create();
+
+        $user->roles()->attach([1, 2, 3]);
+
+         # get permission id
+        $permissionsId = Permission::whereIn('title', ['Delete Active Image', 'Add Inactive Image', 'Update Inactive Image'])->pluck('id')->toArray();
+        
+       # get user permissions id
+        $userPermission = $user->roles
+                        ->flatmap(function($role) use ($permissionsId) {
+                            $role->permissions()->attach($permissionsId);
+                            return [Role::find($role->id)->permissions->pluck('id')->toArray()];
+                        })->flatmap(function($role){
+                            return !empty($role) ? $role :'';
+                        })->toArray();
+
+        # check if user has permissions to access
+        $this->assertTrue(count(array_intersect($permissionsId, $userPermission)) > 0);
         
         \Storage::fake('local');
 
@@ -191,8 +332,7 @@ class ImageTest extends TestCase
         $response->assertRedirect('dashboard/images-inactive');
 
         $this->actingAs($user)
-            ->post('dashboard/images-inactive/image-remove-or-activate', ['images' => ['file.png', 'file2.png'], 'imgs_type' => 'activate' ]);
-
+            ->patch('dashboard/images-inactive/activate', ['images' => ['file.png', 'file2.png'], 'imgs_type' => 'activate' ]);
 
             $this->assertEquals('1', Image::find(1)->is_active);
             $this->assertEquals('1', Image::find(2)->is_active);
@@ -201,7 +341,7 @@ class ImageTest extends TestCase
             \Storage::disk('local')->assertExists("public/img/slider/active/file2.png");
 
        $response2 = $this->actingAs($user)
-            ->post('dashboard/images-active/image-arrange-or-deactivate', 
+            ->patch('dashboard/images-active/deactivate', 
                 ['images' => ['file2.png', 'file.png'],
                  'imgs_type' => 'deactivate']);
 

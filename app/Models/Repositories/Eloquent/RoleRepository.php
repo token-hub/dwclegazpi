@@ -10,7 +10,7 @@ class RoleRepository implements RoleInterface
 	{
 		return Role::where('id', '>', '0')
 						->orderBy('id', 'DESC')
-						->get();;
+						->get();
 	}
 
 	public function storeRole($data)

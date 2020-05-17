@@ -12,13 +12,16 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        User::create(
-        	[
-        		'username' => 'samplesample',
-        		'email' => 'sample@g.c',
-        		'password' => \Hash::make('samplesample'),
-        		'email_verified_at' => now()
-        	]
-        );
+        $user = User::create(
+            	[
+            		'username' => 'sample',
+            		'email' => 'sample@g.c',
+            		'password' => \Hash::make('samplesample'),
+            		'email_verified_at' => now()
+            	]
+            );
+
+        $user->department()->create(['department_name'=> 'soecs']);
+        $user->roles()->attach([2]);
     }
 }

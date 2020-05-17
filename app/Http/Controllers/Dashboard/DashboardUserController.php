@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Services\UserService;
 use App\Models\Entities\User;
 use App\Models\Entities\Role;
@@ -17,32 +16,52 @@ class DashboardUserController extends Controller
 	{
 		$this->userService = $userService;
 	} 
-
+    
     public function index()
     {
+        $this->authorize('viewAny', User::class);
+
     	return view('dashboard.main.user.index');
     }
 
     public function edit(User $user)
     {
+        $this->authorize('update', $user);
+
         return view('dashboard.main.user.edit')->with(['user' => $user, 'roles' => Role::all()]);
     }
 
     public function update(User $user, AccountUpdateRequest $request)
-    {
-        $result = $this->userService->updateAccount($user, $request);
+    {   
+        $this->authorize('update', $user);
+
+        $result = $this->userService->update($user, $request);
+
         return redirect()->back()->with('notification', $result);
     }
 
     # this is accessed by an ajax request
     public function delete(User $user)
     {
-        $this->userService->deleteAccount($user);
+        $this->authorize('delete', $user);
+
+        $this->userService->destroy($user);
+
         return 'dashboard/users';
     }
 
-    public function userData()
+    public function userData(User $user)
     {
-    	return $this->userService->userData();
+        $allowedAction = [];
+        
+        if (policy($user)->update(\Auth::user(), $user)) {
+            array_push($allowedAction, 'update');
+        }
+
+        if (policy($user)->delete(\Auth::user(), $user)) {
+            array_push($allowedAction, 'delete');
+        }
+
+    	return $this->userService->userData($allowedAction);
     }
 }

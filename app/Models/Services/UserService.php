@@ -5,7 +5,10 @@ namespace App\Models\Services;
 use App\Models\Repositories\UserInterface;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Entities\User;
+use App\Models\Entities\Personal_info;
+use App\Models\Entities\Department;
 use yajra\Datatables\Datatables;
+use Illuminate\Auth\Events\Registered;
 
 class UserService
 {
@@ -16,31 +19,23 @@ class UserService
 		$this->userInterface = $userInterface;
 	}
 
-	public function store($id) 
+	public function store($data) 
 	{
-	    return $this->userInterface->getById($id);
+	     # add user
+	    $user = User::create(array_merge($data->only(['username', 'email']), ['password' => \Hash::make($data->password)]));
+
+	    # add department
+	    $user->department()->create(array_merge($data->only(['department_name'])));
+	    
+	    # add personal info
+	    $user->personal_info()->create(array_merge($data->only(['firstname', 'lastname', 'gender'])));
+
+	    event(new Registered($user));
+
+	    return ['message' => 'Registered Successfully!', 'type' => 'notif-success'];
 	}
 
-	// public function update($data)
-	// {
-	// 	$user = $this->userInterface->getById($data->update_user_id);
-		
-	// 	$user->username = $data->username;
-
-	// 	# check if user has entered a new and old password
-	//     if ($data->new_password && $data->old_password) {
-	//     	$user->password = \Hash::make($data->new_password);
-	//     	Auth::login($user);
-	//     }
-
-	//     $isDirty = $user->isDirty();
-
-	//     $user->save();
-	    
-	// 	return $isDirty;
-	// }
-
-	public function updateAccount($user, $data)
+	public function update($user, $data)
 	{
 		$roles = $user->roles()->sync($data->roles);
 		$user->is_active = $data->status;
@@ -58,25 +53,40 @@ class UserService
 		return $notification;
 	}
 
-	public function deleteAccount($user)
+	public function destroy($user)
 	{
 		$user->delete();
+		
 		\Session::flash('notification', ['type' => 'notif-success', 'message' => 'Account deleted successfully!']);
 	}
 
-	public function userData()
+	public function userData($data)
 	{
 		$users = User::all();
 
         return Datatables::of($users)
-            ->addColumn('department.name', function ($user) {
+            ->addColumn('department.name', function ($user)  {
                 return $user->department->department_name;
             })
             ->addColumn('roles.title', function ($user) {
                 return $user->roles->pluck('title')->toArray();
             })
-            ->addColumn('action', function ($user){
-            	return "<a href='/dashboard/users/". $user->id . "/edit'> <button style='width:100%;margin:2px 0;' class='btn btn-sm btn-info '> Update </button> </a> <button value='".$user->id."' style='width:100%;' class='btn btn-sm btn-danger delete_account'> Delete </button>";
+            ->addColumn('action', function ($user) use ($data) {
+            	if(!empty($data)) {
+            		$action = '';
+
+            		if (in_array('update', $data)){
+            		$action .= "<a href='/dashboard/users/". $user->id . "/edit'> <button style='width:100%;margin:2px 0;' class='btn btn-sm btn-info '> Update </button> </a>";
+	            	}
+
+	            	if (in_array('delete', $data)){
+	            		$action .= "<button value='".$user->id."' style='width:100%;' class='btn btn-sm btn-danger delete_account'> Delete </button>";
+	            	}
+
+	            	return $action;
+            	}
+            	
+            	return 'N/A';
             })
             ->make(true);
 	}

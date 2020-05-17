@@ -27,7 +27,7 @@ class DashboardRoleController extends Controller
 
     public function create()
     {
-        $this->authorize('create', $role);
+        $this->authorize('create', Role::class);
 
     	return view('dashboard.main.role.create')->with('permissions' , Permission::all());
     }

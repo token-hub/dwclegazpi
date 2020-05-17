@@ -21,18 +21,20 @@ class RoleTest extends TestCase
 
         $user->roles()->attach([1, 2, 3]);
 
-        $rolePermissionsId = Permission::whereIn('title', ['Add Role', 'Update Role', 'Delete Role'])->pluck('id')->toArray();
+        # get permission id
+        $permissionsId = Permission::whereIn('title', ['Add Role', 'Update Role', 'Delete Role'])->pluck('id')->toArray();
         
-        $hasRolePermission = $user->roles
-                            ->flatmap(function($role) use ($rolePermissionsId) {
-                                $role->permissions()->attach($rolePermissionsId);
+       # get user permissions id
+        $userPermission = $user->roles
+                        ->flatmap(function($role) use ($permissionsId) {
+                            $role->permissions()->attach($permissionsId);
+                            return [Role::find($role->id)->permissions->pluck('id')->toArray()];
+                        })->flatmap(function($role){
+                            return !empty($role) ? $role :'';
+                        })->toArray();
 
-                                foreach($rolePermissionsId as $rpi){
-                                    return [Role::find($role->id)->first()->permissions->contains($rpi)];
-                                }
-                            })->toArray();
-
-        $this->assertTrue(in_array(true, $hasRolePermission));
+        # check if user has permissions to access
+        $this->assertTrue(count(array_intersect($permissionsId, $userPermission)) > 0);
 
         $this->actingAs($user)
                 ->get('dashboard/roles')
@@ -48,15 +50,20 @@ class RoleTest extends TestCase
 
         $user->roles()->attach([1, 2, 3]);
 
-        $rolePermissionId = Permission::where('title', 'Add Role')->first()->id;
+         # get permission id
+        $permissionsId = Permission::where('title', 'Add Role')->pluck('id')->toArray();
         
-        $hasRolePermission = $user->roles
-                            ->flatmap(function($role) use ($rolePermissionId) {
-                                $role->permissions()->attach($rolePermissionId);
-                                return [Role::find($role->id)->first()->permissions->contains($rolePermissionId)];
-                            })->toArray();
+       # get user permissions id
+        $userPermission = $user->roles
+                        ->flatmap(function($role) use ($permissionsId) {
+                            $role->permissions()->attach($permissionsId);
+                            return [Role::find($role->id)->permissions->pluck('id')->toArray()];
+                        })->flatmap(function($role){
+                            return !empty($role) ? $role :'';
+                        })->toArray();
 
-        $this->assertTrue(in_array(true, $hasRolePermission));
+        # check if user has permissions to access
+        $this->assertTrue(count(array_intersect($permissionsId, $userPermission)) > 0);
 
         $this->actingAs($user)
                 ->get('dashboard/roles/create')
@@ -72,15 +79,21 @@ class RoleTest extends TestCase
 
         $user->roles()->attach([1, 2, 3]);
 
-        $rolePermissionId = Permission::where('title', 'Add Role')->first()->id;
+         # get permission id
+        $permissionsId = Permission::where('title', 'Add Role')->pluck('id')->toArray();
         
-        $hasRolePermission = $user->roles
-                            ->flatmap(function($role) use ($rolePermissionId) {
-                                $role->permissions()->attach([1]);
-                                return [Role::find($role->id)->first()->permissions->contains($rolePermissionId)];
-                            })->toArray();
+       # get user permissions id
+        $userPermission = $user->roles
+                        ->flatmap(function($role) use ($permissionsId) {
+                            $role->permissions()->attach($permissionsId);
+                            return [Role::find($role->id)->permissions->pluck('id')->toArray()];
+                        })->flatmap(function($role){
+                            return !empty($role) ? $role :'';
+                        })->toArray();
 
-        $this->assertTrue(in_array(true, $hasRolePermission));
+
+        # check if user has permissions to access
+        $this->assertTrue(count(array_intersect($permissionsId, $userPermission)) > 0);
 
         $response = $this->actingAs($user)
                 ->post('dashboard/roles', ['title' => 'newPost', 'permissions' => [2, 3]]);
@@ -93,7 +106,7 @@ class RoleTest extends TestCase
     }
 
     public function test_user_can_visit_edit_role_page()
-    {
+    {   
         $this->seed('RoleSeeder');
         $this->seed('PermissionSeeder');
 
@@ -101,15 +114,21 @@ class RoleTest extends TestCase
 
         $user->roles()->attach([1, 2, 3]);
 
-        $rolePermissionId = Permission::where('title', 'Add Role')->first()->id;
+        # get permission id
+        $permissionsId = Permission::where('title', 'Update Role')->pluck('id')->toArray();
         
-        $hasRolePermission = $user->roles
-                            ->flatmap(function($role) use ($rolePermissionId) {
-                                $role->permissions()->attach([1]);
-                                return [Role::find($role->id)->first()->permissions->contains($rolePermissionId)];
-                            })->toArray();
+       # get user permissions id
+        $userPermission = $user->roles
+                        ->flatmap(function($role) use ($permissionsId) {
+                            $role->permissions()->attach($permissionsId);
+                            return [Role::find($role->id)->permissions->pluck('id')->toArray()];
+                        })->flatmap(function($role){
+                            return !empty($role) ? $role :'';
+                        })->toArray();
 
-        $this->assertTrue(in_array(true, $hasRolePermission));             
+
+        # check if user has permissions to access
+        $this->assertTrue(count(array_intersect($permissionsId, $userPermission)) > 0);
 
         $response = $this->actingAs($user)
                 ->get('dashboard/roles/'.Role::first()->id.'/edit')
@@ -125,15 +144,15 @@ class RoleTest extends TestCase
 
         $user->roles()->attach([1, 2, 3]);
 
-        $rolePermissionId = Permission::where('title', 'Add Role')->first()->id;
+        $rolePermissionId = Permission::where('title', 'Update Role')->first()->id;
         
-        $hasRolePermission = $user->roles
+        $hasPermission = $user->roles
                             ->flatmap(function($role) use ($rolePermissionId) {
-                                $role->permissions()->attach([1]);
+                                $role->permissions()->attach([2]);
                                 return [Role::find($role->id)->first()->permissions->contains($rolePermissionId)];
                             })->toArray();
 
-        $this->assertTrue(in_array(true, $hasRolePermission));            
+        $this->assertTrue(in_array(true, $hasPermission));            
 
          $response = $this->actingAs($user)
                 ->patch('dashboard/roles/'.Role::first()->id, 
@@ -158,15 +177,20 @@ class RoleTest extends TestCase
 
         $user->roles()->attach([1, 2, 3]);
 
-        $rolePermissionId = Permission::where('title', 'Add Role')->first()->id;
+        # get permission id
+        $permissionsId = Permission::where('title', 'Delete Role')->pluck('id')->toArray();
         
-        $hasRolePermission = $user->roles
-                            ->flatmap(function($role) use ($rolePermissionId) {
-                                $role->permissions()->attach([1]);
-                                return [Role::find($role->id)->first()->permissions->contains($rolePermissionId)];
-                            })->toArray();
+       # get user permissions id
+        $userPermission = $user->roles
+                        ->flatmap(function($role) use ($permissionsId) {
+                            $role->permissions()->attach($permissionsId);
+                            return [Role::find($role->id)->permissions->pluck('id')->toArray()];
+                        })->flatmap(function($role){
+                            return !empty($role) ? $role :'';
+                        })->toArray();
 
-        $this->assertTrue(in_array(true, $hasRolePermission));   
+        # check if user has permissions to access
+        $this->assertTrue(count(array_intersect($permissionsId, $userPermission)) > 0);   
 
         $response = $this->actingAs($user)
                 ->delete('dashboard/roles/'.Role::first()->id);

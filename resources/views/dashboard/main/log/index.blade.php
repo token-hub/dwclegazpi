@@ -20,15 +20,11 @@
                 serverSide: true,
                 order: [ [0, 'desc'] ],
                 "searching": true,
-                ajax: '{{ url("dashboard/logsData") }}',
+                ajax: '{{ url("dashboard/log-data") }}',
                 columns: [
                     { data: 'timeAndDate', name: 'timeAndDate'},
                     { data: 'description', name: 'description'},
-                    { data: 'username', name: 'username', 
-                        render:function(data, type, row){
-                            return "<a href='logs/"+row.causer_id+"/date/"+row.created_at+"' style='text-decoration:none;'>"+ row.username +"</a>";
-                        }
-                    },
+                    { data: 'username', name: 'username' }
                 ]
             });
         });

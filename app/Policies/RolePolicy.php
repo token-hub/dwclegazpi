@@ -4,12 +4,12 @@ namespace App\Policies;
 
 use App\Models\Entities\User;
 use App\Models\Entities\Role;
-use App\Models\Entities\Permission;
 use Illuminate\Auth\Access\HandlesAuthorization;
+use App\Traits\PolicyTrait;
 
 class RolePolicy
 {
-    use HandlesAuthorization;
+    use HandlesAuthorization, PolicyTrait;
 
     /**
      * Determine whether the user can view any roles.
@@ -19,7 +19,7 @@ class RolePolicy
      */
     public function viewAny(User $user)
     {
-       return $this->hasAnyRolePermission($user, ['Add Role', 'Update Role', 'Delete Role']);
+       return $this->hasAnyPermission($user, ['Add Role', 'Update Role', 'Delete Role']);
     }
 
     /**
@@ -42,7 +42,7 @@ class RolePolicy
      */
     public function create(User $user)
     {   
-        return $this->hasRolePermission($user, 'Add Role');
+        return $this->hasPermission($user, 'Add Role');
     }
 
     /**
@@ -54,7 +54,7 @@ class RolePolicy
      */
     public function update(User $user, Role $role)
     {   
-        return $this->hasRolePermission($user, 'Update Role');
+        return $this->hasPermission($user, 'Update Role');
     }
 
     /**
@@ -66,7 +66,7 @@ class RolePolicy
      */
     public function delete(User $user, Role $role)
     {
-        return $this->hasRolePermission($user, 'Delete Role');
+        return $this->hasPermission($user, 'Delete Role');
     }
 
     /**
@@ -91,31 +91,5 @@ class RolePolicy
     public function forceDelete(User $user, Role $role)
     {
         //
-    }
-
-    public function hasRolePermission($user, $roleTitle)
-    {
-        # get role permission id
-        $rolePermissionId = Permission::where('title', $roleTitle)->first()->id;
-        
-        # compare role permissions id to user role/s permission id
-        return $user->roles
-                ->flatmap(function($role) use ($rolePermissionId) {
-                    return [Role::find($role->id)->first()->permissions->contains($rolePermissionId)];
-                })->toArray();
-    }
-
-    public function hasAnyRolePermission($user, $roleTitle)
-    {
-        # get role permissions id
-        $rolePermissionsId = Permission::whereIn('title', $roleTitle)->pluck('id')->toArray();
-
-        # compare role permissions id to user role/s permission id 
-        return $user->roles
-                    ->flatmap(function($role) use ($rolePermissionsId) {
-                        foreach ($rolePermissionsId as $rpi) {
-                            return [Role::find($role->id)->first()->permissions->contains($rpi)];
-                        }
-                    })->toArray();
     }
 }

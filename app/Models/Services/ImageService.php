@@ -29,16 +29,6 @@ class ImageService
 		return $this->imageInterface->getInactiveImagesChunk();
 	}
 
-	public function removeOrActivate($images)
-	{
-		if ($images->imgs_type == 'activate') {
-			$result = $this->activate($images);
-		} else {
-			$result = $this->remove($images);
-		}
-		\Session::flash('notification', $result);
-	}
-
 	public function activate($images)
 	{
 		foreach ($images->images as $image) 
@@ -55,7 +45,7 @@ class ImageService
            ->causedBy(\Auth::user())
            ->log('activated');
 
-	    return ['message' => 'Image/s successfully activated!', 'type' => 'notif-success'];
+        \Session::flash('notification', ['message' => 'Image/s successfully activated!', 'type' => 'notif-success']);
 	}
 
 	public function remove($images) 
@@ -74,18 +64,7 @@ class ImageService
            ->causedBy(\Auth::user())
            ->log('removed');
 
-		return ['message' => 'Image/s successfully removed.', 'type' => 'notif-success'];
-	}
-
-	public function arrangeOrDeactivate($images) 
-	{
-		if ($images->imgs_type == 'arrange') {
-			$result = $this->arrange($images);
-		} else {
-			$result = $this->deactivate($images);
-		}
-
-		\Session::flash('notification', $result);
+		\Session::flash('notification', ['message' => 'Image/s successfully removed!', 'type' => 'notif-success']);
 	}
 
 	public function arrange($images)
@@ -110,7 +89,7 @@ class ImageService
            ->causedBy(\Auth::user())
            ->log('arranged');
 
-        return ['message' => 'Image/s successfully arranged.', 'type' => 'notif-success'];
+        \Session::flash('notification', ['message' => 'Image/s successfully arranged.', 'type' => 'notif-success']);
 	}
 
 	public function deactivate($images)
@@ -129,7 +108,7 @@ class ImageService
            ->causedBy(\Auth::user())
            ->log('deactivated');
 
-		return ['message' => 'Image/s successfully deactivated.', 'type' => 'notif-success'];
+		\Session::flash('notification', ['message' => 'Image/s successfully deactivated', 'type' => 'notif-success']);
 	}
 
 	public function store($data)

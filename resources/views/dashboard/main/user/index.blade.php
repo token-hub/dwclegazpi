@@ -1,6 +1,15 @@
 @extends('dashboard.layouts.navbar-layout')
 
 @section('wrapper-title', 'Users')
+
+@can('create', App\Models\Entities\User::class)
+	@section('wrapper-button')
+		{!! Form::open(['url' => ['dashboard/register'], 'method' => 'GET']) !!}
+			{{Form::submit('Add User', ['style' => 'margin:0 5px;float:right', 'class' => 'btn btn-md btn-success'])}}
+		{!! Form::close() !!}
+	@endsection
+@endcan
+
 @section('wrapper-body')
 	<table id="user_example" class="table table-striped table-bordered">
         <thead>

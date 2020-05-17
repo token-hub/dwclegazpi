@@ -55,10 +55,12 @@
 								<p>{{ ucwords($key3).'(old): '.$third.' ' }}</p>
 							@endforeach
 						@else 
-						
-							
 							@foreach($second as $key3 => $third)
-								<p>{{ ucwords($key3).'(new): '.$third.' ' }}</p>
+								@if(strpos($log['description'], 'deleted') === 0)
+									<p>{{ ucwords($key3).' : '.$third }}</p>
+								@else 
+									<p>{{ ucwords($key3).'(new): '.$third.' ' }}</p>	
+								@endif
 							@endforeach
 						@endif
 				@endforeach	

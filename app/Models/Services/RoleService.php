@@ -19,6 +19,27 @@ class RoleService
 		return $this->roleInterface->getRoles();
 	}
 
+	public function store($data)
+	{
+		$this->roleInterface->storeRole($data);
+
+		return ['type' => 'notif-success', 'message' => 'Role added successfully!'];
+	}
+
+	public function update($role, $data)
+	{
+		$this->roleInterface->updateRole($role, $data);
+
+		return ['type' => 'notif-success', 'message' => 'Role updated successfully!'];
+	}
+
+	public function destroy($role)
+	{
+		$this->roleInterface->destroyRole($role);
+		
+		\Session::flash('notification', ['type' => 'notif-success', 'message' => 'Role deleted successfully!']);
+	}
+
 	public function roleData($data)
 	{
 		$roles = $this->roleInterface->getRoles();
@@ -43,23 +64,5 @@ class RoleService
             	return 'N/A';
             })
             ->make(true);
-	}
-
-	public function store($data)
-	{
-		$this->roleInterface->storeRole($data);
-		return ['type' => 'notif-success', 'message' => 'Role added successfully!'];
-	}
-
-	public function update($role, $data)
-	{
-		$this->roleInterface->updateRole($role, $data);
-		return ['type' => 'notif-success', 'message' => 'Role updated successfully!'];
-	}
-
-	public function destroy($role)
-	{
-		$this->roleInterface->destroyRole($role);
-		\Session::flash('notification', ['type' => 'notif-success', 'message' => 'Role deleted successfully!']);
 	}
 }

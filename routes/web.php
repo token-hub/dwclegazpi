@@ -56,17 +56,21 @@ Route::namespace('Dashboard')->prefix('dashboard')->group(function () {
     
     Route::get('/logs/{id}/date/{date}', 'DashboardLogController@show');
     
-    Route::get('/logsData', 'DashboardLogController@logsData');
+    Route::get('/log-data', 'DashboardLogController@logsData');
 
-    Route::get('/images-active', 'DashboardImageController@active');
+    Route::get('/images-active', 'DashboardActiveImageController@index');
 
-    Route::post('/images-active/image-arrange-or-deactivate', 'DashboardImageController@arrangeOrDeactivate');
+    Route::patch('/images-active/deactivate', 'DashboardActiveImageController@destroy');
+
+    Route::patch('/images-active/arrange', 'DashboardActiveImageController@update');
     
-    Route::get('/images-inactive', 'DashboardImageController@inactive');
+    Route::get('/images-inactive', 'DashboardInactiveImageController@index');
     
-    Route::post('/images-inactive/image-remove-or-activate', 'DashboardImageController@removeOrActivate');
-    
-    Route::post('/images-inactive/image-upload', 'DashboardImageUploadController@store');
+    Route::delete('/images-inactive/remove', 'DashboardInactiveImageController@destroy');
+
+    Route::patch('/images-inactive/activate', 'DashboardInactiveImageController@update');
+
+    Route::post('/images-inactive/image-upload', 'DashboardInactiveImageController@store');
 
     Route::get('roles', 'DashboardRoleController@index');
 

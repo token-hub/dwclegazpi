@@ -552,23 +552,25 @@ sliderBtn.forEach(function (e) {
       'imgs_type': SliderBtnType,
       'images': imageNames
     };
+    url = url(SliderBtnType);
+    type = type(SliderBtnType);
 
     if (SliderBtnType == 'remove' || SliderBtnType == 'activate') {
-      sendData(myJsonData, '/dashboard/images-inactive/image-remove-or-activate', 'images-inactive');
+      sendData(myJsonData, url, type, 'images-inactive');
     } else {
-      sendData(myJsonData, '/dashboard/images-active/image-arrange-or-deactivate', 'images-active');
+      sendData(myJsonData, url, type, 'images-active');
     }
   });
 });
 
-function sendData(data, url, redirect) {
+function sendData(data, url, type, redirect) {
   $.ajaxSetup({
     headers: {
       'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
     }
   });
   $.ajax({
-    type: 'POST',
+    type: type,
     url: url,
     data: data,
     success: function success(data) {
@@ -601,6 +603,50 @@ function imageActionType(type) {
   }
 
   return SliderBtnType;
+}
+
+function url(SliderBtnType) {
+  switch (SliderBtnType) {
+    case 'remove':
+      url = '/dashboard/images-inactive/remove';
+      break;
+
+    case 'activate':
+      url = '/dashboard/images-inactive/activate';
+      break;
+
+    case 'deactivate':
+      url = '/dashboard/images-active/deactivate';
+      break;
+
+    case 'arrange':
+      url = '/dashboard/images-active/arrange';
+      break;
+  }
+
+  return url;
+}
+
+function type(SliderBtnType) {
+  switch (SliderBtnType) {
+    case 'remove':
+      type = 'DELETE';
+      break;
+
+    case 'activate':
+      type = 'PATCH';
+      break;
+
+    case 'deactivate':
+      type = 'PATCH';
+      break;
+
+    case 'arrange':
+      type = 'PATCH';
+      break;
+  }
+
+  return type;
 }
 
 /***/ }),

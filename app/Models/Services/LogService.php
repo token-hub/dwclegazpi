@@ -15,7 +15,7 @@ class LogService
 		$this->logInterface = $logInterface;
 	}
 
-	public function logsData()
+	public function logsData($data)
 	{
 		$logs = $this->logInterface->getWhereCauserIdNotNull();
 
@@ -28,9 +28,18 @@ class LogService
 	    ->addColumn('timeAndDate', function ($logs) {
 	          return date("F d, Y | h:i A", strtotime($logs->created_at));
 	     })
-	     ->addColumn('username', function ($logs) {
-	          return  ucfirst(User::find($logs->causer_id)->username);
+	     ->addColumn('username', function ($logs) use ($data) {
+	     	
+	     	$username = ucfirst(User::find($logs->causer_id)->username);
+
+	     	if (!empty($data))
+	     	{	
+ 				return "<a href='logs/".$logs->causer_id."/date/".$logs->created_at."' style='text-decoration:none;'>". $username ."</a>";
+	     	}
+	     	
+	          return  $username;
 	     })
+	    ->rawColumns(['username'])
 	    ->make(true);
 	}
 
@@ -40,8 +49,14 @@ class LogService
 
 		$properties = $logs->filter(function($item){
 					return count($item->properties) != 0;
-				})->map(function($item){
-					return array('old' => $item->properties['old'], 'new' => $item->properties['attributes']);
+				})
+				->map(function($item){
+					if (array_key_exists("old",$item->properties->toArray())  ) {
+						$arr = array('old' => $item->properties['old'], 'new' => $item->properties['attributes']);
+					} else {
+						$arr = array('new' => $item->properties['attributes']);
+					}
+					return $arr;
 				})->toArray();
 
 		# object to array

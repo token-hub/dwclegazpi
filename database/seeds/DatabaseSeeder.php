@@ -20,7 +20,20 @@ class DatabaseSeeder extends Seeder
          static $cnt = 1; 
        	 $user->Personal_info()->save(factory(App\Models\Entities\Personal_info::class)->make());
        	 $user->Department()->save(factory(App\Models\Entities\Department::class)->make());
-         $user->roles()->attach([$cnt++]);
+        
+        # create permission ids
+        $permissionsId = [];
+        for ($i = 1; $i <= 15; $i++){
+            array_push($permissionsId, $i);
+        }
+
+        # sycn to the admin role
+        $role = App\Models\Entities\Role::first();
+        $role->permissions()->sync($permissionsId);
+
+        # attach roles to users
+        $user->roles()->attach([$cnt++]);
+
        });
 
        $this->call(UserSeeder::class);

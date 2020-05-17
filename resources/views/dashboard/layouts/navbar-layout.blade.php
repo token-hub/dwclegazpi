@@ -44,48 +44,67 @@
 
 				<div class="left-content">
 					<h4>CONTENTS</h4>
+
+					@if( 
+						 Gate::check('viewAny', App\Models\Entities\Permission::class) ||
+						 Gate::check('viewAny', App\Models\Entities\Role::class) ||
+						 Gate::check('viewAny', App\Models\Entities\User::class)
+						)
+						<div class='left-content-link '>
+							<i class='fa fa-user-circle-o'></i><a href="#">User management</a>
+							<span class='fa fa-sort-desc'></span>
+						</div>
 					
-					<div class='left-content-link '>
-						<i class='fa fa-user-circle-o'></i><a href="#">User management</a>
-						<span class='fa fa-sort-desc'></span>
-					</div>
+						<div class='content-dropdown'>
+							@can('viewAny', App\Models\Entities\Permission::class)
+								<div class='left-content-link'>
+									<i class='fa fa-unlock'></i><a href="{{url('dashboard/permissions')}}">Permissions</a>
+								</div>
+							@endcan
 
-					<div class='content-dropdown'>
-						<div class='left-content-link'>
-							<i class='fa fa-user-plus'></i><a href="{{url('dashboard/register')}}">Registration</a>
+							@can('viewAny', App\Models\Entities\Role::class)
+								<div class='left-content-link'>
+									<i class='fa fa-briefcase'></i><a href="{{url('dashboard/roles')}}">Roles</a>
+								</div>	
+							@endcan
+
+							@can('viewAny', App\Models\Entities\User::class)
+								<div class='left-content-link'>
+									<i class='fa fa-user'></i><a href="{{url('dashboard/users')}}">Users</a>
+								</div>
+							@endcan
 						</div>
-						<div class='left-content-link'>
-							<i class='fa fa-unlock'></i><a href="{{url('dashboard/permissions')}}">Permissions</a>
+					@endif
+					
+					@if (
+							Gate::check('viewAnyActive', App\Models\Entities\Image::class) || 
+							Gate::check('viewAnyInactive', App\Models\Entities\Image::class)
+						)
+						<div class='left-content-link '>
+							<i class='fa fa-sliders'></i><a href="#">Slider</a>
+							<span class='fa fa-sort-desc'></span>
 						</div>
 
-						@can('viewAny', App\Models\Entities\Role::class)
+						<div class='content-dropdown'>
+							@can('viewAnyActive', App\Models\Entities\Image::class)
+								<div class='left-content-link'>
+									<i class='fa fa-toggle-on'></i><a href="{{url('dashboard/images-active')}}">Active</a>
+								</div>
+							@endcan
+
+							@can('viewAnyInactive', App\Models\Entities\Image::class)
 							<div class='left-content-link'>
-								<i class='fa fa-briefcase'></i><a href="{{url('dashboard/roles')}}">Roles</a>
+								<i class='fa fa-toggle-off'></i><a href="{{url('dashboard/images-inactive')}}">Inactive</a>
 							</div>
-						@endcan
-						
-						<div class='left-content-link'>
-							<i class='fa fa-user'></i><a href="{{url('dashboard/users')}}">Users</a>
+							@endcan
 						</div>
-					</div>
-
-					<div class='left-content-link '>
-						<i class='fa fa-sliders'></i><a href="#">Slider</a>
-						<span class='fa fa-sort-desc'></span>
-					</div>
-
-					<div class='content-dropdown'>
+					@endif
+					
+					@can('viewAny', Spatie\Activitylog\Models\Activity::class)
 						<div class='left-content-link'>
-							<i class='fa fa-toggle-on'></i><a href="{{url('dashboard/images-active')}}">Active</a>
+							<i class='fa fa-history'></i><a href="{{url('dashboard/logs')}}">Logs</a>
 						</div>
-						<div class='left-content-link'>
-							<i class='fa fa-toggle-off'></i><a href="{{url('dashboard/images-inactive')}}">Inactive</a>
-						</div>
-					</div>
-
-					<div class='left-content-link'>
-						<i class='fa fa-history'></i><a href="{{url('dashboard/logs')}}">Logs</a>
-					</div>
+					@endcan
 				</div>
 			</div>
 			<div class="right bottom">

@@ -19,39 +19,64 @@ class DashboardPermissionController extends Controller
 
     public function index()
     {
+        $this->authorize('viewAny', Permission::class);
+
     	return view('dashboard.main.permission.index');
     }
 
     public function create()
     {
+        $this->authorize('create', Permission::class);
+
     	return view('dashboard.main.permission.create');
     }
 
     public function store(PermissionRequest $request)
     {
+        $this->authorize('create', Permission::class);
+
     	$result = $this->permissionService->store($request);
-    	return redirect('dashboard/permissions');
+    	
+        return redirect('dashboard/permissions')->with('notification', $result);
     }
 
     public function edit(Permission $permission)
     {
+        $this->authorize('update', $permission);
+
     	return view('dashboard.main.permission.edit')->with('permission', $permission);
     }
 
     public function update(Permission $permission, PermissionRequest $request)
     {
+        $this->authorize('update', $permission);
+
     	$result = $this->permissionService->update($permission, $request);
-    	return redirect('dashboard/permissions');
+
+    	return redirect('dashboard/permissions')->with('notification', $result);
     }
 
     public function destroy(Permission $permission)
     {
+        $this->authorize('delete', $permission);
+
     	$this->permissionService->destroy($permission);
-    	return 'dashboard/permission';
+    	
+        return 'dashboard/permission';
     }
 
-    public function permissionData()
+    public function permissionData(Permission $permission)
     {
-    	return $this->permissionService->permissionData();
+        $allowedAction = [];
+        
+        if (policy($permission)->update(\Auth::user(), $permission)) {
+            array_push($allowedAction, 'update');
+        }
+
+        if (policy($permission)->delete(\Auth::user(), $permission)) {
+            array_push($allowedAction, 'delete');
+        }
+
+    	return $this->permissionService->permissionData($allowedAction);
     }
 }

@@ -8,6 +8,8 @@ use Tests\TestCase;
 use App\Models\Entities\User;
 use App\Models\Entities\Personal_info;
 use App\Models\Entities\Department;
+use App\Models\Entities\Permission;
+use App\Models\Entities\Role;
 use Illuminate\Support\Facades\Auth;
 
 class RegistrationTest extends TestCase
@@ -16,7 +18,27 @@ class RegistrationTest extends TestCase
 
   public function test_check_registration_page_with_authenticated_user() 
   {
+    $this->seed('RoleSeeder');
+    $this->seed('PermissionSeeder');
+
     $user = User::create($this->data());
+
+    $user->roles()->attach([1, 2, 3]);
+
+    # get permission id
+    $permissionsId = Permission::where('title', 'Add User')->pluck('id')->toArray();
+    
+   # get user permissions id
+    $userPermission = $user->roles
+                    ->flatmap(function($role) use ($permissionsId) {
+                        $role->permissions()->attach($permissionsId);
+                        return [Role::find($role->id)->permissions->pluck('id')->toArray()];
+                    })->flatmap(function($role){
+                        return !empty($role) ? $role :'';
+                    })->toArray();
+
+    # check if user has permissions to access
+    $this->assertTrue(count(array_intersect($permissionsId, $userPermission)) > 0);
 
     $this->actingAs($user)
         ->get('dashboard/register')
@@ -27,8 +49,10 @@ class RegistrationTest extends TestCase
 
   public function test_check_registration_page_with_unauthenticated_user() 
   {
-    $response = $this->get('dashboard/register');
-    $response->assertRedirect('dashboard');
+    $user = User::create($this->data());
+    
+    $this->get('dashboard/register')
+        ->assertRedirect('dashboard');
 
     $this->assertNull(Auth::id());
   }
@@ -37,8 +61,27 @@ class RegistrationTest extends TestCase
   public function test_admin_can_register_a_user() 
   {
     $this->withoutExceptionHandling();
+    $this->seed('RoleSeeder');
+    $this->seed('PermissionSeeder');
 
     $user = User::create($this->data());
+
+    $user->roles()->attach([1, 2, 3]);
+
+    # get permission id
+    $permissionsId = Permission::where('title', 'Add User')->pluck('id')->toArray();
+    
+   # get user permissions id
+    $userPermission = $user->roles
+                    ->flatmap(function($role) use ($permissionsId) {
+                        $role->permissions()->attach($permissionsId);
+                        return [Role::find($role->id)->permissions->pluck('id')->toArray()];
+                    })->flatmap(function($role){
+                        return !empty($role) ? $role :'';
+                    })->toArray();
+
+    # check if user has permissions to access
+    $this->assertTrue(count(array_intersect($permissionsId, $userPermission)) > 0);
 
     $response = $this->actingAs($user)
         ->post('dashboard/register', [

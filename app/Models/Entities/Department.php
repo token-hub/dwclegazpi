@@ -7,10 +7,11 @@ use App\Traits\LogsConfiguration;
 
 class Department extends Model
 {	
-
 	use LogsConfiguration;
 
 	protected static $logName = 'user department information';
+
+    protected static $ignoreChangedAttributes = ['created_at'];
 
     protected $fillable = [
         'department_name', 'user_id'
