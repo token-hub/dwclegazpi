@@ -17,18 +17,18 @@ class DashboardInactiveImageController extends Controller
 		$this->imageService = $imageService;
 	}
 
-    public function index()
+    public function index(Image $image)
     {
         $this->authorize('viewAnyInactive', Image::class);
 
         $inactive = $this->imageService->inactiveChunk();
 
-        return view('dashboard.main.image.inactive')->with('inactive', $inactive);
+        return view('dashboard.main.image.inactive')->with(['inactive' => $inactive, 'image' => $image]);
     }
 
-    public function store(UploadImageRequest $request) 
+    public function store(UploadImageRequest $request, Image $image) 
     {
-    	$this->authorize('createInactive', Image::class);
+    	$this->authorize('createInactive', $image);
 
     	$result = $this->imageService->store($request);
 

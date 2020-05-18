@@ -26,9 +26,9 @@ Route::namespace('Dashboard')->prefix('dashboard')->group(function () {
 
   Route::get('/email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
 
-  Route::get('/home', 'DashboardController@index');
-
   Route::group([ 'middleware' => ['auth', 'verified'], 'verify' => true], function () { 
+
+    Route::get('/home', 'DashboardController@index');
 
     Route::get('/register', 'Auth\RegisterController@index');
     
@@ -102,18 +102,3 @@ Route::namespace('Dashboard')->prefix('dashboard')->group(function () {
   });
 
 });
-
-// Route::get('/sample', function(){
-//   $user = App\Models\Entities\User::first();
-//   $user->roles()->sync([3]);
-//   // dd($user->roles);
-
-//   // foreach ($user->roles as $key => $value) {
-     
-//   //     dd($value->title);
-//   // }
-//   // $role = App\Models\Entities\Roles::first();
-
-//   // $role->permissions()->attach([1, 3]);
-
-// });

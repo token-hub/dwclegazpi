@@ -8,27 +8,25 @@ class LoginService {
 	public function login($data) 
 	{
 		$redirectTo = '/dashboard';
-		$notification = ['message' => '', 'type' => ''];
+		$notification = ['message' => 'Credentials not found!', 'type' => 'notif-danger'];
 
-        if (Auth::attempt($data->only('username', 'password'), $data->remember)) {
-            $user = Auth::getLastAttempted();
-                 
-            # check if user is active
-            if ($user->is_active == 'Active') {
+        $attempt = array_merge($data->only('username', 'password'), ['is_active' => 0]);
 
-                # log
-               activity('login')
-                   ->causedBy($user)
-                   ->log('logged in');
+        # check if account is active
+        if (Auth::attempt($attempt, $data->has('remember'))) {
+            $notification = ['message' => 'Your account is Inactive', 'type' => 'notif-danger'];
+        }
 
-                Auth::login($user, $data->has('remember'));
-                $notification = ['message' => 'Welcome to Dashboard!', 'type' => 'notif-success'];
-                $redirectTo = '/dashboard/home';
-            } else {
+        # success
+        if (Auth::attempt($data->only('username', 'password'), $data->has('remember'))) { 
+            $redirectTo = '/dashboard/home';
+            $notification = ['message' => 'Welcome to Dashboard!', 'type' => 'notif-success'];
 
-                $notification = ['message' => 'Your account is Inactive', 'type' => 'notif-info'];
-            }
-        }  
+            # log
+            activity('login')
+               ->causedBy(Auth::user())
+               ->log('logged in');
+        } 
 
         return ['redirectTo' => $redirectTo, 'notification' => $notification];
 	}

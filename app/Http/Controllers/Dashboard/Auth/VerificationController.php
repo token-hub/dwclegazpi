@@ -6,7 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Foundation\Auth\VerifiesEmails;
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\Entities\User;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Verified;
 use Session;
@@ -33,7 +33,7 @@ class VerificationController extends Controller
      */
     protected function redirectTo()
     {   
-        \Session::flash('notification', ['message' => 'Welcome to login form!', 'type' => 'notif-success']);
+        \Session::flash('notification', ['message' => 'Welcome to Dashboard!', 'type' => 'notif-success']);
         return 'dashboard/home';
     }
 
@@ -57,7 +57,7 @@ class VerificationController extends Controller
         if ($user->hasVerifiedEmail()) {
             return redirect($this->redirectPath());
         }
-
+        
         if ($user->markEmailAsVerified()) {
             event(new Verified($user));
         }
@@ -84,5 +84,4 @@ class VerificationController extends Controller
         $notification = ['message' => 'New email verification sent!', 'type' => 'notif-success'];
         return back()->with(['resent' => true , 'notification' => $notification]);
     }
-
 }

@@ -16,13 +16,13 @@ class DashboardActiveImageController extends Controller
 		$this->imageService = $imageService;
 	}
 
-    public function index()
+    public function index(Image $image)
     {	
         $this->authorize('viewAnyActive', Image::class);
 
     	$active = $this->imageService->activeChunk();
 
-    	return view('dashboard.main.image.active')->with('active', $active);
+    	return view('dashboard.main.image.active')->with(['active' => $active, 'image' => $image]);
     }
 
     # This function is accessed by an ajax request

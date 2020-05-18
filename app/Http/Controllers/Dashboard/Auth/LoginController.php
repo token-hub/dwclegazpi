@@ -5,7 +5,8 @@ namespace App\Http\Controllers\Dashboard\Auth;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\LoginRequest;
 use App\Models\Services\LoginService;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\Request;
 class LoginController extends Controller
 {
     protected $loginService;
@@ -20,11 +21,11 @@ class LoginController extends Controller
         return view('dashboard.main.user.login-page');
     }
 
-    public function store(LoginRequest $LoginRequest) 
+    public function store(LoginRequest $loginRequest) 
     {
-        $login = $this->loginService->login($LoginRequest);
+        $login = $this->loginService->login($loginRequest);
 
-        return redirect($login['redirectTo'])->with('notification', $login['notification']);
+        return redirect()->intended($login['redirectTo'])->with('notification', $login['notification']);
     }
 
     public function destroy() 

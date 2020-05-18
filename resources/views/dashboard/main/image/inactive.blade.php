@@ -13,19 +13,19 @@
 		@if($inactive)
 			@foreach($inactive as $images)
 			 	<div class='slider-contents '>
-			 		@foreach($images as $image)
+			 		@foreach($images as $img)
 					 	<div class='slider-image'>
-							<img src="/storage/img/slider/inactive/{{ $image['image_name'] }}">
+							<img src="/storage/img/slider/inactive/{{ $img['image_name'] }}">
 						</div>
 			 		@endforeach
 			 	</div>
 			@endforeach
-		
-				@can('deleteInactive', $inactive)
+				
+				@can('deleteInactive', $image)
 					<button class='btn btn-danger slider-btn' id='img-inactive-btn-remove' disabled="">Remove image</button>
 				@endcan
 
-				@can('updateInactive', $inactive)
+				@can('updateInactive', $image)
 					<button class='btn btn-info slider-btn' id='img-inactive-btn-remove' disabled="">Activate image</button>
 				@endcan
 

@@ -6,12 +6,12 @@
   <meta name="google-site-verification" content="kebT2CwK9ka3kgAhQmPdegHOxhvvrBzCzYJIY1IhaCs" />
   
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-  <link rel="icon" type="image/ico" href="/storage/img/others/dwcl-Logo.png" />
+  <link rel="shortcut icon" type="image/x-icon" href="/storage/img/others/dwcl-Logo.png" />
   <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap" rel="stylesheet">
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   
-    <title> {{  ucfirst($prefix = (Request::segment(1) == '') ? "Dashboard" : Request::segment(1)). ' | Divine Word College of Legazpi' }}</title>
+  <title> {{  ucfirst($prefix = (Request::segment(1) == '') ? "Dashboard" : Request::segment(1)). ' | Divine Word College of Legazpi' }}</title>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155390910-1"></script>
