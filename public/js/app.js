@@ -11345,7 +11345,7 @@ function jumpToUpdatesPage(array, location, category) {
 
         sessionStorage.setItem('clicked-title', clickedTitle); // jump page to announcement
 
-        window.location.href = 'http://dwclegazpi.edu/' + location;
+        window.location.href = 'http://dwc-legazpi.edu/' + location;
       });
     });
   }
