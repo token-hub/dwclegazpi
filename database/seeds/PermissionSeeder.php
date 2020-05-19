@@ -13,21 +13,21 @@ class PermissionSeeder extends Seeder
     public function run()
     {
         $permissions = [
-        	['title' => 'Add Role'],
-        	['title' => 'Update Role'],
-        	['title' => 'Delete Role'],
-            ['title' => 'Add User'],
-            ['title' => 'Update User'],
-            ['title' => 'Delete User'],
-            ['title' => 'Add Permission'],
-            ['title' => 'Update Permission'],
-            ['title' => 'Delete Permission'],
-            ['title' => 'Add Inactive Image'],
-            ['title' => 'Update Inactive Image'],
-            ['title' => 'Delete Inactive Image'],
-            ['title' => 'Update Active Image'],
-            ['title' => 'Delete Active Image'],
-            ['title' => 'View Log'],
+        	['title' => 'add role'],
+            ['title' => 'update role'],
+            ['title' => 'delete role'],
+            ['title' => 'add user'],
+            ['title' => 'update user'],
+            ['title' => 'delete user'],
+            ['title' => 'add permission'],
+            ['title' => 'update permission'],
+            ['title' => 'delete permission'],
+            ['title' => 'add inactive image'],
+            ['title' => 'update inactive image'],
+            ['title' => 'delete inactive image'],
+            ['title' => 'update active image'],
+            ['title' => 'delete active image'],
+            ['title' => 'view log'],
         ];
 
        	foreach ($permissions as $permission) {

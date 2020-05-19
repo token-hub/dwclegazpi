@@ -19,7 +19,7 @@ class RolePolicy
      */
     public function viewAny(User $user)
     {
-       return $this->hasAnyPermission($user, ['Add Role', 'Update Role', 'Delete Role']);
+       return $this->hasAnyPermission($user, ['add role', 'update role', 'delete role']);
     }
 
     /**
@@ -42,7 +42,7 @@ class RolePolicy
      */
     public function create(User $user)
     {   
-        return $this->hasPermission($user, 'Add Role');
+        return $this->hasPermission($user, 'add role');
     }
 
     /**
@@ -54,7 +54,7 @@ class RolePolicy
      */
     public function update(User $user, Role $role)
     {   
-        return $this->hasPermission($user, 'Update Role');
+        return $this->hasPermission($user, 'update role');
     }
 
     /**
@@ -66,7 +66,7 @@ class RolePolicy
      */
     public function delete(User $user, Role $role)
     {
-        return $this->hasPermission($user, 'Delete Role');
+        return $this->hasPermission($user, 'delete role');
     }
 
     /**

@@ -10,7 +10,7 @@
 			@endforeach
 
 			@foreach($announcement['image'] as $image)
-				<img src="/storage/img/newsAndEvents/{{ $image }}" class='storage-img'>
+				<img src="/storage/img/announcement/{{ $image }}" class='storage-img'>
 			@endforeach
 
 			<div class='littleSpace'>

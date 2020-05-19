@@ -6,7 +6,6 @@
 	<!-- ---------------- [ slider show ] ---------------- -->
 	<div class="slideshow-container">
 			@if(count($home['active_image']))
-			{{ count($home['active_image']) }}
 				@foreach($home['active_image'] as $image)
 				 	<div class='mySlides fade slides'>
 						<img src="/storage/img/slider/active/{{ $image['image_name'] }}">
@@ -107,24 +106,24 @@
 					<div class="inner">
 						<div class="most">
 							<div class="left">
-								<p>DEC</p>
-								<p>09</p>
+								<p>MAY</p>
+								<p>14</p>
 							</div>
 							<div class="right">
-								<a href="#">CLASSES AND WORK RESUMPTION</a>
-								<span class='hidden'>CLASSES AND WORK RESUMPTION: DECEMBER 9, 2019</span>
+								<a href="#">CHANGES/UPDATES TO MEMO NO.9, s. 2020</a>
+								<span class='hidden'>CHANGES/UPDATES TO MEMO NO.9, s. 2020</span>
 							</div>
 						</div>
 					</div>
 					<div class="inner">
 						<div class="most">
 							<div class="left">
-								<p>DEC</p>
-								<p>04</p>
+								<p>MAY</p>
+								<p>14</p>
 							</div>
 							<div class="right">
-								<a href="#">CLASSES SUSPENSION</a>
-								<span class='hidden'>CLASSES SUSPENSION: DECEMBER 4, 2019</span>
+								<a href="#">ACKNOWLEDGE RECEIPT OF OPEN LETTER DATED MAY 4, 2020</a>
+								<span class='hidden'>ACKNOWLEDGE RECEIPT OF OPEN LETTER DATED MAY 4, 2020</span>
 							</div>
 						</div>
 					</div>
@@ -134,24 +133,24 @@
 					<div class="inner">
 						<div class="most">
 							<div class="left">
-								<p>DEC</p>
-								<p>09</p>
+								<p>APR</p>
+								<p>21</p>
 							</div>
 							<div class="right">
-								<a href="#">CLASSES AND WORK RESUMPTION</a>
-								<span class='hidden'>CLASSES AND WORK RESUMPTION: DECEMBER 9, 2019</span>
+								<a href="#">GUIDELINES IN POSTING OFFICIAL COMMUNICATION</a>
+								<span class='hidden'>GUIDELINES IN POSTING OFFICIAL COMMUNICATION</span>
 							</div>
 						</div>
 					</div>
 					<div class="inner">
 						<div class="most">
 							<div class="left">
-								<p>DEC</p>
-								<p>04</p>
+								<p>APR</p>
+								<p>14</p>
 							</div>
 							<div class="right">
-								<a href="#">CLASSES SUSPENSION</a>
-								<span class='hidden'>CLASSES SUSPENSION: DECEMBER 4, 2019</span>
+								<a href="#">REVISED SCHOOL ACTIVITIES FOR THE 2ND SEMESTER</a>
+								<span class='hidden'>REVISED SCHOOL ACTIVITIES FOR THE 2ND SEMESTER</span>
 							</div>
 						</div>
 					</div>

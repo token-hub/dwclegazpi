@@ -9,8 +9,88 @@ class UpdatesController extends Controller
 {
    public function getIndex(Request $request) {
 
-   	# Temporary array for paagination
+ 	# Temporary array for pagination
    		$items = [	
+   					[
+		   				'day' => '14',
+		   				'date' => 'May',
+		   				'title' => 'CHANGES/UPDATES TO MEMO NO.9, s. 2020',
+		   				'hidden' => 'CHANGES/UPDATES TO MEMO NO.9, s. 2020',
+		   				'category' => 'announcement',
+		   				'overview' => ''
+		   			],
+		   			[
+		   				'day' => '14',
+		   				'date' => 'May',
+		   				'title' => 'ACKNOWLEDGE RECEIPT OF OPEN LETTER DATED MAY 4, 2020',
+		   				'hidden' => 'ACKNOWLEDGE RECEIPT OF OPEN LETTER DATED MAY 4, 2020',
+		   				'category' => 'announcement',
+		   				'overview' => ''
+		   			],
+		   			[
+		   				'day' => '21',
+		   				'date' => 'Apr',
+		   				'title' => 'GUIDELINES IN POSTING OFFICIAL COMMUNICATION',
+		   				'hidden' => 'GUIDELINES IN POSTING OFFICIAL COMMUNICATION',
+		   				'category' => 'announcement',
+		   				'overview' => ''
+		   			],
+		   			[
+		   				'day' => '14',
+		   				'date' => 'Apr',
+		   				'title' => 'REVISED SCHOOL ACTIVITIES FOR THE 2ND SEMESTER',
+		   				'hidden' => 'REVISED SCHOOL ACTIVITIES FOR THE 2ND SEMESTER',
+		   				'category' => 'announcement',
+		   				'overview' => 'In light of recent government updates on CoViD-19, and having in mind the safety and well-being of the school ...'
+		   			],
+		   			[
+		   				'day' => '01',
+		   				'date' => 'Apr',
+		   				'title' => 'OFFICIAL RESPONSE OF THE FATHER PRESIDENT',
+		   				'hidden' => 'OFFICIAL RESPONSE OF THE FATHER PRESIDENT',
+		   				'category' => 'announcement',
+		   				'overview' => '[INFORMATION] Official Response of the Father President pertaining to the continuation of online classes in DWC Legazpi, for reference and guidance.'
+		   			],
+		   			[
+		   				'day' => '22',
+		   				'date' => 'Mar',
+		   				'title' => 'DIOCESAN CIRCULAR No. 8, Series of 2020',
+		   				'hidden' => 'DIOCESAN CIRCULAR No. 8, Series of 2020',
+		   				'category' => 'announcement',
+		   				'overview' => ''
+		   			],
+		   			[
+		   				'day' => '18',
+		   				'date' => 'Mar',
+		   				'title' => 'GUIDELINES FOR THE CONDUCT OF CLASSES',
+		   				'hidden' => 'GUIDELINES FOR THE CONDUCT OF CLASSES',
+		   				'category' => 'announcement',
+		   				'overview' => ''
+		   			],
+		   			[
+		   				'day' => '17',
+		   				'date' => 'Mar',
+		   				'title' => 'Reco-Tour 2020',
+		   				'hidden' => 'Reco-Tour 2020',
+		   				'category' => 'announcement',
+		   				'overview' => 'Please be guided accordingly.'
+		   			],
+		   			[
+		   				'day' => '13',
+		   				'date' => 'Mar',
+		   				'title' => 'DIOCESAN CIRCULAR No. 6, Series of 2020',
+		   				'hidden' => 'DIOCESAN CIRCULAR No. 6, Series of 2020',
+		   				'category' => 'announcement',
+		   				'overview' => '[INFORMATION] Circular from the Roman Catholic Diocese of Legazpi pertaining to precautionary and other-related measures to prevent the spread of COVID19. Please be guided accordingly.'
+		   			],
+   					[
+		   				'day' => '13',
+		   				'date' => 'Mar',
+		   				'title' => 'SUSPENSION OF CLASSES AND WORK: MARCH 13, 2020',
+		   				'hidden' => 'SUSPENSION OF CLASSES AND WORK: MARCH 13, 2020',
+		   				'category' => 'announcement',
+		   				'overview' => '[OFFICIAL ANNOUNCEMENT] Memorandum from the Office of the President regarding the suspension of classes in Divine Word College of Legazpi.'
+		   			],
    					[
 		   				'day' => '11',
 		   				'date' => 'Feb',
@@ -312,7 +392,100 @@ class UpdatesController extends Controller
 }
 
    public function getAnnouncement() {
-   		$announcements = [
+   		$announcements = [	
+   							[
+   								'title' => 'CHANGES/UPDATES TO MEMO NO.9, s. 2020',
+   								'image' => 
+   									[ 
+   										'may-14-2020 changes-updates-memo.jpg', 
+   										'may-14-2020 changes-updates-memo-2.jpg',
+   										'may-14-2020 changes-updates-memo-3.jpg',
+   									],
+								'paragraphs' => [],
+								'posted' => 'Posted on May 19, 2020 at 11:35 AM.',
+   							],
+   							[
+   								'title' => 'ACKNOWLEDGE RECEIPT OF OPEN LETTER DATED MAY 4, 2020',
+   								'image' => 
+   									[ 
+   										'may-14-2020 acknowledge-receipt-letter.jpg', 
+   										'may-14-2020 acknowledge-receipt-letter-2.jpg'
+   									],
+								'paragraphs' => [],
+								'posted' => 'Posted on May 19, 2020 at 11:31 AM.',
+   							],
+   							[
+   								'title' => 'COVID-19 ENTRY PROTOCOLS AT DWCL CAMPUS',
+   								'image' => [ 'may-12-2020 covid-19-entry-protocols.jpg'],
+								'paragraphs' => [],
+								'posted' => 'Posted on May 19, 2020 at 11:29 AM.',
+   							],
+   							[
+   								'title' => 'ADVISORY : APRIL 29 2020',
+   								'image' => [
+   									'may-01-2020 advisory-01.jpg', 
+   									'may-01-2020 advisory-02.jpg', 
+   									'may-01-2020 advisory-03.jpg', 
+   									'may-01-2020 advisory-04.jpg', 
+   									'may-01-2020 advisory-05.jpg', 
+   									'may-01-2020 advisory-06.jpg', 
+   									'may-01-2020 advisory-07.jpg', 
+   								],
+								'paragraphs' => [],
+								'posted' => 'Posted on May 19, 2020 at 11:27 AM.',
+   							],
+   							[
+   								'title' => 'GUIDELINES IN POSTING OFFICIAL COMMUNICATION',
+   								'image' => ['apr-21-2020 guidelines-posting-communication.jpg'],
+								'paragraphs' => [],
+								'posted' => 'Posted on May 19, 2020 at 11:19 AM.',
+   							],
+   							[
+   								'title' => 'REVISED SCHOOL ACTIVITIES FOR THE 2ND SEMESTER',
+   								'image' => ['apr-14-2020 revised-school-activities.jpg'],
+								'paragraphs' => ['<p> In light of recent government updates on CoViD-19, and having in mind the safety and well-being of the school community, the administrators of Divine Word College of Legazpi ,headed by Rev. Fr. Nielo M. Cantilado, SVD, released this Memorandum pertaining to the Revised School Activities for the 2nd Semester, AY 2019-2020. </p>'],
+								'posted' => 'Posted on May 19, 2020 at 11:16 AM.',
+   							],
+   							[
+   								'title' => 'OFFICIAL RESPONSE OF THE FATHER PRESIDENT',
+   								'image' => ['apr-01-2020 father-response.jpg'],
+								'paragraphs' => ['<p> [INFORMATION] Official Response of the Father President pertaining to the continuation of online classes in DWC Legazpi, for reference and guidance. </p>'],
+								'posted' => 'Posted on May 19, 2020 at 11:13 AM.',
+   							],
+   							[
+   								'title' => 'DIOCESAN CIRCULAR No. 8, Series of 2020',
+   								'image' => ['diocesan-circular-no.8.jpg'],
+								'paragraphs' => [],
+								'posted' => 'Posted on May 19, 2020 at 11:11 AM.',
+   							],
+   							[
+   								'title' => 'GUIDELINES FOR THE CONDUCT OF CLASSES',
+   								'image' => ['mar-17-2020 guideline-classes.jpg'],
+								'paragraphs' => [],
+								'posted' => 'Posted on May 19, 2020 at 11:09 AM.',
+   							],
+   							[
+   								'title' => 'Reco-Tour 2020',
+   								'image' => ['reco-tour-2020.jpg'],
+								'paragraphs' => ['<p> Please be guided accordingly. </p>'],
+								'posted' => 'Posted on May 19, 2020 at 11:05 AM.',
+   							],
+   							[
+   								'title' => 'DIOCESAN CIRCULAR No. 6, Series of 2020',
+   								'image' => 
+   										[
+   											'diocesan-circular-no.6-1.jpg',
+   											'diocesan-circular-no.6-2.jpg'
+   										],
+								'paragraphs' => ['<p> [INFORMATION] Circular from the Roman Catholic Diocese of Legazpi pertaining to precautionary and other-related measures to prevent the spread of COVID19. Please be guided accordingly. </p>'],
+								'posted' => 'Posted on May 19, 2020 at 11:01 AM.',
+   							],
+   							[
+   								'title' => 'SUSPENSION OF CLASSES AND WORK: MARCH 13, 2020',
+   								'image' => ['mar-13-2020 suspension-class-work.jpg'],
+								'paragraphs' => ['<p> [OFFICIAL ANNOUNCEMENT] Memorandum from the Office of the President regarding the suspension of classes in Divine Word College of Legazpi. </p>'],
+								'posted' => 'Posted on May 19, 2020 at 10:09 AM.',
+   							],
    							[
    								'title' => 'NON-WORKING HOLIDAY: February 24-25, 2019',
    								'image' => ['feb-21-2020 non-working.png'],

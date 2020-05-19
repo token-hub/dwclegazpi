@@ -438,6 +438,7 @@ body * {
   width: 100%;
   table-layout: fixed;
   display: table;
+  margin-left: -1px;
 }
 
 .dashboard-main .main-bottom .content-2 {

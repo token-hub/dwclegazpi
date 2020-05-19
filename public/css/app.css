@@ -1085,6 +1085,10 @@ body {
   line-height: 1.5;
 }
 
+.three-divs .content .items p i {
+  margin-right: 5px;
+}
+
 @media only screen and (max-width: 767px) {
   .three-divs .content .items {
     padding-left: 28px;
@@ -1844,9 +1848,10 @@ body {
   border-left: 2px solid gray;
 }
 
-.divine-container .content .left .date-and-content .date-content-right h3 {
+.divine-container .content .left .date-and-content .date-content-right span {
   margin: 0;
   cursor: pointer;
+  color: #1d17ce;
 }
 
 .divine-container .content .left .date-and-content .date-content-right a {
@@ -2250,7 +2255,7 @@ body {
   padding: 15px 30px;
 }
 
-.posts-and-events .items .bottom .value h4 {
+.posts-and-events .items .bottom .value span {
   margin: 0;
   color: #1d17ce;
 }

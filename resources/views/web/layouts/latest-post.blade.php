@@ -16,25 +16,25 @@
 
 	$latestPosts = [
 						[
-							'title' => 'NON-WORKING HOLIDAY: February 24-25, 2019',
+							'title' => 'CHANGES/UPDATES TO MEMO NO.9, s. 2020',
 							'posts' => [],
-							'posted' => 'February 21, 2020',
-							'hidden' => 'NON-WORKING HOLIDAY: February 24-25, 2019',
+							'posted' => 'May 19, 2020',
+							'hidden' => 'CHANGES/UPDATES TO MEMO NO.9, s. 2020',
 							'category' => 'announcement'
 						],
 						[
-							'title' => '59th FOUNDATION ANNIVERSARY',
+							'title' => 'ACKNOWLEDGE RECEIPT OF OPEN LETTER DATED MAY 4, 2020',
 							'posts' => [],
-							'posted' => 'February 11, 2020',
-							'hidden' => '59th FOUNDATION ANNIVERSARY',
-							'category' => 'news-and-events'
+							'posted' => 'May 19, 2020',
+							'hidden' => 'ACKNOWLEDGE RECEIPT OF OPEN LETTER DATED MAY 4, 2020',
+							'category' => 'announcement'
 						],
 						[
-							'title' => 'THE NEW NORTH CAMPUS MAIN GATE',
+							'title' => 'GUIDELINES IN POSTING OFFICIAL COMMUNICATION',
 							'posts' => [],
-							'posted' => 'February 11, 2020',
-							'hidden' => 'THE NEW NORTH CAMPUS MAIN GATE',
-							'category' => 'news-and-events'
+							'posted' => 'May 19, 2020',
+							'hidden' => 'GUIDELINES IN POSTING OFFICIAL COMMUNICATION',
+							'category' => 'announcement'
 						]
 				   ];
 ?>
@@ -50,9 +50,9 @@
 						<a href="#">{{ $event['title'] }}</a>
 					@else	
 						<!-- ==== [ HAS A CONNECTION WITH JAVASCRIPT ] ==== -->
-						<h4>{{$event['title']}}</h4> 
-						<a class='hidden'>{{$event['hidden']}}</a>
-						<a class="hidden">{{$event['category']}}</a>
+						<span>{{$event['title']}}</span> 
+						<span class='hidden'>{{$event['hidden']}}</span>
+						<span class="hidden">{{$event['category']}}</span>
 					@endif
 
 					<p class='red'>{{ $event['date'] }}</p>
@@ -71,9 +71,9 @@
 						<a>{{ $latestPost['title'] }}</a>
 					@else
 						<!-- ==== [ HAS A CONNECTION WITH JAVASCRIPT ] ==== -->
-						<h4>{{$latestPost['title']}}</h4> 
-						<a class='hidden'>{{$latestPost['hidden']}}</a>
-						<a class="hidden">{{$latestPost['category']}}</a>
+						<span>{{$latestPost['title']}}</span> 
+						<span class='hidden'>{{$latestPost['hidden']}}</span>
+						<span class="hidden">{{$latestPost['category']}}</span>
 					@endif
 
 					@foreach($latestPost['posts'] as $post)

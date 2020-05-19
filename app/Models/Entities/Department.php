@@ -21,7 +21,8 @@ class Department extends Model
     	return $this->belongsTo(User::class);
     }
 
-    public function getNameAttribute($data) {
+    public function getDepartmentNameAttribute($data) 
+    {
     	return ucfirst($data);
     }
 }

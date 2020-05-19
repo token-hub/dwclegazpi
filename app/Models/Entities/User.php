@@ -76,4 +76,9 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $data == 0 ? 'Inactive' : 'Active';
     }
+
+    public function setIsActiveAttribute($data) 
+    {
+        $this->attributes['is_active'] =  $data == 'Inactive' ? 0 : 1;
+    }
 }

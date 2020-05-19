@@ -18,4 +18,9 @@ class Permission extends Model
     {
     	return $this->belongsToMany(Roles::class)->withTimestamps();
     }
+
+    public function getTitleAttribute($data)
+    {
+    	return ucfirst($data);
+    }
 }

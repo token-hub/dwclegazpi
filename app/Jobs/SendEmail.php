@@ -33,6 +33,6 @@ class SendEmail implements ShouldQueue
      */
     public function handle()
     {
-        Mail::to('johnsuyang2118@gmail.com')->send(new SendMail($this->email));
+        Mail::to('dwclinfo@dwc-legazpi.edu')->send(new SendMail($this->email));
     }
 }

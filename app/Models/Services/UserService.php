@@ -41,10 +41,16 @@ class UserService
 		$user->is_active = $data->status;
 		$user->save();
 		
-		// check if pivot rule_user table is updated		
+		# check if pivot rule_user table is updated		
 		$isRolesUpdate = (!empty($roles['attached']) || !empty($roles['detached']));
 
 		if ($user->wasChanged() || $isRolesUpdate) {
+
+			# log (single)
+			# if ($isRolesUpdate) {
+			# get old roles
+			# get new roles }
+
 			$notification = ['message' => 'Account updated!', 'type' => 'notif-success'];
 		} else {
 			$notification = ['message' => 'Nothing to update', 'type' => 'notif-info'];

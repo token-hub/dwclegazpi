@@ -20,7 +20,7 @@ class UserPolicy
      */
     public function viewAny(User $user)
     {
-        return $this->hasAnyPermission($user, ['Add User', 'Update User', 'Delete User']);
+        return $this->hasAnyPermission($user, ['add user', 'update user', 'delete user']);
     }
 
     /**
@@ -43,7 +43,7 @@ class UserPolicy
      */
     public function create(User $user)
     {
-        return $this->hasPermission($user, 'Add User');
+        return $this->hasPermission($user, 'add user');
     }
 
     /**
@@ -55,7 +55,7 @@ class UserPolicy
      */
     public function update(User $user, User $model)
     {
-        return $this->hasPermission($user, 'Update User');
+        return $this->hasPermission($user, 'update user');
     }
 
     /**
@@ -67,7 +67,7 @@ class UserPolicy
      */
     public function delete(User $user, User $model)
     {
-        return $this->hasPermission($user, 'Delete User');
+        return $this->hasPermission($user, 'delete user');
     }
 
     /**

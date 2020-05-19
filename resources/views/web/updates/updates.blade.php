@@ -9,11 +9,11 @@
 			</div>
 			<div class='date-content-right'>
 					@if(empty($item['hidden']))
-						<a>{{$item['title']}}</a>
+						<span>{{$item['title']}}</span>
 					@else 
 						<!-- ==== [ HAS A CONNECTION WITH JAVASCRIPT ] ==== -->
-						<h3>{{$item['title']}}</h3> 
-						<a class='hidden'>{{$item['title']}}</a>
+						<span>{{$item['title']}}</span> 
+						<span class='hidden'>{{$item['title']}}</span>
 					@endif
 				<p>{!! $item['overview'] !!}</p>
 			</div>

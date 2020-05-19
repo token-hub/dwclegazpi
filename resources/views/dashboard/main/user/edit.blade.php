@@ -19,12 +19,12 @@
 					</div>
 					{!! Form::label('roles[]', 'Roles') !!}
 				</div>
-
+				
 				<div class='dashboard-input'>
 					{!! Form::select('status', [
-						'1' => 'Active',
-						'0' => 'Inactive',
-						], strtolower($user->is_active), ['class' => 'input-control', 'id' => 'status']) !!} 
+						'Active' => 'Active',
+						'Inactive' => 'Inactive',
+						], $user->is_active, ['class' => 'input-control', 'id' => 'status']) !!} 
 					{!! Form::label('status', 'Status') !!}
 				</div>
 

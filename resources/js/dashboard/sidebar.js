@@ -11,16 +11,16 @@ if (sidebarDropdown !== null) {
 		e.addEventListener('click', function(){
 			var sliderContent = e.parentNode.nextElementSibling;
 			sliderContent.classList.toggle('content-dropdown-clicked');
-			if (e.classList.contains('fa-sort-desc')) {
-					e.classList.remove('fa-sort-desc') ;
-					e.classList += ' fa-sort-asc';
-			} else {
-					e.classList.remove('fa-sort-asc') ;
-					e.classList += ' fa-sort-desc'; 
-			}
+			e.parentNode.classList.toggle('link-active');
+			changeSpanClasslist(e);
 		});
 	});
 }
+
+/*
+	dropdown remains open when the dropdown content is the the current active page
+ */
+
 
 // ========== [ SIDEBAR LINKS CLICKED FUNCTION ] ==========
 Array.from(sideNavLinks).forEach( function(e) {
@@ -31,16 +31,6 @@ Array.from(sideNavLinks).forEach( function(e) {
 	} 
 });
 
-// ========== [ USER DROPDOWN FUNCTION ] ==========
-// check if user dropdown is available in the current page
-if (userDropdown !== null) {
-
-	// click event on the dropdown trigger
-	userDropdown.addEventListener('click', function(){ 
-		const userDropdownContent = document.querySelector('.user-dropdown');
-		userDropdownContent.classList.toggle('user-dropdown-clicked');
-	});
-}
 
 // ========== [ SIDEBAR LINK ACTIVE FUNCTION ] ==========
 sidebarLinks.forEach(function(e) {
@@ -58,8 +48,39 @@ sidebarLinks.forEach(function(e) {
 			}
 			
 			parentNode.classList += ' link-active';
+			parentNode.parentNode.classList.toggle('content-dropdown-clicked');
+
+			// check if there is active dropdown active
+			if (parentNode.parentNode.previousSibling.previousSibling) {
+				parentNode.parentNode.previousSibling.previousSibling.classList.add('link-active');
+				var span = parentNode.parentNode.previousSibling.previousSibling.lastElementChild;
+
+				changeSpanClasslist(span);
+			}
+			
 		}
 	}
 });
 
+// ========== [ USER DROPDOWN FUNCTION ] ==========
+// check if user dropdown is available in the current page
+if (userDropdown !== null) {
 
+	// click event on the dropdown trigger
+	userDropdown.addEventListener('click', function(){ 
+		const userDropdownContent = document.querySelector('.user-dropdown');
+		userDropdownContent.classList.toggle('user-dropdown-clicked');
+	});
+}
+
+// change span classlist when clicked
+function changeSpanClasslist(element)
+{
+	if (element.classList.contains('fa-sort-desc')) {
+			element.classList.remove('fa-sort-desc');
+			element.classList.add('fa-sort-asc') ;
+	} else {
+			element.classList.remove('fa-sort-asc');
+			element.classList.add('fa-sort-desc');
+	}
+}

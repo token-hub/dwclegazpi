@@ -1,7 +1,7 @@
 import { contentHide } from './title-and-content.js';
 
-var updates = document.querySelectorAll('.date-content-right h3');
-var postsEvents = document.querySelectorAll('.posts-and-events .items .bottom .value h4');
+var updates = document.querySelectorAll('.date-content-right span');
+var postsEvents = document.querySelectorAll('.posts-and-events .items .bottom .value span');
 var newsAndEvents = document.querySelectorAll('.news-and-events .content .items .values button');
 var announcements = document.querySelectorAll('.annoucement .content .items .values .inner .most .right a');
 
