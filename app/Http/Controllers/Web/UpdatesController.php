@@ -10,7 +10,7 @@ class UpdatesController extends Controller
    public function getIndex(Request $request) {
 
  	# Temporary array for pagination
-   		$items = [	
+   		$updates = [	
    					[
 		   				'day' => '14',
 		   				'date' => 'May',
@@ -120,7 +120,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Jan',
 		   				'title' => 'SHS Activity',
 		   				'hidden' => '',
-		   				'category' => '',
+		   				'category' => 'news-and-events',
 		   				'overview' => 'PAASCU WORK'
 		   			],
    					[
@@ -128,7 +128,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Jan',
 		   				'title' => 'SHS Activity',
 		   				'hidden' => '',
-		   				'category' => '',
+		   				'category' => 'news-and-events',
 		   				'overview' => 'Faculty and Staff mass <br> <b>Venue:</b> Chapel & Room 101'
 		   			],
    					[
@@ -136,7 +136,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Jan',
 		   				'title' => 'SHS Activity',
 		   				'hidden' => '',
-		   				'category' => '',
+		   				'category' => 'news-and-events',
 		   				'overview' => 'Release of report cards for 2nd quarter <br> <b>Venue:</b> Classrooms'
 		   			],
    					[
@@ -144,7 +144,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Jan',
 		   				'title' => 'SHS Activity',
 		   				'hidden' => '',
-		   				'category' => '',
+		   				'category' => 'news-and-events',
 		   				'overview' => 'Tree Planting c/o UNESCO <br> <b>Venue:</b> Malabog <hr> <p> FOURTH SUNDAY MASS <br> <b>Venue:</b>  St. Raphael: </p>'
 		   			],
    					[
@@ -152,7 +152,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Jan',
 		   				'title' => 'SHS Activity',
 		   				'hidden' => '',
-		   				'category' => '',
+		   				'category' => 'news-and-events',
 		   				'overview' => 'Release of Master Grade Sheet'
 		   			],
    					[
@@ -160,7 +160,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Jan',
 		   				'title' => 'SHS Activity',
 		   				'hidden' => '',
-		   				'category' => '',
+		   				'category' => 'news-and-events',
 		   				'overview' => 'Career Talk for Grade 12 students <br> <b>Venue:</b> Gym'
 		   			],
    					[
@@ -168,7 +168,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Jan',
 		   				'title' => 'SHS Activity',
 		   				'hidden' => '',
-		   				'category' => '',
+		   				'category' => 'news-and-events',
 		   				'overview' => 'Encoding of grades in the system'
 		   			],
    					[
@@ -176,7 +176,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Jan',
 		   				'title' => 'SHS Activity: THIRD SUNDAY MASS',
 		   				'hidden' => '',
-		   				'category' => '',
+		   				'category' => 'news-and-events',
 		   				'overview' => 'Sponsors: Salazar and Schiermann <br> <b>Venue:</b> St.Raphael Churh'
 		   			],
    					[
@@ -184,7 +184,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Jan',
 		   				'title' => 'SHS ACTIVITY',
 		   				'hidden' => '',
-		   				'category' => '',
+		   				'category' => 'news-and-events',
 		   				'overview' => 'Kick-off-Outreach Program (c/o SHEB), <br> Try out for sportsFest 2020 (c/o Sports Club) <br> <b>Venue:</b> Gotob Camalig'
 		   			],
    					[
@@ -192,7 +192,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Jan',
 		   				'title' => 'SHS ACTIVITY',
 		   				'hidden' => '',
-		   				'category' => '',
+		   				'category' => 'news-and-events',
 		   				'overview' => 'FEAST OF ST.ARNOLD JANSEN'
 		   			],
    					[
@@ -200,7 +200,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Jan',
 		   				'title' => 'SHS ACTIVITY',
 		   				'hidden' => '',
-		   				'category' => '',
+		   				'category' => 'news-and-events',
 		   				'overview' => 'FEAST OF ST.ARNOLD JANSEN <br> <b>Venue:</b> Gym / Classrooms'
 		   			],
    					[
@@ -208,7 +208,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Jan',
 		   				'title' => 'SHS ACTIVITY',
 		   				'hidden' => '',
-		   				'category' => '',
+		   				'category' => 'news-and-events',
 		   				'overview' => 'Continuation of Routine and Exit Interview'
 		   			],
    					[
@@ -216,7 +216,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Jan',
 		   				'title' => 'SHS ACTIVITY',
 		   				'hidden' => '',
-		   				'category' => '',
+		   				'category' => 'news-and-events',
 		   				'overview' => 'SPECIAL EXAMINATION DAYS <br> <b>Venue:</b> Library'
 		   			],
    				  	[
@@ -224,7 +224,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Jan',
 		   				'title' => 'SHS ACTIVITY',
 		   				'hidden' => '',
-		   				'category' => '',
+		   				'category' => 'news-and-events',
 		   				'overview' => 'Submission if the CIDAM to the coordinator'
 		   			],
    					[
@@ -232,7 +232,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Jan',
 		   				'title' => 'SHS ACTIVITY',
 		   				'hidden' => '',
-		   				'category' => '',
+		   				'category' => 'news-and-events',
 		   				'overview' => 'Faculty Meeting <br> <b>Venue:</b> Room 101'
 		   			],
    					[
@@ -240,7 +240,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Jan',
 		   				'title' => 'SHS ACTIVITY',
 		   				'hidden' => '',
-		   				'category' => '',
+		   				'category' => 'news-and-events',
 		   				'overview' => 'Preparation for the 2nd semester'
 		   			],
    					[
@@ -248,7 +248,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Jan',
 		   				'title' => 'SHS ACTIVITY',
 		   				'hidden' => '',
-		   				'category' => '',
+		   				'category' => 'news-and-events',
 		   				'overview' => 'Continuation of the PAASCU Initial Reporting <br> <b>Vanue:</b> Room 101'
 		   			],
    					[
@@ -256,7 +256,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Jan',
 		   				'title' => 'SHS ACTIVITY',
 		   				'hidden' => '',
-		   				'category' => '',
+		   				'category' => 'news-and-events',
 		   				'overview' => 'Continuation of Routine interview Grade 12 <br> Continuation of Exit interview Grade 12'
 		   			],
    					[
@@ -264,7 +264,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Jan',
 		   				'title' => 'SHS ACTIVITY',
 		   				'hidden' => '',
-		   				'category' => '',
+		   				'category' => 'news-and-events',
 		   				'overview' => 'Continuation of Exit interview for Grade 12 c/o AGTC'
 		   			],
    					[
@@ -272,7 +272,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Jan',
 		   				'title' => 'SHS ACTIVITY',
 		   				'hidden' => '',
-		   				'category' => '',
+		   				'category' => 'news-and-events',
 		   				'overview' => 'UP Padunungan 2020 <br> <b> Venue:</b> Bicol University'
 		   			],
    					[
@@ -280,7 +280,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Jan',
 		   				'title' => 'SHS ACTIVITY',
 		   				'hidden' => '',
-		   				'category' => '',
+		   				'category' => 'news-and-events',
 		   				'overview' => 'Awarding-English and Book Week Celebration 2019 Faculty Meeting Re: Teachers and class Sked for 2nd semester'
 		   			],
    			   		[
@@ -288,7 +288,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Jan',
 		   				'title' => 'SPECIAL HOLIDAY:',
 		   				'hidden' => '',
-		   				'category' => '',
+		   				'category' => 'announcement',
 		   				'overview' => 'New Year\'s Day'
 		   			],
    					[
@@ -296,7 +296,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Dec',
 		   				'title' => 'Institutional Christmas Party',
 		   				'hidden' => '',
-		   				'category' => '',
+		   				'category' => 'news-and-events',
 		   				'overview' => 'Institutional Christmas Party'
 		   			],
    					[
@@ -304,7 +304,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Dec',
 		   				'title' => 'DWCL Final Examination & Grade Consultation',
 		   				'hidden' => '',
-		   				'category' => '',
+		   				'category' => 'news-and-events',
 		   				'overview' => 'Examination and grade consultation'
 		   			],
 		   			[
@@ -360,7 +360,7 @@ class UpdatesController extends Controller
 		   				'date' => 'Nov',
 		   				'title' => 'SPECIAL HOLIDAY:',
 		   				'hidden' => '',
-		   				'category' => '',
+		   				'category' => 'announcement',
 		   				'overview' => "All Saint's Day"
 		   			],
 		   			[
@@ -368,30 +368,178 @@ class UpdatesController extends Controller
 		   				'date' => 'Oct',
 		   				'title' => 'SPECIAL HOLIDAY:',
 		   				'hidden' => '',
-		   				'category' => '',
+		   				'category' => 'announcement',
 		   				'overview' => "DWCL Institutional Holiday"
 		   			]
     			];
    		
-   		$paginator = $this->getPaginator($request, $items);
-   		return view('web.updates.updates')->with('items', $paginator);
+   		$paginator = $this->getPaginator($request, $updates);
+   		return view('web.updates.updates')->with('updates', $paginator);
    }
 
- private function getPaginator(Request $request, $items) {
-    $total = count($items); // total count of the set, this is necessary so the paginator will know the total pages to display
-    $page = $request->page ? $request->page : 1; // get current page from the request, first page is null
-    $perPage = 5; // how many items you want to display per page?
-    $offset = ($page - 1) * $perPage; // get the offset, how many items need to be "skipped" on this page
- 
-    $items = array_slice($items, $offset, $perPage); // the array that we actually pass to the paginator is sliced
+   public function getAnnouncementOverview(Request $request)
+   {
+   		$announcements = 
+   						[
+		   					[
+				   				'day' => '14',
+				   				'date' => 'May',
+				   				'title' => 'CHANGES/UPDATES TO MEMO NO.9, s. 2020',
+				   				'hidden' => 'CHANGES/UPDATES TO MEMO NO.9, s. 2020',
+				   				'category' => 'announcement',
+				   				'overview' => ''
+				   			],
+				   			[
+				   				'day' => '14',
+				   				'date' => 'May',
+				   				'title' => 'ACKNOWLEDGE RECEIPT OF OPEN LETTER DATED MAY 4, 2020',
+				   				'hidden' => 'ACKNOWLEDGE RECEIPT OF OPEN LETTER DATED MAY 4, 2020',
+				   				'category' => 'announcement',
+				   				'overview' => ''
+				   			],
+				   			[
+				   				'day' => '21',
+				   				'date' => 'Apr',
+				   				'title' => 'GUIDELINES IN POSTING OFFICIAL COMMUNICATION',
+				   				'hidden' => 'GUIDELINES IN POSTING OFFICIAL COMMUNICATION',
+				   				'category' => 'announcement',
+				   				'overview' => ''
+				   			],
+				   			[
+				   				'day' => '14',
+				   				'date' => 'Apr',
+				   				'title' => 'REVISED SCHOOL ACTIVITIES FOR THE 2ND SEMESTER',
+				   				'hidden' => 'REVISED SCHOOL ACTIVITIES FOR THE 2ND SEMESTER',
+				   				'category' => 'announcement',
+				   				'overview' => 'In light of recent government updates on CoViD-19, and having in mind the safety and well-being of the school ...'
+				   			],
+				   			[
+				   				'day' => '01',
+				   				'date' => 'Apr',
+				   				'title' => 'OFFICIAL RESPONSE OF THE FATHER PRESIDENT',
+				   				'hidden' => 'OFFICIAL RESPONSE OF THE FATHER PRESIDENT',
+				   				'category' => 'announcement',
+				   				'overview' => '[INFORMATION] Official Response of the Father President pertaining to the continuation of online classes in DWC Legazpi, for reference and guidance.'
+				   			],
+				   			[
+				   				'day' => '22',
+				   				'date' => 'Mar',
+				   				'title' => 'DIOCESAN CIRCULAR No. 8, Series of 2020',
+				   				'hidden' => 'DIOCESAN CIRCULAR No. 8, Series of 2020',
+				   				'category' => 'announcement',
+				   				'overview' => ''
+				   			],
+				   			[
+				   				'day' => '18',
+				   				'date' => 'Mar',
+				   				'title' => 'GUIDELINES FOR THE CONDUCT OF CLASSES',
+				   				'hidden' => 'GUIDELINES FOR THE CONDUCT OF CLASSES',
+				   				'category' => 'announcement',
+				   				'overview' => ''
+				   			],
+				   			[
+				   				'day' => '17',
+				   				'date' => 'Mar',
+				   				'title' => 'Reco-Tour 2020',
+				   				'hidden' => 'Reco-Tour 2020',
+				   				'category' => 'announcement',
+				   				'overview' => 'Please be guided accordingly.'
+				   			],
+				   			[
+				   				'day' => '13',
+				   				'date' => 'Mar',
+				   				'title' => 'DIOCESAN CIRCULAR No. 6, Series of 2020',
+				   				'hidden' => 'DIOCESAN CIRCULAR No. 6, Series of 2020',
+				   				'category' => 'announcement',
+				   				'overview' => '[INFORMATION] Circular from the Roman Catholic Diocese of Legazpi pertaining to precautionary and other-related measures to prevent the spread of COVID19. Please be guided accordingly.'
+				   			],
+		   					[
+				   				'day' => '13',
+				   				'date' => 'Mar',
+				   				'title' => 'SUSPENSION OF CLASSES AND WORK: MARCH 13, 2020',
+				   				'hidden' => 'SUSPENSION OF CLASSES AND WORK: MARCH 13, 2020',
+				   				'category' => 'announcement',
+				   				'overview' => '[OFFICIAL ANNOUNCEMENT] Memorandum from the Office of the President regarding the suspension of classes in Divine Word College of Legazpi.'
+				   			],
+				   			[
+				   				'day' => '01',
+				   				'date' => 'Jan',
+				   				'title' => 'SPECIAL HOLIDAY:',
+				   				'hidden' => '',
+				   				'category' => 'announcement',
+				   				'overview' => 'New Year\'s Day'
+				   			],
+				   			[
+				   				'day' => 9,
+				   				'date' => 'Dec',
+				   				'title' => 'CLASSES AND WORK RESUMPTION:',
+				   				'hidden' => 'CLASSES AND WORK RESUMPTION: DECEMBER 9, 2019',
+				   				'category' => 'announcement',
+				   				'overview' => 'IN VIEW OF THE RECENT CALAMITY THAT WE HAVE EXPERIENCED, WORK AND CLASSES WILL RESUME ON MONDAY ...'
+				   			],
+				   			[
+				   				'day' => 4,
+				   				'date' => 'Dec',
+				   				'title' => 'CLASSES SUSPENSION:',
+				   				'hidden' => 'CLASSES SUSPENSION: DECEMBER 4, 2019',
+				   				'category' => 'announcement',
+				   				'overview' => "In view of Mayor Rosal's declaration, classes in all levels remain suspended tomorrow ..."
+				   			],
+				   			[
+				   				'day' => 3,
+				   				'date' => 'Dec',
+				   				'title' => 'CLASSES AND WORK SUSPENSION:',
+				   				'hidden' => 'CLASSES AND WORK SUSPENSION: DECEMBER 2 AND 3, 2019',
+				   				'category' => 'announcement',
+				   				'overview' => "IN VIEW OF THE PDRMMC ADVISORY ON TYPHOON TISOY, CLASSES AND WORK ARE SUSPENDED ..."
+				   			],
+				   			[
+				   				'day' => 2,
+				   				'date' => 'Dec',
+				   				'title' => 'CLASSES AND WORK SUSPENSION:',
+				   				'hidden' => 'CLASSES AND WORK SUSPENSION: DECEMBER 2 AND 3, 2019',
+				   				'category' => 'announcement',
+				   				'overview' => "IN VIEW OF THE PDRMMC ADVISORY ON TYPHOON TISOY, CLASSES AND WORK ARE SUSPENDED ..."
+				   			],
+				   			[
+				   				'day' => 30,
+				   				'date' => 'Nov',
+				   				'title' => 'NON-WORKING HOLIDAY:',
+				   				'hidden' => 'NON-WORKING HOLIDAY: November 30, 2019',
+				   				'category' => 'announcement',
+				   				'overview' => "In accordance with the Memo No. 24, s. 2019, there will be no work and classes tomorrow..."
+				   			],
+				   			[
+				   				'day' => 2,
+				   				'date' => 'Nov',
+				   				'title' => 'SPECIAL HOLIDAY:',
+				   				'hidden' => 'SPECIAL HOLIDAY: October 31, 2019, November 1-2, 2019',
+				   				'category' => 'announcement',
+				   				'overview' => "All Soul's Day"
+				   			],
+				   			[
+				   				'day' => 1,
+				   				'date' => 'Nov',
+				   				'title' => 'SPECIAL HOLIDAY:',
+				   				'hidden' => '',
+				   				'category' => 'announcement',
+				   				'overview' => "All Saint's Day"
+				   			],
+				   			[
+				   				'day' => 31,
+				   				'date' => 'Oct',
+				   				'title' => 'SPECIAL HOLIDAY:',
+				   				'hidden' => '',
+				   				'category' => 'announcement',
+				   				'overview' => "DWCL Institutional Holiday"
+				   			]		
+   						];
 
-    return new LengthAwarePaginator($items, $total, $perPage, $page, [
-        'path' => $request->url(),
-        'query' => $request->query()
-    ]);
-}
+   		$paginator = $this->getPaginator($request, $announcements);
+   		return view('web.updates.announcement-overview')->with('announcements', $paginator);
+   }
 
-   public function getAnnouncement() {
+   public function getAnnouncementArticles() {
    		$announcements = [	
    							[
    								'title' => 'CHANGES/UPDATES TO MEMO NO.9, s. 2020',
@@ -667,10 +815,221 @@ class UpdatesController extends Controller
 							]
    						];
 
-   		return view('web.updates.announcement')->with('announcements', $announcements);
+   		return view('web.updates.announcement-articles')->with('announcements', $announcements);
    }
 
-    public function getNewsAndEvents() {
+   public function getNewsAndEventsOverview(Request $request)
+   {
+   		$newsAndEvents = 
+   						[
+   							[
+								'day' => '11',
+								'date' => 'Feb',
+								'title' => '59th FOUNDATION ANNIVERSARY',
+								'hidden' => '59th FOUNDATION ANNIVERSARY',
+								'category' => 'news-and-events',
+								'overview' => ''
+							],
+							[
+								'day' => '11',
+								'date' => 'Feb',
+								'title' => 'NIGHT HIGH CLASS BATCH \'78 REUNION',
+								'hidden' => 'NIGHT HIGH CLASS BATCH \'78 REUNION',
+								'category' => 'news-and-events',
+								'overview' => ''
+							],
+							[
+								'day' => '28',
+								'date' => 'Jan',
+								'title' => 'SHS Activity',
+								'hidden' => '',
+								'category' => 'news-and-events',
+								'overview' => 'PAASCU WORK'
+							],
+							[
+								'day' => '28',
+								'date' => 'Jan',
+								'title' => 'SHS Activity',
+								'hidden' => '',
+								'category' => 'news-and-events',
+								'overview' => 'Faculty and Staff mass <br> <b>Venue:</b> Chapel & Room 101'
+							],
+							[
+								'day' => '28',
+								'date' => 'Jan',
+								'title' => 'SHS Activity',
+								'hidden' => '',
+								'category' => 'news-and-events',
+								'overview' => 'Release of report cards for 2nd quarter <br> <b>Venue:</b> Classrooms'
+							],
+							[
+								'day' => '26',
+								'date' => 'Jan',
+								'title' => 'SHS Activity',
+								'hidden' => '',
+								'category' => 'news-and-events',
+								'overview' => 'Tree Planting c/o UNESCO <br> <b>Venue:</b> Malabog <hr> <p> FOURTH SUNDAY MASS <br> <b>Venue:</b>  St. Raphael: </p>'
+							],
+							[
+								'day' => '24',
+								'date' => 'Jan',
+								'title' => 'SHS Activity',
+								'hidden' => '',
+								'category' => 'news-and-events',
+								'overview' => 'Release of Master Grade Sheet'
+							],
+							[
+								'day' => '22',
+								'date' => 'Jan',
+								'title' => 'SHS Activity',
+								'hidden' => '',
+								'category' => 'news-and-events',
+								'overview' => 'Career Talk for Grade 12 students <br> <b>Venue:</b> Gym'
+							],
+							[
+								'day' => '20-22',
+								'date' => 'Jan',
+								'title' => 'SHS Activity',
+								'hidden' => '',
+								'category' => 'news-and-events',
+								'overview' => 'Encoding of grades in the system'
+							],
+							[
+								'day' => '19',
+								'date' => 'Jan',
+								'title' => 'SHS Activity: THIRD SUNDAY MASS',
+								'hidden' => '',
+								'category' => 'news-and-events',
+								'overview' => 'Sponsors: Salazar and Schiermann <br> <b>Venue:</b> St.Raphael Churh'
+							],
+							[
+								'day' => '18',
+								'date' => 'Jan',
+								'title' => 'SHS ACTIVITY',
+								'hidden' => '',
+								'category' => 'news-and-events',
+								'overview' => 'Kick-off-Outreach Program (c/o SHEB), <br> Try out for sportsFest 2020 (c/o Sports Club) <br> <b>Venue:</b> Gotob Camalig'
+							],
+							[
+								'day' => '16-17',
+								'date' => 'Jan',
+								'title' => 'SHS ACTIVITY',
+								'hidden' => '',
+								'category' => 'news-and-events',
+								'overview' => 'FEAST OF ST.ARNOLD JANSEN'
+							],
+							[
+								'day' => '15',
+								'date' => 'Jan',
+								'title' => 'SHS ACTIVITY',
+								'hidden' => '',
+								'category' => 'news-and-events',
+								'overview' => 'FEAST OF ST.ARNOLD JANSEN <br> <b>Venue:</b> Gym / Classrooms'
+							],
+							[
+								'day' => '13-31',
+								'date' => 'Jan',
+								'title' => 'SHS ACTIVITY',
+								'hidden' => '',
+								'category' => 'news-and-events',
+								'overview' => 'Continuation of Routine and Exit Interview'
+							],
+							[
+								'day' => '13-14',
+								'date' => 'Jan',
+								'title' => 'SHS ACTIVITY',
+								'hidden' => '',
+								'category' => 'news-and-events',
+								'overview' => 'SPECIAL EXAMINATION DAYS <br> <b>Venue:</b> Library'
+							],
+								[
+								'day' => '13',
+								'date' => 'Jan',
+								'title' => 'SHS ACTIVITY',
+								'hidden' => '',
+								'category' => 'news-and-events',
+								'overview' => 'Submission if the CIDAM to the coordinator'
+							],
+							[
+								'day' => '09',
+								'date' => 'Jan',
+								'title' => 'SHS ACTIVITY',
+								'hidden' => '',
+								'category' => 'news-and-events',
+								'overview' => 'Faculty Meeting <br> <b>Venue:</b> Room 101'
+							],
+							[
+								'day' => '08',
+								'date' => 'Jan',
+								'title' => 'SHS ACTIVITY',
+								'hidden' => '',
+								'category' => 'news-and-events',
+								'overview' => 'Preparation for the 2nd semester'
+							],
+							[
+								'day' => '07',
+								'date' => 'Jan',
+								'title' => 'SHS ACTIVITY',
+								'hidden' => '',
+								'category' => 'news-and-events',
+								'overview' => 'Continuation of the PAASCU Initial Reporting <br> <b>Vanue:</b> Room 101'
+							],
+							[
+								'day' => '06-31',
+								'date' => 'Jan',
+								'title' => 'SHS ACTIVITY',
+								'hidden' => '',
+								'category' => 'news-and-events',
+								'overview' => 'Continuation of Routine interview Grade 12 <br> Continuation of Exit interview Grade 12'
+							],
+							[
+								'day' => '06-13',
+								'date' => 'Jan',
+								'title' => 'SHS ACTIVITY',
+								'hidden' => '',
+								'category' => 'news-and-events',
+								'overview' => 'Continuation of Exit interview for Grade 12 c/o AGTC'
+							],
+							[
+								'day' => '06-07',
+								'date' => 'Jan',
+								'title' => 'SHS ACTIVITY',
+								'hidden' => '',
+								'category' => 'news-and-events',
+								'overview' => 'UP Padunungan 2020 <br> <b> Venue:</b> Bicol University'
+							],
+							[
+								'day' => '06',
+								'date' => 'Jan',
+								'title' => 'SHS ACTIVITY',
+								'hidden' => '',
+								'category' => 'news-and-events',
+								'overview' => 'Awarding-English and Book Week Celebration 2019 Faculty Meeting Re: Teachers and class Sked for 2nd semester'
+							],
+							[
+								'day' => '20',
+								'date' => 'Dec',
+								'title' => 'Institutional Christmas Party',
+								'hidden' => '',
+								'category' => 'news-and-events',
+								'overview' => 'Institutional Christmas Party'
+							],
+							[
+								'day' => '16-17',
+								'date' => 'Dec',
+								'title' => 'DWCL Final Examination & Grade Consultation',
+								'hidden' => '',
+								'category' => 'news-and-events',
+								'overview' => 'Examination and grade consultation'
+							],
+   						];
+
+   		$paginator = $this->getPaginator($request, $newsAndEvents);
+   		return view('web.updates.news-and-events-overview')->with('newsAndEvents', $paginator);
+   }
+
+    public function getNewsAndEventsArticles() 
+    {
    		$newsAndEvents = [
 							[
 								'title' => '59th FOUNDATION ANNIVERSARY',
@@ -756,6 +1115,21 @@ class UpdatesController extends Controller
 							],
 						 ];
 
-   		return view('web.updates.news-and-events')->with('newsAndEvents', $newsAndEvents);
+   		return view('web.updates.news-and-events-articles')->with('newsAndEvents', $newsAndEvents);
    }
+
+    private function getPaginator(Request $request, $items) 
+    {
+	    $total = count($items); // total count of the set, this is necessary so the paginator will know the total pages to display
+	    $page = $request->page ? $request->page : 1; // get current page from the request, first page is null
+	    $perPage = 5; // how many items you want to display per page?
+	    $offset = ($page - 1) * $perPage; // get the offset, how many items need to be "skipped" on this page
+	 
+	    $items = array_slice($items, $offset, $perPage); // the array that we actually pass to the paginator is sliced
+
+	    return new LengthAwarePaginator($items, $total, $perPage, $page, [
+	        'path' => $request->url(),
+	        'query' => $request->query()
+	    ]);
+	}
 }

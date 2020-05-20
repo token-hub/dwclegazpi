@@ -22,7 +22,7 @@ class RoleTest extends TestCase
         $user->roles()->attach([1, 2, 3]);
 
         # get permission id
-        $permissionsId = Permission::whereIn('title', ['Add Role', 'Update Role', 'Delete Role'])->pluck('id')->toArray();
+        $permissionsId = Permission::whereIn('title', ['add role', 'update role', 'delete role'])->pluck('id')->toArray();
         
        # get user permissions id
         $userPermission = $user->roles
@@ -51,7 +51,7 @@ class RoleTest extends TestCase
         $user->roles()->attach([1, 2, 3]);
 
          # get permission id
-        $permissionsId = Permission::where('title', 'Add Role')->pluck('id')->toArray();
+        $permissionsId = Permission::where('title', 'add role')->pluck('id')->toArray();
         
        # get user permissions id
         $userPermission = $user->roles
@@ -80,7 +80,7 @@ class RoleTest extends TestCase
         $user->roles()->attach([1, 2, 3]);
 
          # get permission id
-        $permissionsId = Permission::where('title', 'Add Role')->pluck('id')->toArray();
+        $permissionsId = Permission::where('title', 'add role')->pluck('id')->toArray();
         
        # get user permissions id
         $userPermission = $user->roles
@@ -115,7 +115,7 @@ class RoleTest extends TestCase
         $user->roles()->attach([1, 2, 3]);
 
         # get permission id
-        $permissionsId = Permission::where('title', 'Update Role')->pluck('id')->toArray();
+        $permissionsId = Permission::where('title', 'update role')->pluck('id')->toArray();
         
        # get user permissions id
         $userPermission = $user->roles
@@ -144,7 +144,7 @@ class RoleTest extends TestCase
 
         $user->roles()->attach([1, 2, 3]);
 
-        $rolePermissionId = Permission::where('title', 'Update Role')->first()->id;
+        $rolePermissionId = Permission::where('title', 'update role')->first()->id;
         
         $hasPermission = $user->roles
                             ->flatmap(function($role) use ($rolePermissionId) {
@@ -163,7 +163,7 @@ class RoleTest extends TestCase
                 );
 
         $this->assertEquals([2], Role::first()->permissions->pluck('id')->toArray());
-        $this->assertEquals('newRoleTitle', Role::first()->title);
+        $this->assertEquals('NewRoleTitle', Role::first()->title);
 
         $response->assertRedirect('dashboard/roles');
     }
@@ -178,7 +178,7 @@ class RoleTest extends TestCase
         $user->roles()->attach([1, 2, 3]);
 
         # get permission id
-        $permissionsId = Permission::where('title', 'Delete Role')->pluck('id')->toArray();
+        $permissionsId = Permission::where('title', 'delete role')->pluck('id')->toArray();
         
        # get user permissions id
         $userPermission = $user->roles

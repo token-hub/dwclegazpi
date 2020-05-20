@@ -22,7 +22,7 @@ class PermissionTest extends TestCase
         $user->roles()->attach([1, 2, 3]);
 
         # get permission id
-        $permissionsId = Permission::whereIn('title', ['Add Permission', 'Update Permission', 'Delete Permission'])->pluck('id')->toArray();
+        $permissionsId = Permission::whereIn('title', ['add permission', 'update permission', 'delete permission'])->pluck('id')->toArray();
         
         # get user permissions id
         $userPermission = $user->roles
@@ -60,7 +60,7 @@ class PermissionTest extends TestCase
         $user->roles()->attach([1, 2, 3]);
 
         # get permission id
-        $permissionsId = Permission::where('title', 'Add Permission')->pluck('id')->toArray();
+        $permissionsId = Permission::where('title', 'add permission')->pluck('id')->toArray();
         
         # get user permissions id
         $userPermission = $user->roles
@@ -89,7 +89,7 @@ class PermissionTest extends TestCase
         $user->roles()->attach([1, 2, 3]);
 
         # get permission id
-        $permissionsId = Permission::where('title', 'Add Permission')->pluck('id')->toArray();
+        $permissionsId = Permission::where('title', 'add permission')->pluck('id')->toArray();
         
         # get user permissions id
         $userPermission = $user->roles
@@ -123,7 +123,7 @@ class PermissionTest extends TestCase
         $user->roles()->attach([1, 2, 3]);
 
         # get permission id
-        $permissionsId = Permission::where('title', 'Update Permission')->pluck('id')->toArray();
+        $permissionsId = Permission::where('title', 'update permission')->pluck('id')->toArray();
         
         # get user permissions id
         $userPermission = $user->roles
@@ -152,7 +152,7 @@ class PermissionTest extends TestCase
         $user->roles()->attach([1, 2, 3]);
 
         # get permission id
-        $permissionsId = Permission::where('title', 'Update Permission')->pluck('id')->toArray();
+        $permissionsId = Permission::where('title', 'update permission')->pluck('id')->toArray();
         
         # get user permissions id
         $userPermission = $user->roles
@@ -186,7 +186,7 @@ class PermissionTest extends TestCase
         $user->roles()->attach([1, 2, 3]);
 
         # get permission id
-        $permissionsId = Permission::where('title', 'Delete Permission')->pluck('id')->toArray();
+        $permissionsId = Permission::where('title', 'delete permission')->pluck('id')->toArray();
         
         # get user permissions id
         $userPermission = $user->roles

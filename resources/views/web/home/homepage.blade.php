@@ -111,7 +111,6 @@
 							</div>
 							<div class="right">
 								<a href="#">CHANGES/UPDATES TO MEMO NO.9, s. 2020</a>
-								<span class='hidden'>CHANGES/UPDATES TO MEMO NO.9, s. 2020</span>
 							</div>
 						</div>
 					</div>
@@ -123,7 +122,6 @@
 							</div>
 							<div class="right">
 								<a href="#">ACKNOWLEDGE RECEIPT OF OPEN LETTER DATED MAY 4, 2020</a>
-								<span class='hidden'>ACKNOWLEDGE RECEIPT OF OPEN LETTER DATED MAY 4, 2020</span>
 							</div>
 						</div>
 					</div>
@@ -138,7 +136,6 @@
 							</div>
 							<div class="right">
 								<a href="#">GUIDELINES IN POSTING OFFICIAL COMMUNICATION</a>
-								<span class='hidden'>GUIDELINES IN POSTING OFFICIAL COMMUNICATION</span>
 							</div>
 						</div>
 					</div>
@@ -150,7 +147,6 @@
 							</div>
 							<div class="right">
 								<a href="#">REVISED SCHOOL ACTIVITIES FOR THE 2ND SEMESTER</a>
-								<span class='hidden'>REVISED SCHOOL ACTIVITIES FOR THE 2ND SEMESTER</span>
 							</div>
 						</div>
 					</div>

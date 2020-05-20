@@ -51,7 +51,6 @@
 					@else	
 						<!-- ==== [ HAS A CONNECTION WITH JAVASCRIPT ] ==== -->
 						<span>{{$event['title']}}</span> 
-						<span class='hidden'>{{$event['hidden']}}</span>
 						<span class="hidden">{{$event['category']}}</span>
 					@endif
 
@@ -72,7 +71,6 @@
 					@else
 						<!-- ==== [ HAS A CONNECTION WITH JAVASCRIPT ] ==== -->
 						<span>{{$latestPost['title']}}</span> 
-						<span class='hidden'>{{$latestPost['hidden']}}</span>
 						<span class="hidden">{{$latestPost['category']}}</span>
 					@endif
 
@@ -89,10 +87,10 @@
 		<div class="top"><h2>Categories</h2></div>
 		<div class="bottom">
 			<div class="value">
-				<a href="{{ url('/updates/announcement') }}">Announcement </a>
+				<a href="{{ url('/updates/announcement-overview') }}">Announcement </a>
 			</div>
 			<div class="value">
-				<a href="{{ url('/updates/news-and-events') }}">News and Events</a>
+				<a href="{{ url('/updates/news-and-events-overview') }}">News and Events</a>
 			</div>
 		</div>
 	</div>

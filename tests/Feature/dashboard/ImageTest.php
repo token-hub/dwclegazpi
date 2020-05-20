@@ -17,6 +17,7 @@ class ImageTest extends TestCase
     
     public function test_check_active_image_page_with_authenticated_user()
     {
+        $this->withoutExceptionHandling();
         $this->seed('RoleSeeder');
         $this->seed('PermissionSeeder');
 
@@ -25,7 +26,7 @@ class ImageTest extends TestCase
         $user->roles()->attach([1, 2, 3]);
 
         # get permission id
-        $permissionsId = Permission::whereIn('title', ['Update Active Image', 'Delete Active Image'])->pluck('id')->toArray();
+        $permissionsId = Permission::whereIn('title', ['update active image', 'delete active image'])->pluck('id')->toArray();
         
        # get user permissions id
         $userPermission = $user->roles
@@ -38,10 +39,9 @@ class ImageTest extends TestCase
 
         # check if user has permissions to access
         $this->assertTrue(count(array_intersect($permissionsId, $userPermission)) > 0);
-
+        
         $this->actingAs($user)
             ->get('dashboard/images-active')
-            ->assertOk()
             ->assertSee('Active Image/s');
     }
 
@@ -55,7 +55,7 @@ class ImageTest extends TestCase
         $user->roles()->attach([1, 2, 3]);
 
         # get permission id
-        $permissionsId = Permission::whereIn('title', ['Add Inactive Image', 'Update Inactive Image', 'Delete Inactive Image'])->pluck('id')->toArray();
+        $permissionsId = Permission::whereIn('title', ['add inactive image', 'update inactive image', 'delete inactive image'])->pluck('id')->toArray();
         
        # get user permissions id
         $userPermission = $user->roles
@@ -71,7 +71,6 @@ class ImageTest extends TestCase
 
         $this->actingAs($user)
             ->get('dashboard/images-inactive')
-            ->assertOk()
             ->assertSee('Inactive Image/s');
     }
 
@@ -85,7 +84,7 @@ class ImageTest extends TestCase
         $user->roles()->attach([1, 2, 3]);
 
          # get permission id
-        $permissionsId = Permission::where('title', 'Add Inactive Image')->pluck('id')->toArray();
+        $permissionsId = Permission::where('title', 'add inactive image')->pluck('id')->toArray();
         
        # get user permissions id
         $userPermission = $user->roles
@@ -128,7 +127,7 @@ class ImageTest extends TestCase
         $user->roles()->attach([1, 2, 3]);
 
          # get permission id
-        $permissionsId = Permission::whereIn('title', ['Update Inactive Image', 'Add Inactive Image'])->pluck('id')->toArray();
+        $permissionsId = Permission::whereIn('title', ['update inactive image', 'add inactive image'])->pluck('id')->toArray();
         
        # get user permissions id
         $userPermission = $user->roles
@@ -182,7 +181,7 @@ class ImageTest extends TestCase
         $user->roles()->attach([1, 2, 3]);
 
          # get permission id
-        $permissionsId = Permission::whereIn('title', ['Delete Inactive Image', 'Add Inactive Image'])->pluck('id')->toArray();
+        $permissionsId = Permission::whereIn('title', ['delete inactive image', 'add inactive image'])->pluck('id')->toArray();
         
        # get user permissions id
         $userPermission = $user->roles
@@ -235,7 +234,7 @@ class ImageTest extends TestCase
         $user->roles()->attach([1, 2, 3]);
 
          # get permission id
-        $permissionsId = Permission::whereIn('title', ['Update Active Image', 'Add Inactive Image', 'Update Inactive Image'])->pluck('id')->toArray();
+        $permissionsId = Permission::whereIn('title', ['update active image', 'add inactive image', 'update inactive image'])->pluck('id')->toArray();
         
        # get user permissions id
         $userPermission = $user->roles
@@ -297,7 +296,7 @@ class ImageTest extends TestCase
         $user->roles()->attach([1, 2, 3]);
 
          # get permission id
-        $permissionsId = Permission::whereIn('title', ['Delete Active Image', 'Add Inactive Image', 'Update Inactive Image'])->pluck('id')->toArray();
+        $permissionsId = Permission::whereIn('title', ['delete active image', 'add inactive image', 'update inactive image'])->pluck('id')->toArray();
         
        # get user permissions id
         $userPermission = $user->roles

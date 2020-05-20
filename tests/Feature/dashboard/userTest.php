@@ -23,7 +23,7 @@ class userTest extends TestCase
         $user->roles()->attach([1, 2, 3]);
 
         # get permission id
-        $permissionsId = Permission::whereIn('title', ['Add User', 'Update User', 'Delete User'])->pluck('id')->toArray();
+        $permissionsId = Permission::whereIn('title', ['add user', 'update user', 'delete user'])->pluck('id')->toArray();
         
        # get user permissions id
         $userPermission = $user->roles
@@ -62,7 +62,7 @@ class userTest extends TestCase
         $user->roles()->attach([1, 2, 3]);
 
         # get permission id
-        $permissionsId = Permission::where('title', 'Update User')->pluck('id')->toArray();
+        $permissionsId = Permission::where('title', 'update user')->pluck('id')->toArray();
         
        # get user permissions id
         $userPermission = $user->roles
@@ -99,7 +99,7 @@ class userTest extends TestCase
         $user->roles()->attach([1, 2, 3]);
 
         # get permission id
-        $permissionsId = Permission::where('title', 'Delete User')->pluck('id')->toArray();
+        $permissionsId = Permission::where('title', 'delete user')->pluck('id')->toArray();
         
        # get user permissions id
         $userPermission = $user->roles

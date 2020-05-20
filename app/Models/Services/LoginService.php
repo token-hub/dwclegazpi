@@ -21,7 +21,7 @@ class LoginService {
         if (Auth::attempt($data->only('username', 'password'), $data->has('remember'))) { 
             $redirectTo = '/dashboard/home';
             $notification = ['message' => 'Welcome to Dashboard!', 'type' => 'notif-success'];
-
+            
             # log
             activity('login')
                ->causedBy(Auth::user())

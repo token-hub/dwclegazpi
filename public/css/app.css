@@ -1596,6 +1596,7 @@ body {
   overflow-x: hidden;
   background-color: transparent;
   border-color: white;
+  color: white;
 }
 
 .contact-us .contact-content .contact-item .contact-us-form .input-div input[type=submit] {

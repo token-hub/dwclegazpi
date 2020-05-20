@@ -15,38 +15,38 @@ class ImagePolicy
 
     public function viewAnyActive(User $user)
     {
-        return $this->hasAnyPermission($user, ['Update Active Image', 'Delete Active Image']);
+        return $this->hasAnyPermission($user, ['update active image', 'delete active image']);
     }
 
     public function updateActive(User $user, Image $image)
     {
-        return $this->hasPermission($user, ['Update Active Image']);
+        return $this->hasPermission($user, ['update active image']);
     }   
 
     public function deleteActive(User $user, Image $image)
     {
-        return $this->hasPermission($user, ['Delete Active Image']);
+        return $this->hasPermission($user, ['delete active image']);
     }
 
     // --- [ INACTIVE IMAGES ] ---
 
     public function viewAnyInactive(User $user)
     {
-        return $this->hasAnyPermission($user, ['Add Inactive Image', 'Update Inactive Image', 'Delete Inactive Image']);
+        return $this->hasAnyPermission($user, ['add inactive image', 'update inactive image', 'delete inactive image']);
     }
 
     public function createInactive(User $user)
     {
-        return $this->hasPermission($user, ['Add Inactive Image']);
+        return $this->hasPermission($user, ['add inactive image']);
     }
 
     public function updateInactive(User $user, Image $image)
     {
-        return $this->hasPermission($user, ['Update Inactive Image']);
+        return $this->hasPermission($user, ['update inactive image']);
     }
 
     public function deleteInactive(User $user, Image $image)
     {
-        return $this->hasPermission($user, ['Delete Inactive Image']);
+        return $this->hasPermission($user, ['delete inactive image']);
     }
 }

@@ -26,7 +26,7 @@ class RegistrationTest extends TestCase
     $user->roles()->attach([1, 2, 3]);
 
     # get permission id
-    $permissionsId = Permission::where('title', 'Add User')->pluck('id')->toArray();
+    $permissionsId = Permission::where('title', 'add user')->pluck('id')->toArray();
     
    # get user permissions id
     $userPermission = $user->roles
@@ -69,7 +69,7 @@ class RegistrationTest extends TestCase
     $user->roles()->attach([1, 2, 3]);
 
     # get permission id
-    $permissionsId = Permission::where('title', 'Add User')->pluck('id')->toArray();
+    $permissionsId = Permission::where('title', 'add user')->pluck('id')->toArray();
     
    # get user permissions id
     $userPermission = $user->roles

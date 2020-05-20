@@ -11314,12 +11314,16 @@ function getActiveContent() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _title_and_content_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./title-and-content.js */ "./resources/js/web/title-and-content.js");
 
-var updates = document.querySelectorAll('.date-content-right span');
+var updates = document.querySelectorAll('.date-content-right span.update');
 var postsEvents = document.querySelectorAll('.posts-and-events .items .bottom .value span');
-var newsAndEvents = document.querySelectorAll('.news-and-events .content .items .values button');
-var announcements = document.querySelectorAll('.annoucement .content .items .values .inner .most .right a');
-jumpToUpdatesPage(newsAndEvents, 'updates/news-and-events', 'news-and-events');
-jumpToUpdatesPage(announcements, 'updates/announcement', 'announcement');
+var UpdatesNewsAndEvents = document.querySelectorAll('.date-content-right span.newsAndEvent');
+var UpdatesAnnouncements = document.querySelectorAll('.date-content-right span.announcement');
+var HomapageNewsAndEvents = document.querySelectorAll('.news-and-events .content .items .values button');
+var HomapageAnnouncements = document.querySelectorAll('.annoucement .content .items .values .inner .most .right a');
+jumpToUpdatesPage(UpdatesNewsAndEvents, 'updates/news-and-events-articles', 'news-and-events');
+jumpToUpdatesPage(HomapageNewsAndEvents, 'updates/news-and-events-articles', 'homepage-news-and-events');
+jumpToUpdatesPage(UpdatesAnnouncements, 'updates/announcement-articles', 'announcement');
+jumpToUpdatesPage(HomapageAnnouncements, 'updates/announcement-articles', 'homepage-announcement');
 jumpToUpdatesPage(updates, 'updates/', 'updates');
 jumpToUpdatesPage(postsEvents, 'updates/', 'posts-events'); // ============= [ HOME PAGE NEWS-AND-EVENTS/ANNOUNCEMENT TO UPDATES/NEWS-AND-EVENTS || UPDATES/ANNOUNCEMENT ] =============
 
@@ -11331,21 +11335,21 @@ function jumpToUpdatesPage(array, location, category) {
         var clickedTitle; // check category
 
         if (category == 'updates') {
-          location += e.parentNode.parentNode.classList[1];
-          clickedTitle = e.nextElementSibling.innerHTML;
+          location += e.parentNode.parentNode.classList[1] + '-articles';
+          clickedTitle = e.innerHTML;
         } else if (category == 'posts-events') {
-          location += e.nextElementSibling.nextElementSibling.innerHTML;
-          clickedTitle = e.nextElementSibling.innerHTML;
-        } else if (category == 'news-and-events') {
+          location += e.nextElementSibling.innerHTML + '-articles';
+          clickedTitle = e.innerHTML;
+        } else if (category == 'homepage-news-and-events') {
           clickedTitle = e.previousElementSibling.previousElementSibling.innerHTML;
         } else {
-          clickedTitle = e.nextElementSibling.innerHTML;
+          clickedTitle = e.innerHTML;
         } // Save data to sessionStorage
 
 
         sessionStorage.setItem('clicked-title', clickedTitle); // jump page to announcement
 
-        window.location.href = 'http://dwc-legazpi.edu/' + location;
+        window.location.href = 'http://dwclegazpi.edu/' + location;
       });
     });
   }

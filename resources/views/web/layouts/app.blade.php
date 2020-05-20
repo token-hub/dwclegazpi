@@ -11,7 +11,7 @@
   <link href="https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap" rel="stylesheet">
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   
-  <title> {{  ucfirst($prefix = (Request::segment(1) == '') ? "Dashboard" : Request::segment(1)). ' | Divine Word College of Legazpi' }}</title>
+  <title> {{  ucfirst($prefix = (Request::segment(1) == '') ? "" : Request::segment(1)." | " ). ' Divine Word College of Legazpi' }}</title>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=UA-155390910-1"></script>

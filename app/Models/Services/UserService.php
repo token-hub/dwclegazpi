@@ -21,8 +21,8 @@ class UserService
 
 	public function store($data) 
 	{
-	     # add user
-	    $user = User::create(array_merge($data->only(['username', 'email']), ['password' => \Hash::make($data->password)]));
+	    # add user 
+	    $user = User::create(array_merge($data->only(['username', 'email']), ['password' => \bcrypt($data->password)]));
 
 	    # add department
 	    $user->department()->create(array_merge($data->only(['department_name'])));
