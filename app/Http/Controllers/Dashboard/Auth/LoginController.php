@@ -25,7 +25,7 @@ class LoginController extends Controller
     {
         $login = $this->loginService->login($loginRequest);
 
-        return redirect()->intended($login['redirectTo'])->with('notification', $login['notification']);
+        return redirect($login['redirectTo'])->with('notification', $login['notification']);
     }
 
     public function destroy() 

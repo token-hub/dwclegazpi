@@ -10,22 +10,29 @@ class LoginService {
 		$redirectTo = '/dashboard';
 		$notification = ['message' => 'Credentials not found!', 'type' => 'notif-danger'];
 
-        $attempt = array_merge($data->only('username', 'password'), ['is_active' => 0]);
-
-        # check if account is active
-        if (Auth::attempt($attempt, $data->has('remember'))) {
-            $notification = ['message' => 'Your account is Inactive', 'type' => 'notif-danger'];
-        }
-
         # success
         if (Auth::attempt($data->only('username', 'password'), $data->has('remember'))) { 
             $redirectTo = '/dashboard/home';
             $notification = ['message' => 'Welcome to Dashboard!', 'type' => 'notif-success'];
-            
-            # log
-            activity('login')
-               ->causedBy(Auth::user())
-               ->log('logged in');
+
+            $user = Auth::getLastAttempted();
+                 
+            # check if user is active
+            if ($user->is_active == 'Active') {
+
+                # log
+               activity('login')
+                   ->causedBy($user)
+                   ->log('logged in');
+
+                Auth::login($user, $data->has('remember'));
+                $notification = ['message' => 'Welcome to Dashboard!', 'type' => 'notif-success'];
+                $redirectTo = '/dashboard/home';
+            } else {
+                $notification = ['message' => 'Your account is Inactive', 'type' => 'notif-info'];
+            }
+        } else {
+            $notification = ['message' => 'Credentials not found!', 'type' => 'notif-danger'];
         } 
 
         return ['redirectTo' => $redirectTo, 'notification' => $notification];
