@@ -37,7 +37,7 @@ function jumpToUpdatesPage(array, location, category) {
 
 				// Save data to sessionStorage
 				sessionStorage.setItem('clicked-title', clickedTitle);
-
+				console.log(location);
 				// jump page to announcement
 				// window.location.href = 'http://dwc-legazpi.edu/'+location;
 			});
