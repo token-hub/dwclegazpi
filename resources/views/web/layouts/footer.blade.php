@@ -26,7 +26,7 @@
 			<h3>Our Portal</h3>
 			<p><i class='fa fa-angle-right'></i> <a href='http://apps.dwc-legazpi.edu/app/student-online.cf'>Student</a></p>
 			<p><i class='fa fa-angle-right'></i> <a href='http://apps.dwc-legazpi.edu/'>Faculty</a></p>
-			<p><i class='fa fa-angle-right'></i> <a href='http://library-dwcl.cf/'>E-library</a></p>
+			<p><i class='fa fa-angle-right'></i> <a href='http://apps.dwc-legazpi.edu/app/catalog.cf'>E-library</a></p>
 			
 			<h3 class='mg-bottom'>Social Media</h3>
 			<div class='social-media'>	

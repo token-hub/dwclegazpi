@@ -11314,10 +11314,10 @@ function getActiveContent() {
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _title_and_content_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./title-and-content.js */ "./resources/js/web/title-and-content.js");
 
-var updates = document.querySelectorAll('.date-content-right span.update');
-var postsEvents = document.querySelectorAll('.posts-and-events .items .bottom .value span');
-var UpdatesNewsAndEvents = document.querySelectorAll('.date-content-right span.newsAndEvent');
-var UpdatesAnnouncements = document.querySelectorAll('.date-content-right span.announcement');
+var updates = document.querySelectorAll('.date-content-right span.clickable');
+var postsEvents = document.querySelectorAll('.posts-and-events .items .bottom .value span.clickable');
+var UpdatesNewsAndEvents = document.querySelectorAll('.date-content-right span.newsAndEvent.clickable');
+var UpdatesAnnouncements = document.querySelectorAll('.date-content-right span.announcement.clickable');
 var HomapageNewsAndEvents = document.querySelectorAll('.news-and-events .content .items .values button');
 var HomapageAnnouncements = document.querySelectorAll('.annoucement .content .items .values .inner .most .right a');
 jumpToUpdatesPage(UpdatesNewsAndEvents, 'updates/news-and-events-articles', 'news-and-events');

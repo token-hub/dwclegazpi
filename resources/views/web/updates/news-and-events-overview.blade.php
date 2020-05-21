@@ -8,12 +8,11 @@
 				<p>{{ $newsAndEvent['date'] }}</p>
 			</div>
 			<div class='date-content-right'>
-					@if(empty($newsAndEvent['hidden']))
-						<span>{{$newsAndEvent['title']}}</span>
-					@else 
+					@if($newsAndEvent['clickable'])
 						<!-- ==== [ HAS A CONNECTION WITH JAVASCRIPT ] ==== -->
-						<span class='newsAndEvent'>{{$newsAndEvent['title']}}</span> 
-						<span class='hidden'>{{$newsAndEvent['title']}}</span>
+						<span class='newsAndEvent clickable'>{{$newsAndEvent['title']}}</span> 
+					@else 
+						<span>{{$newsAndEvent['title']}}</span>
 					@endif
 				<p>{!! $newsAndEvent['overview'] !!}</p>
 			</div>

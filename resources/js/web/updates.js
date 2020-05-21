@@ -1,9 +1,9 @@
 import { contentHide } from './title-and-content.js';
 
-var updates = document.querySelectorAll('.date-content-right span.update');
-var postsEvents = document.querySelectorAll('.posts-and-events .items .bottom .value span');
-var UpdatesNewsAndEvents = document.querySelectorAll('.date-content-right span.newsAndEvent');
-var UpdatesAnnouncements = document.querySelectorAll('.date-content-right span.announcement');
+var updates = document.querySelectorAll('.date-content-right span.clickable');
+var postsEvents = document.querySelectorAll('.posts-and-events .items .bottom .value span.clickable');
+var UpdatesNewsAndEvents = document.querySelectorAll('.date-content-right span.newsAndEvent.clickable');
+var UpdatesAnnouncements = document.querySelectorAll('.date-content-right span.announcement.clickable');
 var HomapageNewsAndEvents = document.querySelectorAll('.news-and-events .content .items .values button');
 var HomapageAnnouncements = document.querySelectorAll('.annoucement .content .items .values .inner .most .right a');
 
@@ -39,7 +39,7 @@ function jumpToUpdatesPage(array, location, category) {
 				sessionStorage.setItem('clicked-title', clickedTitle);
 
 				// jump page to announcement
-				window.location.href = 'http://dwc-legazpi.edu/'+location;
+				window.location.href = 'http://dwclegazpi.edu/'+location;
 			});
 		});
 	}

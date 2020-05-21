@@ -3,39 +3,39 @@
 						[
 							'title' => '59th FOUNDATION ANNIVERSARY',
 							'date' => 'February 13-14, 2020',
-							'hidden' => '59th FOUNDATION ANNIVERSARY',
+							'clickable' => true,
 							'category' => 'news-and-events'
 						], 
 						[
 							'title' => 'THE NEW NORTH CAMPUS MAIN GATE',
 							'date' => 'February 13, 2020',
-							'hidden' => 'THE NEW NORTH CAMPUS MAIN GATE',
+							'clickable' => true,
 							'category' => 'news-and-events'
 						],
 					];
 
 	$latestPosts = [
 						[
+			   				'title' => 'CANCELLATION OF TUITION FEE INCREASE, SY 2020-2021',
+			   				'posts' => [],
+			   				'posted' => 'May 19, 2020',
+			   				'clickable' => true,
+			   				'category' => 'announcement',
+			   			],
+						[
 							'title' => 'CHANGES/UPDATES TO MEMO NO.9, s. 2020',
 							'posts' => [],
 							'posted' => 'May 19, 2020',
-							'hidden' => 'CHANGES/UPDATES TO MEMO NO.9, s. 2020',
+							'clickable' => true,
 							'category' => 'announcement'
 						],
 						[
 							'title' => 'ACKNOWLEDGE RECEIPT OF OPEN LETTER DATED MAY 4, 2020',
 							'posts' => [],
 							'posted' => 'May 19, 2020',
-							'hidden' => 'ACKNOWLEDGE RECEIPT OF OPEN LETTER DATED MAY 4, 2020',
+							'clickable' => true,
 							'category' => 'announcement'
 						],
-						[
-							'title' => 'GUIDELINES IN POSTING OFFICIAL COMMUNICATION',
-							'posts' => [],
-							'posted' => 'May 19, 2020',
-							'hidden' => 'GUIDELINES IN POSTING OFFICIAL COMMUNICATION',
-							'category' => 'announcement'
-						]
 				   ];
 ?>
 <div class='posts-and-events'>
@@ -46,12 +46,12 @@
 			@foreach($upcomingEvents as $event)
 				<div class="value">
 
-					@if (empty($event['hidden'])) 
-						<a href="#">{{ $event['title'] }}</a>
-					@else	
+					@if ($event['clickable']) 
 						<!-- ==== [ HAS A CONNECTION WITH JAVASCRIPT ] ==== -->
-						<span>{{$event['title']}}</span> 
+						<span class='clickable'>{{$event['title']}}</span> 
 						<span class="hidden">{{$event['category']}}</span>
+					@else	
+						<span>{{ $event['title'] }}</span>
 					@endif
 
 					<p class='red'>{{ $event['date'] }}</p>
@@ -66,12 +66,12 @@
 			@foreach($latestPosts as $latestPost)
 				<div class='value'>
 
-					@if(empty($latestPost['hidden']))
-						<a>{{ $latestPost['title'] }}</a>
-					@else
+					@if($latestPost['clickable'])
 						<!-- ==== [ HAS A CONNECTION WITH JAVASCRIPT ] ==== -->
-						<span>{{$latestPost['title']}}</span> 
+						<span class='clickable'>{{$latestPost['title']}}</span> 
 						<span class="hidden">{{$latestPost['category']}}</span>
+					@else
+						<span>{{ $latestPost['title'] }}</p>
 					@endif
 
 					@foreach($latestPost['posts'] as $post)

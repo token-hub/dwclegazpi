@@ -107,6 +107,17 @@
 						<div class="most">
 							<div class="left">
 								<p>MAY</p>
+								<p>20</p>
+							</div>
+							<div class="right">
+								<a href="#">CANCELLATION OF TUITION FEE INCREASE, SY 2020-2021</a>
+							</div>
+						</div>
+					</div>
+					<div class="inner">
+						<div class="most">
+							<div class="left">
+								<p>MAY</p>
 								<p>14</p>
 							</div>
 							<div class="right">
@@ -114,6 +125,9 @@
 							</div>
 						</div>
 					</div>
+				</div>
+
+				<div class='values'>
 					<div class="inner">
 						<div class="most">
 							<div class="left">
@@ -125,9 +139,6 @@
 							</div>
 						</div>
 					</div>
-				</div>
-
-				<div class='values'>
 					<div class="inner">
 						<div class="most">
 							<div class="left">
@@ -136,17 +147,6 @@
 							</div>
 							<div class="right">
 								<a href="#">GUIDELINES IN POSTING OFFICIAL COMMUNICATION</a>
-							</div>
-						</div>
-					</div>
-					<div class="inner">
-						<div class="most">
-							<div class="left">
-								<p>APR</p>
-								<p>14</p>
-							</div>
-							<div class="right">
-								<a href="#">REVISED SCHOOL ACTIVITIES FOR THE 2ND SEMESTER</a>
 							</div>
 						</div>
 					</div>

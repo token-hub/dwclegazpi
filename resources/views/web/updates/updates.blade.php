@@ -8,11 +8,11 @@
 				<p>{{ $update['date'] }}</p>
 			</div>
 			<div class='date-content-right'>
-					@if(empty($update['hidden']))
-						<span>{{$update['title']}}</span>
-					@else 
+					@if($update['clickable'])
 						<!-- ==== [ HAS A CONNECTION WITH JAVASCRIPT ] ==== -->
-						<span class='update'>{{$update['title']}}</span> 
+						<span class='clickable'>{{$update['title']}}</span> 
+					@else 
+						<span>{{$update['title']}}</span>
 					@endif
 				<p>{!! $update['overview'] !!}</p>
 			</div>
