@@ -10,7 +10,31 @@ class UpdatesController extends Controller
    public function getIndex(Request $request) {
 
  	# Temporary array for pagination
-   		$updates = [	
+   		$updates = [
+					[
+						'day' => '23',
+		   				'date' => 'May',
+						'title' => 'REITERATION OF GUIDELINES AND PROTOCOLS FOR STRICT COMPLIANCE DURING GCQ',
+						'clickable' => true,
+		   				'category' => 'announcement',
+		   				'overview' => ''
+					],	
+					[
+						'day' => '21',
+		   				'date' => 'May',
+						'title' => 'PLACEMENT TEST FOR GRADE 11 STUDENTS AND TRANSFEREES',
+						'clickable' => true,
+		   				'category' => 'announcement',
+		   				'overview' => 'Placement test will be administered during the first week of classes for Grade 11 students and transferees.'
+					],	
+   					[
+		   				'day' => '21',
+		   				'date' => 'May',
+		   				'title' => 'ENROLLMENT - BASIC EDUCATION',
+		   				'clickable' => true,
+		   				'category' => 'announcement',
+		   				'overview' => ''
+		   			],
    					[
 		   				'day' => '20',
 		   				'date' => 'May',
@@ -389,6 +413,30 @@ class UpdatesController extends Controller
    {
    		$announcements = 
    						[
+   							[
+								'day' => '23',
+				   				'date' => 'May',
+								'title' => 'REITERATION OF GUIDELINES AND PROTOCOLS FOR STRICT COMPLIANCE DURING GCQ',
+								'clickable' => true,
+				   				'category' => 'announcement',
+				   				'overview' => ''
+							],	
+   							[
+								'day' => '21',
+				   				'date' => 'May',
+								'title' => 'PLACEMENT TEST FOR GRADE 11 STUDENTS AND TRANSFEREES',
+								'clickable' => true,
+				   				'category' => 'announcement',
+				   				'overview' => 'Placement test will be administered during the first week of classes for Grade 11 students and transferees'
+							],	
+   							[
+				   				'day' => '21',
+				   				'date' => 'May',
+				   				'title' => 'ENROLLMENT - BASIC EDUCATION',
+				   				'clickable' => true,
+				   				'category' => 'announcement',
+				   				'overview' => ''
+		   					],
 		   					[
 				   				'day' => '20',
 				   				'date' => 'May',
@@ -557,6 +605,34 @@ class UpdatesController extends Controller
 
    public function getAnnouncementArticles() {
    		$announcements = [	
+   							[
+				   				'title' => 'REITERATION OF GUIDELINES AND PROTOCOLS FOR STRICT COMPLIANCE DURING GCQ',
+				   				'image' => 
+   									[ 
+   										'may-23-2020 reiteration-guidelines-protocols.jpg',
+   									],
+				   				'paragraphs' => [],
+				   				'posted' => 'Posted on May 27, 2020 at 7:20 AM.',
+		   					],
+   							[
+				   				'title' => 'PLACEMENT TEST FOR GRADE 11 STUDENTS AND TRANSFEREES',
+				   				'image' => 
+   									[ 
+   										'may-21-2020 placement-test-grade-11-and-transferees-01.jpg', 
+   										'may-21-2020 placement-test-grade-11-and-transferees-02.jpg', 
+   									],
+				   				'paragraphs' => ['Placement test will be administered during the first week of classes for Grade 11 students and transferees.'],
+				   				'posted' => 'Posted on May 27, 2020 at 7:07 AM.',
+		   					],
+   							[
+				   				'title' => 'ENROLLMENT - BASIC EDUCATION',
+				   				'image' => 
+   									[ 
+   										'may-27-2020 enrollment-basic-ed.jpg', 
+   									],
+				   				'paragraphs' => [],
+				   				'posted' => 'Posted on May 27, 2020 at 6:54 AM.',
+		   					],
 		   					[
 				   				'title' => 'CANCELLATION OF TUITION FEE INCREASE, SY 2020-2021',
 				   				'image' => 

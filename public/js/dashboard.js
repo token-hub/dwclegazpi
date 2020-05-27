@@ -111,10 +111,13 @@ __webpack_require__(/*! ./dashboard/notification.js */ "./resources/js/dashboard
 /***/ (function(module, exports) {
 
 var inputs = document.querySelectorAll('.input-control');
-var checkboxes = document.querySelector('.checkboxes');
+var checkboxes = document.querySelector('.checkboxes-placeholder');
+var checkboxesContainer = document.querySelector('.checkbox-container');
+var checkboxInputs = document.querySelectorAll('.checkbox-container .checkbox-item input[type=checkbox]');
 var labels = document.querySelectorAll('.dashboard-input label');
 var showHidePassword = document.querySelectorAll('.password');
-var eye = document.querySelectorAll('.password-content i'); // ========== [ FORMS INPUT HOVER EFFECT FUNCTION ] ==========
+var eye = document.querySelectorAll('.password-content i');
+var permissions = document.querySelectorAll('.checkboxes-placeholder span'); // ========== [ FORMS INPUT HOVER EFFECT FUNCTION ] ==========
 
 inputs.forEach(function (e) {
   // get the label of the form
@@ -137,11 +140,72 @@ inputs.forEach(function (e) {
 });
 
 if (checkboxes) {
-  console.log(checkboxes.firstElementChild.name);
-  var label = document.querySelector('label[for="' + checkboxes.firstElementChild.name + '"]');
-  label.classList.add('dashboard-input-focus');
-} // ========== [ SHOW/HIDE PASSWORD EYE FUNCTION ] ==========
+  var label = document.querySelector('label[for="' + checkboxes.nextElementSibling.getAttribute('for') + '"]');
+  checkboxesContainer.classList.toggle('checkbox-visible'); // check if checkbox div has a child
 
+  if (checkboxes.childNodes) {
+    label.classList.add('dashboard-input-focus');
+  }
+
+  if (permissions.lenght > 4) {
+    removeElementsAndchangeCheckboxPlaceholder(permissions.length);
+  }
+
+  checkboxes.addEventListener('click', function () {
+    checkboxesContainer.classList.toggle('checkbox-visible');
+  });
+} // ========== [ CHECKBOX INPUT CLICK FUNCTION ] ==========
+
+
+checkboxInputs.forEach(function (e) {
+  e.addEventListener('click', function () {
+    e.parentNode.classList.toggle('highlighted');
+    var selectedPermissions = document.querySelectorAll('.highlighted');
+    var itemFound = 0; // check label already focused
+
+    if (!label.classList.contains('dashboard-input-focus')) {
+      label.classList.add('dashboard-input-focus');
+    }
+
+    selectedPermissions.forEach(function (f) {
+      if (f.firstElementChild.nextElementSibling.innerHTML == e.nextElementSibling.innerHTML + ',') {
+        itemFound++;
+      }
+    }); // check if there's no matching records
+
+    if (itemFound < 1) {
+      // check user permissions on checkbox placeholder
+      if (selectedPermissions.length > 4) {
+        removeElementsAndchangeCheckboxPlaceholder(selectedPermissions.length);
+      } else {
+        // check if the checkbox clicked is highlighted - means not deselected
+        if (e.parentNode.classList.contains('highlighted')) {
+          var span = document.createElement('span');
+          span.innerHTML = e.nextElementSibling.innerHTML + ', ';
+          checkboxes.append(span);
+        } else {
+          // remove all child elements of checkbox placeholder
+          while (checkboxes.firstChild) {
+            checkboxes.firstChild.remove();
+          } // add the remaining selected permissions
+
+
+          selectedPermissions.forEach(function (f) {
+            var selectedCheckboxText = f.firstElementChild.nextElementSibling.innerHTML;
+            var span = document.createElement('span');
+            span.innerHTML = selectedCheckboxText + ', ';
+            checkboxes.append(span);
+          });
+        } // check if nothing is selected, then remove label focus
+
+
+        if (selectedPermissions.length == 0) {
+          label.classList.remove('dashboard-input-focus');
+        }
+      }
+    }
+  });
+}); // ========== [ SHOW/HIDE PASSWORD EYE FUNCTION ] ==========
 
 if (showHidePassword) {
   showHidePassword.forEach(function (e) {
@@ -176,207 +240,18 @@ if (eye) {
       }
     });
   });
-} // var notifValue = document.querySelector('#notifValue');
-// var notifType = document.querySelector('#notifType');
-// var notifTitle = document.querySelector('.notif-right-div h6');
-// var dashboardImgs = document.querySelectorAll('.dashboard-img-container-img');
-// const dropdown = document.querySelector('#dashboard-dropdown');
-// const dropdownDiv = document.querySelector('.dashboard-dropdown');
-// const notification = document.querySelector('.notification');
-// const notifLeft = document.querySelector('.notif-left');
-// const icon = document.querySelector('.notif-left i');
-// const selectTag = document.querySelectorAll('.dashboard-right-input select');
-// const notifRightDiv = document.querySelector('.notif-right-div');
-// const dashboardImgContainer = document.querySelectorAll('.dashboard-img-container-img');
-// const imgBtnUpload = document.querySelector('#btn-upload-image');
-// if (dropdown) {
-// 	dropdown.addEventListener('click', function(){
-// 		showHideDropdown(dropdownDiv, 'dropdownShow');
-// 	});
-// }
-// function showHideDropdown(param1, val1) {
-// 	if (param1.classList.contains(val1)) {
-// 		param1.classList.remove(val1);
-// 	} else {
-// 		param1.classList.add(val1);
-// 	}
-// }
-// function showNotification(param1, param2, param3) {
-// 	if (param1) {
-// 		param2.classList.add('showNotification');
-// 		param3.classList.add('showNotification');
-// 		setTimeout(function(){ return hideNotification(param2, param3); }, 2000);
-// 	}
-// }
-// const btn2 = document.querySelectorAll('.dpBtn');
-// var span2 = document.querySelector(".dpBtn span");
-// function hideNotification(param1, param2) {
-// 	param1.classList.remove('showNotification');
-// 	param2.classList.remove('showNotification');
-// }
-// showNotification(notifValue.value, notification, notifRightDiv);
-// if (notifType.value != "") {
-// 	notificationType(notifType.value);
-// 	notifTitle.innerHTML = notifType.value.charAt(0).toUpperCase()+notifType.value.slice(1);
-// }
-// function notificationType(type) {
-// 	var iconType = "";
-// 	if (type == 'success') {
-// 		iconType = 'fa-check-circle';
-// 		notificationToggle('success', notification, notifLeft, icon, iconType);
-// 	} else if (type == 'failed') {
-// 		iconType = 'fa-times-circle';
-// 		notificationToggle('danger', notification, notifLeft, icon, iconType);
-// 	} else if (type == 'information') {
-// 		iconType = 'fa-info-circle';
-// 		notificationToggle('info', notification, notifLeft, icon, iconType);
-// 	} else if (type == 'warning') {
-// 		iconType = 'fa-exclamation-circle';
-// 		notificationToggle('warning', notification, notifLeft, icon, iconType);
-// 	}
-// }
-// function notificationToggle(type, parentDiv, childDiv, icon, iconType) {
-// 	parentDiv.classList.toggle('notif-'+type);
-// 	childDiv.classList.toggle(type);
-// 	icon.classList.toggle(iconType);
-// }
-// function getImageName($image) {
-// 	return $image.replace(/^.*[\\\/]/, '');
-// }
-// function buttonClickJavascriptToPhp($targetButton, $location) {
-// 	if ($targetButton) {
-// 		// if target button was clicked
-// 		$targetButton.addEventListener('click', function(){
-// 			var activeImg = document.querySelectorAll('.dashboard-img-container-img-active'); // get all the active images
-// 			var imgArray = [];
-// 			var imgNumber = [];
-// 			activeImg.forEach(function(f){
-// 				 imgNumber.push(f.childNodes[1].innerHTML);
-// 			});
-// 			imgNumber.sort(); // sort all active image according to image number
-// 			imgNumber.forEach(function(e){ 
-// 				activeImg.forEach(function(i){
-// 				 	if (e == i.childNodes[1].innerHTML) { // compare active image number by the sorted number
-// 				 		imgArray.push(getImageName(i.firstChild.getAttribute("src"))); // get image name and insert to a new array
-// 				 	}
-// 				});
-// 			});	
-// 			// pass imgArray to a php page and change the slider of the webpage.
-// 			var data = {imgs:imgArray};
-// 			window.location.href = $location+'?'+$.param(data);  // move to location with data
-// 		})
-// 	}
-// }
-// selectTag.forEach(function(e){
-// 	e.addEventListener('click', function(){
-// 		const selectOptionClass = document.querySelector('.'+e.id);
-// 		selectOptionClass.classList.add('showOptions');
-// 	});
-// });
-// $(document).ready(function() {
-// 	// DataTable
-// 	if( $('#example').length ) { 
-// 		 $('#example').DataTable({
-// 		    "sScrollY": "400",
-// 		    "bScrollCollapse": true,
-// 	        columnDefs: [
-// 		       { type: 'de_datetime', targets: 0 },
-// 		       { type: 'de_date', targets: 1 }
-// 	     	]
-// 	    });
-// 	}
-// });
-// if (dashboardImgContainer.length > 0 ) {
-// 	dashboardImgContainer.forEach(function(e){
-// 		e.addEventListener('click', function(){ // if an dashboardImage was clicked
-// 			// check if image clicked is already active
-// 			if (e.classList.contains('dashboard-img-container-img-active')) {
-// 					// check if unclickedItems is not empty
-// 					if (localStorage.getItem("unclickedItems") === null) {
-// 						localStorage.setItem("unclickedItems", JSON.stringify(e.childNodes[1].innerHTML)); // set first unclicked value
-// 					} else {					
-// 						var unclickedItemsValue = JSON.parse(localStorage.getItem("unclickedItems"));
-// 						// check if localStorage value is the same as the clicked image count
-// 						if (unclickedItemsValue !== e.childNodes[1].innerHTML) {
-// 							localStorage.setItem("unclickedItems", JSON.stringify(unclickedItemsValue+','+e.childNodes[1].innerHTML)); // update unclickedItems value
-// 						}
-// 					}
-// 				}
-// 			e.classList.toggle('dashboard-img-container-img-active');
-// 		});
-// 	});
-// }
-// check if an image is choosen
-// if (document.getElementById('image')){
-// 	const imgInput = document.querySelector('#image');
-//    	imgInput.addEventListener('change', function(){
-// 		 if (imgInput.value !== '') {
-// 	 		if (imgBtnUpload.hasAttribute('disabled')) {
-// 	 			imgBtnUpload.removeAttribute('disabled'); // remove the disable attribte of the upload image
-// 	 		}
-// 		 } else {
-// 		 	imgBtn.setAttribute('disabled', ""); //  add disable attribte for the upload image
-// 		 }
-// 	}); 
-//  }
-// if (document.querySelectorAll('.btn-image')) {
-// 	const imgBtnActivate = document.querySelector('#btn-activate-image');
-// 	const imgBtnDelete = document.querySelector('#btn-delete-image');
-// 	const imgBtnRemove = document.querySelector('#btn-remove-image');
-// 	const imgBtnArrange = document.querySelector('#btn-arrange-image');
-// 	buttonClickJavascriptToPhp(imgBtnActivate, 'activateImages'); // if activate button was clicked
-// 	buttonClickJavascriptToPhp(imgBtnDelete, 'deleteImages'); // if delete button was clicked
-// 	buttonClickJavascriptToPhp(imgBtnRemove, 'removeImages'); // if remove button was clicked
-// 	buttonClickJavascriptToPhp(imgBtnArrange, 'arrangeImages'); // if arrange button was clicked
-// 	// get all the dashboard imgs
-// 	dashboardImgs.forEach(function(e){
-// 		e.addEventListener('click', function(){
-// 			var arrayCount = [0];
-// 			var activeImg = document.querySelectorAll('.dashboard-img-container-img-active'); // get all the active images
-// 			// check image clicked count
-// 			if (activeImg.length < 1) {
-// 				localStorage.removeItem("unclickedItems");
-// 			}
-// 			// // check if image clicked is from slider active-page
-// 			// if (e.classList.contains('active-page')) {
-// 			// 	log(e);
-// 			// }	
-// 			// check if localStorage is not empty
-// 			if (localStorage.getItem("unclickedItems") === null) {
-// 				// set image number via image count
-// 				e.childNodes[1].innerHTML = activeImg.length;
-// 			} else {
-// 				// set image number via localStorage value if image clicked was already active
-// 				var unclickedItemsValue = JSON.parse(localStorage.getItem("unclickedItems"));
-// 				//string to array convertion, then sort
-// 				var arrayValue = unclickedItemsValue.split(',').sort();
-// 				// check if image is not active when clicked
-// 				if (!e.childNodes[1].classList.contains('show2')) {
-// 					var imageNumber = arrayValue.shift(); 
-// 					e.childNodes[1].innerHTML = imageNumber;
-// 					// check if arrayValue (localStorage) is empty
-// 					if (arrayValue.length < 1) {
-// 						localStorage.removeItem("unclickedItems"); // remove localStorage if empty
-// 					} else {
-// 						localStorage.setItem("unclickedItems", JSON.stringify(arrayValue.toString())); // update localStorage value
-// 					}
-// 				}
-// 			}
-// 			e.childNodes[1].classList.toggle('show2'); // show image number per image
-// 			if (activeImg.length < 1) {
-// 				if (imgBtnDelete) imgBtnDelete.setAttribute('disabled', ""); // disable button if no image is active
-// 				if (imgBtnActivate) imgBtnActivate.setAttribute('disabled', ""); // disable button if no image is active
-// 				if (imgBtnRemove) imgBtnRemove.setAttribute('disabled', ""); // disable button if no image is active
-// 				if (imgBtnArrange) imgBtnArrange.setAttribute('disabled', ""); // disable button if no image is active
-// 			} else {
-// 				if (imgBtnDelete) imgBtnDelete.removeAttribute('disabled'); // remove disbled of the button if there's an active image
-// 				if (imgBtnActivate) imgBtnActivate.removeAttribute('disabled'); // remove disbled of the button if there's an active image
-// 				if (imgBtnRemove) imgBtnRemove.removeAttribute('disabled'); // remove disbled of the button if there's an active image
-// 				if (imgBtnArrange) imgBtnArrange.removeAttribute('disabled'); // remove disbled of the button if there's an active image
-// 			}
-// 		});
-// 	})
-// }
+}
+
+function removeElementsAndchangeCheckboxPlaceholder(length) {
+  // replace N permission is selected.
+  while (checkboxes.firstChild) {
+    checkboxes.firstChild.remove();
+  }
+
+  var span = document.createElement('span');
+  span.innerHTML = length + ' permissions selected';
+  checkboxes.append(span);
+}
 
 /***/ }),
 

@@ -107,11 +107,47 @@
     width: 100%;
     padding-bottom: 60px;
     height: 50px;
+    display: initial;
 
-    .checkboxes {
+    .checkboxes-placeholder {
         width: 100%;
         border-bottom: 1px solid #525257;
         padding: 8px;
+        cursor: pointer;
+    }
+
+    .checkbox-container {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 100%;
+        border: 1px solid #525257;
+        margin-top: -20px;
+        margin-bottom: 15px;
+        overflow: auto;
+        visibility: hidden;
+        opacity: 0;
+        max-height: 0;
+    }
+
+    .checkbox-item {
+        input {
+            margin-left: 10px;
+            cursor: pointer;
+        }
+    }
+
+    .highlighted {
+        background: color(secondary);
+        color: white;
+    }
+
+    .checkbox-visible {
+      visibility: visible;
+      opacity: 1;
+      max-height: 100%;
+      min-height: 80px;
+      transition: visibility 0.3s, opacity 0.5s linear;
     }
 
     .input-control {

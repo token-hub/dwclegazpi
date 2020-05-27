@@ -16,7 +16,7 @@ class DashboardUserProfileController extends Controller
 
     public function edit(User $user) 
     {
-    	return view('dashboard.main.profile.update')->with('user', $user);
+    	return view('dashboard.main.profile.edit')->with('user', $user);
     }
 
     public function update($id, UpdateUserFormRequest $request, ProfileService $profileService) 

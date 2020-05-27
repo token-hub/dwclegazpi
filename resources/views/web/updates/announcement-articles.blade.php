@@ -6,7 +6,7 @@
 			<h1><a href='#'>{{ $announcement['title'] }}</a></h1><br>
 			
 			@foreach($announcement['paragraphs'] as $paragraph)
-				{!! $paragraph !!}
+				<p>{!! $paragraph !!}</p><hr>
 			@endforeach
 
 			@foreach($announcement['image'] as $image)

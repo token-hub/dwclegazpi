@@ -103,6 +103,46 @@
 			<div class='items'>
 
 				<div class='values'>
+	
+					<div class="inner">
+						<div class="most">
+							<div class="left">
+								<p>MAY</p>
+								<p>23</p>
+							</div>
+							<div class="right">
+								<a href="#">REITERATION OF GUIDELINES AND PROTOCOLS FOR STRICT COMPLIANCE DURING GCQ</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="inner">
+						<div class="most">
+							<div class="left">
+								<p>MAY</p>
+								<p>21</p>
+							</div>
+							<div class="right">
+								<a href="#">PLACEMENT TEST FOR GRADE 11 STUDENTS AND TRANSFEREES</a>
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+				<div class='values'>
+					<div class="inner">
+						<div class="most">
+							<div class="left">
+								<p>MAY</p>
+								<p>21</p>
+							</div>
+							<div class="right">
+								<a href="#">ENROLLMENT - BASIC EDUCATION</a>
+							</div>
+						</div>
+					</div>
+
 					<div class="inner">
 						<div class="most">
 							<div class="left">
@@ -114,44 +154,8 @@
 							</div>
 						</div>
 					</div>
-					<div class="inner">
-						<div class="most">
-							<div class="left">
-								<p>MAY</p>
-								<p>14</p>
-							</div>
-							<div class="right">
-								<a href="#">CHANGES/UPDATES TO MEMO NO.9, s. 2020</a>
-							</div>
-						</div>
-					</div>
-				</div>
 
-				<div class='values'>
-					<div class="inner">
-						<div class="most">
-							<div class="left">
-								<p>MAY</p>
-								<p>14</p>
-							</div>
-							<div class="right">
-								<a href="#">ACKNOWLEDGE RECEIPT OF OPEN LETTER DATED MAY 4, 2020</a>
-							</div>
-						</div>
-					</div>
-					<div class="inner">
-						<div class="most">
-							<div class="left">
-								<p>APR</p>
-								<p>21</p>
-							</div>
-							<div class="right">
-								<a href="#">GUIDELINES IN POSTING OFFICIAL COMMUNICATION</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				
+				</div>				
 			</div>
 		</div>
 	</div>

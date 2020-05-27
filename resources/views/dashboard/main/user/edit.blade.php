@@ -10,14 +10,28 @@
 					{!! Form::label('username', 'Username') !!}
 				</div>
 				<!-- <center><p style='padding:0;margin:0;'><i> --* Actions *--</i></p></center> -->
-				<div class='dashboard-input'>
-					<div class="checkboxes">
+
+
+				<div class='dashboard-input '>
+					<div class="checkboxes-placeholder">
 						@foreach($roles as $role) 
-							{!! Form::checkbox('roles[]', $role->id, $user->roles->contains($role->id) ) !!}
-							<span>{{ $role->title }}</span>
+							@if($user->roles->contains($role->id))
+								<span>{{$role->title. ','}}</span>
+							@endif
 						@endforeach
 					</div>
-					{!! Form::label('roles[]', 'Roles') !!}
+					
+					{!! Form::label('roles[]', 'roles') !!}
+
+					<div class='checkbox-container'>
+						@foreach($roles as $role) 
+							<div class='checkbox-item {{ $user->roles->contains($role->id) ? "highlighted" : "" }}' >
+								{{ Form::checkbox('roles[]', $role->id, $user->roles->contains($role->id) ) }}
+								<span>{{ $role->title }}</span>
+							</div>
+						@endforeach
+					</div>
+
 				</div>
 				
 				<div class='dashboard-input'>

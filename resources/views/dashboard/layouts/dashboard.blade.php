@@ -9,7 +9,9 @@
 	<link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css">
 	<link rel="icon" type="image/ico" href="/storage/img/others/dwcl-Logo.png" />
 	<link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
-	
+
+	<link href="http://www.jqueryscript.net/demo/jQuery-Plugin-For-Multi-Select-List-with-Checkboxes-MultiSelect/jquery.multiselect.css" rel="stylesheet" type="text/css">
+
 	<title>
 		{{  ucfirst($prefix = (Request::segment(2) == '') ? "Dashboard" : Request::segment(2)). ' | Divine Word College of Legazpi' }}
 	</title>
@@ -29,5 +31,10 @@
 	<script src="http://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" defer ></script>
 	<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.10.0/jquery.validate.js" type="text/javascript"></script>
 	<script type="text/javascript" src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+
+
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<script src="http://www.jqueryscript.net/demo/jQuery-Plugin-For-Multi-Select-List-with-Checkboxes-MultiSelect/jquery.multiselect.js"></script>
 @stack('scripts')
 

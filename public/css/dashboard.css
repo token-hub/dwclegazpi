@@ -129,12 +129,50 @@ body * {
   width: 100%;
   padding-bottom: 60px;
   height: 50px;
+  display: initial;
 }
 
-.dashboard-input .checkboxes {
+.dashboard-input .checkboxes-placeholder {
   width: 100%;
   border-bottom: 1px solid #525257;
   padding: 8px;
+  cursor: pointer;
+}
+
+.dashboard-input .checkbox-container {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  justify-content: space-around;
+  width: 100%;
+  border: 1px solid #525257;
+  margin-top: -20px;
+  margin-bottom: 15px;
+  overflow: auto;
+  visibility: hidden;
+  opacity: 0;
+  max-height: 0;
+}
+
+.dashboard-input .checkbox-item input {
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.dashboard-input .highlighted {
+  background: #5f5aef;
+  color: white;
+}
+
+.dashboard-input .checkbox-visible {
+  visibility: visible;
+  opacity: 1;
+  max-height: 100%;
+  min-height: 80px;
+  -webkit-transition: visibility 0.3s, opacity 0.5s linear;
+  transition: visibility 0.3s, opacity 0.5s linear;
 }
 
 .dashboard-input .input-control {

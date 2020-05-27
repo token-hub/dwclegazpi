@@ -16,26 +16,26 @@
 
 	$latestPosts = [
 						[
-			   				'title' => 'CANCELLATION OF TUITION FEE INCREASE, SY 2020-2021',
+							'title' => 'REITERATION OF GUIDELINES AND PROTOCOLS FOR STRICT COMPLIANCE DURING GCQ',
+							'posts' => [],
+			   				'posted' => 'May 27, 2020',
+							'clickable' => true,
+			   				'category' => 'announcement',
+						],	
+						[
+							'title' => 'PLACEMENT TEST FOR GRADE 11 STUDENTS AND TRANSFEREES',
+							'posts' => [],
+			   				'posted' => 'May 27, 2020',
+							'clickable' => true,
+			   				'category' => 'announcement',
+						],	
+						[
+			   				'title' => 'ENROLLMENT - BASIC EDUCATION',
 			   				'posts' => [],
-			   				'posted' => 'May 19, 2020',
+			   				'posted' => 'May 27, 2020',
 			   				'clickable' => true,
 			   				'category' => 'announcement',
-			   			],
-						[
-							'title' => 'CHANGES/UPDATES TO MEMO NO.9, s. 2020',
-							'posts' => [],
-							'posted' => 'May 19, 2020',
-							'clickable' => true,
-							'category' => 'announcement'
-						],
-						[
-							'title' => 'ACKNOWLEDGE RECEIPT OF OPEN LETTER DATED MAY 4, 2020',
-							'posts' => [],
-							'posted' => 'May 19, 2020',
-							'clickable' => true,
-							'category' => 'announcement'
-						],
+		   				],
 				   ];
 ?>
 <div class='posts-and-events'>
