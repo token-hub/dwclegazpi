@@ -5,7 +5,7 @@
 	@include flexCenters();
 
     z-index: 1;
-    width: 220px;
+    width: 230px;
     height: 50px;
     opacity: .8;
     background: #d2d2ee;
@@ -37,7 +37,51 @@
 		@include position(absolute, 180px, 10px); 
 
 		font-size: 11px;
-		width: 130px;
+		width: 150px;
+   		height: 35px;
+	}
+}
+
+// ------------------------------------- [ ENROLLMENT PORTAL ] -------------------------------------
+
+.enrollment-portal {
+	@include position(absolute, 240px, 80px);
+	@include flexCenters();
+
+    z-index: 1;
+    width: 230px;
+    height: 50px;
+    opacity: .8;
+    background: #d2d2ee;
+    border-radius: 40px;
+
+    a {
+    	text-decoration: none;
+    	color: color(primary);
+    }
+}
+
+.enrollment-portal:hover {
+	background-color: black;
+    cursor: pointer;
+
+    a {
+    	color: white;
+    }
+}
+
+@include responsive(tablet) {
+	.enrollment-portal {
+		@include position(absolute, 240px, 50px);
+	}
+}
+
+@include responsive(phone) {
+	.enrollment-portal {
+		@include position(absolute, 225px, 10px);
+
+		font-size: 11px;
+		width: 150px;
    		height: 35px;
 	}
 }

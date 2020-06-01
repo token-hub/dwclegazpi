@@ -883,7 +883,7 @@ body {
   -webkit-box-align: center;
           align-items: center;
   z-index: 1;
-  width: 220px;
+  width: 230px;
   height: 50px;
   opacity: 0.8;
   background: #d2d2ee;
@@ -922,7 +922,64 @@ body {
     bottom: NULL;
     left: NULL;
     font-size: 11px;
-    width: 130px;
+    width: 150px;
+    height: 35px;
+  }
+}
+
+.enrollment-portal {
+  position: absolute;
+  top: 240px;
+  right: 80px;
+  bottom: NULL;
+  left: NULL;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+  z-index: 1;
+  width: 230px;
+  height: 50px;
+  opacity: 0.8;
+  background: #d2d2ee;
+  border-radius: 40px;
+}
+
+.enrollment-portal a {
+  text-decoration: none;
+  color: #1d17ce;
+}
+
+.enrollment-portal:hover {
+  background-color: black;
+  cursor: pointer;
+}
+
+.enrollment-portal:hover a {
+  color: white;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .enrollment-portal {
+    position: absolute;
+    top: 240px;
+    right: 50px;
+    bottom: NULL;
+    left: NULL;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .enrollment-portal {
+    position: absolute;
+    top: 225px;
+    right: 10px;
+    bottom: NULL;
+    left: NULL;
+    font-size: 11px;
+    width: 150px;
     height: 35px;
   }
 }
