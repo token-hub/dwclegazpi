@@ -8,10 +8,10 @@
 
 	<!-- ---------------- [ slider show ] ---------------- -->
 	<div class="slideshow-container">
-			@if(count($home['active_image']))
-				@foreach($home['active_image'] as $image)
+			@if(count($home['active_slides']))
+				@foreach($home['active_slides'] as $slide)
 				 	<div class='mySlides fade slides'>
-						<img src="/storage/img/slider/active/{{ $image['image_name'] }}">
+						<img src="/storage/img/slider/active/{{ $slide }}">
 				 	</div>
 				@endforeach
 			@else 

@@ -59,8 +59,7 @@ class HomeController extends Controller
                                                             ],
                                                        ]  
                                         ],
-                            // 'active_image' => $this->slideService->active()
-                            'active_image' => []
+                            'active_slides' => $this->slideService->active(),
                       ];
         return view('web.home.homepage')->with('home', $homeArrays);
     }

@@ -17,9 +17,13 @@ class SlideRepository implements SlideInterface
 
 	public function getActiveSlides() 
 	{
-		$active = $this->slide->where('is_active' , 1)
+		$slides = $this->slide->where('is_active' , 1)
 					->orderBy('number', 'ASC')
 					->get();
+
+		$active = $slides->map(function($slide){
+			return $slide->image->image_name;
+		});
 
 		return $active;
 	}
