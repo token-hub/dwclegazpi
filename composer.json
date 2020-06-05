@@ -17,6 +17,7 @@
         "laravelcollective/html": "^6.0",
         "lesichkovm/laravel-advanced-route": "^1.6",
         "spatie/laravel-activitylog": "^3.14",
+        "unisharp/laravel-ckeditor": "^4.7",
         "yajra/laravel-datatables": "^1.5"
     },
     "require-dev": {

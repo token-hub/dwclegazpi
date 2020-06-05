@@ -16,6 +16,13 @@
 
 	$latestPosts = [
 						[
+							'title' => 'LEARNING DELIVERY MODALITIES',
+							'posts' => [],
+			   				'posted' => 'June 06, 2020',
+							'clickable' => true,
+			   				'category' => 'announcement',
+						],	
+						[
 							'title' => 'REITERATION OF GUIDELINES AND PROTOCOLS FOR STRICT COMPLIANCE DURING GCQ',
 							'posts' => [],
 			   				'posted' => 'May 27, 2020',
@@ -29,13 +36,6 @@
 							'clickable' => true,
 			   				'category' => 'announcement',
 						],	
-						[
-			   				'title' => 'ENROLLMENT - BASIC EDUCATION',
-			   				'posts' => [],
-			   				'posted' => 'May 27, 2020',
-			   				'clickable' => true,
-			   				'category' => 'announcement',
-		   				],
 				   ];
 ?>
 <div class='posts-and-events'>

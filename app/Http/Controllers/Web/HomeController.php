@@ -4,15 +4,15 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\Services\ImageService;
+use App\Models\Services\SlideService;
 
 class HomeController extends Controller
 {
-    protected $imageService;
+    protected $slideService;
 
-    public function __construct(ImageService $imageService)
+    public function __construct(SlideService $slideService)
     {
-        $this->imageService = $imageService;
+        $this->slideService = $slideService;
     }
 
     public function getIndex()
@@ -59,7 +59,8 @@ class HomeController extends Controller
                                                             ],
                                                        ]  
                                         ],
-                            'active_image' => $this->imageService->active()
+                            // 'active_image' => $this->slideService->active()
+                            'active_image' => []
                       ];
         return view('web.home.homepage')->with('home', $homeArrays);
     }

@@ -110,6 +110,18 @@
 					<div class="inner">
 						<div class="most">
 							<div class="left">
+								<p>JUN</p>
+								<p>06</p>
+							</div>
+							<div class="right">
+								<a href="#">LEARNING DELIVERY MODALITIES</a>
+							</div>
+						</div>
+					</div>
+
+					<div class="inner">
+						<div class="most">
+							<div class="left">
 								<p>MAY</p>
 								<p>23</p>
 							</div>
@@ -118,6 +130,10 @@
 							</div>
 						</div>
 					</div>
+
+				</div>
+
+				<div class='values'>
 
 					<div class="inner">
 						<div class="most">
@@ -131,9 +147,6 @@
 						</div>
 					</div>
 
-				</div>
-
-				<div class='values'>
 					<div class="inner">
 						<div class="most">
 							<div class="left">
@@ -145,19 +158,7 @@
 							</div>
 						</div>
 					</div>
-
-					<div class="inner">
-						<div class="most">
-							<div class="left">
-								<p>MAY</p>
-								<p>20</p>
-							</div>
-							<div class="right">
-								<a href="#">CANCELLATION OF TUITION FEE INCREASE, SY 2020-2021</a>
-							</div>
-						</div>
-					</div>
-
+					
 				</div>				
 			</div>
 		</div>

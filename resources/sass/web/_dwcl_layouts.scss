@@ -145,6 +145,12 @@
 					}
 				}
 
+				@include responsive(phone) {
+					h1 {
+						font-size: 1.2rem;
+					}
+				}
+
 				img {
 					max-width: 100%;
 				}
@@ -246,6 +252,15 @@
 			p {
 				line-height: 1.8;
 				text-align: justify;
+
+				i {
+					color: color(primary);
+					padding-right: 10px;
+				}
+
+				a {
+					color: color(primary);
+				}
 			}
  
 			h3 , h1 {
@@ -464,7 +479,7 @@
 		.content {
 			display: table;
 			width: 950px;
-			padding: 20px 50px;
+			padding: 20px 25px;
 		}
 	}
 }

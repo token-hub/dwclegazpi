@@ -38,7 +38,7 @@
 					{!! Form::select('status', [
 						'Active' => 'Active',
 						'Inactive' => 'Inactive',
-						], $user->is_active, ['class' => 'input-control', 'id' => 'status']) !!} 
+						], $user->is_active, ['class' => 'input-control', 'id' => 'status' , 'required' => 'required']) !!} 
 					{!! Form::label('status', 'Status') !!}
 				</div>
 

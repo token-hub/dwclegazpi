@@ -117,7 +117,13 @@ var checkboxInputs = document.querySelectorAll('.checkbox-container .checkbox-it
 var labels = document.querySelectorAll('.dashboard-input label');
 var showHidePassword = document.querySelectorAll('.password');
 var eye = document.querySelectorAll('.password-content i');
-var permissions = document.querySelectorAll('.checkboxes-placeholder span'); // ========== [ FORMS INPUT HOVER EFFECT FUNCTION ] ==========
+var permissions = document.querySelectorAll('.checkboxes-placeholder span');
+var notificationMessage = document.querySelector('.notification-content ul li'); // check if there's error session
+
+if (notificationMessage) {
+  location.reload();
+} // ========== [ FORMS INPUT HOVER EFFECT FUNCTION ] ==========
+
 
 inputs.forEach(function (e) {
   // get the label of the form
@@ -147,7 +153,7 @@ if (checkboxes) {
     label.classList.add('dashboard-input-focus');
   }
 
-  if (permissions.lenght > 4) {
+  if (permissions.length > 3) {
     removeElementsAndchangeCheckboxPlaceholder(permissions.length);
   }
 
@@ -175,7 +181,7 @@ checkboxInputs.forEach(function (e) {
 
     if (itemFound < 1) {
       // check user permissions on checkbox placeholder
-      if (selectedPermissions.length > 4) {
+      if (selectedPermissions.length > 3) {
         removeElementsAndchangeCheckboxPlaceholder(selectedPermissions.length);
       } else {
         // check if the checkbox clicked is highlighted - means not deselected
@@ -440,15 +446,15 @@ sliderBtn.forEach(function (e) {
     var SliderBtnType = imageActionType(e.innerHTML);
     var myJsonData = {
       'imgs_type': SliderBtnType,
-      'images': imageNames
+      'slides': imageNames
     };
     url = url(SliderBtnType);
     type = type(SliderBtnType);
 
     if (SliderBtnType == 'remove' || SliderBtnType == 'activate') {
-      sendData(myJsonData, url, type, 'images-inactive');
+      sendData(myJsonData, url, type, 'slides-inactive');
     } else {
-      sendData(myJsonData, url, type, 'images-active');
+      sendData(myJsonData, url, type, 'slides-active');
     }
   });
 });
@@ -475,19 +481,19 @@ function sendData(data, url, type, redirect) {
 
 function imageActionType(type) {
   switch (type) {
-    case 'Deactivate image':
+    case 'Deactivate slide':
       SliderBtnType = 'deactivate';
       break;
 
-    case 'Activate image':
+    case 'Activate slide':
       SliderBtnType = 'activate';
       break;
 
-    case 'Remove image':
+    case 'Remove slide':
       SliderBtnType = 'remove';
       break;
 
-    case 'Arrange image':
+    case 'Arrange slide':
       SliderBtnType = 'arrange';
       break;
   }
@@ -498,19 +504,19 @@ function imageActionType(type) {
 function url(SliderBtnType) {
   switch (SliderBtnType) {
     case 'remove':
-      url = '/dashboard/images-inactive/remove';
+      url = '/dashboard/slides-inactive/remove';
       break;
 
     case 'activate':
-      url = '/dashboard/images-inactive/activate';
+      url = '/dashboard/slides-inactive/activate';
       break;
 
     case 'deactivate':
-      url = '/dashboard/images-active/deactivate';
+      url = '/dashboard/slides-active/deactivate';
       break;
 
     case 'arrange':
-      url = '/dashboard/images-active/arrange';
+      url = '/dashboard/slides-active/arrange';
       break;
   }
 

@@ -7,7 +7,7 @@
 	<div class="form">
 		{!! Form::open(['url' => 'dashboard/register', 'method' => 'POST']) !!}
 			<div class='dashboard-input'>
-				{!! Form::text('firstname', '', ['id' => 'firstname', 'autocomplete' => 'given-name', 'class' => 'input-control', 'required' => 'required' ]) !!}
+				{!! Form::text('firstname', '', ['id' => 'firstname', 'autocomplete' => 'given-name', 'class' => 'input-control', 'required' => 'required']) !!}
 				{!! Form::label('firstname', 'Firstname') !!}
 			</div>
 	

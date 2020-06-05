@@ -6,7 +6,7 @@
 		<div class="form">
 			{!! Form::open(['url' => ['dashboard/roles', $role->id], 'method' => 'PATCH']) !!}
 				<div class='dashboard-input'>
-					{!! Form::text('title', $role->title, ['id' => 'title', 'class' => 'input-control']) !!} 
+					{!! Form::text('title', $role->title, ['id' => 'title', 'class' => 'input-control', 'required' => 'required']) !!} 
 					{!! Form::label('title', 'Title') !!}
 
 				<div class='dashboard-input '>

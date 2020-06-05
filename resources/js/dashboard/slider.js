@@ -56,17 +56,16 @@ sliderBtn.forEach(function(e){
 	e.addEventListener('click', function(){
 		var SliderBtnType = imageActionType(e.innerHTML);
 
-	    var myJsonData = { 'imgs_type' : SliderBtnType, 'images' : imageNames};
+	    var myJsonData = { 'imgs_type' : SliderBtnType, 'slides' : imageNames};
 
 	    url = url(SliderBtnType);
 	    type = type(SliderBtnType);
 
 	    if (SliderBtnType == 'remove' || SliderBtnType == 'activate') {
-	    	sendData(myJsonData, url, type, 'images-inactive');
+	    	sendData(myJsonData, url, type, 'slides-inactive');
 	    } else  {
-			sendData(myJsonData, url, type, 'images-active');
+			sendData(myJsonData, url, type, 'slides-active');
 	  	}
-
 	});
 });
 
@@ -94,16 +93,16 @@ function sendData(data, url, type, redirect) {
 function imageActionType(type)
 {
 	switch(type) {
-	  case 'Deactivate image':
+	  case 'Deactivate slide':
 	    	SliderBtnType = 'deactivate';
 	    break;
-	  case 'Activate image':
+	  case 'Activate slide':
 	   		SliderBtnType = 'activate';
 	    break;
-	  case 'Remove image':
+	  case 'Remove slide':
 	  		SliderBtnType = 'remove';
 	  	break;
-	  case 'Arrange image':
+	  case 'Arrange slide':
 	  		SliderBtnType = 'arrange';
 	  	break;
 	}
@@ -115,16 +114,16 @@ function url(SliderBtnType)
 {
   switch(SliderBtnType) {
 	  case 'remove':
-	    	url = '/dashboard/images-inactive/remove';
+	    	url = '/dashboard/slides-inactive/remove';
 	    break;
 	  case 'activate':
-	   		url = '/dashboard/images-inactive/activate';
+	   		url = '/dashboard/slides-inactive/activate';
 	    break;
 	  case 'deactivate':
-	  		url = '/dashboard/images-active/deactivate';
+	  		url = '/dashboard/slides-active/deactivate';
 	  	break;
 	  case 'arrange':
-	  		url = '/dashboard/images-active/arrange';
+	  		url = '/dashboard/slides-active/arrange';
 	  	break;
   }
 

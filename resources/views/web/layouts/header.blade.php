@@ -27,6 +27,7 @@
 			</li>
 
 			<div class='admission-content dp-content-collapse'>
+				<a href='/admission/online-enrollment'> ONLINE ENROLLMENT </a>
 				<a href='/admission/grade-school'> GRADE SCHOOL </a>
 				<a href='/admission/junior-high-school'> JUNIOR HIGH SCHOOL </a>
 				<a href='/admission/free-secondary-distance'> FREE SECONDARY DISTANCE <br> PROGRAM</a>
@@ -138,6 +139,7 @@
 					<a href='/admission'  class='nav-list admission-btn'>ADMISSION</a>
 
 					<div class='admission-content dp-content'>
+						<a href='/admission/online-enrollment'> ONLINE ENROLLMENT </a>
 						<a href='/admission/grade-school'> GRADE SCHOOL </a>
 						<a href='/admission/junior-high-school'> JUNIOR HIGH SCHOOL </a>
 						<a href='/admission/free-secondary-distance'> FREE SECONDARY DISTANCE <br> PROGRAM</a>

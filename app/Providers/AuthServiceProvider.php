@@ -17,7 +17,8 @@ class AuthServiceProvider extends ServiceProvider
         'App\Models\Entities\Role' => 'App\Policies\RolePolicy',
         'App\Models\Entities\User' => 'App\Policies\UserPolicy',
         'App\Models\Entities\Permission' => 'App\Policies\PermissionPolicy',
-        'App\Models\Entities\Image' => 'App\Policies\ImagePolicy',
+        'App\Models\Entities\Slide' => 'App\Policies\SlidePolicy',
+        'App\Models\Entities\Update' => 'App\Policies\UpdatePolicy',
         'Spatie\Activitylog\Models\Activity' => 'App\Policies\LogPolicy',
     ];
 

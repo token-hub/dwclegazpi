@@ -10,6 +10,10 @@ class AdmissionController extends Controller
     	return view('web.admission.admission');
     }
 
+    public function getOnlineEnrollment() {
+        return view('web.admission.online-enrollment');
+    }
+
     public function getGradeSchool() {
     	return view('web.admission.grade-school');
     }

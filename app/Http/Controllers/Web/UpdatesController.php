@@ -11,6 +11,14 @@ class UpdatesController extends Controller
 
  	# Temporary array for pagination
    		$updates = [
+   					[
+						'day' => '01',
+		   				'date' => 'Jun',
+						'title' => 'LEARNING DELIVERY MODALITIES',
+						'clickable' => true,
+		   				'category' => 'announcement',
+		   				'overview' => 'In case you’re wondering what blended learning is...'
+					],	
 					[
 						'day' => '23',
 		   				'date' => 'May',
@@ -414,6 +422,14 @@ class UpdatesController extends Controller
    		$announcements = 
    						[
    							[
+								'day' => '01',
+				   				'date' => 'Jun',
+								'title' => 'LEARNING DELIVERY MODALITIES',
+								'clickable' => true,
+				   				'category' => 'announcement',
+				   				'overview' => 'In case you’re wondering what blended learning is...'
+							],	
+   							[
 								'day' => '23',
 				   				'date' => 'May',
 								'title' => 'REITERATION OF GUIDELINES AND PROTOCOLS FOR STRICT COMPLIANCE DURING GCQ',
@@ -605,6 +621,15 @@ class UpdatesController extends Controller
 
    public function getAnnouncementArticles() {
    		$announcements = [	
+   							[
+				   				'title' => 'LEARNING DELIVERY MODALITIES',
+				   				'image' => 
+   									[ 
+   										'jun-06-2020 learning-delivery-modalities.jpg',
+   									],
+				   				'paragraphs' => [],
+				   				'posted' => 'Posted on June 06, 2020 at 6:51 PM.',
+							],	
    							[
 				   				'title' => 'REITERATION OF GUIDELINES AND PROTOCOLS FOR STRICT COMPLIANCE DURING GCQ',
 				   				'image' => 

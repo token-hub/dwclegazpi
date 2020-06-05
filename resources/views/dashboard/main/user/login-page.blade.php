@@ -18,12 +18,12 @@
 							{!! Form::open(['url' => ['dashboard'], 'method' => 'POST']) !!}
 							
 							<div class='dashboard-input'>
-								{{ Form::text('username', '', ['autocomplete' => 'username', 'autofocus' => '', 'required' => '', 'class' => 'input-control', 'id' => 'username'])}}
+								{{ Form::text('username', '', ['autocomplete' => 'username', 'autofocus' => '', 'required' => '', 'class' => 'input-control', 'id' => 'username', 'required' => 'required'])}}
 								{{ Form::label('username', 'Username') }}
 							</div>
 							<div class='dashboard-input'>
 								<div class='password-content'>
-									{{ Form::password('password', ['autocomplete' => 'new-password',  'required' => '', 'class' => 'password input-control', 'id' => 'password'])}}
+									{{ Form::password('password', ['autocomplete' => 'new-password',  'required' => '', 'class' => 'password input-control', 'id' => 'password', 'required' => 'required'])}}
 									<i class='fa fa-eye'></i>
 								</div>
 								

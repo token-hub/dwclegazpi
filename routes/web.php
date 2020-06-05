@@ -26,6 +26,8 @@ Route::namespace('Dashboard')->prefix('dashboard')->group(function () {
 
   Route::get('/email/resend', 'Auth\VerificationController@resend')->name('verification.resend');
 
+  Route::post('ckeditor/image_upload', 'CKEditorController@upload')->name('upload');
+
   Route::group([ 'middleware' => ['auth', 'verified'], 'verify' => true], function () { 
 
     Route::get('/home', 'DashboardController@index');
@@ -58,19 +60,19 @@ Route::namespace('Dashboard')->prefix('dashboard')->group(function () {
     
     Route::get('/log-data', 'DashboardLogController@logsData');
 
-    Route::get('/images-active', 'DashboardActiveImageController@index');
+    Route::get('/slides-active', 'DashboardActiveSlideController@index');
 
-    Route::patch('/images-active/deactivate', 'DashboardActiveImageController@destroy');
+    Route::patch('/slides-active/deactivate', 'DashboardActiveSlideController@destroy');
 
-    Route::patch('/images-active/arrange', 'DashboardActiveImageController@update');
+    Route::patch('/slides-active/arrange', 'DashboardActiveSlideController@update');
     
-    Route::get('/images-inactive', 'DashboardInactiveImageController@index');
+    Route::get('/slides-inactive', 'DashboardInactiveSlideController@index');
     
-    Route::delete('/images-inactive/remove', 'DashboardInactiveImageController@destroy');
+    Route::delete('/slides-inactive/remove', 'DashboardInactiveSlideController@destroy');
 
-    Route::patch('/images-inactive/activate', 'DashboardInactiveImageController@update');
+    Route::patch('/slides-inactive/activate', 'DashboardInactiveSlideController@update');
 
-    Route::post('/images-inactive/image-upload', 'DashboardInactiveImageController@store');
+    Route::post('/slides-inactive/image-upload', 'DashboardInactiveSlideController@store');
 
     Route::get('roles', 'DashboardRoleController@index');
 
@@ -99,6 +101,12 @@ Route::namespace('Dashboard')->prefix('dashboard')->group(function () {
     Route::patch('permissions/{permission}', 'DashboardPermissionController@update');
 
     Route::delete('permissions/{permission}', 'DashboardPermissionController@destroy');
+
+    Route::get('updates', 'DashboardUpdateController@index');
+
+    Route::get('updates/create', 'DashboardUpdateController@create');
+
+    Route::post('updates', 'DashboardUpdateController@store');
   });
 
 });

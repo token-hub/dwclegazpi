@@ -11,7 +11,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call(ImageSeeder::class);
+        // $this->call(ImageSeeder::class);
         $this->call(RoleSeeder::class);
         $this->call(PermissionSeeder::class);
         
@@ -21,9 +21,11 @@ class DatabaseSeeder extends Seeder
        	 $user->Personal_info()->save(factory(App\Models\Entities\Personal_info::class)->make());
        	 $user->Department()->save(factory(App\Models\Entities\Department::class)->make());
         
+         $permissionCnt = count(App\Models\Entities\Permission::all());
+
         # create permission ids
         $permissionsId = [];
-        for ($i = 1; $i <= 15; $i++){
+        for ($i = 1; $i <= $permissionCnt; $i++){
             array_push($permissionsId, $i);
         }
 

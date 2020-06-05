@@ -77,8 +77,8 @@
 					@endif
 					
 					@if (
-							Gate::check('viewAnyActive', App\Models\Entities\Image::class) || 
-							Gate::check('viewAnyInactive', App\Models\Entities\Image::class)
+							Gate::check('viewAnyActive', App\Models\Entities\Slide::class) || 
+							Gate::check('viewAnyInactive', App\Models\Entities\Slide::class)
 						)
 						<div class='left-content-link '>
 							<i class='fa fa-sliders'></i><a href="#">Slider</a>
@@ -86,20 +86,26 @@
 						</div>
 
 						<div class='content-dropdown'>
-							@can('viewAnyActive', App\Models\Entities\Image::class)
+							@can('viewAnyActive', App\Models\Entities\Slide::class)
 								<div class='left-content-link'>
-									<i class='fa fa-toggle-on'></i><a href="{{url('dashboard/images-active')}}">Active</a>
+									<i class='fa fa-toggle-on'></i><a href="{{url('dashboard/slides-active')}}">Active</a>
 								</div>
 							@endcan
 
-							@can('viewAnyInactive', App\Models\Entities\Image::class)
+							@can('viewAnyInactive', App\Models\Entities\Slide::class)
 							<div class='left-content-link'>
-								<i class='fa fa-toggle-off'></i><a href="{{url('dashboard/images-inactive')}}">Inactive</a>
+								<i class='fa fa-toggle-off'></i><a href="{{url('dashboard/slides-inactive')}}">Inactive</a>
 							</div>
 							@endcan
 						</div>
 					@endif
 					
+					@can('viewAny', App\Models\Entities\Update::class)
+						<div class='left-content-link'>
+							<i class='fa fa-newspaper-o'></i><a href="{{url('dashboard/updates')}}">Updates</a>
+						</div>
+					@endcan
+
 					@can('viewAny', Spatie\Activitylog\Models\Activity::class)
 						<div class='left-content-link'>
 							<i class='fa fa-history'></i><a href="{{url('dashboard/logs')}}">Logs</a>

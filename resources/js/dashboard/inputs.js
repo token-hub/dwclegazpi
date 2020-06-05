@@ -6,6 +6,12 @@ const labels = document.querySelectorAll('.dashboard-input label');
 const showHidePassword = document.querySelectorAll('.password');
 const eye  = document.querySelectorAll('.password-content i');
 var permissions = document.querySelectorAll('.checkboxes-placeholder span');
+var notificationMessage = document.querySelector('.notification-content ul li');
+
+// check if there's error session
+if (notificationMessage) {
+	location.reload();
+}
 
 // ========== [ FORMS INPUT HOVER EFFECT FUNCTION ] ==========
 inputs.forEach(function(e){
@@ -34,13 +40,13 @@ inputs.forEach(function(e){
 if (checkboxes) {
 	var label = document.querySelector('label[for="'+checkboxes.nextElementSibling.getAttribute('for')+'"]');
 	checkboxesContainer.classList.toggle('checkbox-visible');
-	
+
 	// check if checkbox div has a child
 	if (checkboxes.childNodes) {
 		label.classList.add('dashboard-input-focus');
 	}
 
-	if (permissions.lenght > 4) {
+	if (permissions.length > 3) {
 		removeElementsAndchangeCheckboxPlaceholder(permissions.length);
 	}
 
@@ -72,7 +78,7 @@ checkboxInputs.forEach(function(e){
 		if (itemFound < 1) {
 
 			// check user permissions on checkbox placeholder
-			if (selectedPermissions.length > 4) {
+			if (selectedPermissions.length > 3) {
 				removeElementsAndchangeCheckboxPlaceholder(selectedPermissions.length);
 			} else {
 

@@ -11073,10 +11073,9 @@ function jumpToUpdatesPage(array, location, category) {
         } // Save data to sessionStorage
 
 
-        sessionStorage.setItem('clicked-title', clickedTitle);
-        console.log(location); // jump page to announcement
+        sessionStorage.setItem('clicked-title', clickedTitle); // jump page to location
 
-        window.location.href = 'http://dwc-legazpi.edu/' + location;
+        window.location.href = window.location.protocol + '\/\/' + window.location.hostname + '/' + location;
       });
     });
   }

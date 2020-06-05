@@ -6,22 +6,22 @@
 		<div class="form">
 			{!! Form::open(['url' => ['dashboard/profile', $user->id], 'method' => 'PATCH']) !!}
 				<div class='dashboard-input'>
-					{!! Form::text('firstname', $user->personal_info->firstname, ['id' => 'firstname', 'autocomplete' => 'given-name', 'class' => 'input-control']) !!}
+					{!! Form::text('firstname', $user->personal_info->firstname, ['id' => 'firstname', 'autocomplete' => 'given-name', 'class' => 'input-control', 'required' => 'required']) !!}
 					{!! Form::label('firstname', 'Firstname') !!}
 				</div>
 		
 				<div class='dashboard-input'>
-					{!! Form::text('lastname', $user->personal_info->lastname, ['id' => 'lastname', 'autocomplete' => 'family-name', 'class' => 'input-control']) !!}
+					{!! Form::text('lastname', $user->personal_info->lastname, ['id' => 'lastname', 'autocomplete' => 'family-name', 'class' => 'input-control', 'required' => 'required']) !!}
 					{!! Form::label('lastname', 'Lastname', ['generated' => 'true']) !!}
 				</div>
 				
 				<div class='dashboard-input'>
-					{!! Form::select('gender', ['male' => 'Male', 'female' => 'Female'], strtolower($user->personal_info->gender), ['placeholder' => '', 'autocomplete' => 'sex', 'class' => 'input-control', 'id' => 'gender']); !!}
+					{!! Form::select('gender', ['male' => 'Male', 'female' => 'Female'], strtolower($user->personal_info->gender), ['placeholder' => '', 'autocomplete' => 'sex', 'class' => 'input-control', 'id' => 'gender', 'required' => 'required']); !!}
 					{!! Form::label('gender', 'Gender') !!}
 				</div>
 
 				<div class='dashboard-input'>
-					{!! Form::text('username', $user->username, ['id' => 'username', 'autocomplete' => 'username', 'class' => 'input-control']) !!}
+					{!! Form::text('username', $user->username, ['id' => 'username', 'autocomplete' => 'username', 'class' => 'input-control', 'required' => 'required']) !!}
 					{!! Form::label('username', 'Username') !!}
 				</div>
 
@@ -32,7 +32,7 @@
 						'soecs' => 'SOECS',
 						'sbma' => 'SBMA',
 						'gsbm' => 'GSBM'
-						], strtolower($user->department->name), ['class' => 'input-control', 'id' => 'department_name']) !!} 
+						], strtolower($user->department->name), ['class' => 'input-control', 'id' => 'department_name', 'required' => 'required']) !!} 
 					{!! Form::label('department_name', 'Department') !!}
 				</div>
 
