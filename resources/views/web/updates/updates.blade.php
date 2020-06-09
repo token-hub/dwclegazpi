@@ -4,8 +4,8 @@
 	@foreach($updates as $key => $update)
 		<div class='date-and-content {{ $update["category"] }}'>
 			<div class='date-content-left'>
-				<p>{{ $update['day'] }}</p>
-				<p>{{ $update['date'] }}</p>
+				<p>{{ date("d", strtotime($update['created_at'])) }}</p>
+				<p>{{ date("M", strtotime($update['created_at'])) }}</p>
 			</div>
 			<div class='date-content-right'>
 					@if($update['clickable'])

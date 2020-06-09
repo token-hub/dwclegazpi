@@ -25,7 +25,6 @@ class CreateUpdatesRequest extends FormRequest
     {
         return [
             'title' => 'required',
-            'paragraph' => 'required',
             'category' => 'required',
             'overview' => 'required',
         ];

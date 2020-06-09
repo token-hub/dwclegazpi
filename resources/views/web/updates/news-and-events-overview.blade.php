@@ -4,8 +4,8 @@
 	@foreach($newsAndEvents as $key => $newsAndEvent)
 		<div class='date-and-content {{ $newsAndEvent["category"] }}'>
 			<div class='date-content-left'>
-				<p>{{ $newsAndEvent['day'] }}</p>
-				<p>{{ $newsAndEvent['date'] }}</p>
+				<p>{{ date("d", strtotime($newsAndEvent['created_at'])) }}</p>
+				<p>{{ date("M", strtotime($newsAndEvent['created_at'])) }}</p>
 			</div>
 			<div class='date-content-right'>
 					@if($newsAndEvent['clickable'])

@@ -72,6 +72,12 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasOne(Department::class, 'user_id'); 
     }
 
+    # relationship to updates table
+    public function updates() 
+    {
+        return $this->hasOne(Update::class, 'user_id'); 
+    }
+
     public function getIsActiveAttribute($data) 
     {
         return $data == 0 ? 'Inactive' : 'Active';

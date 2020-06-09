@@ -104,6 +104,8 @@ Route::namespace('Dashboard')->prefix('dashboard')->group(function () {
 
     Route::get('updates', 'DashboardUpdateController@index');
 
+    Route::get('/update-data', 'DashboardUpdateController@updateData');
+
     Route::get('updates/create', 'DashboardUpdateController@create');
 
     Route::post('updates', 'DashboardUpdateController@store');

@@ -16,10 +16,15 @@ class CreateUpdatesTable extends Migration
         Schema::create('updates', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->String('title');
-            $table->boolean('clickable')->default('0');
             $table->String('category');
-            $table->text('paragraph');
+            $table->String('overview');
+            $table->text('paragraph')->nullable();
+            $table->boolean('clickable')->default('1');
+            $table->unsignedBigInteger('user_id');
             $table->timestamps();
+
+            # foreign key constraints
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
         });
     }
 

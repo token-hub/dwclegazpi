@@ -5,14 +5,17 @@ namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Services\SlideService;
+use App\Models\Services\UpdateService;
 
 class HomeController extends Controller
 {
     protected $slideService;
+    protected $updateService;
 
-    public function __construct(SlideService $slideService)
+    public function __construct(SlideService $slideService, UpdateService $updateService)
     {
         $this->slideService = $slideService;
+        $this->updateService = $updateService;
     }
 
     public function getIndex()
@@ -32,35 +35,10 @@ class HomeController extends Controller
                                                     'image' => 'alumni.png'
                                                 ]
                                            ],
-                        'announcements' => [
-                                            'left' => [ 
-                                                         [
-                                                            'date' => ['Feb', '21'],
-                                                            'title' => 'NON-WORKING HOLIDAY',
-                                                            'hiddenLink' => 'NON-WORKING HOLIDAY: February 24-25, 2019'
-                                                        ],
-                                                        [
-                                                            'date' => ['Feb', '07'],
-                                                            'title' => 'AN APPEAL FOR UNDERSTANDING',
-                                                            'hiddenLink' => 'AN APPEAL FOR UNDERSTANDING'
-                                                        ],
-                                                       
-                                                      ],
-                                            'right' => [
-                                                            [
-                                                            'date' => ['JAN', '25'],
-                                                            'title' => 'SPECIAL HOLIDAY',
-                                                            'hiddenLink' => 'SPECIAL HOLIDAY: JANUARY 25, 2020'
-                                                            ],
-                                                            [
-                                                                'date' => ['Dec', '09'],
-                                                                'title' => 'CLASSES AND WORK RESUMPTION',
-                                                                'hiddenLink' => 'CLASSES AND WORK RESUMPTION: DECEMBER 9, 2019'
-                                                            ],
-                                                       ]  
-                                        ],
-                            'active_slides' => $this->slideService->active(),
+                        'announcements' => $this->updateService->getAnnouncementChunkTwo(),
+                        'active_slides' => $this->slideService->active(),
                       ];
+                      
         return view('web.home.homepage')->with('home', $homeArrays);
     }
 }

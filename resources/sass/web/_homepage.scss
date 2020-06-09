@@ -190,7 +190,8 @@
 	
 	display: flex;
 	width: 100%;
-
+	overflow-x: hidden;
+	
 	.content {
 		@include position(relative);
 

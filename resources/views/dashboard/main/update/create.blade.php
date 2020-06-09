@@ -28,7 +28,7 @@
 				</div>
 				
 				<div class='dashboard-input'>
-					<textarea class="form-control" id="ckeditor" name="paragraphs"></textarea>
+					<textarea class="form-control" id="ckeditor" name="paragraph"></textarea>
 				</div>
 
 				<div class='dashboard-submit-button'>
@@ -40,9 +40,7 @@
 @endsection
 @push('scripts')
 	<script>
-		CKEDITOR.replace('ckeditor', {
-		    filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
-		    filebrowserUploadMethod: 'form'
-		});
+var editor = CKEDITOR.replace( 'ckeditor' );
+CKFinder.setupCKEditor( editor );
 	</script>
 @endpush

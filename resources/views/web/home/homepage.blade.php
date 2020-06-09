@@ -104,62 +104,23 @@
 		<h1> ANNOUNCEMENT </h1>
 		<div class='content'>
 			<div class='items'>
-
-				<div class='values'>
-	
-					<div class="inner">
-						<div class="most">
-							<div class="left">
-								<p>JUN</p>
-								<p>06</p>
+				@foreach($home['announcements'] as $annoucement)
+					<div class='values'>
+						@foreach($annoucement as $item)
+							<div class="inner">
+								<div class="most">
+									<div class="left">
+										<p>{{ date("M", strtotime($item['created_at'])) }}</p>
+										<p>{{ date("d", strtotime($item['created_at'])) }}</p>
+									</div>
+									<div class="right">
+										<a href="#">{{ strtoupper($item['title']) }}</a>
+									</div>
+								</div>
 							</div>
-							<div class="right">
-								<a href="#">LEARNING DELIVERY MODALITIES</a>
-							</div>
-						</div>
+						@endforeach
 					</div>
-
-					<div class="inner">
-						<div class="most">
-							<div class="left">
-								<p>MAY</p>
-								<p>23</p>
-							</div>
-							<div class="right">
-								<a href="#">REITERATION OF GUIDELINES AND PROTOCOLS FOR STRICT COMPLIANCE DURING GCQ</a>
-							</div>
-						</div>
-					</div>
-
-				</div>
-
-				<div class='values'>
-
-					<div class="inner">
-						<div class="most">
-							<div class="left">
-								<p>MAY</p>
-								<p>21</p>
-							</div>
-							<div class="right">
-								<a href="#">PLACEMENT TEST FOR GRADE 11 STUDENTS AND TRANSFEREES</a>
-							</div>
-						</div>
-					</div>
-
-					<div class="inner">
-						<div class="most">
-							<div class="left">
-								<p>MAY</p>
-								<p>21</p>
-							</div>
-							<div class="right">
-								<a href="#">ENROLLMENT - BASIC EDUCATION</a>
-							</div>
-						</div>
-					</div>
-					
-				</div>				
+				@endforeach
 			</div>
 		</div>
 	</div>

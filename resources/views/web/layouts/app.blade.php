@@ -32,6 +32,8 @@
 </body>
 </html>
 
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
 <script src="{{asset('js/carousel.js')}}"></script>
 <script src="{{asset('js/app.js')}}"></script>
-
+@stack('scripts')

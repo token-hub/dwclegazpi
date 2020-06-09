@@ -45,6 +45,9 @@ function jumpToUpdatesPage(array, location, category) {
 	}
 }
 
+
+
+
 // ============= [ CHECK IF THERE'S A SESSION ] =============
 if (sessionStorage.getItem('clicked-title')) {
 	contentHide(sessionStorage.getItem('clicked-title'));

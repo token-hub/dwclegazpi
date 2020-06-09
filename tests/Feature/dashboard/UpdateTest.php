@@ -101,6 +101,7 @@ class UpdateTest extends TestCase
             ->post('/dashboard/updates', [
                 'title' => 'new update',
                 'clickable' => 1,
+                'overview' => 'announcement',
                 'category' => 'announcement',
                 'paragraph' => 'wewskie',
             ]);

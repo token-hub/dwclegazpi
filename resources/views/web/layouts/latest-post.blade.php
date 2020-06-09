@@ -1,85 +1,15 @@
-<?php 
-	$upcomingEvents = [
-						[
-							'title' => '59th FOUNDATION ANNIVERSARY',
-							'date' => 'February 13-14, 2020',
-							'clickable' => true,
-							'category' => 'news-and-events'
-						], 
-						[
-							'title' => 'THE NEW NORTH CAMPUS MAIN GATE',
-							'date' => 'February 13, 2020',
-							'clickable' => true,
-							'category' => 'news-and-events'
-						],
-					];
-
-	$latestPosts = [
-						[
-							'title' => 'LEARNING DELIVERY MODALITIES',
-							'posts' => [],
-			   				'posted' => 'June 06, 2020',
-							'clickable' => true,
-			   				'category' => 'announcement',
-						],	
-						[
-							'title' => 'REITERATION OF GUIDELINES AND PROTOCOLS FOR STRICT COMPLIANCE DURING GCQ',
-							'posts' => [],
-			   				'posted' => 'May 27, 2020',
-							'clickable' => true,
-			   				'category' => 'announcement',
-						],	
-						[
-							'title' => 'PLACEMENT TEST FOR GRADE 11 STUDENTS AND TRANSFEREES',
-							'posts' => [],
-			   				'posted' => 'May 27, 2020',
-							'clickable' => true,
-			   				'category' => 'announcement',
-						],	
-				   ];
-?>
 <div class='posts-and-events'>
 	<div class="items">
 		<div class="top"><h2>Upcoming Events</h2></div>
 		
 		<div class="bottom">
-			@foreach($upcomingEvents as $event)
-				<div class="value">
-
-					@if ($event['clickable']) 
-						<!-- ==== [ HAS A CONNECTION WITH JAVASCRIPT ] ==== -->
-						<span class='clickable'>{{$event['title']}}</span> 
-						<span class="hidden">{{$event['category']}}</span>
-					@else	
-						<span>{{ $event['title'] }}</span>
-					@endif
-
-					<p class='red'>{{ $event['date'] }}</p>
-				</div>
-			@endforeach 
 		</div>
 	</div>
 
 	<div class="items">
 		<div class="top"><h2>Latest Post</h2></div>
-		<div class="bottom">
-			@foreach($latestPosts as $latestPost)
-				<div class='value'>
-
-					@if($latestPost['clickable'])
-						<!-- ==== [ HAS A CONNECTION WITH JAVASCRIPT ] ==== -->
-						<span class='clickable'>{{$latestPost['title']}}</span> 
-						<span class="hidden">{{$latestPost['category']}}</span>
-					@else
-						<span>{{ $latestPost['title'] }}</p>
-					@endif
-
-					@foreach($latestPost['posts'] as $post)
-						<p class='red'>{{ $post }}</p>
-					@endforeach
-						<p>Posted: {{ $latestPost['posted'] }}</p>
-				</div>
-			@endforeach
+		<div class="bottom latestPosts">
+			
 		</div>
 	</div>
 
@@ -95,3 +25,67 @@
 		</div>
 	</div>
 </div>
+
+@push('scripts')
+	<script type="text/javascript">
+		$( document ).ready(function() {
+			$.ajaxSetup({
+				headers: {
+					'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+				}
+			});
+
+		    $.ajax({
+		        url: "{{url('/updates/update-latest-data')}}",
+		        type: 'GET',
+		        success: function(data) {
+
+			       data.latestPosts.forEach(function(e) {
+			       		var category = e.category;
+			       		var clickable = e.clickable;
+			       		var created_at = e.created_at;
+			       		var overview = e.overview;
+			       		var paragraph = e.paragraph;
+			       		var title = e.title;
+
+			       		var options = {year: 'numeric', month: 'long', day: 'numeric', hour: 'numeric', minute: 'numeric' };
+
+			       		var divValue = document.createElement("div");
+			       		divValue.classList.add('value');
+
+			       		// check if data is clickable
+			       		if (clickable == 1) {
+			       			var spanClickable = document.createElement("span");
+			       			spanClickable.classList.add('clickable');
+			       			spanClickable.innerHTML = title;
+
+			       			var spanHidden = document.createElement("span");
+			       			spanHidden.classList.add('hidden');
+			       			spanHidden.innerHTML = category;
+
+			       			divValue.appendChild(spanClickable);
+			       			divValue.appendChild(spanHidden);
+			       		} else {
+			       			var span = document.createElement("span");
+			       			span.innerHTML = title;
+			       			divValue.appendChild(span);
+			       		}
+
+			       		var postedDate = document.createElement("p");
+			       		postedDate.innerHTML = new Date(created_at).toLocaleDateString("en-US", options);
+
+			       		divValue.appendChild(postedDate);
+
+			       		document.querySelector('.latestPosts').appendChild(divValue);
+			       });
+
+			       // load scripts with ajax
+			       $.getScript("http://testing.test/js/app.js");
+			    },
+			    error: function(data) {
+			        console.log('Error:', data);
+			    },
+		    });
+	    });
+	</script>
+@endpush

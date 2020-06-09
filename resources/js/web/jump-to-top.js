@@ -1,5 +1,4 @@
 const log = console.log;
-window.$ = window.jQuery = require('jquery');
 var storagePath = "{!! storage_path() !!}"; // updated and tested
 $(window).scroll(function() {
     if ($(this).scrollTop() > 50 ) {

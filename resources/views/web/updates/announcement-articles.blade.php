@@ -4,17 +4,11 @@
 	@foreach($announcements as $announcement)
 		<div class='title-and-content'>
 			<h1><a href='#'>{{ $announcement['title'] }}</a></h1><br>
-			
-			@foreach($announcement['paragraphs'] as $paragraph)
-				<p>{!! $paragraph !!}</p><hr>
-			@endforeach
-
-			@foreach($announcement['image'] as $image)
-				<img src="/storage/img/announcement/{{ $image }}" class='storage-img'>
-			@endforeach
+		
+			{!! $announcement['paragraph'] !!}
 
 			<div class='littleSpace'>
-				<p>{{ $announcement['posted'] }}</p>
+				<p>{{ "Posted at ".date("F d, Y | h:i A", strtotime($announcement['created_at'])) }}</p>
 			</div>
 		</div>
 	@endforeach

@@ -11,13 +11,13 @@
 @endcan
 
 @section('wrapper-body')
-	<table id="role_example" class="table table-striped table-bordered">
+	<table id="update_example" class="table table-striped table-bordered">
         <thead>
             <tr>
+            	<th>Date</th>
                 <th>Title</th>
                 <th>Category</th>
                 <th>User</th>
-                <th>Date</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -26,38 +26,40 @@
 @push('scripts')
    <script>
 	    $(document).ready(function() {
-	  //       $('#role_example').DataTable({
-	  //           processing: true,
-	  //           serverSide: true,
-	  //           "searching": true,
-	  //           order: [ [0, 'desc'] ],
-	  //           ajax: '{{ url("dashboard/role-data") }}',
-	  //           columns: [
-	  //               { data: 'title', name: 'title' },
-	  //               { data: 'action', name: 'action'}
-	  //           ]
-	  //       });
+	        $('#update_example').DataTable({
+	            processing: true,
+	            serverSide: true,
+	            "searching": true,
+	            order: [ [0, 'desc'] ],
+	            ajax: '{{ url("dashboard/update-data") }}',
+	            columns: [
+	                { data: 'date', name: 'date' },
+	                { data: 'title', name: 'title' },
+	                { data: 'category', name: 'category' },
+	                { data: 'user', name: 'user' },
+	                { data: 'action', name: 'action'}
+	            ]
+	        });
 
-	  //       $('#role_example').on('click', '.delete_role', function (e) { 
-			//     $.ajaxSetup({
-			// 		headers: {
-			// 			'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
-			// 		}
-			// 	});
+	        $('#update_example').on('click', '.delete_update', function (e) { 
+			    $.ajaxSetup({
+					headers: {
+						'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content'),
+					}
+				});
 
-			//     $.ajax({
-			//         url: '/dashboard/roles/'+$(this).attr("value"),
-			//         type: 'DELETE',
-			//         data: {method: '_DELETE', submit: true},
-			//          success: function(data) {
-			// 	       window.location.reload();
-			// 	    },
-			// 	    error: function(data) {
-			// 	        console.log('Error:', data);
-			// 	    },
-			//     });
-			// });
-
+			    $.ajax({
+			        url: '/dashboard/updates/'+$(this).attr("value"),
+			        type: 'DELETE',
+			        data: {method: '_DELETE', submit: true},
+			         success: function(data) {
+				       window.location.reload();
+				    },
+				    error: function(data) {
+				        console.log('Error:', data);
+				    },
+			    });
+			});
 	    });
 	</script>
 @endpush
