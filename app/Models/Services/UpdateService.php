@@ -42,6 +42,11 @@ class UpdateService
 		return $this->updateInterface->getAllNewsAndEvents();
 	}
 
+	public function getNewsAndEventsLimit($num)
+	{
+		return $this->updateInterface->getNewsAndEventsLimit($num);
+	}
+
 	public function updateData($data)
 	{
 		$updates = Update::all();

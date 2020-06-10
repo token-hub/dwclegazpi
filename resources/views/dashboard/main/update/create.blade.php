@@ -40,7 +40,15 @@
 @endsection
 @push('scripts')
 	<script>
-var editor = CKEDITOR.replace( 'ckeditor' );
-CKFinder.setupCKEditor( editor );
+		CKEDITOR.replace( 'ckeditor', {
+		    filebrowserBrowseUrl: '/ckfinder/ckfinder.html',
+		    filebrowserImageBrowseUrl: '/ckfinder/ckfinder.html?type=Images',
+		    filebrowserFlashBrowseUrl: '/ckfinder/ckfinder.html?type=Flash',
+		    // filebrowserUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files',
+		    filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
+    		filebrowserUploadMethod: 'form',
+		    filebrowserImageUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
+		    filebrowserFlashUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
+		} );
 	</script>
 @endpush
