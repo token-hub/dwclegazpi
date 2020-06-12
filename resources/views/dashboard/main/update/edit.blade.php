@@ -1,18 +1,18 @@
 @extends('dashboard.layouts.navbar-layout')
 
-@section('wrapper-title', 'Add Updates')
+@section('wrapper-title', 'Edit updates')
 @section('wrapper-body')
 	<div class="wrapper-content-second">
 		<div class="form">
-			{!! Form::open(['url' => ['/dashboard/updates'], 'method' => 'POST']) !!}
+			{!! Form::open(['url' => ['dashboard/updates', $updates->id], 'method' => 'PATCH']) !!}
 
 				<div class='dashboard-input'>
-					{!! Form::text('title', '', ['id' => 'updates', 'class' => 'input-control', 'required' => 'required']) !!} 
+					{!! Form::text('title', $updates->title, ['id' => 'updates', 'class' => 'input-control', 'required' => 'required']) !!} 
 					{!! Form::label('updates', 'Title') !!}
 				</div>
 
 				<div class='dashboard-input'>
-					{!! Form::text('overview', '', ['id' => 'overview', 'class' => 'input-control', 'required' => 'required']) !!} 
+					{!! Form::text('overview', $updates->overview, ['id' => 'overview', 'class' => 'input-control', 'required' => 'required']) !!} 
 					{!! Form::label('overview', 'Overview') !!}
 				</div>
 
@@ -22,15 +22,15 @@
 							'announcement' => 'ANNOUNCEMENT',
 							'news-and-events' => 'NEWS AND EVENTS',
 						],
-					null, 
-					['placeholder' => '', 'class' => 'input-control', 'id' => 'category', 'required' => 'required']); !!}
+						$updates->category, 
+						['placeholder' => '', 'class' => 'input-control', 'id' => 'category', 'required' => 'required']); !!}
 				{!! Form::label('category', 'Category') !!}
 				</div>
 				
 				<div class='dashboard-input'>
-					<textarea class="form-control" id="ckeditor" name="paragraph"></textarea>
+					<textarea class="form-control" id="ckeditor" name="paragraph">{!! $updates->paragraph !!}</textarea>
 				</div>
-
+				
 				<div class='dashboard-submit-button'>
 					{{ Form::submit('Save')}}
 				</div>

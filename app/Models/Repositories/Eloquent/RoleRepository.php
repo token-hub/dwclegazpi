@@ -13,21 +13,21 @@ class RoleRepository implements RoleInterface
 						->get();
 	}
 
-	public function storeRole($data)
+	public function store($data)
 	{
 		$role = Role::create($data->only('title'));
 		$role->permissions()->sync($data->permissions);
 		return $role;
 	}
 
-	public function updateRole($role, $data)
+	public function update($role, $data)
 	{	
 		$role->update($data->only('title'));
 		$role->permissions()->sync($data->permissions);
 		return $role; 
 	}
 
-	public function destroyRole($role)
+	public function destroy($role)
 	{
 		return $role->delete();
 	}

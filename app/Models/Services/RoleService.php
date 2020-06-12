@@ -21,21 +21,21 @@ class RoleService
 
 	public function store($data)
 	{
-		$this->roleInterface->storeRole($data);
+		$this->roleInterface->store($data);
 
 		return ['type' => 'notif-success', 'message' => 'Role added successfully!'];
 	}
 
 	public function update($role, $data)
 	{
-		$this->roleInterface->updateRole($role, $data);
+		$this->roleInterface->update($role, $data);
 
 		return ['type' => 'notif-success', 'message' => 'Role updated successfully!'];
 	}
 
 	public function destroy($role)
 	{
-		$this->roleInterface->destroyRole($role);
+		$this->roleInterface->destroy($role);
 		
 		\Session::flash('notification', ['type' => 'notif-success', 'message' => 'Role deleted successfully!']);
 	}

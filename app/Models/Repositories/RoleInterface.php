@@ -6,9 +6,9 @@ interface RoleInterface
 {
 	public function getRoles();
 
-	public function storeRole($data);
+	public function store($data);
 
-	public function updateRole($role, $data);
+	public function update($role, $data);
 
-	public function destroyRole($role);
+	public function destroy($role);
 }

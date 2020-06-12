@@ -7,6 +7,7 @@ use App\Models\Services\UserService;
 use App\Models\Entities\User;
 use App\Models\Entities\Role;
 use App\Http\Requests\AccountUpdateRequest;
+use App\Http\Requests\CreateUserFormRequest;
 
 class DashboardUserController extends Controller
 {
@@ -22,6 +23,22 @@ class DashboardUserController extends Controller
         $this->authorize('viewAny', User::class);
 
     	return view('dashboard.main.user.index');
+    }
+
+    public function create() 
+    {
+        $this->authorize('create', User::class);
+
+        return view('dashboard.main.user.create');
+    }
+
+    public function store(CreateUserFormRequest $request) 
+    {
+        $this->authorize('create', User::class);
+
+        $result = $this->userService->store($request);
+
+        return redirect('dashboard/users')->with('notification', $result);
     }
 
     public function edit(User $user)

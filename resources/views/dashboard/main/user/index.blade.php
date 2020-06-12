@@ -4,7 +4,7 @@
 
 @can('create', App\Models\Entities\User::class)
 	@section('wrapper-button')
-		{!! Form::open(['url' => ['dashboard/register'], 'method' => 'GET']) !!}
+		{!! Form::open(['url' => ['dashboard/users/create'], 'method' => 'GET']) !!}
 			{{Form::submit('Add User', ['style' => 'margin:0 5px;float:right', 'class' => 'btn btn-md btn-success'])}}
 		{!! Form::close() !!}
 	@endsection

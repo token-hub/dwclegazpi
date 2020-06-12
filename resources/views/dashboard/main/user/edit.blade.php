@@ -11,7 +11,6 @@
 				</div>
 				<!-- <center><p style='padding:0;margin:0;'><i> --* Actions *--</i></p></center> -->
 
-
 				<div class='dashboard-input '>
 					<div class="checkboxes-placeholder">
 						@foreach($roles as $role) 

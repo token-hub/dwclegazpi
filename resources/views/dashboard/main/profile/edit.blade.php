@@ -1,6 +1,6 @@
 @extends('dashboard.layouts.navbar-layout')
 
-@section('wrapper-title', 'Update Profile')
+@section('wrapper-title', 'Edit Profile')
 @section('wrapper-body')
 	<div class="wrapper-content-second">
 		<div class="form">

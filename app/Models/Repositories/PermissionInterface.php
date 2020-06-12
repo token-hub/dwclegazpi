@@ -6,9 +6,9 @@ interface PermissionInterface
 {
 	public function getPermissions();
 
-	public function storePermission($data);
+	public function store($data);
 
-	public function updatePermission($permission, $data);
+	public function update($permission, $data);
 
-	public function destroyPermission($permission);
+	public function destroy($permission);
 }

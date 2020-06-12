@@ -22,6 +22,20 @@ class UpdateService
 		return ['type' => 'notif-success', 'message' => 'New update added!'];
 	}
 
+	public function update($update ,$data)
+	{
+		$this->updateInterface->update($update, $data);
+
+		return ['type' => 'notif-success', 'message' => 'Successfully updated!'];
+	}
+
+	public function destroy($update)
+	{
+		$this->updateInterface->destroy($update);
+
+		\Session::flash('notification', ['type' => 'notif-success', 'message' => 'Update deleted successfully!']);
+	}
+
 	public function getAll()
 	{
 		return $this->updateInterface->getAll();

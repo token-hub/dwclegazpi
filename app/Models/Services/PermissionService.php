@@ -16,21 +16,21 @@ class PermissionService
 
 	public function store($data)
 	{
-		$this->permissionInterface->storePermission($data);
+		$this->permissionInterface->store($data);
 
 		return ['type' => 'notif-success', 'message' => 'Permission added successfully!'];
 	}
 
 	public function update($permission, $data)
 	{
-		$this->permissionInterface->updatePermission($permission, $data);
+		$this->permissionInterface->update($permission, $data);
 
 		return ['type' => 'notif-success', 'message' => 'Permission updated successfully!'];
 	}
 
 	public function destroy($permission)
 	{
-		$this->permissionInterface->destroyPermission($permission);
+		$this->permissionInterface->destroy($permission);
 
 		\Session::flash('notification', ['type' => 'notif-success', 'message' => 'Permission deleted successfully!']);
 	}

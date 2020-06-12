@@ -3,6 +3,7 @@
 namespace App\Policies;
 
 use App\Models\Entities\User;
+use App\Models\Entities\Update;
 use Illuminate\Auth\Access\HandlesAuthorization;
 use App\Traits\PolicyTrait;
 
@@ -28,7 +29,7 @@ class UpdatePolicy
      * @param  \App\User  $model
      * @return mixed
      */
-    public function view(User $user, User $model)
+    public function view(User $user, Update $model)
     {
         //
     }
@@ -51,7 +52,7 @@ class UpdatePolicy
      * @param  \App\User  $model
      * @return mixed
      */
-    public function update(User $user, User $model)
+    public function update(User $user, Update $model)
     {
         return $this->hasPermission($user, 'update updates');
     }
@@ -63,7 +64,7 @@ class UpdatePolicy
      * @param  \App\User  $model
      * @return mixed
      */
-    public function delete(User $user, User $model)
+    public function delete(User $user, Update $model)
     {
         return $this->hasPermission($user, 'delete updates');
     }
@@ -75,7 +76,7 @@ class UpdatePolicy
      * @param  \App\User  $model
      * @return mixed
      */
-    public function restore(User $user, User $model)
+    public function restore(User $user, Update $model)
     {
         //
     }
@@ -87,7 +88,7 @@ class UpdatePolicy
      * @param  \App\User  $model
      * @return mixed
      */
-    public function forceDelete(User $user, User $model)
+    public function forceDelete(User $user, Update $model)
     {
         //
     }

@@ -40,6 +40,10 @@ Route::namespace('Dashboard')->prefix('dashboard')->group(function () {
 
     Route::get('/users', 'DashboardUserController@index');
 
+    Route::post('/users', 'DashboardUserController@store');
+
+    Route::get('/users/create', 'DashboardUserController@create');
+
     Route::get('/users/{user}/edit', 'DashboardUserController@edit');
 
     Route::patch('/users/{user}', 'DashboardUserController@update');
@@ -109,6 +113,12 @@ Route::namespace('Dashboard')->prefix('dashboard')->group(function () {
     Route::get('updates/create', 'DashboardUpdateController@create');
 
     Route::post('updates', 'DashboardUpdateController@store');
+
+    Route::get('updates/{update}/edit', 'DashboardUpdateController@edit');
+
+    Route::patch('updates/{update}', 'DashboardUpdateController@update');
+
+    Route::delete('updates/{update}', 'DashboardUpdateController@destroy');
   });
 
 });

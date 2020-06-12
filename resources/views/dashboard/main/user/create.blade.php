@@ -1,11 +1,11 @@
 @extends('dashboard.layouts.navbar-layout')
 
-@section('wrapper-title', 'Registration')
+@section('wrapper-title', 'Add User')
 @section('wrapper-body')
 
 <div class="wrapper-content-second">
 	<div class="form">
-		{!! Form::open(['url' => 'dashboard/register', 'method' => 'POST']) !!}
+		{!! Form::open(['url' => 'dashboard/users', 'method' => 'POST']) !!}
 			<div class='dashboard-input'>
 				{!! Form::text('firstname', '', ['id' => 'firstname', 'autocomplete' => 'given-name', 'class' => 'input-control', 'required' => 'required']) !!}
 				{!! Form::label('firstname', 'Firstname') !!}
@@ -52,7 +52,7 @@
 			</div>
 
 			<div class='dashboard-submit-button'>
-				{{ Form::submit('Register')}}
+				{{ Form::submit('Save')}}
 			</div>
 		{!! Form::close() !!}
 	</div>

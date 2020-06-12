@@ -38,17 +38,43 @@ class DashboardUpdateController extends Controller
 		return redirect('dashboard/updates')->with('notification', $update);    	
    	}
 
+    public function edit(Update $update)
+    {
+        $this->authorize('update', $update);
+
+        return view('dashboard.main.update.edit')->with('updates', $update);
+    }
+
+    public function update(CreateUpdatesRequest $request, Update $update)
+    {
+        $this->authorize('update', $update);
+
+        $updates = $this->updateService->update($update, $request);
+
+        return redirect('dashboard/updates')->with('notification', $updates); 
+    }
+
+    # this is accessed by an ajax request
+    public function destroy(Update $update)
+    {
+        $this->authorize('delete', $update);
+
+        $updates = $this->updateService->destroy($update);
+
+        return 'dashboard/updates';
+    }
+
     public function updateData(Update $Update)
     {
         $allowedAction = [];
         
-        // if (policy($Update)->update(\Auth::user(), $Update)) {
-        //     array_push($allowedAction, 'update');
-        // }
+        if (policy($Update)->update(\Auth::user(), $Update)) {
+            array_push($allowedAction, 'update');
+        }
 
-        // if (policy($Update)->delete(\Auth::user(), $Update)) {
-        //     array_push($allowedAction, 'delete');
-        // }
+        if (policy($Update)->delete(\Auth::user(), $Update)) {
+            array_push($allowedAction, 'delete');
+        }
 
         return $this->updateService->updateData($allowedAction);
     }

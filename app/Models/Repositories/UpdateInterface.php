@@ -6,6 +6,10 @@ interface UpdateInterface
 {
 	public function store($data);
 
+	public function update($update, $data);
+
+	public function destroy($update);
+
 	public function getAll();
 
 	public function getAllAnnouncement();

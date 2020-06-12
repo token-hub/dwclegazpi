@@ -19,7 +19,7 @@
 
 			{!! Form::open(['url' => ['dashboard/profile/'.$user->id.'/edit'], 'method' => 'GET']) !!}
 				<div class='dashboard-submit-button'>
-					{{ Form::submit('Update') }}
+					{{ Form::submit('Edit') }}
 				</div>
 			{!! Form::close() !!}
 		</div>

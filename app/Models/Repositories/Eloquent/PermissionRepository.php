@@ -14,17 +14,17 @@ class PermissionRepository implements PermissionInterface
 						->get();
 	}
 
-	public function storePermission($data)
+	public function store($data)
 	{
 		return Permission::create($data->only('title'));
 	}
 
-	public function updatePermission($permission, $data)
+	public function update($permission, $data)
 	{
 		return $permission->update($data->only('title'));
 	}
 
-	public function destroyPermission($permission)
+	public function destroy($permission)
 	{
 		return $permission->delete();
 	} 
