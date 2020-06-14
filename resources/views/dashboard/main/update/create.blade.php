@@ -12,7 +12,7 @@
 				</div>
 
 				<div class='dashboard-input'>
-					{!! Form::text('overview', '', ['id' => 'overview', 'class' => 'input-control', 'required' => 'required']) !!} 
+					{!! Form::text('overview', '', ['id' => 'overview', 'class' => 'input-control']) !!} 
 					{!! Form::label('overview', 'Overview') !!}
 				</div>
 
@@ -48,7 +48,8 @@
 		    // filebrowserUploadUrl: "{{route('upload', ['_token' => csrf_token() ])}}",
     		// filebrowserUploadMethod: 'form',
 		    filebrowserImageUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Images',
-		    filebrowserFlashUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash'
+		    filebrowserFlashUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Flash',
+		    disallowedContent : 'img{width,height}',
 		} );
 	</script>
 @endpush

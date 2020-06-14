@@ -88,7 +88,11 @@
 				<div class="items">
 					@foreach($home['newsAndEvents'] as $newsAndEvents)
 						<div class='values'>
-							<img src="/storage/img/updates/images/{{ $newsAndEvents->image[0]->image_name }}">
+							@if($newsAndEvents->image()->exists())
+								<img src="/storage/img/updates/images/{{ $newsAndEvents->image[0]->image_name }}">
+							@else
+								<img src="/storage/img/others/MOBILE.JPG">
+							@endif
 							<p class='bold DidactGothic'>{{ $newsAndEvents['title'] }}</p>
 							<hr>
 							<button>READ MORE</button>

@@ -17,7 +17,7 @@ class CreateUpdatesTable extends Migration
             $table->bigIncrements('id');
             $table->String('title');
             $table->String('category');
-            $table->String('overview');
+            $table->String('overview')->nullable();
             $table->text('paragraph')->nullable();
             $table->boolean('clickable')->default('1');
             $table->unsignedBigInteger('user_id');

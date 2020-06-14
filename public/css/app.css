@@ -1113,6 +1113,7 @@ body {
   display: -webkit-box;
   display: flex;
   width: 100%;
+  overflow-x: hidden;
 }
 
 .three-divs .content {

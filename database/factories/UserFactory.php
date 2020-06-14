@@ -28,11 +28,11 @@ use Illuminate\Support\Str;
 
 $factory->define(App\Models\Entities\User::class, function (Faker $faker) {
     return [
-        'username' => 'john',
-        'email' => 'johnsuyang22118@gmail.com',
+        'username' => 'admin',
+        'email' => 'admin@gmail.com',
         'is_active' => '1',
         'email_verified_at' => now(),
-        'password' => \Hash::make('johnjohn'), // password
+        'password' => \Hash::make('dwcl1961'), // password
         'remember_token' => Str::random(10),
     ];
 });
