@@ -21,21 +21,6 @@ class HomeController extends Controller
     public function getIndex()
     {
         $homeArrays = [
-                        // 'newsAndEvents' => [
-                        //                         [
-                        //                             'title' => '59th FOUNDATION ANNIVERSARY',
-                        //                             'image' => 'foundation_2020_home.jpg'
-                        //                         ],
-                        //                         [
-                        //                             'title' => 'THE NEW NORTH CAMPUS MAIN GATE',
-                        //                             'image' => 'gate.jpg'
-                        //                         ],
-                        //                         [
-                        //                             'title' => 'NIGHT HIGH CLASS BATCH \'78 REUNION',
-                        //                             'image' => 'alumni.png'
-                        //                         ]
-                        //                    ],
-
                         'newsAndEvents' => $this->updateService->getNewsAndEventsLimit(3),         
                         'announcements' => $this->updateService->getAnnouncementChunkTwo(),
                         'active_slides' => $this->slideService->active(),

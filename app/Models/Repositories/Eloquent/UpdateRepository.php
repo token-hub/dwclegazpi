@@ -99,7 +99,7 @@ class UpdateRepository implements UpdateInterface
 		return Update::where('category', 'news-and-events')
 							->orderBy('created_at', 'DESC')
 							->limit($num)
-							->get(['title', 'id']);
+							->get(['title', 'id', 'clickable']);
 	}
 
 	public function getUpdateLatestData()

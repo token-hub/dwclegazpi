@@ -95,7 +95,10 @@
 							@endif
 							<p class='bold DidactGothic'>{{ $newsAndEvents['title'] }}</p>
 							<hr>
-							<button>READ MORE</button>
+
+							@if($newsAndEvents['clickable'] == 1)
+								<button>READ MORE</button>
+							@endif
 						</div>
 					@endforeach
 				</div> 
