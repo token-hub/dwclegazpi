@@ -1,3 +1,17 @@
+@mixin responsive($breakpoint) {
+	@if $breakpoint == laptop {
+		@media only screen and (min-width: 992px) and (max-width: 1198px) { @content }
+	}
+
+	@if $breakpoint == tablet {
+		@media only screen and (min-width: 768px) and (max-width: 991px) { @content }
+	}
+
+	@if $breakpoint == phone {
+		@media only screen and (max-width: 767px) { @content }
+	}
+}
+
 @mixin flexCenters {
 	display: flex;
 	justify-content: center;

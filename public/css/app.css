@@ -2352,3 +2352,148 @@ body {
   cursor: pointer;
 }
 
+* {
+  box-sizing: border-box;
+}
+
+.notFound {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+  font-family: "Open Sans", sans-serif;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  background: #f1f1f1;
+  padding: 20px;
+}
+
+.notFound .notFound-with-logo {
+  display: -webkit-box;
+  display: flex;
+  border-bottom: 2px solid black;
+}
+
+.notFound .notFound-with-logo p {
+  margin: 25px 45px 0 0;
+  font-size: 200px;
+}
+
+@media only screen and (max-width: 767px) {
+  .notFound .notFound-with-logo p {
+    margin: 15px 15px 0 0;
+    font-size: 80px;
+  }
+}
+
+.notFound .notFound-with-logo img {
+  position: relative;
+  height: 280px;
+  width: 280px;
+}
+
+@media only screen and (max-width: 767px) {
+  .notFound .notFound-with-logo img {
+    height: 110px;
+    width: 110px;
+  }
+}
+
+.notFound .paragraphs p {
+  font-size: 40px;
+  text-align: center;
+}
+
+@media only screen and (max-width: 767px) {
+  .notFound .paragraphs p {
+    font-size: 25px;
+  }
+}
+
+.maintenance {
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+  font-family: "Open Sans", sans-serif;
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  background: #f1f1f1;
+}
+
+.maintenance .img {
+  position: relative;
+  top: NULL;
+  right: NULL;
+  bottom: NULL;
+  left: NULL;
+  margin-bottom: 50px;
+  display: -webkit-box;
+  display: flex;
+}
+
+.maintenance .img img {
+  position: relative;
+  height: 280px;
+  width: 280px;
+}
+
+@media only screen and (max-width: 767px) {
+  .maintenance .img img {
+    height: 130px;
+    width: 130px;
+  }
+}
+
+.maintenance .img i {
+  font-size: 250px;
+  color: gray;
+  margin-top: 15px;
+  margin-right: 15px;
+}
+
+@media only screen and (max-width: 767px) {
+  .maintenance .img i {
+    font-size: 140px;
+    color: gray;
+    margin-right: 5px;
+    margin-top: 5px;
+  }
+}
+
+.maintenance .paragraphs p {
+  font-size: 23px;
+  margin: 10px 0;
+  position: relative;
+  text-align: center;
+}
+
+@media only screen and (max-width: 767px) {
+  .maintenance .paragraphs p {
+    font-size: 18px;
+  }
+}
+
+.maintenance .paragraphs p:nth-child(1) {
+  font-size: 38px;
+  font-weight: bold;
+}
+
+@media only screen and (max-width: 767px) {
+  .maintenance .paragraphs p:nth-child(1) {
+    font-size: 30px;
+  }
+}
+
