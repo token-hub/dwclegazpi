@@ -1,0 +1,46 @@
+.calendar {
+	@include position(relative);
+	@include flexCenters();
+
+	height: 100vh;
+	width:100%;
+
+	.content {
+		@include position(relative);
+		@include flexJustify();
+		flex-direction: column;
+		height: 100%;
+		width: 950px;
+
+		p {
+			font-size: 2rem;
+			text-align: center;
+		}
+
+		// full-calendar css overwrite
+
+		.fc {
+		   	.fc-toolbar {
+		   		.fc-center {
+		   			h2 {
+		   				color: color(primary);
+		   			}
+		   		}
+		   	}
+		}
+	}
+
+	@include responsive(tablet)
+	{
+		.content {
+			width: 650px;
+		}
+	}
+
+	@include responsive(phone)
+	{
+		.content {
+			width: 290px;
+		}
+	}
+}

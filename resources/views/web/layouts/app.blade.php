@@ -19,6 +19,7 @@
   <link href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap" rel="stylesheet">
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+  <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>    
   
   <title> {{  ucfirst($prefix = (Request::segment(1) == '') ? "" : Request::segment(1)." | " ). ' Divine Word College of Legazpi' }}</title>
 
@@ -31,8 +32,6 @@
     @include('web.layouts.footer')
 </body>
 </html>
-
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
 <script src="{{asset('js/carousel.js')}}"></script>
 <script src="{{asset('js/app.js')}}"></script>

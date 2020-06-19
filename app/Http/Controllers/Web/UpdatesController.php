@@ -6,8 +6,10 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Pagination\LengthAwarePaginator;
 use App\Models\Services\UpdateService;
+use App\Models\Entities\Update;
+use MaddHatter\LaravelFullcalendar\Event;
 
-class UpdatesController extends Controller
+class UpdatesController extends Controller 
 {
 	public $updateService;
 
@@ -55,6 +57,30 @@ class UpdatesController extends Controller
    		$newsAndEvents = $this->updateService->getAllNewsAndEvents()->toArray();
 
    		return view('web.updates.news-and-events-articles')->with('newsAndEvents', $newsAndEvents);
+   }
+
+   public function getCalendar()
+   {
+        $events[] = \Calendar::event(
+            'Event One', //event title
+            false, //full day event?
+             new \DateTime('2020-06-14'), //start time (you can also use Carbon instead of DateTime)
+             new \DateTime('2020-06-19'), //end time (you can also use Carbon instead of DateTime)
+            0, //optionally, you can specify an event ID
+            [
+                'color' => '#1d17ce'
+            ],
+        );
+
+        $eloquentEvent = Update::first(); //EventModel implements MaddHatter\LaravelFullcalendar\Event  
+        $calendar = \Calendar::addEvents($events)
+            ->setOptions([ //set fullcalendar options
+              'firstDay' => 1,
+              'contentHeight' => 630,
+             ]); //add an array with addEvents
+
+        return view('web.updates.calendar')->with('calendar', $calendar);
+    
    }
 
     private function getPaginator(Request $request, $items) 
