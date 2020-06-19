@@ -20,7 +20,7 @@
   <link href="https://fonts.googleapis.com/css?family=Didact+Gothic&display=swap" rel="stylesheet">
   <link href="{{ asset('css/app.css') }}" rel="stylesheet">
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>    
-  
+  <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
   <title> {{  ucfirst($prefix = (Request::segment(1) == '') ? "" : Request::segment(1)." | " ). ' Divine Word College of Legazpi' }}</title>
 
 </head>

@@ -62,22 +62,29 @@ class UpdatesController extends Controller
    public function getCalendar()
    {
         $events[] = \Calendar::event(
-            'Event One', //event title
+            'Event OneEvent OneEvent OneEvent OneEvent OneEvent OneEvent OneEvent OneEvent OneEvent One', //event title
             false, //full day event?
              new \DateTime('2020-06-14'), //start time (you can also use Carbon instead of DateTime)
-             new \DateTime('2020-06-19'), //end time (you can also use Carbon instead of DateTime)
+             new \DateTime('2020-06-14'), //end time (you can also use Carbon instead of DateTime)
             0, //optionally, you can specify an event ID
             [
                 'color' => '#1d17ce'
             ],
         );
 
-        $eloquentEvent = Update::first(); //EventModel implements MaddHatter\LaravelFullcalendar\Event  
-        $calendar = \Calendar::addEvents($events)
-            ->setOptions([ //set fullcalendar options
-              'firstDay' => 1,
-              'contentHeight' => 630,
-             ]); //add an array with addEvents
+        $eloquentEvent = Update::first(); 
+        //EventModel implements MaddHatter\LaravelFullcalendar\Event  
+        // $calendar = \Calendar::addEvents($events)
+        //     ->setOptions([ //set fullcalendar options
+        //       'contentHeight' => 'auto',
+        //      ])->setCallbacks([ //set fullcalendar callback options (will not be JSON encoded)
+        //             'viewRender' => 'function( event,element,view ) {
+        //                 console.log(element);
+
+        //             }'
+        //         ]);
+        
+        $calendar = \Calendar::addEvents($events)->setOptions(['firstDay' => 1])->setCallbacks(['eventRender' => 'function (event,jqEvent,view) {jqEvent.tooltip({placement: "top", title: event.title});}']);
 
         return view('web.updates.calendar')->with('calendar', $calendar);
     

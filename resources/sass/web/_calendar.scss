@@ -1,8 +1,8 @@
-.calendar {
+.calendar {	
 	@include position(relative);
 	@include flexCenters();
 
-	height: 100vh;
+	height: auto;
 	width:100%;
 
 	.content {
@@ -11,6 +11,7 @@
 		flex-direction: column;
 		height: 100%;
 		width: 950px;
+		padding: 30px;
 
 		p {
 			font-size: 2rem;
@@ -30,17 +31,5 @@
 		}
 	}
 
-	@include responsive(tablet)
-	{
-		.content {
-			width: 650px;
-		}
-	}
-
-	@include responsive(phone)
-	{
-		.content {
-			width: 290px;
-		}
-	}
 }
+

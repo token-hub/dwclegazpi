@@ -26,6 +26,10 @@ body {
   padding: 0;
 }
 
+body * {
+  box-sizing: border-box;
+}
+
 .dwcl-container {
   -webkit-transition: all 500ms ease 320ms;
   transition: all 500ms ease 320ms;
@@ -854,7 +858,7 @@ body {
           justify-content: center;
   -webkit-box-align: center;
           align-items: center;
-  height: 100vh;
+  height: auto;
   width: 100%;
 }
 
@@ -873,6 +877,7 @@ body {
           flex-direction: column;
   height: 100%;
   width: 950px;
+  padding: 30px;
 }
 
 .calendar .content p {
@@ -882,18 +887,6 @@ body {
 
 .calendar .content .fc .fc-toolbar .fc-center h2 {
   color: #1d17ce;
-}
-
-@media only screen and (min-width: 768px) and (max-width: 991px) {
-  .calendar .content {
-    width: 650px;
-  }
-}
-
-@media only screen and (max-width: 767px) {
-  .calendar .content {
-    width: 290px;
-  }
 }
 
 .student-portal {
