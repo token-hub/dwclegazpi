@@ -7,6 +7,14 @@
 	color: black !important;
 }
 
+// ------------------------------------- no border -------------------------------------
+
+.noborder {
+	border: none !important;
+	background: none !important; 
+	cursor: pointer
+}
+
 // ------------------------------------- notifications -------------------------------------
 
 .notification {

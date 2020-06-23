@@ -44,6 +44,12 @@ body * {
   color: black !important;
 }
 
+.noborder {
+  border: none !important;
+  background: none !important;
+  cursor: pointer;
+}
+
 .notification {
   position: absolute;
   top: 50px;
@@ -1948,7 +1954,7 @@ body * {
 }
 
 .divine-container .content .left .date-and-content .date-content-right {
-  width: 75%;
+  width: 85%;
   padding: 0 30px;
   border-left: 2px solid gray;
 }
@@ -1970,9 +1976,14 @@ body * {
   font-size: 0.9rem;
 }
 
+.divine-container .content .left .date-and-content .date-content-right form input[type=submit] {
+  color: #1d17ce;
+  font-size: 1.1rem;
+}
+
 @media only screen and (max-width: 767px) {
   .divine-container .content .left .date-and-content .date-content-right {
-    width: 65%;
+    width: 80%;
     padding: 0 15px;
   }
 }
@@ -2012,6 +2023,24 @@ body * {
 
 .divine-container .content .left .title-and-content .littleSpace p {
   margin: 0 0;
+}
+
+.divine-container .content .left iframe {
+  height: 650px;
+  width: 100%;
+  padding: 25px 0;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .divine-container .content .left iframe {
+    height: 650px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .divine-container .content .left iframe {
+    height: 100%;
+  }
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1198px) {

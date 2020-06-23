@@ -51,6 +51,7 @@ class UserProfileTest extends TestCase
 
     public function test_update_person_info_with_authenticated_user() 
     {
+        $this->withoutExceptionHandling();
         factory(User::class, 1)
             ->create()
             ->each(function ($usery) {
@@ -66,9 +67,9 @@ class UserProfileTest extends TestCase
                             'firstname' => 'jjjj',
                             'lastname' => 'qqqq',
                             'gender' => 'female',
-                            'username' => 'asdasdas',
-                            'old_password' => 'johnjohn',
-                            'new_password' => 'qwer1234',
+                            'username' => 'admin2',
+                            'old_password' => 'dwcl1961',
+                            'new_password' => 'dwcl1962',
                             'department_name' => 'aaaa',
                         ]);
 
@@ -82,7 +83,7 @@ class UserProfileTest extends TestCase
 
                     $this->assertDatabaseHas('users',
                         [
-                            'username' => 'asdasdas',
+                            'username' => 'admin2',
                         ]);
 
 

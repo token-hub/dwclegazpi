@@ -32,10 +32,6 @@ Route::namespace('Dashboard')->prefix('dashboard')->group(function () {
 
     Route::get('/home', 'DashboardController@index');
 
-    Route::get('/register', 'Auth\RegisterController@index');
-    
-    Route::post('/register', 'Auth\RegisterController@store');
-
     Route::post('/logout', 'Auth\LoginController@destroy');
 
     Route::get('/users', 'DashboardUserController@index');

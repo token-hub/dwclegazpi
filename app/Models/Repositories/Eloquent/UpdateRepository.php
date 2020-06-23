@@ -12,11 +12,11 @@ class UpdateRepository implements UpdateInterface
 		# check if paragraph is null
 		if ($data->only('paragraph')['paragraph'] == NULL) 
 		{
-			return \Auth::user()->updates()->create(array_merge($data->only('title', 'category', 'overview'), ['clickable' => 0] ));	
+			return \Auth::user()->updates()->create(array_merge($data->only('title', 'category', 'overview', 'start_date', 'end_date'), ['clickable' => 0] ));	
 		} 
 
 		# create the post
-		$newPost = \Auth::user()->updates()->create($data->only('title', 'category', 'paragraph', 'overview'));
+		$newPost = \Auth::user()->updates()->create($data->only('title', 'category', 'paragraph', 'overview', 'start_date', 'end_date'));
 
 		# check for images attact in the post
 		if(strpos($data->paragraph, '<img alt=""') !== false){
@@ -72,7 +72,9 @@ class UpdateRepository implements UpdateInterface
 
 	public function getAll() 
 	{
-		return Update::all();
+		return Update::where('id', '>', '0')
+							
+							->get();
 	}
 
 	public function getAllAnnouncement() 
@@ -102,11 +104,23 @@ class UpdateRepository implements UpdateInterface
 							->get(['title', 'id', 'clickable']);
 	}
 
-	public function getUpdateLatestData()
+	public function updateLatestPostsData()
 	{
 		return Update::where('id', '!=', '0')
 						->orderBy('created_at', 'DESC')
 						->limit(3)
 						->get();
-	}  
+	} 
+
+	public function updateUpcomingEventsData() 
+	{
+		$events = Update::where('start_date', '>=', date('Y-m-d',strtotime(now())))
+						->orWhere('end_date', '>=', date('Y-m-d',strtotime(now())))
+						->where('category', '=', 'news-and-events')
+						->orderBy('created_at', 'DESC')
+						->limit(3)
+						->get();
+		
+		return $events;
+	} 
 }

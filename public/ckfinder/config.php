@@ -83,7 +83,7 @@ $config['resourceTypes'][] = array(
     'directory'         => 'files',
     'maxSize'           => 0,
     // 'allowedExtensions' => '7z,aiff,asf,avi,bmp,csv,doc,docx,fla,flv,gif,gz,gzip,jpeg,jpg,mid,mov,mp3,mp4,mpc,mpeg,mpg,ods,odt,pdf,png,ppt,pptx,qt,ram,rar,rm,rmi,rmvb,rtf,sdc,swf,sxc,sxw,tar,tgz,tif,tiff,txt,vsd,wav,wma,wmv,xls,xlsx,zip',
-    'allowedExtensions' => 'gif,jpeg,jpg,png',
+    'allowedExtensions' => 'jpeg,jpg,png,gif',
     'deniedExtensions'  => '',
     'backend'           => 'default'
 );

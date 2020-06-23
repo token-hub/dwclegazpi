@@ -93,7 +93,7 @@
 				}
 
 				.date-content-right {
-					width: 75%;
+					width: 85%;
 					padding: 0 30px;
 					border-left: 2px solid gray;
 
@@ -113,11 +113,19 @@
 					p {
 						font-size: 0.9rem;
 					}
+
+
+					form {
+						input[type=submit] {
+							color: color(primary);
+							font-size: 1.1rem;
+						}
+					}
 				}
 
 				@include responsive(phone) {
 					.date-content-right { 
-						width: 65%;
+						width: 80%;
 						padding: 0 15px;
 					}
 				}
@@ -160,6 +168,24 @@
 						margin:0 0;
 					}
 					margin: 15px 0;
+				}
+			}
+
+			iframe {
+				height: 650px;
+				width: 100%;
+				padding: 25px 0;
+			}
+
+			@include responsive(tablet) {
+				iframe {
+					height: 650px;
+				}
+			}
+
+			@include responsive(phone) {
+				iframe {
+					height: 100%;
 				}
 			}
 		}

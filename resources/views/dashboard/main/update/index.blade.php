@@ -14,11 +14,12 @@
 	<table id="update_example" class="table table-striped table-bordered">
         <thead>
             <tr>
+            	<th>ID</th>
             	<th>Date</th>
                 <th>Title</th>
                 <th>Category</th>
                 <th>User</th>
-                <th>Action</th>
+                <th style='width: 10%;'>Action</th>
             </tr>
         </thead>
     </table>
@@ -33,6 +34,7 @@
 	            order: [ [0, 'desc'] ],
 	            ajax: '{{ url("dashboard/update-data") }}',
 	            columns: [
+	           		{ data: 'id', name: 'id' },
 	                { data: 'date', name: 'date' },
 	                { data: 'title', name: 'title' },
 	                { data: 'category', name: 'category' },

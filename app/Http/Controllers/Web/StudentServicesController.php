@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Web;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use App\Traits\PaginatorTrait;
 
 class StudentServicesController extends Controller
 {
+    use PaginatorTrait;
+
     public function getCommunityExtensionServices() {
     	return view('web.student-services.community-extension-services');
     }
@@ -54,8 +57,25 @@ class StudentServicesController extends Controller
     	return view('web.student-services.library');
     }
 
-    public function getResearch() {
-    	return view('web.student-services.research');
+    public function getResearch(Request $request) {
+
+       $pdfs = [
+                    [
+                        'day' => '22',
+                        'month' => 'Jun',
+                        'title' => 'sample',
+                        'overview' => 'this is a sample pdf',
+                        'category' => 'pdf'
+                    ]  
+                ];
+
+        $paginator = $this->getPaginator($request, $pdfs);
+
+    	return view('web.student-services.research')->with('pdfs', $paginator);
+    }
+
+    public function getResearchPdf($pdf) {
+        return view('web.student-services.research-pdf')->with('pdf', $pdf);
     }
 
     public function getClinic() {

@@ -20,6 +20,8 @@ class CreateUpdatesTable extends Migration
             $table->String('overview')->nullable();
             $table->text('paragraph')->nullable();
             $table->boolean('clickable')->default('1');
+            $table->date('start_date');
+            $table->date('end_date');
             $table->unsignedBigInteger('user_id');
             $table->timestamps();
 
