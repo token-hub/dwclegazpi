@@ -1,0 +1,35 @@
+.calendar {	
+	@include position(relative);
+	@include flexCenters();
+
+	height: auto;
+	width:100%;
+
+	.content {
+		@include position(relative);
+		@include flexJustify();
+		flex-direction: column;
+		height: 100%;
+		width: 950px;
+		padding: 30px;
+
+		p {
+			font-size: 2rem;
+			text-align: center;
+		}
+
+		// full-calendar css overwrite
+
+		.fc {
+		   	.fc-toolbar {
+		   		.fc-center {
+		   			h2 {
+		   				color: color(primary);
+		   			}
+		   		}
+		   	}
+		}
+	}
+
+}
+

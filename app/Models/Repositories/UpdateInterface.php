@@ -20,5 +20,7 @@ interface UpdateInterface
 
 	public function getNewsAndEventsLimit($num);
 
-	public function getUpdateLatestData();
+	public function updateLatestPostsData();
+
+	public function updateUpcomingEventsData();
 }

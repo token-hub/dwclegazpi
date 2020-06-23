@@ -26,6 +26,10 @@ body {
   padding: 0;
 }
 
+body * {
+  box-sizing: border-box;
+}
+
 .dwcl-container {
   -webkit-transition: all 500ms ease 320ms;
   transition: all 500ms ease 320ms;
@@ -38,6 +42,12 @@ body {
 
 .black {
   color: black !important;
+}
+
+.noborder {
+  border: none !important;
+  background: none !important;
+  cursor: pointer;
 }
 
 .notification {
@@ -842,7 +852,7 @@ body {
   }
 }
 
-.copyright {
+.calendar {
   position: relative;
   top: NULL;
   right: NULL;
@@ -854,19 +864,35 @@ body {
           justify-content: center;
   -webkit-box-align: center;
           align-items: center;
-  height: 70px;
+  height: auto;
   width: 100%;
-  background: #101820;
 }
 
-.copyright p {
-  margin: 0;
-  color: white;
+.calendar .content {
+  position: relative;
+  top: NULL;
+  right: NULL;
+  bottom: NULL;
+  left: NULL;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+  height: 100%;
+  width: 950px;
+  padding: 30px;
 }
 
-.copyright p a {
-  text-decoration: none;
-  color: white;
+.calendar .content p {
+  font-size: 2rem;
+  text-align: center;
+}
+
+.calendar .content .fc .fc-toolbar .fc-center h2 {
+  color: #1d17ce;
 }
 
 .student-portal {
@@ -1544,6 +1570,33 @@ body {
   }
 }
 
+.copyright {
+  position: relative;
+  top: NULL;
+  right: NULL;
+  bottom: NULL;
+  left: NULL;
+  display: -webkit-box;
+  display: flex;
+  -webkit-box-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+          align-items: center;
+  height: 70px;
+  width: 100%;
+  background: #101820;
+}
+
+.copyright p {
+  margin: 0;
+  color: white;
+}
+
+.copyright p a {
+  text-decoration: none;
+  color: white;
+}
+
 .contact-us {
   display: -webkit-box;
   display: flex;
@@ -1901,7 +1954,7 @@ body {
 }
 
 .divine-container .content .left .date-and-content .date-content-right {
-  width: 75%;
+  width: 85%;
   padding: 0 30px;
   border-left: 2px solid gray;
 }
@@ -1923,9 +1976,14 @@ body {
   font-size: 0.9rem;
 }
 
+.divine-container .content .left .date-and-content .date-content-right form input[type=submit] {
+  color: #1d17ce;
+  font-size: 1.1rem;
+}
+
 @media only screen and (max-width: 767px) {
   .divine-container .content .left .date-and-content .date-content-right {
-    width: 65%;
+    width: 80%;
     padding: 0 15px;
   }
 }
@@ -1965,6 +2023,24 @@ body {
 
 .divine-container .content .left .title-and-content .littleSpace p {
   margin: 0 0;
+}
+
+.divine-container .content .left iframe {
+  height: 650px;
+  width: 100%;
+  padding: 25px 0;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 991px) {
+  .divine-container .content .left iframe {
+    height: 650px;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+  .divine-container .content .left iframe {
+    height: 100%;
+  }
 }
 
 @media only screen and (min-width: 992px) and (max-width: 1198px) {

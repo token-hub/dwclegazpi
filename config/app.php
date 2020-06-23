@@ -177,6 +177,7 @@ return [
         App\Providers\RouteServiceProvider::class,
         'App\Providers\HelperServiceProvider',
         'App\Providers\RepositoriesServiceprovider',
+        MaddHatter\LaravelFullcalendar\ServiceProvider::class,
     ],
 
     /*
@@ -230,6 +231,7 @@ return [
         'Form' => Collective\Html\FormFacade::class,
         'Html' => Collective\Html\HtmlFacade::class,
         'Datatables' => yajra\Datatables\Datatables::class,
+        'Calendar' => MaddHatter\LaravelFullcalendar\Facades\Calendar::class,
     ],
 
 ];

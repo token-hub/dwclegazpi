@@ -63,11 +63,12 @@ class UpdateService
 
 	public function updateData($data)
 	{
-		$updates = Update::all();
+		$updates = $this->updateInterface->getAll();
 
         return Datatables::of($updates)
         	->editColumn('date', function ($update) {
         		return date("F d, Y | h:i A", strtotime($update->created_at));
+
         	})
         	->addColumn('user', function ($update) {
         		return  ucfirst($update->user->username);
@@ -92,8 +93,13 @@ class UpdateService
             ->make(true);
 	}
 
-	public function updateLatestData()
+	public function updateLatestPostsData()
 	{
-		return $this->updateInterface->getUpdateLatestData();
+		return $this->updateInterface->updateLatestPostsData();
+	}
+
+	public function updateUpcomingEventsData()
+	{
+		return $this->updateInterface->updateUpcomingEventsData();
 	}
 }

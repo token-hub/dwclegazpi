@@ -1,6 +1,26 @@
-@extends('web.student-services.student-services-overview')
+@extends('web.layouts.navbar-layout')
 
-@section('title', 'Research')
+@section('banner', 'admission')
+@section('body-left')
+	
+		@foreach($pdfs as $key => $pdf)
+		<div class='date-and-content {{ $pdf["category"] }}'>
+			<div class='date-content-left'>
+				<p>{{ $pdf['day'] }}</p>
+				<p>{{ $pdf['month'] }}</p>
+			</div>
+			<div class='date-content-right'>
+				{!! Form::open(['url' => ['/student-services/research-pdf', $pdf['title'] ] , 'method' => 'GET']) !!}
+					<span>   </span>
+					{{ Form::submit($pdf['title'], ['class' => 'noborder'] )}}
+				{!! Form::close() !!}
+
+				<p>{!! $pdf['overview'] !!}</p>
+			</div>
+		</div>
+	@endforeach
+@endsection
+
 @section('body-right')
-	<p>Please visit us again as we are currently updating information on this page. Thank you.</p>
+	@include('web.layouts.latest-post')
 @endsection

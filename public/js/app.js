@@ -436,14 +436,14 @@ var UpdatesNewsAndEvents = document.querySelectorAll('.date-content-right span.n
 var UpdatesAnnouncements = document.querySelectorAll('.date-content-right span.announcement.clickable');
 var HomapageNewsAndEvents = document.querySelectorAll('.news-and-events .content .items .values button');
 var HomapageAnnouncements = document.querySelectorAll('.annoucement .content .items .values .inner .most .right a');
-jumpToUpdatesPage(UpdatesNewsAndEvents, 'updates/news-and-events-articles', 'news-and-events');
-jumpToUpdatesPage(HomapageNewsAndEvents, 'updates/news-and-events-articles', 'homepage-news-and-events');
-jumpToUpdatesPage(UpdatesAnnouncements, 'updates/announcement-articles', 'announcement');
-jumpToUpdatesPage(HomapageAnnouncements, 'updates/announcement-articles', 'homepage-announcement');
-jumpToUpdatesPage(updates, 'updates/', 'updates');
-jumpToUpdatesPage(postsEvents, 'updates/', 'posts-events'); // ============= [ HOME PAGE NEWS-AND-EVENTS/ANNOUNCEMENT TO UPDATES/NEWS-AND-EVENTS || UPDATES/ANNOUNCEMENT ] =============
+jumpToNextPage(UpdatesNewsAndEvents, 'updates/news-and-events-articles', 'news-and-events');
+jumpToNextPage(HomapageNewsAndEvents, 'updates/news-and-events-articles', 'homepage-news-and-events');
+jumpToNextPage(UpdatesAnnouncements, 'updates/announcement-articles', 'announcement');
+jumpToNextPage(HomapageAnnouncements, 'updates/announcement-articles', 'homepage-announcement');
+jumpToNextPage(updates, 'updates/', 'updates');
+jumpToNextPage(postsEvents, 'updates/', 'posts-events'); // ============= [ HOME PAGE NEWS-AND-EVENTS/ANNOUNCEMENT TO UPDATES/NEWS-AND-EVENTS || UPDATES/ANNOUNCEMENT ] =============
 
-function jumpToUpdatesPage(array, location, category) {
+function jumpToNextPage(array, location, category) {
   // check array is not empty
   if (array) {
     array.forEach(function (e) {

@@ -74,6 +74,7 @@ class UpdateTest extends TestCase
 
     public function test_authenticated_user_can_store_updates()
     {
+        $this->withoutExceptionHandling();
         $this->seed('RoleSeeder');
         $this->seed('PermissionSeeder');
 
@@ -101,11 +102,14 @@ class UpdateTest extends TestCase
             ->post('/dashboard/updates', [
                 'title' => 'new update',
                 'clickable' => 1,
-                'overview' => 'announcement',
-                'category' => 'announcement',
-                'paragraph' => 'wewskie',
+                'overview' => 'announcementxcv',
+                'category' => 'announcementxcv',
+                'paragraph' => 'wewskiexcv',
+                'start_date' => now(),
+                'end_date' => now(),
             ]);
 
+         
         $this->assertCount(1, Update::all());
         $response->assertRedirect('/dashboard/updates');
     }
@@ -142,6 +146,8 @@ class UpdateTest extends TestCase
                 'overview' => 'announcement',
                 'category' => 'announcement',
                 'paragraph' => 'wewskie',
+                'start_date' => now(),
+                'end_date' => now(),
             ]);
 
         $update = Update::first();
@@ -182,6 +188,8 @@ class UpdateTest extends TestCase
                 'overview' => 'announcement',
                 'category' => 'announcement',
                 'paragraph' => 'wewskie',
+                'start_date' => now(),
+                'end_date' => now(),
             ]);
 
         $update = Update::first();
@@ -207,7 +215,6 @@ class UpdateTest extends TestCase
 
     public function test_user_can_delete_an_update()
     {
-        $this->withoutExceptionHandling();
         $this->seed('RoleSeeder');
         $this->seed('PermissionSeeder');
 
@@ -238,6 +245,8 @@ class UpdateTest extends TestCase
                 'overview' => 'announcement',
                 'category' => 'announcement',
                 'paragraph' => 'wewskie',
+                'start_date' => now(),
+                'end_date' => now(),
             ]);
 
         $update = Update::first();

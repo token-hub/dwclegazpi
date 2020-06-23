@@ -4,11 +4,15 @@ namespace App\Http\Controllers\Web;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use Illuminate\Pagination\LengthAwarePaginator;
 use App\Models\Services\UpdateService;
+use App\Models\Entities\Update;
+use MaddHatter\LaravelFullcalendar\Event;
+use App\Traits\PaginatorTrait;
 
-class UpdatesController extends Controller
+class UpdatesController extends Controller 
 {
+    use PaginatorTrait;
+
 	public $updateService;
 
 	public function __construct(updateService $updateService)
@@ -57,31 +61,38 @@ class UpdatesController extends Controller
    		return view('web.updates.news-and-events-articles')->with('newsAndEvents', $newsAndEvents);
    }
 
-    private function getPaginator(Request $request, $items) 
-    {
-	    $total = count($items); // total count of the set, this is necessary so the paginator will know the total pages to display
-	    $page = $request->page ? $request->page : 1; // get current page from the request, first page is null
-	    $perPage = 5; // how many items you want to display per page?
-	    $offset = ($page - 1) * $perPage; // get the offset, how many items need to be "skipped" on this page
-	 
-	    $items = array_slice($items, $offset, $perPage); // the array that we actually pass to the paginator is sliced
+   public function getCalendar()
+   {
+        // $eloquentEvent = Update::first(); 
 
-	    return new LengthAwarePaginator($items, $total, $perPage, $page, [
-	        'path' => $request->url(),
-	        'query' => $request->query()
-	    ]);
-	}
+        $updates = $this->updateService->getAllNewsAndEvents()->toArray();
+
+        foreach ($updates as $key => $update) {
+           $events[] = \Calendar::event(  
+                $update['title'],
+                false,
+                $update['start_date'],
+                $update['end_date'],
+                0,
+                [
+                'color' => '#1d17ce',
+            ],
+           );
+        }
+        
+        $calendar = \Calendar::addEvents($events)
+                ->setOptions([ 'contentHeight' => 'auto',])
+                ->setCallbacks(['eventClick' => 'function( calEvent, jsEvent, view ) { alert("Event : " + calEvent.title); }' ]);
+
+        return view('web.updates.calendar')->with('calendar', $calendar);
+    
+   }
 
     public function getUpdateLatestData()
     {
-        // $html = view('web.layouts.latest-post')->with([
-        //                                             'latestPosts' => $this->updateService->updateLatestData(),
-        //                                             'upcomingEvents' => [],
-        //                                         ])->render();
-
          return response()->json([
-                                'latestPosts' => $this->updateService->updateLatestData(),
-                                'upcomingEvents' => [],
+                                'latestPosts' => $this->updateService->updateLatestPostsData(),
+                                'upcomingEvents' => $this->updateService->updateUpcomingEventsData(),
                             ]);
     }
 }

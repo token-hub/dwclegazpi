@@ -82,6 +82,7 @@
 			</li>
 
 			<div class='updates-content dp-content-collapse'>
+				<a href='/updates/calendar'>CALENDAR</a>
 				<a href='/updates/announcement-overview'>ANNOUNCEMENT</a>
 				<a href='/updates/news-and-events-overview'>NEWS AND EVENTS</a>
 			</div>
@@ -187,6 +188,7 @@
 				<li class='updates-dropdown'>
 					<a href='/updates' id='' class='nav-list updates'>UPDATES</a>
 					<div class='updates-content dp-content'>
+						<a href='/updates/calendar'>CALENDAR</a>
 						<a href='/updates/announcement-overview'>ANNOUNCEMENT</a>
 						<a href='/updates/news-and-events-overview'>NEWS AND EVENTS</a>
 					</div>
