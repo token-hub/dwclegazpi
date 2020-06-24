@@ -294,16 +294,25 @@
 }
 
 .content-btn {
-	display: none;
 	margin: 10px 0;
+	display: flex;
+	color: color(primary); 
+
 	i {
 		padding: 0 8px;
 		font-weight: bold;
 	}
 
-	a {
-		text-decoration: none;
-		color: color(primary); 
+	form {
+		input[type='submit'] {
+			font-size: 1rem;
+			text-decoration: none;
+			color: color(primary); 
+		}
+
+		input[type='submit']:focus, textarea {
+		    outline: none !important;
+		}
 	}
 }
 

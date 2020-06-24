@@ -1,22 +1,26 @@
-@extends('web.updates.updates-overview')
+@extends('web.layouts.navbar-layout')
 
+@section('banner', 'admission')
 @section('body-left')
-	@foreach($announcements as $key => $announcement)
-		<div class='date-and-content {{ $announcement["category"] }}'>
+<center><h1>  ANNOUNCEMENTS  </h1></center>
+	@foreach($announcements as $key => $update)
+		<div class='date-and-content'>
 			<div class='date-content-left'>
-				<p>{{ date("d", strtotime($announcement['created_at'])) }}</p>
-				<p>{{ date("M", strtotime($announcement['created_at'])) }}</p>
+				<p>{{ date("d", strtotime($update['created_at'])) }}</p>
+				<p>{{ date("M", strtotime($update['created_at'])) }}</p>
 			</div>
 			<div class='date-content-right'>
-					@if($announcement['clickable'])
-						<!-- ==== [ HAS A CONNECTION WITH JAVASCRIPT ] ==== -->
-						<span class='announcement clickable'>{{$announcement['title']}}</span> 
-					@else 
-						<span>{{$announcement['title']}}</span>
-					@endif
-				<p>{!! $announcement['overview'] !!}</p>
+				{!! Form::open(['url' => ['/updates/update', $update['id'] ] , 'method' => 'GET']) !!}
+					{{ Form::submit($update['title'], ['class' => 'noborder'] )}}
+				{!! Form::close() !!}
+				<p>{!! $update['overview'] !!}</p>
 			</div>
 		</div>
 	@endforeach
 	{{ $announcements->links("pagination::bootstrap-4") }}
 @endsection
+
+@section('body-right')
+	@include('web.layouts.latest-post')
+@endsection
+

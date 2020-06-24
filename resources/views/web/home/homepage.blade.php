@@ -97,7 +97,9 @@
 							<hr>
 
 							@if($newsAndEvents['clickable'] == 1)
-								<button>READ MORE</button>
+								{!! Form::open(['url' => ['/updates/update', $newsAndEvents['id'] ] , 'method' => 'GET']) !!}
+									{{ Form::submit('READ MORE')}}
+								{!! Form::close() !!}
 							@endif
 						</div>
 					@endforeach
@@ -121,7 +123,9 @@
 										<p>{{ date("d", strtotime($item['created_at'])) }}</p>
 									</div>
 									<div class="right">
-										<a href="#">{{ strtoupper($item['title']) }}</a>
+										{!! Form::open(['url' => ['/updates/update', $item['id'] ] , 'method' => 'GET']) !!}
+											{{ Form::submit($item['title'], ['class' => 'noborder'] )}}
+										{!! Form::close() !!}
 									</div>
 								</div>
 							</div>

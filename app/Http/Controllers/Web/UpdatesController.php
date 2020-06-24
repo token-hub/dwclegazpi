@@ -29,6 +29,27 @@ class UpdatesController extends Controller
    		return view('web.updates.updates')->with('updates', $paginator);
    }
 
+   public function getUpdate($update)
+   {
+       $update = $this->updateService->getUpdate($update);
+
+       return view('web.updates.'.$update['category'].'-article')->with('update', $update);
+   }
+
+   public function getUpdateAnnouncement($update)
+   {
+        $update = $this->updateService->getUpdateAnnouncement($update);
+
+       return view('web.updates.announcement-article')->with('update', $update);
+   }
+
+    public function getUpdateNewsAndEvents($update)
+    {
+        $update = $this->updateService->getUpdateNewsAndEvents($update);
+
+       return view('web.updates.news-and-events-article')->with('update', $update);
+    }
+
    public function getAnnouncementOverview(Request $request)
    {
    		$announcements = $this->updateService->getAllAnnouncement()->toArray();
@@ -38,33 +59,33 @@ class UpdatesController extends Controller
    		return view('web.updates.announcement-overview')->with('announcements', $paginator);
    }
 
-   public function getAnnouncementArticles() 
+      public function getNewsAndEventsOverview(Request $request)
    {
-   		$announcements = $this->updateService->getAllAnnouncement()->toArray();
+        $newsAndEvents = $this->updateService->getAllNewsAndEvents()->toArray();
 
-   		return view('web.updates.announcement-articles')->with('announcements', $announcements);
+        $paginator = $this->getPaginator($request, $newsAndEvents);
+
+        return view('web.updates.news-and-events-overview')->with('newsAndEvents', $paginator);
    }
 
-   public function getNewsAndEventsOverview(Request $request)
-   {
-   		$newsAndEvents = $this->updateService->getAllNewsAndEvents()->toArray();
+   // public function getAnnouncementArticles() 
+   // {
+   // 		$announcements = $this->updateService->getAllAnnouncement()->toArray();
 
-   		$paginator = $this->getPaginator($request, $newsAndEvents);
+   // 		return view('web.updates.announcement-articles')->with('announcements', $announcements);
+   // }
 
-   		return view('web.updates.news-and-events-overview')->with('newsAndEvents', $paginator);
-   }
 
-    public function getNewsAndEventsArticles() 
-    {
-   		$newsAndEvents = $this->updateService->getAllNewsAndEvents()->toArray();
 
-   		return view('web.updates.news-and-events-articles')->with('newsAndEvents', $newsAndEvents);
-   }
+   //  public function getNewsAndEventsArticles() 
+   //  {
+   // 		$newsAndEvents = $this->updateService->getAllNewsAndEvents()->toArray();
+
+   // 		return view('web.updates.news-and-events-articles')->with('newsAndEvents', $newsAndEvents);
+   // }
 
    public function getCalendar()
    {
-        // $eloquentEvent = Update::first(); 
-
         $updates = $this->updateService->getAllNewsAndEvents()->toArray();
 
         foreach ($updates as $key => $update) {
@@ -85,14 +106,17 @@ class UpdatesController extends Controller
                 ->setCallbacks(['eventClick' => 'function( calEvent, jsEvent, view ) { alert("Event : " + calEvent.title); }' ]);
 
         return view('web.updates.calendar')->with('calendar', $calendar);
-    
    }
 
     public function getUpdateLatestData()
     {
-         return response()->json([
-                                'latestPosts' => $this->updateService->updateLatestPostsData(),
-                                'upcomingEvents' => $this->updateService->updateUpcomingEventsData(),
-                            ]);
+        return [
+                    'latestPosts' => $this->updateService->updateLatestPostsData(),
+                    'upcomingEvents' => $this->updateService->updateUpcomingEventsData(),
+                ];
+         // return response()->json([
+         //                        'latestPosts' => $this->updateService->updateLatestPostsData(),
+         //                        'upcomingEvents' => $this->updateService->updateUpcomingEventsData(),
+         //                    ]);
     }
 }

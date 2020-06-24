@@ -18,7 +18,11 @@ interface UpdateInterface
 	
 	public function getAllNewsAndEvents();
 
-	public function getUpdateOrigin($update);
+	public function getUpdate($update);
+
+	public function getUpdateAnnouncement($update);
+	
+	public function getUpdateNewsAndEvents($update);
 
 	public function getNewsAndEventsLimit($num);
 

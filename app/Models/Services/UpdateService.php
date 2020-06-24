@@ -61,9 +61,19 @@ class UpdateService
 		return $this->updateInterface->getNewsAndEventsLimit($num);
 	}
 
-	public function getUpdateOrigin($update)
+	public function getUpdate($update)
 	{
-		return $this->updateInterface->getUpdateOrigin($update);
+		return $this->updateInterface->getUpdate($update);
+	}
+
+	public function getUpdateAnnouncement($update) 
+	{
+		return $this->updateInterface->getUpdateAnnouncement($update);
+	}
+
+	public function getUpdateNewsAndEvents($update) 
+	{
+		return $this->updateInterface->getUpdateNewsAndEvents($update);
 	}
 
 	public function updateLatestPostsData()

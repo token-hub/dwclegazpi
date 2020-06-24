@@ -79,7 +79,9 @@ class UpdateRepository implements UpdateInterface
 
 	public function getAllAnnouncement() 
 	{
-		return Update::where('category', 'announcement')->get();
+		return Update::where('category', 'announcement')
+						->orderBy('created_at', 'DESC')
+						->get();
 	}
 
 	public function getAnnouncementChunkTwo()
@@ -93,7 +95,9 @@ class UpdateRepository implements UpdateInterface
 
 	public function getAllNewsAndEvents() 
 	{
-		return Update::where('category', 'news-and-events')->get();
+		return Update::where('category', 'news-and-events')
+							->orderBy('created_at', 'DESC')
+							->get();
 	}
 
 	public function getNewsAndEventsLimit($num) 
@@ -104,9 +108,56 @@ class UpdateRepository implements UpdateInterface
 							->get(['title', 'id', 'clickable']);
 	}
 
-	public function getUpdateOrigin($update)
+	public function getUpdate($update)
 	{
-		return Update::find($update)->category;
+		$current = Update::find($update)
+						->toArray();
+
+		$next = Update::where('id', '>', $update)
+						->orderBy('id', 'ASC')
+						->first();
+						
+		$prev = Update::where('id', '<', $update)
+						->orderBy('id', 'DESC')
+						->first();
+
+		return array_merge($current, ['next' => $next, 'prev' => $prev]);
+	}
+
+	public function getUpdateAnnouncement($update) 
+	{
+		$current = Update::find($update)
+						->toArray();
+
+		$next = Update::where('id', '>', $update)
+						->where('category', '=', 'announcement')
+						->orderBy('id', 'ASC')
+						->first();
+						
+		$prev = Update::where('id', '<', $update)
+						->where('category', '=', 'announcement')
+						->orderBy('id', 'DESC')
+						->first();
+
+		return array_merge($current, ['next' => $next, 'prev' => $prev]);
+	}
+
+	public function getUpdateNewsAndEvents($update) 
+	{
+		$current = Update::find($update)
+						->toArray();
+
+		$next = Update::where('id', '>', $update)
+						->where('category', '=', 'news-and-events')
+						->orderBy('id', 'ASC')
+						->first();
+						
+		$prev = Update::where('id', '<', $update)
+						->where('category', '=', 'news-and-events')
+						->orderBy('id', 'DESC')
+						->first();
+
+		return array_merge($current, ['next' => $next, 'prev' => $prev]);
 	}
 
 	public function updateLatestPostsData()
