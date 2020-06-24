@@ -2,7 +2,8 @@
 
 @section('banner', 'admission')
 @section('body-left')
-	<iframe src="/storage/pdf/{{$pdf}}.pdf"  frameborder="0"></iframe>
+	<h1>{{$pdf}}</h1>
+	<iframe src="/storage/pdf/{{$pdf}}.pdf#toolbar=0"  frameborder="0"></iframe>
 @endsection
 
 @section('body-right')

@@ -4,7 +4,7 @@
 @section('body-left')
 	
 		@foreach($pdfs as $key => $pdf)
-		<div class='date-and-content {{ $pdf["category"] }}'>
+		<div class='date-and-content'>
 			<div class='date-content-left'>
 				<p>{{ $pdf['day'] }}</p>
 				<p>{{ $pdf['month'] }}</p>
@@ -19,6 +19,7 @@
 			</div>
 		</div>
 	@endforeach
+	{{ $pdfs->links("pagination::bootstrap-4") }}
 @endsection
 
 @section('body-right')

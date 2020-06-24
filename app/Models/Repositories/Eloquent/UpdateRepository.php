@@ -73,7 +73,7 @@ class UpdateRepository implements UpdateInterface
 	public function getAll() 
 	{
 		return Update::where('id', '>', '0')
-							
+							->orderBy('created_at', 'DESC')
 							->get();
 	}
 
@@ -102,6 +102,11 @@ class UpdateRepository implements UpdateInterface
 							->orderBy('created_at', 'DESC')
 							->limit($num)
 							->get(['title', 'id', 'clickable']);
+	}
+
+	public function getUpdateOrigin($update)
+	{
+		return Update::find($update)->category;
 	}
 
 	public function updateLatestPostsData()
