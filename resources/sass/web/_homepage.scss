@@ -37,7 +37,7 @@
 		@include position(absolute, 180px, 10px); 
 
 		font-size: 11px;
-		width: 150px;
+		width: 165px;
    		height: 35px;
 	}
 }
@@ -50,10 +50,16 @@
 
     z-index: 1;
     width: 230px;
-    height: 50px;
+    height: 60px;
     opacity: .8;
     background: #d2d2ee;
     border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+    	margin: 0;
+    }
 
     a {
     	text-decoration: none;
@@ -68,6 +74,10 @@
     a {
     	color: white;
     }
+
+	small {
+    	color: yellow;
+    }
 }
 
 @include responsive(tablet) {
@@ -81,8 +91,8 @@
 		@include position(absolute, 225px, 10px);
 
 		font-size: 11px;
-		width: 150px;
-   		height: 35px;
+		width: 165px;
+   		height: 40px;
 	}
 }
 

@@ -4,7 +4,7 @@
 	<div class='student-portal'><h2><a href="https://portal.dwc-legazpi.edu/app/student-online.cf">Student Portal</a></h2></div>
 
 	<!-- ---------------- [ online enrollment button ] ---------------- -->	
-	<div class='enrollment-portal'><h2><a href="https://online.dwc-legazpi.edu/">Online Enrollment</a></h2></div>
+	<div class='enrollment-portal'><h2><a href="https://online.dwc-legazpi.edu/">Online Enrollment</a></h2><small>New applicant and Transferee</small></div>
 
 	<!-- ---------------- [ slider show ] ---------------- -->
 	<div class="slideshow-container">

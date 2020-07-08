@@ -956,7 +956,7 @@ body * {
     bottom: NULL;
     left: NULL;
     font-size: 11px;
-    width: 150px;
+    width: 165px;
     height: 35px;
   }
 }
@@ -975,10 +975,18 @@ body * {
           align-items: center;
   z-index: 1;
   width: 230px;
-  height: 50px;
+  height: 60px;
   opacity: 0.8;
   background: #d2d2ee;
   border-radius: 40px;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+          flex-direction: column;
+}
+
+.enrollment-portal h2 {
+  margin: 0;
 }
 
 .enrollment-portal a {
@@ -993,6 +1001,10 @@ body * {
 
 .enrollment-portal:hover a {
   color: white;
+}
+
+.enrollment-portal:hover small {
+  color: yellow;
 }
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
@@ -1013,8 +1025,8 @@ body * {
     bottom: NULL;
     left: NULL;
     font-size: 11px;
-    width: 150px;
-    height: 35px;
+    width: 165px;
+    height: 40px;
   }
 }
 
