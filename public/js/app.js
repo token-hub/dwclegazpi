@@ -1,1 +1,376 @@
-!function(e){var t={};function n(c){if(t[c])return t[c].exports;var o=t[c]={i:c,l:!1,exports:{}};return e[c].call(o.exports,o,o.exports,n),o.l=!0,o.exports}n.m=e,n.c=t,n.d=function(e,t,c){n.o(e,t)||Object.defineProperty(e,t,{enumerable:!0,get:c})},n.r=function(e){"undefined"!=typeof Symbol&&Symbol.toStringTag&&Object.defineProperty(e,Symbol.toStringTag,{value:"Module"}),Object.defineProperty(e,"__esModule",{value:!0})},n.t=function(e,t){if(1&t&&(e=n(e)),8&t)return e;if(4&t&&"object"==typeof e&&e&&e.__esModule)return e;var c=Object.create(null);if(n.r(c),Object.defineProperty(c,"default",{enumerable:!0,value:e}),2&t&&"string"!=typeof e)for(var o in e)n.d(c,o,function(t){return e[t]}.bind(null,o));return c},n.n=function(e){var t=e&&e.__esModule?function(){return e.default}:function(){return e};return n.d(t,"a",t),t},n.o=function(e,t){return Object.prototype.hasOwnProperty.call(e,t)},n.p="/",n(n.s=2)}([function(e,t){var n=document.querySelector(".notification"),c=document.querySelector(".notification-content ul li"),o=document.querySelector(".notification-icon i");if(c&&""!==c.innerHTML){n.classList.toggle("notif-visible");var l=n.classList[1];i(l),setTimeout((function(){return function(e){n.classList.toggle("notif-visible"),i(e)}(l)}),3e3)}function i(e){"notif-success"==e?o.classList.toggle("fa-check"):"notif-info"==e?o.classList.toggle("fa-info"):o.classList.toggle("fa-exclamation")}},function(e,t,n){"use strict";n.r(t),n.d(t,"contentHide",(function(){return a}));var c=document.querySelectorAll(".title-and-content"),o=document.querySelectorAll(".title-and-content h1 a"),l=document.querySelector(".content-newer"),i=document.querySelector(".content-older"),s=document.querySelectorAll(".content-btn"),r=[];function a(e){c.forEach((function(t){t.childNodes[1].childNodes[0].innerHTML!=e?-1==t.className.indexOf("hidden")&&(t.classList+=" hidden",t.classList.remove("content-active")):(t.classList.remove("hidden"),t.classList+=" content-active",function(e){var t=r.indexOf(e),n=r.length-1;0==t?u(i,l):t==n?u(l,i):u(l,i,!0)}(e))}))}function u(e,t){var n=arguments.length>2&&void 0!==arguments[2]&&arguments[2];n?(e.classList+=" visible",t.classList+=" visible"):(-1==e.className.indexOf("visible")&&(e.classList+=" visible"),t.classList.remove("visible"))}o.forEach((function(e){r.push(e.innerHTML)})),c.forEach((function(e){var t=e.childNodes[1].childNodes[0];t.addEventListener("click",(function(){a(t.innerHTML)}))})),s.forEach((function(e){e.addEventListener("click",(function(t){var n=document.querySelector(".content-active")?document.querySelector(".content-active h1 a").innerHTML:"12312312312312312312312312",c=r.indexOf(n);a(-1!==e.className.indexOf("newer")?r[c-1]:r[c+1])}))}))},function(e,t,n){n(3),n(12),e.exports=n(17)},function(e,t,n){n(4),n(5),n(1),n(6),n(0)},function(e,t){console.log;$(window).scroll((function(){$(this).scrollTop()>50?$(".scrolltop:hidden").stop(!0,!0).fadeIn():$(".scrolltop").stop(!0,!0).fadeOut()})),$((function(){$(".scroll").click((function(){return $("html,body").animate({scrollTop:$(".dwcl-container").offset().top},"1000"),!1}))})),$((function(){$(".menu").click((function(){return $("html,body").animate({scrollTop:$(".dwcl-container").offset().top},"1000"),!1}))}));var n=document.querySelector(".dpBtn2 span"),c=document.querySelector(".dpBtn2"),o=document.querySelector(".li-dropdown-contents");null!==c&&c.addEventListener("click",(function(){if(o.classList.contains("li-dropdown-clicked"))return o.classList.remove("li-dropdown-clicked"),n.classList.remove("fa-minus"),n.classList+=" fa-plus",!0;o.classList+=" li-dropdown-clicked",n.classList.remove("fa-plus"),n.classList+=" fa-minus"}))},function(e,t){var n=document.querySelector(".menu"),c=document.querySelectorAll(".nav-list"),o=document.querySelector(".nav-collapse"),l=document.querySelector(".nav-collapse-content"),i=document.querySelector(".dwcl-container"),s=document.querySelectorAll(".dpBtn"),r=document.querySelector(".page").getAttribute("value").trim(),a=document.querySelector(".action").getAttribute("value").trim(),u=document.querySelectorAll(".overview ul li"),d=document.querySelector(".li-dropdown-contents"),f=document.querySelectorAll(".li-dropdown-contents li");n.addEventListener("click",(function(){l.classList.contains("nav-collapse-clicked")?(l.classList.remove("nav-collapse-clicked"),i.classList.remove("nav-collapse-clicked2")):(l.className+=" nav-collapse-clicked",i.className+=" nav-collapse-clicked2",window.addEventListener("mouseup",(function(e){(e.target!=l&&!function(e,t){var n=t.parentNode;for(;null!=n;){if(n==e)return!0;n=n.parentNode}return!1}(l,e.target)||"menu"==e.target.className)&&(l.classList.remove("nav-collapse-clicked"),i.classList.remove("nav-collapse-clicked2"),document.querySelector(".dp-content-collapse-clicked")&&document.querySelector(".dp-content-collapse-clicked").classList.remove("dp-content-collapse-clicked"))})))})),Array.from(s).forEach((function(e){e.addEventListener("click",(function(){if(document.querySelector(".dp-content-collapse-clicked")){document.querySelector(".dp-content-collapse-clicked").classList.remove("dp-content-collapse-clicked")}else{var e=this.className.split(" ")[1]+"-content";document.querySelector("."+e).classList.toggle("dp-content-collapse-clicked")}}))})),Array.from(c).forEach((function(e){var t=e.className;""!=r&&("flex"===getComputedStyle(o,null).display?t.indexOf("nav-active")&&(e.parentNode.classList.remove("nav-active"),-1!==t.indexOf(r)&&(e.parentNode.classList+=" nav-active")):t.indexOf("nav-active")&&(e.classList.remove("nav-active"),-1!==t.indexOf(r)&&(e.classList+=" nav-active")))})),Array.from(u).forEach((function(e){-1!==e.className.indexOf(a)&&(e.classList+=" list-active")})),Array.from(f).forEach((function(e){-1!=e.className.indexOf(a)&&(d.classList+=" li-dropdown-clicked")}))},function(e,t,n){"use strict";n.r(t);var c=n(1),o=document.querySelectorAll(".date-content-right span.clickable"),l=document.querySelectorAll(".posts-and-events .items .bottom .value span.clickable"),i=document.querySelectorAll(".date-content-right span.newsAndEvent.clickable"),s=document.querySelectorAll(".date-content-right span.announcement.clickable"),r=document.querySelectorAll(".news-and-events .content .items .values button"),a=document.querySelectorAll(".annoucement .content .items .values .inner .most .right a");function u(e,t,n){e&&e.forEach((function(e){e.addEventListener("click",(function(){var c;"updates"==n?(t+=e.parentNode.parentNode.classList[1]+"-articles",c=e.innerHTML):"posts-events"==n?(t+=e.nextElementSibling.innerHTML+"-articles",c=e.innerHTML):c="homepage-news-and-events"==n?e.previousElementSibling.previousElementSibling.innerHTML:e.innerHTML,sessionStorage.setItem("clicked-title",c),window.location.href=window.location.protocol+"//"+window.location.hostname+"/"+t}))}))}u(i,"updates/news-and-events-articles","news-and-events"),u(r,"updates/news-and-events-articles","homepage-news-and-events"),u(s,"updates/announcement-articles","announcement"),u(a,"updates/announcement-articles","homepage-announcement"),u(o,"updates/","updates"),u(l,"updates/","posts-events"),sessionStorage.getItem("clicked-title")&&(Object(c.contentHide)(sessionStorage.getItem("clicked-title")),sessionStorage.removeItem("clicked-title"))},,,,,,function(e,t){},,,,,function(e,t){}]);
+/******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = "/";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ })
+/************************************************************************/
+/******/ ({
+
+/***/ "./resources/js/app.js":
+/*!*****************************!*\
+  !*** ./resources/js/app.js ***!
+  \*****************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(/*! ./web/jump-to-top.js */ "./resources/js/web/jump-to-top.js");
+
+__webpack_require__(/*! ./web/navbar-and-overview.js */ "./resources/js/web/navbar-and-overview.js"); // require('./web/title-and-content.js');
+// require('./web/display-post-events.js');
+// require('./web/updates.js');
+
+
+__webpack_require__(/*! ./dashboard/notification.js */ "./resources/js/dashboard/notification.js");
+
+/***/ }),
+
+/***/ "./resources/js/dashboard/notification.js":
+/*!************************************************!*\
+  !*** ./resources/js/dashboard/notification.js ***!
+  \************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var notification = document.querySelector('.notification');
+var notificationMessage = document.querySelector('.notification-content ul li');
+var notificationIcon = document.querySelector('.notification-icon i');
+
+if (notificationMessage) {
+  if (notificationMessage.innerHTML !== '') {
+    notification.classList.toggle('notif-visible');
+    var type = notification.classList[1];
+    addNotificationIcon(type);
+    setTimeout(function () {
+      return hideNotification(type);
+    }, 3000);
+  }
+}
+
+function hideNotification(type) {
+  notification.classList.toggle('notif-visible');
+  addNotificationIcon(type);
+}
+
+function addNotificationIcon(type) {
+  if (type == 'notif-success') {
+    notificationIcon.classList.toggle('fa-check');
+  } else if (type == 'notif-info') {
+    notificationIcon.classList.toggle('fa-info');
+  } else if (type == 'notif-warning') {
+    notificationIcon.classList.toggle('fa-exclamation');
+  } else {
+    notificationIcon.classList.toggle('fa-exclamation');
+  }
+}
+
+/***/ }),
+
+/***/ "./resources/js/web/jump-to-top.js":
+/*!*****************************************!*\
+  !*** ./resources/js/web/jump-to-top.js ***!
+  \*****************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var log = console.log;
+var storagePath = "{!! storage_path() !!}"; // updated and tested
+
+$(window).scroll(function () {
+  if ($(this).scrollTop() > 50) {
+    $('.scrolltop:hidden').stop(true, true).fadeIn();
+  } else {
+    $('.scrolltop').stop(true, true).fadeOut();
+  }
+});
+$(function () {
+  $(".scroll").click(function () {
+    $("html,body").animate({
+      scrollTop: $(".dwcl-container").offset().top
+    }, "1000");
+    return false;
+  });
+});
+$(function () {
+  $(".menu").click(function () {
+    $("html,body").animate({
+      scrollTop: $(".dwcl-container").offset().top
+    }, "1000");
+    return false;
+  });
+}); // ------------------------------------- SIDEBAR DROPDOWN BTN FUNCTION -------------------------------------
+
+var span = document.querySelector(".dpBtn2 span");
+var btn = document.querySelector(".dpBtn2");
+var DPcontents = document.querySelector(".li-dropdown-contents");
+
+if (btn !== null) {
+  btn.addEventListener('click', function () {
+    if (DPcontents.classList.contains('li-dropdown-clicked')) {
+      DPcontents.classList.remove('li-dropdown-clicked');
+      span.classList.remove('fa-minus');
+      span.classList += ' fa-plus';
+      return true;
+    }
+
+    DPcontents.classList += ' li-dropdown-clicked';
+    span.classList.remove('fa-plus');
+    span.classList += ' fa-minus';
+  });
+}
+
+/***/ }),
+
+/***/ "./resources/js/web/navbar-and-overview.js":
+/*!*************************************************!*\
+  !*** ./resources/js/web/navbar-and-overview.js ***!
+  \*************************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+var menu = document.querySelector(".menu");
+var navLinks = document.querySelectorAll('.nav-list');
+var navCollapse = document.querySelector('.nav-collapse');
+var navCollapseContent = document.querySelector('.nav-collapse-content');
+var dwclContainer = document.querySelector(".dwcl-container");
+var btns = document.querySelectorAll('.dpBtn');
+var page = document.querySelector(".page").getAttribute('value').trim();
+var action = document.querySelector(".action").getAttribute('value').trim();
+var overviewList = document.querySelectorAll('.overview ul li');
+var liDropdown = document.querySelector('.li-dropdown-contents');
+var liDropdownContents = document.querySelectorAll('.li-dropdown-contents li'); // ------------------[ NAVBAR TRIGGER BUTTON CLICKED FUNCTION ] --------------------------
+
+menu.addEventListener('click', function () {
+  if (navCollapseContent.classList.contains('nav-collapse-clicked')) {
+    navCollapseContent.classList.remove('nav-collapse-clicked');
+    dwclContainer.classList.remove('nav-collapse-clicked2');
+  } else {
+    navCollapseContent.className += ' nav-collapse-clicked';
+    dwclContainer.className += ' nav-collapse-clicked2';
+    window.addEventListener('mouseup', function (event) {
+      // if sidebar is active and the user clicks outside the sidebar
+      if (event.target != navCollapseContent && !isDescendant(navCollapseContent, event.target) || event.target.className == 'menu') {
+        navCollapseContent.classList.remove('nav-collapse-clicked');
+        dwclContainer.classList.remove('nav-collapse-clicked2'); // check if there's dp-content-collapse-clicked class
+
+        if (document.querySelector(".dp-content-collapse-clicked")) {
+          // remove if found
+          var dpElement = document.querySelector(".dp-content-collapse-clicked");
+          dpElement.classList.remove('dp-content-collapse-clicked');
+        }
+      }
+    });
+  }
+}); // ------------------[ NAVBAR COLLAPSE DROPDOWN BUTTON CLICKED FUNCTION ] --------------------------
+
+Array.from(btns).forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    // check if there's dp-content-collapse-clicked class
+    if (document.querySelector(".dp-content-collapse-clicked")) {
+      // remove if found
+      var dpElement = document.querySelector(".dp-content-collapse-clicked");
+      dpElement.classList.remove('dp-content-collapse-clicked');
+    } else {
+      var str = this.className;
+      var btnClassName = str.split(" ")[1];
+      var dpContent = btnClassName + '-content';
+      var dpElement = document.querySelector("." + dpContent);
+      dpElement.classList.toggle('dp-content-collapse-clicked');
+    }
+  });
+}); // ------------------[ NAVBAR LINKS BUTTON CLICKED FUNCTION ] --------------------------
+
+Array.from(navLinks).forEach(function (navList) {
+  var clickedNavList = navList.className; // check if the current page is not the home page
+
+  if (page != "") {
+    // check if nav collapse is clicked and active
+    if (getComputedStyle(navCollapse, null).display === 'flex') {
+      // check if navlist is already active
+      if (clickedNavList.indexOf('nav-active')) {
+        navList.parentNode.classList.remove('nav-active');
+
+        if (clickedNavList.indexOf(page) !== -1) {
+          navList.parentNode.classList += " nav-active";
+        }
+      }
+    } else {
+      // check if navlist is already active
+      if (clickedNavList.indexOf('nav-active')) {
+        navList.classList.remove('nav-active');
+
+        if (clickedNavList.indexOf(page) !== -1) {
+          navList.classList += " nav-active";
+        }
+      }
+    }
+  }
+}); // ------------------[ SET ACTIVE TO OVERVIEW LIST ] --------------------------
+
+Array.from(overviewList).forEach(function (list) {
+  var clickedlist = list.className; // check if list is not yet active
+
+  if (clickedlist.indexOf(action) !== -1) {
+    list.classList += " list-active";
+  }
+}); // overviewList.filter( list => {
+// 	let clickedlist = list.className;
+// 	return clickedlist.indexOf(action) !== -1 ? list.classList.add('list-active'): '';
+// } )
+// ------------------[ SET ACTIVE TO OVERVIEW DROPDOWN LIST ] --------------------------
+
+Array.from(liDropdownContents).forEach(function (dpList) {
+  var dpListClass = dpList.className; // check if some of the list is a match for the current subpage.
+
+  if (dpListClass.indexOf(action) != -1) {
+    liDropdown.classList += ' li-dropdown-clicked';
+  }
+}); // liDropdownContents.filter( list => {
+// 	let dpListClass = list.className;
+// 	// check if some of the list is a match for the current subpage.
+// 	return dpListClass.indexOf(action) != 1 ? liDropdown.classList.add('li-dropdown-clicked') : '';
+// } );
+// ------------------[ CHECK IF CHILD IS DESCENDANT OF THE PARENT NODE ] --------------------------
+
+function isDescendant(parent, child) {
+  var node = child.parentNode;
+
+  while (node != null) {
+    if (node == parent) {
+      return true;
+    }
+
+    node = node.parentNode;
+  }
+
+  return false;
+}
+
+; // const isDescendant = (parent, ...child) => {
+// 	let nodes = child.parentNode
+// 	for (let node of nodes) 
+// 	{
+// 		if (node == parent) return true;
+// 		node = node.parentNode;
+// 	}
+// 	return false;
+// }
+
+/***/ }),
+
+/***/ "./resources/sass/app.scss":
+/*!*********************************!*\
+  !*** ./resources/sass/app.scss ***!
+  \*********************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ "./resources/sass/dashboard.scss":
+/*!***************************************!*\
+  !*** ./resources/sass/dashboard.scss ***!
+  \***************************************/
+/*! no static exports found */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 0:
+/*!*********************************************************************************************!*\
+  !*** multi ./resources/js/app.js ./resources/sass/app.scss ./resources/sass/dashboard.scss ***!
+  \*********************************************************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+__webpack_require__(/*! C:\xampp\htdocs\dwclegazpi\resources\js\app.js */"./resources/js/app.js");
+__webpack_require__(/*! C:\xampp\htdocs\dwclegazpi\resources\sass\app.scss */"./resources/sass/app.scss");
+module.exports = __webpack_require__(/*! C:\xampp\htdocs\dwclegazpi\resources\sass\dashboard.scss */"./resources/sass/dashboard.scss");
+
+
+/***/ })
+
+/******/ });

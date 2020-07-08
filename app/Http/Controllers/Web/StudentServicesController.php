@@ -63,10 +63,64 @@ class StudentServicesController extends Controller
                     [
                         'day' => '22',
                         'month' => 'Jun',
-                        'title' => 'sample',
-                        'overview' => 'this is a sample pdf',
-                        'category' => 'pdf'
-                    ]  
+                        'title' => 'Banhi',
+                        'overview' => 'A Research Monograph for the Grade School Department',
+                    ],
+                    [
+                        'day' => '22',
+                        'month' => 'Jun',
+                        'title' => 'Kadunung',
+                        'overview' => 'A Research Monograph of the Office of Research',
+                    ],
+                    [
+                        'day' => '22',
+                        'month' => 'Jun',
+                        'title' => 'Lampara',
+                        'overview' => 'A Research Monograph for the School of Nursing',
+                    ],
+                    [
+                        'day' => '22',
+                        'month' => 'Jun',
+                        'title' => 'Liyab',
+                        'overview' => 'A Research Monograph for the Junior High School Department',
+                    ],
+                    [
+                        'day' => '22',
+                        'month' => 'Jun',
+                        'title' => 'Namit',
+                        'overview' => 'A Research Monograph for the School of Hospitality Management',
+                    ],
+                    [
+                        'day' => '22',
+                        'month' => 'Jun',
+                        'title' => 'Ningas',
+                        'overview' => 'A Research Monograph for the School of Education, Arts and Sciences',
+                    ],
+                    [
+                        'day' => '22',
+                        'month' => 'Jun',
+                        'title' => 'Pananaw',
+                        'overview' => 'The DWCL Research Journal',
+                    ],
+                    [
+                        'day' => '22',
+                        'month' => 'Jun',
+                        'title' => 'Panganganinag',
+                        'overview' => 'A Research Monograph for the School of Business, Management and Accountancy',
+                    ],
+                    [
+                        'day' => '22',
+                        'month' => 'Jun',
+                        'title' => 'Saliksik',
+                        'overview' => 'A Research Monograph for the Graduate School of  Business and Management',
+                    ],
+                    [
+                        'day' => '22',
+                        'month' => 'Jun',
+                        'title' => 'Tinta',
+                        'overview' => 'A Research Monograph for the Senior High School Department',
+                    ],
+ 
                 ];
 
         $paginator = $this->getPaginator($request, $pdfs);

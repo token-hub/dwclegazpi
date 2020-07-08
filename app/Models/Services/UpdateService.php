@@ -61,6 +61,31 @@ class UpdateService
 		return $this->updateInterface->getNewsAndEventsLimit($num);
 	}
 
+	public function getUpdate($update)
+	{
+		return $this->updateInterface->getUpdate($update);
+	}
+
+	public function getUpdateAnnouncement($update) 
+	{
+		return $this->updateInterface->getUpdateAnnouncement($update);
+	}
+
+	public function getUpdateNewsAndEvents($update) 
+	{
+		return $this->updateInterface->getUpdateNewsAndEvents($update);
+	}
+
+	public function updateLatestPostsData()
+	{
+		return $this->updateInterface->updateLatestPostsData();
+	}
+
+	public function updateUpcomingEventsData()
+	{
+		return $this->updateInterface->updateUpcomingEventsData();
+	}
+
 	public function updateData($data)
 	{
 		$updates = $this->updateInterface->getAll();
@@ -91,15 +116,5 @@ class UpdateService
             	return 'N/A';
             })
             ->make(true);
-	}
-
-	public function updateLatestPostsData()
-	{
-		return $this->updateInterface->updateLatestPostsData();
-	}
-
-	public function updateUpcomingEventsData()
-	{
-		return $this->updateInterface->updateUpcomingEventsData();
 	}
 }

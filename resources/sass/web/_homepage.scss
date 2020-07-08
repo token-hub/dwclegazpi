@@ -37,7 +37,7 @@
 		@include position(absolute, 180px, 10px); 
 
 		font-size: 11px;
-		width: 150px;
+		width: 165px;
    		height: 35px;
 	}
 }
@@ -50,10 +50,16 @@
 
     z-index: 1;
     width: 230px;
-    height: 50px;
+    height: 60px;
     opacity: .8;
     background: #d2d2ee;
     border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+
+    h2 {
+    	margin: 0;
+    }
 
     a {
     	text-decoration: none;
@@ -68,6 +74,10 @@
     a {
     	color: white;
     }
+
+	small {
+    	color: yellow;
+    }
 }
 
 @include responsive(tablet) {
@@ -81,8 +91,8 @@
 		@include position(absolute, 225px, 10px);
 
 		font-size: 11px;
-		width: 150px;
-   		height: 35px;
+		width: 165px;
+   		height: 40px;
 	}
 }
 
@@ -396,26 +406,30 @@
 				    font-weight: bold;
 				    padding: 0 1rem;
 				    height: 10%;
-				}
+				}	
 				
-			   	button {
-			   		width: 90%;
-			   		margin: 0 1rem;
-				    color: white;
-				    padding: 8px;
-				    font-size: .7rem;
-				    text-decoration: none;
-				    background: color(primary);
-				    border: none;
-				    border-radius: 10px;
-				    margin-top: 3px;
-			   	}
+				form {
+					input[type='submit'] {
+						width: 90%;
+				   		margin: 0 1rem;
+					    color: white;
+					    padding: 8px;
+					    font-size: .7rem;
+					    text-decoration: none;
+					    background: color(primary);
+					    border: none;
+					    border-radius: 10px;
+					    margin-top: 3px;
+					}
 
-			   	button:hover {
-			   		cursor: pointer;
-			   		transition: box-shadow 0.2s ease-in-out;
-					box-shadow: 7px 7px 10px black;
-			   	} 	
+					input[type='submit']:hover {
+				   		cursor: pointer;
+				   		transition: box-shadow 0.2s ease-in-out;
+						box-shadow: 7px 7px 10px black;
+			   		} 	
+				}
+
+			   	
 			}
 
 			@include responsive(tablet) { 
@@ -533,10 +547,23 @@
 							height: 100%;
 							width: 85%;
 							margin: 10px;
+
 							a {
 								color: black;
 								text-decoration: none;
 								font-weight: bold;	
+							}
+
+							form {
+								input[type='submit'] {
+									color: black;
+									text-decoration: none;
+									font-weight: bold;
+									width: 100%;
+								    white-space: normal;
+								    text-align: left;
+								    line-height: 1.5;
+								}
 							}
 						}
 					}

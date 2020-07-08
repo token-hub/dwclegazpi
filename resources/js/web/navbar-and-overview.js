@@ -90,6 +90,9 @@ Array.from(navLinks).forEach( function(navList) {
 	}
 });
 
+
+
+
 // ------------------[ SET ACTIVE TO OVERVIEW LIST ] --------------------------
 Array.from(overviewList).forEach( function(list) {
 	var clickedlist = list.className;
@@ -100,6 +103,12 @@ Array.from(overviewList).forEach( function(list) {
 	}
 });
 
+// overviewList.filter( list => {
+// 	let clickedlist = list.className;
+
+// 	return clickedlist.indexOf(action) !== -1 ? list.classList.add('list-active'): '';
+// } )
+
 // ------------------[ SET ACTIVE TO OVERVIEW DROPDOWN LIST ] --------------------------
 Array.from(liDropdownContents).forEach(function(dpList){
 	var dpListClass = dpList.className;
@@ -109,6 +118,13 @@ Array.from(liDropdownContents).forEach(function(dpList){
 		liDropdown.classList += ' li-dropdown-clicked';
 	}
 }); 
+
+// liDropdownContents.filter( list => {
+// 	let dpListClass = list.className;
+
+// 	// check if some of the list is a match for the current subpage.
+// 	return dpListClass.indexOf(action) != 1 ? liDropdown.classList.add('li-dropdown-clicked') : '';
+// } );
 
 // ------------------[ CHECK IF CHILD IS DESCENDANT OF THE PARENT NODE ] --------------------------
 function isDescendant(parent, child) {
@@ -122,6 +138,15 @@ function isDescendant(parent, child) {
 	return false;
 };
 
+// const isDescendant = (parent, ...child) => {
+// 	let nodes = child.parentNode
+// 	for (let node of nodes) 
+// 	{
+// 		if (node == parent) return true;
+// 		node = node.parentNode;
+// 	}
+// 	return false;
+// }
 
 
 

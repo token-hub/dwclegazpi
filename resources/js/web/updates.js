@@ -1,17 +1,17 @@
 import { contentHide } from './title-and-content.js';
 
-var updates = document.querySelectorAll('.date-content-right span.clickable');
+// var updates = document.querySelectorAll('.date-content-right span.clickable');
 var postsEvents = document.querySelectorAll('.posts-and-events .items .bottom .value span.clickable');
-var UpdatesNewsAndEvents = document.querySelectorAll('.date-content-right span.newsAndEvent.clickable');
-var UpdatesAnnouncements = document.querySelectorAll('.date-content-right span.announcement.clickable');
-var HomapageNewsAndEvents = document.querySelectorAll('.news-and-events .content .items .values button');
-var HomapageAnnouncements = document.querySelectorAll('.annoucement .content .items .values .inner .most .right a');
+// var UpdatesNewsAndEvents = document.querySelectorAll('.date-content-right span.newsAndEvent.clickable');
+// var UpdatesAnnouncements = document.querySelectorAll('.date-content-right span.announcement.clickable');
+// var HomapageNewsAndEvents = document.querySelectorAll('.news-and-events .content .items .values button');
+// var HomapageAnnouncements = document.querySelectorAll('.annoucement .content .items .values .inner .most .right a');
 
-jumpToNextPage(UpdatesNewsAndEvents, 'updates/news-and-events-articles', 'news-and-events');
-jumpToNextPage(HomapageNewsAndEvents, 'updates/news-and-events-articles', 'homepage-news-and-events');
-jumpToNextPage(UpdatesAnnouncements, 'updates/announcement-articles', 'announcement');
-jumpToNextPage(HomapageAnnouncements, 'updates/announcement-articles', 'homepage-announcement');
-jumpToNextPage(updates, 'updates/', 'updates');
+// jumpToNextPage(UpdatesNewsAndEvents, 'updates/news-and-events-articles', 'news-and-events');
+// jumpToNextPage(HomapageNewsAndEvents, 'updates/news-and-events-articles', 'homepage-news-and-events');
+// jumpToNextPage(UpdatesAnnouncements, 'updates/announcement-articles', 'announcement');
+// jumpToNextPage(HomapageAnnouncements, 'updates/announcement-articles', 'homepage-announcement');
+// jumpToNextPage(updates, 'updates/', 'updates');
 jumpToNextPage(postsEvents, 'updates/', 'posts-events');
 
 // ============= [ HOME PAGE NEWS-AND-EVENTS/ANNOUNCEMENT TO UPDATES/NEWS-AND-EVENTS || UPDATES/ANNOUNCEMENT ] =============

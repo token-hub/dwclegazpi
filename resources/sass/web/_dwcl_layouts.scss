@@ -11,7 +11,7 @@
 		width: 1100px;
 	
 		.left {
-			width: 65%;
+			width: 70%;
 			padding: 20px;
 
 			p {
@@ -94,7 +94,7 @@
 
 				.date-content-right {
 					width: 85%;
-					padding: 0 30px;
+					padding: 0 25px;
 					border-left: 2px solid gray;
 
 					span {
@@ -119,6 +119,14 @@
 						input[type=submit] {
 							color: color(primary);
 							font-size: 1.1rem;
+							width: 100%;
+						    white-space: normal;
+						    text-align: left;
+						    line-height: 1.5;
+						}
+
+						input[type='submit']:focus, textarea {
+						    outline: none !important;
 						}
 					}
 				}
@@ -153,8 +161,17 @@
 					}
 				}
 
+				h2 {
+					text-decoration: none;
+					color: color(primary);
+				}
+
 				@include responsive(phone) {
 					h1 {
+						font-size: 1.2rem;
+					}
+
+					h2 {
 						font-size: 1.2rem;
 					}
 				}
@@ -168,6 +185,12 @@
 						margin:0 0;
 					}
 					margin: 15px 0;
+				}
+			}
+
+			@include responsive(phone) {
+				.title-and-content {
+					padding-bottom: 0;
 				}
 			}
 
@@ -254,7 +277,7 @@
 	@include responsive(phone) {
 		.content {
 			display: block;
-			width: 280px;
+			width: 90%;
 			padding: 20px;
 		}
 	}
