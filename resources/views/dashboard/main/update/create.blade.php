@@ -28,12 +28,12 @@
 				</div>
 
 				<div class='dashboard-input'>
-					{!! Form::text('start_date', '', ['id' => 'start_date', 'class' => 'input-control', 'onfocus' => '(this.type="date")', 'onblur' => 'if(!this.value)this.type="text"])' ])!!} 
+					{!! Form::text('start_date', '', ['id' => 'start_date', 'class' => 'input-control', 'onfocus' => '(this.type="date")', 'onblur' => 'if(!this.value)this.type="text"])', 'required' => 'required' ])!!} 
 					{!! Form::label('start_date', 'Start date') !!}
 				</div>
 
 				<div class='dashboard-input'>
-					{!! Form::text('end_date', '', ['id' => 'end_date', 'class' => 'input-control', 'onfocus' => '(this.type="date")', 'onblur' => 'if(!this.value)this.type="text"])' ])!!} 
+					{!! Form::text('end_date', '', ['id' => 'end_date', 'class' => 'input-control', 'onfocus' => '(this.type="date")', 'onblur' => 'if(!this.value)this.type="text"])', 'required' => 'required' ])!!} 
 					{!! Form::label('end_date', 'End date') !!}
 				</div>
 				

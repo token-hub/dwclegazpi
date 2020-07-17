@@ -26,6 +26,8 @@ class CreateUpdatesRequest extends FormRequest
         return [
             'title' => 'required',
             'category' => 'required',
+            'start_date' => 'required',
+            'end_data' => 'required'
         ];
     }
 }

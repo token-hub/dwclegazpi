@@ -12,7 +12,7 @@
 				</div>
 
 				<div class='dashboard-input'>
-					{!! Form::text('overview', $updates->overview, ['id' => 'overview', 'class' => 'input-control', 'required' => 'required']) !!} 
+					{!! Form::text('overview', $updates->overview, ['id' => 'overview', 'class' => 'input-control' ]) !!} 
 					{!! Form::label('overview', 'Overview') !!}
 				</div>
 
@@ -25,6 +25,16 @@
 						$updates->category, 
 						['placeholder' => '', 'class' => 'input-control', 'id' => 'category', 'required' => 'required']); !!}
 				{!! Form::label('category', 'Category') !!}
+				</div>
+
+				<div class='dashboard-input'>
+					{!! Form::text('start_date', $updates->start_date, ['id' => 'start_date', 'class' => 'input-control', 'onfocus' => '(this.type="date")', 'onblur' => 'if(!this.value)this.type="text"])', 'required' => 'required' ])!!} 
+					{!! Form::label('start_date', 'Start date') !!}
+				</div>
+
+				<div class='dashboard-input'>
+					{!! Form::text('end_date', $updates->end_date, ['id' => 'end_date', 'class' => 'input-control', 'onfocus' => '(this.type="date")', 'onblur' => 'if(!this.value)this.type="text"])', 'required' => 'required' ])!!} 
+					{!! Form::label('end_date', 'End date') !!}
 				</div>
 				
 				<div class='dashboard-input'>
