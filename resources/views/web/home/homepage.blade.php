@@ -88,19 +88,26 @@
 				<div class="items">
 					@foreach($home['newsAndEvents'] as $newsAndEvents)
 						<div class='values'>
-							@if($newsAndEvents->image()->exists())
-								<img src="/storage/img/updates/images/{{ $newsAndEvents->image[0]->image_name }}">
-							@else
-								<img src="/storage/img/others/MOBILE.JPG">
-							@endif
-							<p class='bold DidactGothic'>{{ $newsAndEvents['title'] }}</p>
-							<hr>
+							<div class='value-img'>
+								@if($newsAndEvents->image()->exists())
+									<img src="/storage/img/updates/images/{{ 	$newsAndEvents->image[0]->image_name }}">
+								@else
+									<img src="/storage/img/others/MOBILE.JPG">
+								@endif
+							</div>
+							<div class='value-title'>
+								<p class='bold DidactGothic'>{{ $newsAndEvents['title'] }}</p>
+							</div>
+							
+							<div class='value-form'>
+								@if($newsAndEvents['clickable'] == 1)
+									{!! Form::open(['url' => ['/updates/update', $newsAndEvents['id'] ] , 'method' => 'GET']) !!}
+										{{ Form::submit('READ MORE')}}
+									{!! Form::close() !!}
+								@endif
+							</div>
 
-							@if($newsAndEvents['clickable'] == 1)
-								{!! Form::open(['url' => ['/updates/update', $newsAndEvents['id'] ] , 'method' => 'GET']) !!}
-									{{ Form::submit('READ MORE')}}
-								{!! Form::close() !!}
-							@endif
+							
 						</div>
 					@endforeach
 				</div> 

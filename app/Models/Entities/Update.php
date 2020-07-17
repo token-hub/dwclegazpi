@@ -70,4 +70,9 @@ class Update extends Model implements \MaddHatter\LaravelFullcalendar\Identifiab
     {
         return $this->end;
     }
+
+    public function getTitleAttribute($value)
+    {
+        return strtoupper($value);
+    }
 }
